@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: UTF-8
+  pool: 5
+  timeout: 5000
+  username: postgre
+  password: postgre
+
+development:
+  <<: *default
+  database: qrdiy_development
+
+test:
+  <<: *default
+  database: qrdiy_test
+
+production:
+  <<: *default
+  database: qrdiy_production
