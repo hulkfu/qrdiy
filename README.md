@@ -10,7 +10,15 @@
 - PostgreSQL 9.5
 
 # Deploy
+使用Capistrano 3 部署，并用了相关gem：
 
+```rb
+require 'capistrano/rbenv'
+require 'capistrano/bundler'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'capistrano/passenger'
+```
 
 ## 配置
 
@@ -32,6 +40,9 @@ cap production install
 ```
 
 # 问题
+
+## Shared文件没有
+手动到Server去创建。
 
 ## 装不上nio4r
 
