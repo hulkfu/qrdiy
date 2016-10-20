@@ -10,6 +10,11 @@
 - rbenv
 - PostgreSQL 9.5
 
+# 依赖
+
+- gem 'bootstrap', '~> 4.0.0.alpha4'
+
+
 # Deploy
 使用Capistrano 3 部署，并用了相关gem：
 
