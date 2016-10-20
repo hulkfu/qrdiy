@@ -3,6 +3,7 @@
 怎么把qrdiy在服务器上跑起来。
 
 # Server Env
+- Ruby 2.3.0
 - Linux Ubuntu 16.04
 - Nginx
 - Passenger
@@ -39,7 +40,12 @@ production SECRET_KEY_BASE，使用 rails secret 生成。
 cap production install
 ```
 
-# 问题
+# 跑测试
+
+# Services (job queues, cache servers, search engines, etc.)
+
+
+# 遇到的问题
 
 ## Shared文件没有
 手动到Server去创建。
@@ -73,23 +79,3 @@ create database qrdiy_production owner qrdiy;
 
 ## 部署和访问是404
 主要Nginx上qrdiy的目录是current/public，因为用的capistrano部署的。
-
-# Things you may want to cover
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
