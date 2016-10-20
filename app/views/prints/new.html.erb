@@ -1,19 +1,30 @@
 <h1>New Print</h1>
 
-<div class="m-t-sm col-md-offset-2 mpng" style="height: 486px;width: 360px;background:#fff;background: url(<%= asset_path('print_bg_v.png') %>) no-repeat;background-position-x: 52px;background-position-y: 0px;background-size: 90%;">
-	<div class="b-a m-t-sm col-md-offset-2 " style="height:462px;width:330px;background:#fff;border:1px solid #fff;">
-		<div style="margin:0;padding:0;align:center;text-align:center;">
-			<h2 style="margin-top:55px;font-size:21px;text-align:center;color:#333" class="fast-title"></h2>
-      <%= render 'codes/qr_html', code: @code %>
-      <p style="height:34px;margin-top:32px;text-align:center;align:center">
-				<img src=<%= asset_path("print_bg_phone.png") %> alt="">
-			</p>
-			<p style="text-align:center;color:#999;max-width:180px;margin:0 auto;margin-top:22px;font-size:12px;color:#333" class="fast-desc">
-													<span style="color:#999">这里是描述</span>							</p>
+<div class="row">
+
+	<div class="col-md-4">
+		<%= render "form", p: @print %>
+	</div>
+
+	<div class="col-md-8">
+		<div class="offset-md-2 print-show">
+			<div class="offset-md-2 content">
+				<!-- <div style="margin:0;padding:0;align:center;text-align:center;"> -->
+					<h2 class="title">
+						<span>标题</span>
+					</h2>
+					<div class="qr offset-md-2">
+			      <%= render 'codes/qr_html', code: @code %>
+					</div>
+		      <div class="tip-img">
+						<%= image_tag "print_bg_phone.png" %>
+					</div>
+					<div class="desc">
+						<span>这里是描述</span>
+					<div>
+				<!-- </div> -->
+			</div>
 		</div>
 	</div>
+
 </div>
-
-
-
-<%= render "form", p: @print %>
