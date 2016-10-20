@@ -1,4 +1,5 @@
 class PrintsController < ApplicationController
+  before_action :set_code
   before_action :set_print, only: [:show, :edit, :update, :destroy]
 
   # GET /codes/prints
@@ -15,7 +16,7 @@ class PrintsController < ApplicationController
 
   # GET /codes/prints/new
   def new
-    @print = Print.new
+    @print = @code.prints.new
   end
 
   # GET /codes/prints/1/edit
@@ -25,15 +26,13 @@ class PrintsController < ApplicationController
   # POST /codes/prints
   # POST /codes/prints.json
   def create
-    @print = Print.new(print_params)
+    @print = @code.prints.new(print_params)
 
     respond_to do |format|
       if @print.save
-        format.html { redirect_to @print, notice: 'print was successfully created.' }
-        format.json { render :show, status: :created, location: @print }
+        format.html { redirect_to [@code, @print], notice: 'print was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @print.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +42,9 @@ class PrintsController < ApplicationController
   def update
     respond_to do |format|
       if @print.update(print_params)
-        format.html { redirect_to @print, notice: 'print was successfully updated.' }
-        format.json { render :show, status: :ok, location: @print }
+        format.html { redirect_to [@code, @print], notice: 'print was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @print.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,6 +60,10 @@ class PrintsController < ApplicationController
   end
 
   private
+    def set_code
+      @code = Code.find(params[:code_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_print
       @print = Print.find(params[:id])
