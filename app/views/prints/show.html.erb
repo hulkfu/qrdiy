@@ -1,7 +1,7 @@
 <h1><%= @print.title %></h1>
-<div class="qrcode">
-  <%= raw @code.gen %>
-</div>
+
+<%= render 'codes/qr_html', code: @code %>
+
 <h2><%= @print.description %></h1>
 
 <%= link_to "Edit", edit_code_print_path(@code, @print) %>
