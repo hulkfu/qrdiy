@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QrdiyCom</title>
+    <title><%= content_for?(:title) ? yield(:title) : "QRDIY" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= render "layouts/statistics" %>
   </head>
 
   <body>
     <div class="container">
+      <%= render "layouts/nav" %>
+
       <%= yield %>
+
+      <%= render "layouts/footer" %>
     </div>
   </body>
 </html>
