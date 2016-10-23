@@ -2,16 +2,16 @@
 
 <div class="row">
 
-	<div class="col-md-4">
+	<div class="col-md-8">
 		<%= render "form", p: @print %>
 	</div>
 
-	<div class="col-md-8">
-		<div class="offset-md-2 print-show">
-			<div class="offset-md-2 content">
+	<div class="col-md-4">
+		<div class="print-show">
+			<div class="content">
 				<!-- <div style="margin:0;padding:0;align:center;text-align:center;"> -->
 					<h2 class="title">标题</h2>
-					<div class="qr offset-md-2">
+					<div class="qr">
 			      <%= render 'codes/qr_html', code: @code %>
 					</div>
 		      <div class="tip-img">
