@@ -32,7 +32,6 @@ gem 'jbuilder', '~> 2.5'
 
 # features
 gem 'rqrcode'
-gem 'rqrcode_png'
 gem 'dragonfly', '~> 1.0.12'
 
 

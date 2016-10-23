@@ -9,6 +9,16 @@ class Code < ApplicationRecord
   end
 
   def gen_qr_png
-    update_attribute :qr_png, qr.to_img.to_s
+    png = qr.as_png(
+      resize_gte_to: false,
+      resize_exactly_to: false,
+      fill: 'white',
+      color: 'black',
+      size: 500,
+      border_modules: 4,
+      module_px_size: 6,
+      file: nil # path to write
+    )
+    update_attribute :qr_png, png.to_s
   end
 end
