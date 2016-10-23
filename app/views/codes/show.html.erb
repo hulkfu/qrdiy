@@ -10,6 +10,8 @@
   <%= @code.content %>
 </p>
 
+<%= image_tag @code.qr_png.url %>
+
 <%= render 'qr_html', code: @code %>
 
 <%= link_to 'Edit', edit_code_path(@code) %> |

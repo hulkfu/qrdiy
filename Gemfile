@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 
 # features
 gem 'rqrcode'
+gem 'rqrcode_png'
+gem 'dragonfly', '~> 1.0.12'
+
 
 # UI
 gem 'bootstrap', '~> 4.0.0.alpha4'
