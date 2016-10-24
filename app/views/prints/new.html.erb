@@ -12,12 +12,12 @@
 				<!-- <div style="margin:0;padding:0;align:center;text-align:center;"> -->
 					<h2 class="title">标题</h2>
 					<div class="qr">
-			      <%= render 'codes/qr_html', code: @code %>
+			      <%= image_tag @code.qr_png.url %>
 					</div>
 		      <div class="tip-img">
 						<%= image_tag "print_bg_phone.png" %>
 					</div>
-					<div class="description">这里是描述<div>
+					<div class="description">这里是描述</div>
 				<!-- </div> -->
 			</div>
 		</div>
