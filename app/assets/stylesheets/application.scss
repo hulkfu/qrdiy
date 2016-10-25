@@ -16,6 +16,15 @@
 
  @import "bootstrap";
 
+.nav {
+  margin-bottom: 20px;
+  .nav-bottom-line {
+    background-color: orange;
+    height: 2px;
+  }
+}
+
+
  .footer {
    color: #7a7d7f;
    width: 100%;
