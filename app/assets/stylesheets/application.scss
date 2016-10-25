@@ -16,6 +16,10 @@
 
  @import "bootstrap";
 
+ * {
+   box-sizing: border-box;
+}
+
 .nav {
   margin-bottom: 20px;
   .nav-bottom-line {
