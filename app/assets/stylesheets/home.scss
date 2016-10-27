@@ -1,42 +1,39 @@
 @import "colors";
 
-#collect {
-    height: 308px;
+.wapper {
+  #collect {
+      height: 308px;
+  }
+
+  .main-text {
+      width: 100%;
+      outline: 0;
+      height: 292px;
+      resize: none;
+      font-size: 16px;
+      padding: 10px;
+  }
+
+  .submit {
+      margin: 35px 0;
+  }
+
+  .qrcode {
+      position: relative;
+      border-radius: 3px;
+      width: 280px;
+      height: 290px;
+      margin: 0 auto;
+  }
+
+  .qrimage-wrap {
+      width: 280px;
+      padding: 10px 0;
+      margin-bottom: 2px;
+  }
 }
 
-.main_text {
-    width: 100%;
-    outline: 0;
-    height: 292px;
-    resize: none;
-    font-size: 16px;
-    padding: 10px;
-}
 
-.submit {
-    margin: 35px 0;
-}
-
-.qrcode {
-    position: relative;
-    border-radius: 3px;
-    width: 280px;
-    height: 290px;
-    margin: 0 auto;
-}
-
-.qrimage-wrap {
-    width: 280px;
-    padding: 10px 0;
-    margin-bottom: 2px;
-}
-.border-a {
-    border: 1px solid rgba(120,130,140,.25);
-}
-
-.text-darkgrey {
-    color: #666;
-}
 
 .qr-tools {
     position: relative;
