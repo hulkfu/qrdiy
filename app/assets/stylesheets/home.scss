@@ -37,14 +37,11 @@
 .text-darkgrey {
     color: #666;
 }
-.text-md {
-    font-size: 1.125rem;
-}
 
-.tools {
+.qr-tools {
     position: relative;
     width: 280px;
-    margin: 0 auto;
+    margin: 1rem auto 0;
     .tits {
         display: inline-block;
         margin: 0 auto;
@@ -65,8 +62,4 @@
             color: #666!important;
         }
     }
-}
-
-.m-t {
-    margin-top: 1rem!important;
 }
