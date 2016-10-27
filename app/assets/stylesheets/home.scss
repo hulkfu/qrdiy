@@ -1,0 +1,72 @@
+@import "colors";
+
+#collect {
+    height: 308px;
+}
+
+.main_text {
+    width: 100%;
+    outline: 0;
+    height: 292px;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.submit {
+    margin: 35px 0;
+}
+
+.qrcode {
+    position: relative;
+    border-radius: 3px;
+    width: 280px;
+    height: 290px;
+    margin: 0 auto;
+}
+
+.qrimage-wrap {
+    width: 280px;
+    padding: 10px 0;
+    margin-bottom: 2px;
+}
+.border-a {
+    border: 1px solid rgba(120,130,140,.25);
+}
+
+.text-darkgrey {
+    color: #666;
+}
+.text-md {
+    font-size: 1.125rem;
+}
+
+.tools {
+    position: relative;
+    width: 280px;
+    margin: 0 auto;
+    .tits {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #ccc;
+        font-size: 12px;
+
+            li {
+              display: inline-block;
+            }
+
+        .active {
+            border-bottom: 1px solid $active-color;
+            height: 40px;
+            color: #666!important;
+        }
+    }
+}
+
+.m-t {
+    margin-top: 1rem!important;
+}

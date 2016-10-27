@@ -3,14 +3,45 @@
 <div class="sub-nav">
   <ul>
     <li class="active"><a href="#">文本</a></li>
-    <li><a href="#">文本</a></li>
+    <li><a href="<%= codes_path %>">Codes</a></li>
     <li><a href="#">文本</a></li>
     <li><a href="#">文本</a></li>
   </ul>
 </div>
 
-<h1>欢迎欢迎，热烈欢迎！</h1>
+<div class="row">
+  <div class="col-md-8">
+    <div class="item pos-rlt" id="collect">
+      <textarea id="text-content" class="main_text border-a" name="text" placeholder="请输入文字内容">
+      </textarea>
+    </div>
+    <div class="submit text-center">
+      <a id="click-create" class="btn orange" hidefocus="true" href="javascript:void(0);">生成二维码</a>
+    </div>
+  </div>
 
+  <div class="col-md-4">
 
+    <div class="qrbox" id="qrfun-box">
+      <div class="qrcode">
+        <table class="qrimage-wrap white border-a text-center" id="click-create">
+          <tbody>
+            <tr><td width="320px" height="290px;">
+              <span id="qrimage" class="text-md text-darkgrey">左侧输入内容<br>点击生成二维码</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tools m-t" id="tools">
+      <ul class="row no-gutter text-darkgrey text-center tits" id="tools-tits">
+        <li class="col-md-3 col-sm-3 first active">基本</li>
+        <li class="col-md-3 col-sm-3" id="colorselect">颜色</li>
+        <li class="col-md-3 col-sm-3 on">LOGO</li>
+        <li class="col-md-3 col-sm-3 text-green">美化器</li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
 <br/>
-<%= link_to "Codes", codes_path %>

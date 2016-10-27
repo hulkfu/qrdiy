@@ -15,13 +15,24 @@
  */
 
  @import "bootstrap";
+ @import "colors";
+
 
  * {
    box-sizing: border-box;
 }
 
+.row.no-gutter [class*=col-] {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .nav-bottom-line {
-  background-color: orange;
+  background-color: $active-color;
   height: 2px;
 }
 
@@ -50,7 +61,7 @@
   .active {
     position: relative;
     box-shadow: 0px -3px 7px #999;
-    border-top: 2px solid orange;
+    border-top: 2px solid $active-color;
     height: 44px;
     line-height: 44px;
     top: -5px;
