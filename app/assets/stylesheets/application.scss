@@ -18,17 +18,9 @@
  @import "colors";
 
 
- * {
-   box-sizing: border-box;
-}
 
-.row.no-gutter [class*=col-] {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.text-center {
-  text-align: center;
+.navbar {
+  background: white;
 }
 
 .nav-bottom-line {
@@ -37,6 +29,8 @@
 }
 
 .sub-nav {
+  background: #f0f0f0;
+  height: 38px;
   ul {
     margin: 0;
     padding: 0 16px;
