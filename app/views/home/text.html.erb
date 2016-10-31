@@ -1,0 +1,56 @@
+
+
+<div class="sub-nav">
+  <div class="container">
+    <ul>
+      <li class="active"><a href="#">文本</a></li>
+      <li><a href="<%= codes_path %>">Codes</a></li>
+      <li><a href="#">文本</a></li>
+      <li><a href="#">文本</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="wapper light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <%= form_tag("/text") do %>
+        <div class="item pos-rlt" id="collect">
+          <%= text_area_tag :content, nil, class: "main-text border-a", placeholder: "请输入文字内容"%>
+        </div>
+        <div class="submit text-center">
+          <%= submit_tag "生成二维码", class: "btn orange", hidefocus: "true" %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+
+      <div class="qr-box" id="qr-box">
+        <div class="qrcode">
+          <table class="qrimage-wrap white border-a text-center" id="click-create">
+            <tbody>
+              <tr>
+                <td width="320px" height="290px;">
+                  <span id="qrimage" class="text-md text-darkgrey">左侧输入内容<br>点击生成二维码</span>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="qr-tools m-t" id="tools">
+        <ul class="row no-gutter text-darkgrey text-center tits" id="tools-tits">
+          <li class="col-md-3 col-sm-3 first active">基本</li>
+          <li class="col-md-3 col-sm-3" id="colorselect">颜色</li>
+          <li class="col-md-3 col-sm-3 on">LOGO</li>
+          <li class="col-md-3 col-sm-3 text-green">美化器</li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<br/>
