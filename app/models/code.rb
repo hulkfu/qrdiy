@@ -22,7 +22,7 @@ class Code < ApplicationRecord
     QR_PNG_DEFAULT_OPTS.each do |k, v|
       # if no opt, set default
       # only the keys in defauls can be asigned
-      clean_opts[k] = opts[k] ||= v
+      clean_opts[k] = opts[k] || v
       case v
       when Integer
         clean_opts[k] = clean_opts[k].to_i
