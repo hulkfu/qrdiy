@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :codes do
+    collection do
+      get :qr
+    end
     resources :prints
   end
 

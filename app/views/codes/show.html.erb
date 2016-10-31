@@ -10,7 +10,7 @@
   <%= @code.content %>
 </p>
 
-<%= image_tag @code.qr_png.url %>
+<%= image_tag @code.qr_png_url %>
 
 <%= link_to 'Edit', edit_code_path(@code) %> |
 <%= link_to 'Back', codes_path %>

@@ -61,9 +61,15 @@ class CodesController < ApplicationController
     end
   end
 
-  # Show qr code img
+  # get qr code img png url
+  # GET /codes/qr?code[content]=真是牛逼啦！&code[opts][size]=100
   def qr
-
+    @code = Code.new
+    @code.content = code_params[:content]
+    if @code.save
+      @code.gen_qr_png code_params[:opts]
+      # render plain: code.qr_png_url
+    end
   end
 
   private
@@ -74,6 +80,6 @@ class CodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def code_params
-      params.require(:code).permit(:name, :content)
+      params.require(:code).permit(:name, :content, :opts => Code::QR_PNG_DEFAULT_OPTS.keys)
     end
 end
