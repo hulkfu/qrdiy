@@ -18,6 +18,7 @@ class Code < ApplicationRecord
   end
 
   def gen_qr_png(opts={})
+    opts ||= {} # when opts=nil
     clean_opts = {}
     QR_PNG_DEFAULT_OPTS.each do |k, v|
       # if no opt, set default

@@ -68,7 +68,8 @@ class CodesController < ApplicationController
     @code.content = code_params[:content]
     if @code.save
       @code.gen_qr_png code_params[:opts]
-      # render plain: code.qr_png_url
+      # send_data(@code.qr.as_png, type: 'img/png', disposition: 'inline')
+      render plain: @code.qr_png_url
     end
   end
 
