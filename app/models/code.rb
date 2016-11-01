@@ -2,6 +2,8 @@ class Code < ApplicationRecord
   has_many :prints
   dragonfly_accessor :qr_png
 
+  before_create :set_id_random
+
   QR_PNG_DEFAULT_OPTS = {
     # resize_gte_to: false,
     # resize_exactly_to: false,
@@ -40,4 +42,9 @@ class Code < ApplicationRecord
     end
     return qr_png.url
   end
+
+  private
+    def set_id_random
+      self.id = SecureRandom.hex(18)
+    end
 end
