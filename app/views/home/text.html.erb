@@ -3,7 +3,7 @@
 <div class="sub-nav">
   <div class="container">
     <ul>
-      <li class="active"><a href="#">文本</a></li>
+      <li class="active"><a href="/">文本</a></li>
       <li><a href="#">网址</a></li>
       <li><a href="#">名片</a></li>
       <li><a href="#">文件</a></li>
@@ -42,24 +42,21 @@
       </div>
 
       <div class="col-md-4">
-
-      <div class="qr-box" id="qr-box">
-        <div class="qrcode">
-          <table class="qrimage-wrap white border-a text-center" id="click-create">
-            <tbody>
-              <tr>
-                <td width="320px" height="290px;">
-                  <% if @code %>
-                    <%= image_tag @code.qr_png_url %>
-                  <% else %>
-                    <span id="qrimage" class="text-md text-darkgrey">左侧输入内容<br>点击生成二维码</span>
-                  <% end %>
-                </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="qr-tools m-t" id="tools">
+        <div class="qr-box" id="qr-box">
+          <div class="qrcode">
+            <% if @code %>
+              <div class="qrimage-wrap white border-a text-center">
+                <%= image_tag @code.qr_png_url %>
+              </div>
+              <%= link_to "下载", download_code_url(@code), class: "btn btn-secondary qrimage-download-btn" %>
+            <% else %>
+              <div class="no-qrimage-wrap white border-a text-center">
+                <div id="no-qrimage-tip" class="text-md text-darkgrey">左侧输入内容<br>点击生成二维码</div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="qr-tools m-t" id="tools">
         <ul class="row no-gutter text-darkgrey text-center tits" id="tools-tits">
           <li class="col-md-3 col-sm-3 first active">基本</li>
           <li class="col-md-3 col-sm-3" id="colorselect">颜色</li>
@@ -68,7 +65,6 @@
         </ul>
       </div>
       </div>
-    </div>
     </div>
   </div>
 </div>

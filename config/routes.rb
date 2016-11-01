@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :codes do
+    member do
+      get :download
+    end
     collection do
       get :qr
     end

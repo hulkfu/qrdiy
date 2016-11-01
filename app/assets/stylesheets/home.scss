@@ -34,10 +34,25 @@
       }
   }
 
+  .no-qrimage-wrap {
+    width: 280px;
+    height: 290px;
+
+
+    #no-qrimage-tip {
+      margin-top: 40%;
+    }
+  }
+
   .qrimage-wrap {
+      height: 252px;
       width: 280px;
       padding: 10px 0;
       margin-bottom: 2px;
+  }
+
+  .qrimage-download-btn {
+    width: 280px;
   }
 }
 

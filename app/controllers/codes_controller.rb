@@ -1,5 +1,5 @@
 class CodesController < ApplicationController
-  before_action :set_code, only: [:show, :edit, :update, :destroy]
+  before_action :set_code, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /codes
   # GET /codes.json
@@ -59,6 +59,10 @@ class CodesController < ApplicationController
       format.html { redirect_to codes_url, notice: 'Code was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def download
+    send_data(@code.qr_png.data, filename: "qrdiy-#{Time.now.strftime('%Y%m%d%H%M%S')}.png", type: 'img/png', disposition: 'inline')
   end
 
   # get qr code img png url
