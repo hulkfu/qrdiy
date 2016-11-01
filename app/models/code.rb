@@ -5,6 +5,7 @@ class Code < ApplicationRecord
   before_create :set_id_random
 
   QR_PNG_DEFAULT_OPTS = {
+    # 传进来的是string，还没有处理
     # resize_gte_to: false,
     # resize_exactly_to: false,
     fill: 'white',

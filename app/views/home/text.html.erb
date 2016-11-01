@@ -17,10 +17,20 @@
       <div class="col-md-8">
         <%= form_tag("/text") do %>
         <div class="item pos-rlt" id="collect">
-          <%= text_area_tag :qr_content, nil, class: "main-text border-a", placeholder: "请输入文字内容"%>
+          <% if @code.try(:content) %>
+            <%= text_area_tag :qr_content, @code.content, class: "main-text border-a" %>
+          <% else %>
+            <%= text_area_tag :qr_content, nil, class: "main-text border-a", placeholder: "请输入文字内容" %>
+          <% end %>
         </div>
         <div class="submit text-center">
-          <%= submit_tag "生成二维码", class: "btn orange", hidefocus: "true" %>
+          <% if @code %>
+            <%= submit_tag "重新生成", class: "btn btn-secondary", hidefocus: "true" %>
+            <%= link_to "快速打印", new_code_print_path(@code), class: "btn btn-secondary" %>
+            <%= link_to "转成云码", "/", class: "btn orange" %>
+          <% else %>
+            <%= submit_tag "生成二维码", class: "btn orange", hidefocus: "true" %>
+          <% end %>
         </div>
         <% end %>
       </div>

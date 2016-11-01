@@ -16,6 +16,10 @@
 
   .submit {
       margin: 35px 0;
+
+      input, a {
+        margin-right: 16px;
+      }
   }
 
   .qrcode {
