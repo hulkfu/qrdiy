@@ -10,8 +10,8 @@ class Code < ApplicationRecord
     # resize_exactly_to: false,
     fill: 'white',
     color: 'black',
-    size: 500,
-    border_modules: 4,
+    size: 230,
+    border_modules: 1,
     module_px_size: 6,
     # file: nil # path to write
   }
