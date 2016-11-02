@@ -33,9 +33,9 @@
           <% if @code %>
             <%= submit_tag "重新生成", class: "btn btn-secondary", hidefocus: "true" %>
             <%= link_to "快速打印", new_code_print_path(@code), class: "btn btn-secondary" %>
-            <%= link_to "转成云码", "/", class: "btn orange" %>
+            <%= link_to "转成云码", "/", class: "btn btn-orange" %>
           <% else %>
-            <%= submit_tag "生成二维码", class: "btn orange", hidefocus: "true" %>
+            <%= submit_tag "生成二维码", class: "btn btn-orange", hidefocus: "true" %>
           <% end %>
         </div>
         <% end %>
