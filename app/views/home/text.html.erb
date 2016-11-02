@@ -29,10 +29,10 @@
             <%= text_area_tag :qr_content, nil, class: "main-text border-a", placeholder: "请输入文字内容" %>
           <% end %>
         </div>
-        <div class="submit text-center">
+        <div class="submit-actions text-center">
           <% if @code %>
             <%= submit_tag "重新生成", class: "btn btn-secondary", hidefocus: "true" %>
-            <%= link_to "快速打印", new_code_print_path(@code), class: "btn btn-secondary" %>
+            <%= link_to "快速打印", new_code_print_path(@code), class: "btn btn-secondary", target: "_blank" %>
             <%= link_to "转成云码", "/", class: "btn btn-orange" %>
           <% else %>
             <%= submit_tag "生成二维码", class: "btn btn-orange", hidefocus: "true" %>

@@ -1,26 +1,31 @@
-<h1>New Print</h1>
 
-<div class="row">
+<div class="wapper light">
+	<div class="container">
+		<div class="row">
 
-	<div class="col-md-8">
-		<%= render "form", p: @print %>
-	</div>
+			<div class="col-md-6">
+				<h3>快速打印 </h3>
+				<p class="text-grey text-sm mb-3"> 下方输入框内可修改实体A4纸张上打印的文字内容，并非扫码后手机上显示的内容 </p>
+				<%= render "form", p: @print %>
+			</div>
 
-	<div class="col-md-4">
-		<div class="print-show">
-			<div class="content">
-				<!-- <div style="margin:0;padding:0;align:center;text-align:center;"> -->
-					<h2 class="title">标题</h2>
-					<div class="qr">
-			      <%= image_tag @code.qr_png_url %>
+			<div class="col-md-4 offset-md-2">
+				<div class="print-show">
+					<div class="content">
+						<!-- <div style="margin:0;padding:0;align:center;text-align:center;"> -->
+							<h2 class="title">标题</h2>
+							<div class="qr">
+					      <%= image_tag @code.qr_png_url %>
+							</div>
+				      <div class="tip-img">
+								<%= image_tag "print_bg_phone.png" %>
+							</div>
+							<div class="description">这里是描述</div>
+						<!-- </div> -->
 					</div>
-		      <div class="tip-img">
-						<%= image_tag "print_bg_phone.png" %>
-					</div>
-					<div class="description">这里是描述</div>
-				<!-- </div> -->
+				</div>
 			</div>
 		</div>
 	</div>
-
+	<br><br><br>
 </div>

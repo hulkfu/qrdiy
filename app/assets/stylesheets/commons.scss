@@ -30,3 +30,17 @@
 .text-darkgrey {
     color: #666;
 }
+
+.text-grey {
+    color: #999;
+}
+.text-sm {
+    font-size: .8rem;
+}
+
+.submit-actions {
+  margin: 35px 0;
+  input, a, button {
+    margin-right: 16px;
+  }
+}

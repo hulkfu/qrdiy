@@ -13,16 +13,24 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.text_field :title, class: "form-control", placeholder: "一个好的标题，会迅速吸引顾客的注意力" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.text_area :description, rows: 6, class: "form-control", placeholder: "一个好的扫码描述，会让顾客很快知道扫码后该做什么，以及他们会获得什么回报" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
+  <div class="submit-actions">
+    <%= link_to "/", class: "btn btn-orange" do %>
+      <%= fa_icon "print", text: "打印" %>
+    <% end %>
+
+    <%= button_tag(type: 'submit', class: "btn btn-secondary") do %>
+      <%= fa_icon "save", text: "保存到账号" %>
+    <% end %>
+
+    <%= link_to "/", class: "btn btn-secondary" do %>
+      <%= fa_icon "image", text: "保存为图片" %>
+    <% end %>
   </div>
 <% end %>
