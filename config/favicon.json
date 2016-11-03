@@ -5,9 +5,9 @@
         "ios": {
             "picture_aspect": "no_change",
             "assets": {
-                "ios6_and_prior_icons": false,
-                "ios7_and_later_icons": false,
-                "precomposed_icons": false,
+                "ios6_and_prior_icons": true,
+                "ios7_and_later_icons": true,
+                "precomposed_icons": true,
                 "declare_only_default_icon": true
             }
         },
@@ -19,12 +19,12 @@
             "background_color": "#da532c",
             "on_conflict": "override",
             "assets": {
-                "windows_80_ie_10_tile": false,
+                "windows_80_ie_10_tile": true,
                 "windows_10_ie_11_edge_tiles": {
-                    "small": false,
+                    "small": true,
                     "medium": true,
-                    "big": false,
-                    "rectangle": false
+                    "big": true,
+                    "rectangle": true
                 }
             }
         },
@@ -39,8 +39,8 @@
                 "declared": true
             },
             "assets": {
-                "legacy_icon": false,
-                "low_resolution_icons": false
+                "legacy_icon": true,
+                "low_resolution_icons": true
             }
         },
         "safari_pinned_tab": {
@@ -51,6 +51,6 @@
     },
     "settings": {
         "scaling_algorithm": "Mitchell",
-        "error_on_image_too_small": false
+        "error_on_image_too_small": true
     }
 }
