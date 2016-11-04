@@ -64,8 +64,6 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-passenger'
   gem 'capistrano-rails', '~> 1.1'
-
-  gem 'rails_real_favicon'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
