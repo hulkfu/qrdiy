@@ -13,6 +13,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def error_404
+    render_404
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_code
