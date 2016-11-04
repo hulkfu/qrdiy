@@ -59,6 +59,12 @@ class PrintsController < ApplicationController
     end
   end
 
+  # POST /codes/id/prints/print
+  # params: title, description, code_id
+  def print
+    render :print
+  end
+
   private
     def set_code
       @code = Code.find(params[:code_id])

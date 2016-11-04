@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     collection do
       get :qr
     end
-    resources :prints
+    resources :prints do
+      collection do
+        post :print
+      end
+    end
   end
 
   resources :yuns, only: [:index]

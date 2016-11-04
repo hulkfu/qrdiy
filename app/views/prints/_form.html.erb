@@ -21,8 +21,8 @@
   </div>
 
   <div class="submit-actions">
-    <%= link_to "/", class: "btn btn-orange" do %>
-      <%= fa_icon "print", text: "打印" %>
+    <%= button_tag print_code_prints_path, class: "btn btn-orange" do %>
+      <%= fa_icon "print", text: "快速打印" %>
     <% end %>
 
     <%= button_tag(type: 'submit', class: "btn btn-secondary") do %>
