@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         status = status_code.to_s
-        fname = %w(404 403).include?(status) ? status : 'unknown'
+        fname = %w(404 403 422 500).include?(status) ? status : 'unknown'
         render template: "/errors/#{fname}", format: [:html],
                handler: [:erb], status: status, layout: 'error'
       end
