@@ -1,70 +1,69 @@
 
-
-<div class="sub-nav">
-  <div class="container">
-    <ul>
-      <li class="active"><a href="/">文本</a></li>
-      <li><a href="#">网址</a></li>
-      <li><a href="#">名片</a></li>
-      <li><a href="#">文件</a></li>
-      <li><a href="#">图片</a></li>
-      <li><a href="#">微信</a></li>
-      <li><a href="#">企业码</a></li>
-      <li><a href="#">记录码</a></li>
-      <li><a href="#">批量生码</a></li>
-      <li><a href="#">更多</a></li>
-    </ul>
+<% content_for :sub_nav do %>
+  <div class="sub-nav">
+    <div class="container">
+      <ul>
+        <li class="active"><a href="/">文本</a></li>
+        <li><a href="#">网址</a></li>
+        <li><a href="#">名片</a></li>
+        <li><a href="#">文件</a></li>
+        <li><a href="#">图片</a></li>
+        <li><a href="#">微信</a></li>
+        <li><a href="#">企业码</a></li>
+        <li><a href="#">记录码</a></li>
+        <li><a href="#">批量生码</a></li>
+        <li><a href="#">更多</a></li>
+      </ul>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="wapper light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <%= form_tag("/text") do %>
-        <div class="item pos-rlt" id="collect">
-          <% if @code.try(:content) %>
-            <%= text_area_tag :qr_content, @code.content, class: "main-text border-a" %>
-          <% else %>
-            <%= text_area_tag :qr_content, nil, class: "main-text border-a", placeholder: "请输入文字内容" %>
-          <% end %>
-        </div>
-        <div class="submit-actions text-center">
-          <% if @code %>
-            <%= submit_tag "重新生成", class: "btn btn-secondary", hidefocus: "true" %>
-            <%= link_to "快速打印", new_code_print_path(@code), class: "btn btn-secondary", target: "_blank" %>
-            <%= link_to "转成云码", yuns_path, class: "btn btn-orange" %>
-          <% else %>
-            <%= submit_tag "生成二维码", class: "btn btn-orange", hidefocus: "true" %>
-          <% end %>
-        </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= form_tag("/text") do %>
+      <div class="item pos-rlt" id="collect">
+        <% if @code.try(:content) %>
+          <%= text_area_tag :qr_content, @code.content, class: "main-text border-a" %>
+        <% else %>
+          <%= text_area_tag :qr_content, nil, class: "main-text border-a", placeholder: "请输入文字内容" %>
         <% end %>
       </div>
+      <div class="submit-actions text-center">
+        <% if @code %>
+          <%= submit_tag "重新生成", class: "btn btn-secondary", hidefocus: "true" %>
+          <%= link_to "快速打印", new_code_print_path(@code), class: "btn btn-secondary", target: "_blank" %>
+          <%= link_to "转成云码", yuns_path, class: "btn btn-orange" %>
+        <% else %>
+          <%= submit_tag "生成二维码", class: "btn btn-orange", hidefocus: "true" %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
 
-      <div class="col-md-4">
-        <div class="qr-box" id="qr-box">
-          <div class="qrcode">
-            <% if @code %>
-              <div class="qrimage-wrap white border-a text-center">
-                <%= image_tag @code.qr_png_url %>
-              </div>
-              <%= link_to "下载", download_code_url(@code), class: "btn btn-secondary qrimage-download-btn" %>
-            <% else %>
-              <div class="no-qrimage-wrap white border-a text-center">
-                <div id="no-qrimage-tip" class="text-md text-darkgrey">左侧输入内容<br>点击生成二维码</div>
-              </div>
-            <% end %>
-          </div>
+    <div class="col-md-4">
+      <div class="qr-box" id="qr-box">
+        <div class="qrcode">
+          <% if @code %>
+            <div class="qrimage-wrap white border-a text-center">
+              <%= image_tag @code.qr_png_url %>
+            </div>
+            <%= link_to "下载", download_code_url(@code), class: "btn btn-secondary qrimage-download-btn" %>
+          <% else %>
+            <div class="no-qrimage-wrap white border-a text-center">
+              <div id="no-qrimage-tip" class="text-md text-darkgrey">左侧输入内容<br>点击生成二维码</div>
+            </div>
+          <% end %>
         </div>
-        <div class="qr-tools m-t" id="tools">
-        <ul class="row no-gutter text-darkgrey text-center tits" id="tools-tits">
-          <li class="col-md-3 col-sm-3 first active">基本</li>
-          <li class="col-md-3 col-sm-3" id="colorselect">颜色</li>
-          <li class="col-md-3 col-sm-3 on">LOGO</li>
-          <li class="col-md-3 col-sm-3 text-green">美化器</li>
-        </ul>
       </div>
-      </div>
+      <div class="qr-tools m-t" id="tools">
+      <ul class="row no-gutter text-darkgrey text-center tits" id="tools-tits">
+        <li class="col-md-3 col-sm-3 first active">基本</li>
+        <li class="col-md-3 col-sm-3" id="colorselect">颜色</li>
+        <li class="col-md-3 col-sm-3 on">LOGO</li>
+        <li class="col-md-3 col-sm-3 text-green">美化器</li>
+      </ul>
+    </div>
     </div>
   </div>
 </div>
