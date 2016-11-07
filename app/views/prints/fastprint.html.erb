@@ -1,0 +1,13 @@
+<h1><%= @print.title %></h1>
+
+<div class="qr">
+  <%= image_tag @code.qr_png_url %>
+</div>
+
+<div class="tip-img">
+  <%= image_tag "print_bg_phone.png" %>
+</div>
+
+<div>
+  <%= @print.description %>
+</div>

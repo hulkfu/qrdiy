@@ -30,7 +30,11 @@ class PrintsController < ApplicationController
 
     respond_to do |format|
       if @print.save
-        format.html { redirect_to [@code, @print], notice: 'print was successfully created.' }
+        if params[:button] == "fastprint"
+          format.html { render "fastprint", layout: nil }
+        else
+          format.html { redirect_to [@code, @print], notice: 'print was successfully created.' }
+        end
       else
         format.html { render :new }
       end
@@ -57,12 +61,6 @@ class PrintsController < ApplicationController
       format.html { redirect_to prints_url, notice: 'print was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  # POST /codes/id/prints/print
-  # params: title, description, code_id
-  def print
-    render :print
   end
 
   private
