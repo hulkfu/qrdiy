@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :prints
   end
 
-  resources :yuns, only: [:index]
+  resources :yunmas, only: [:index]
 
   post "text", to: "home#text"
   get "text(/:qr_id)", to: "home#text"
