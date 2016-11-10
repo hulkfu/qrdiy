@@ -40,11 +40,9 @@ gem 'dragonfly', '~> 1.0.12'
 
 # UI
 gem 'bootstrap', '~> 4.0.0.alpha5'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
 gem 'autoprefixer-rails'
 gem "font-awesome-rails"
+gem "rails-assets-tether"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

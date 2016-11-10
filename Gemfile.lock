@@ -1,6 +1,5 @@
 GEM
   remote: https://gems.ruby-china.org/
-  remote: https://rails-assets.org/
   specs:
     actioncable (5.0.0.1)
       actionpack (= 5.0.0.1)
@@ -249,7 +248,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
-  rails-assets-tether (>= 1.1.0)!
+  rails-assets-tether
   rqrcode
   sass-rails (~> 5.0)
   spring
