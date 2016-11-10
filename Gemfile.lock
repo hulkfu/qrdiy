@@ -92,6 +92,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.1.0)
     dragonfly (1.0.12)
       addressable (~> 2.3)
       multi_json (~> 1.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.0)
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
   dragonfly (~> 1.0.12)
   font-awesome-rails
   jbuilder (~> 2.5)

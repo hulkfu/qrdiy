@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 # basic
 gem 'devise'
+gem 'devise-i18n'
 
 # features
 gem 'rqrcode'
