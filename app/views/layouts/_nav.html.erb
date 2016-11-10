@@ -21,14 +21,17 @@
       </ul>
 
       <div class="nav-login">
-        <div id="myqr_out" style="display: none;">
-          <a href="/">退出</a>
-          <a href="/" class="first" data="manage">管理后台</a>
-        </div>
-        <div id="login_join" style="display: block;">
-          <a href="/" data="join">注 册</a>
-          <a href="/" class="first" data="login">登 录</a>
-        </div>
+        <% if user_signed_in? %>
+          <div id="myqr_out">
+            <%= link_to "退 出", destroy_user_session_path, method: "delete" %>
+            <%= link_to "管理后台", yunmas_path, class: "first" %>
+          </div>
+        <% else %>
+          <div id="login_join" style="display: block;">
+            <%= link_to "注 册", new_user_registration_path %>
+            <%= link_to "登 录", new_user_session_path, class: "first" %>
+          </div>
+        <% end %>
       </div>
     </nav>
   </div>
