@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# basic
+gem 'devise'
+
 # features
 gem 'rqrcode'
 gem 'dragonfly', '~> 1.0.12'
