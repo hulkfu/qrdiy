@@ -1,5 +1,5 @@
 
-<%= form_for([@code, p]) do |f| %>
+<%= form_for([@code, p], html: { target: "_blank"}) do |f| %>
   <% if p.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(p.errors.count, "error") %> prohibited this code from being saved:</h2>
