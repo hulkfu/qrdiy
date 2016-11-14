@@ -54,4 +54,17 @@ Rails.application.configure do
 
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Email
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mail
+  config.action_mailer.smtp_settings = {
+    :domain               => Rails.application.secrets.email_server_domain,
+    :address              => Rails.application.secrets.email_server_address,
+    :port                 => Rails.application.secrets.email_server_port,
+    :user_name            => Rails.application.secrets.email_user_name,
+    :password             => Rails.application.secrets.email_user_password,
+    :enable_starttls_auto => true,
+    :tls                  => true
+  }
 end
