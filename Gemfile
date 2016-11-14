@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # basic
 gem 'devise'
 gem 'devise-i18n'
+gem 'dalli'
+gem 'rucaptcha'   # 验证码
 
 # features
 gem 'rqrcode'

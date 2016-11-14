@@ -8,6 +8,8 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <%= render "devise/shared/captcha" %>
+
   <div class="actions">
     <%= f.submit t('.send_me_reset_password_instructions') %>
   </div>

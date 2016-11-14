@@ -29,6 +29,8 @@
     <%= f.password_field :current_password %>
   </div>
 
+  <%= render "devise/shared/captcha" %>
+
   <div><%= f.submit t('.update') %></div>
 <% end %>
 

@@ -9,6 +9,8 @@
 - Passenger
 - rbenv
 - PostgreSQL 9.5
+- imagemagick     验证码rbcaptcha用
+- memcached       缓存
 
 # 依赖
 

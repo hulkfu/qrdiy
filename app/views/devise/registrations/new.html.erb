@@ -18,6 +18,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <%= render "devise/shared/captcha" %>
+
   <div class="actions">
     <%= f.submit t('.sign_up') %>
   </div>

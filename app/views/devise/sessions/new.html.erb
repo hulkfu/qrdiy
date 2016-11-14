@@ -11,6 +11,8 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
+  <%= render "devise/shared/captcha" %>
+
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>

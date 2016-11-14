@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
-  
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
+  }
+  mount RuCaptcha::Engine => "/rucaptcha"
+
   resources :codes do
     member do
       get :download
