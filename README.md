@@ -10,7 +10,7 @@
 - rbenv
 - PostgreSQL 9.5
 - imagemagick     验证码rbcaptcha用
-- memcached       缓存
+- memcached       配合dalli，缓存，验证码（如果不装，验证码会永远不通过）。
 
 # 依赖
 
