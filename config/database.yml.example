@@ -3,6 +3,7 @@ default: &default
   encoding: UTF-8
   pool: 5
   timeout: 5000
+  host: localhost
   username: postgre
   password: postgre
 
