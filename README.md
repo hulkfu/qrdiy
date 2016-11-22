@@ -13,21 +13,45 @@
 - ghostscript     验证码rucaptcha用
 - memcached       配合dalli，缓存，验证码（如果不装，验证码会永远不通过）。
 
+## Ubuntu Server Install
 
-# Development Env
+```
+sudo apt-get install imagemagick ghostscript memcached
+```
 
-## 安装
+# Mac Development Env
 
-ubuntu:
+## Ubuntu
+同Server。
+
+## Mac
+
+### PostgreSQL
+直接下载[Postgres.app](http://postgresapp.com/)，拉到应用目录里就可以使用。
+
+然后在.bash_profile里配置PATH:
+
+```
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+```
+
+默认是trust认证，所以只需要有用户名和host就可以连接。
+
+把config/database.example.yml 复制到config/database.yml就可使用。
+
+### rucaptcha
 
 ```
 brew install imagemagick ghostscript
 ```
 
-mac:
+还需要下面的memcached支持。
+
+### memcached
 
 ```
-brew install imagemagick ghostscript
+brew install memcached --with-sasl
+# 用brew安装之后下面会提示怎么启动
 ```
 
 # Deploy
