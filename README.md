@@ -1,5 +1,7 @@
 # QRDIY.COM
 
+转型，所有建分支保存。
+
 怎么把qrdiy在服务器上跑起来。
 
 # Server Env
