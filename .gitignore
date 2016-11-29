@@ -23,3 +23,6 @@
 
 # Dragonfly
 /public/system/dragonfly
+
+# Carrierwave
+/public/uploads
