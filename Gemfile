@@ -51,13 +51,15 @@ gem 'dragonfly', '~> 1.0.12'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'mini_magick'
 
-
 # UI
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'autoprefixer-rails'
 gem "font-awesome-rails"
 gem "rails-assets-tether"
 gem 'simple_form'
+
+# Admin
+gem 'rails_admin', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
