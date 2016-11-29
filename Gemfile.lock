@@ -97,6 +97,9 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n (1.1.0)
+    devise_lastseenable (0.0.6)
+      devise
+      rails (>= 3.0.4)
     dragonfly (1.0.12)
       addressable (~> 2.3)
       multi_json (~> 1.0)
@@ -254,6 +257,7 @@ DEPENDENCIES
   dalli
   devise
   devise-i18n
+  devise_lastseenable
   dragonfly (~> 1.0.12)
   font-awesome-rails
   jbuilder (~> 2.5)

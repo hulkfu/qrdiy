@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.0.0'
+gem 'devise_lastseenable'
+
 gem 'rucaptcha'   # 验证码
 
 # cache
