@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :lastseenable
 
   has_one :user_profile
+  has_many :projects
 end
