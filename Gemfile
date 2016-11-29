@@ -46,6 +46,7 @@ gem 'rqrcode'
 # 存储
 gem 'dragonfly', '~> 1.0.12'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'mini_magick'
 
 
 # UI
