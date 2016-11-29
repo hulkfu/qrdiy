@@ -55,7 +55,7 @@ gem 'mini_magick'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'autoprefixer-rails'
 gem "font-awesome-rails"
-gem "rails-assets-tether"
+gem 'tether-rails'
 gem 'simple_form'
 
 # Admin
