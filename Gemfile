@@ -38,7 +38,11 @@ gem 'rucaptcha'   # 验证码
 
 # features
 gem 'rqrcode'
+
+# 存储
 gem 'dragonfly', '~> 1.0.12'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+
 
 # UI
 gem 'bootstrap', '~> 4.0.0.alpha5'

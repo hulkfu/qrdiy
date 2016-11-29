@@ -11,7 +11,7 @@
 - Passenger
 - rbenv
 - PostgreSQL 9.5
-- imagemagick     验证码rucaptcha用
+- imagemagick     验证码rucaptcha用，carrierwave 修改图片尺寸
 - ghostscript     验证码rucaptcha用
 - memcached       配合dalli，缓存，验证码（如果不装，验证码会永远不通过）。
 
