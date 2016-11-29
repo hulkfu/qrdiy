@@ -24,7 +24,7 @@
         <% if user_signed_in? %>
           <div id="myqr_out">
             <%= link_to "退 出", destroy_user_session_path, method: "delete" %>
-            <%= link_to "管 理", yunmas_path, class: "first" %>
+            <%= link_to "管 理", '/', class: "first" %>
           </div>
         <% else %>
           <div id="login_join" style="display: block;">

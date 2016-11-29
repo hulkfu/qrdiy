@@ -21,8 +21,6 @@ Rails.application.routes.draw do
     resources :prints
   end
 
-  resources :yunmas, only: [:index]
-
   post "text", to: "home#text"
   get "text(/:qr_id)", to: "home#text"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
