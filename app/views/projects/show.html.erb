@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+<div class="input-box clearfix" data-project-id="<%= @project.id  %>">
+  <form>
+    <textarea name="" id="" cols="30" rows="4" class="full-width"></textarea>
+  </form>
+  <ul class="unstyled pull-left actions">
+      <li class="ui-state-disabled">想法</li>
+      <li class="ui-state-disabled">图片</li>
+      <li class="ui-state-disabled">文件</li>
+      <li class="ui-state-disabled">投票</li>
+      <li class="ui-state-disabled">计划</li>
+      <li class="ui-state-disabled">任务</li>
+      <li class="ui-state-disabled">文档</li>
+  </ul>
+  <div class="pull-right">
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+    <select class="select optional slightly-new-select" label="false" name="visibility" form="new_idea" >
+      <option value="public">公开</option>
+      <option value="private">私密</option>
+    </select>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
+    <button class="btn submit">发布</button>
+  </div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+</div>
