@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_one :user_profile
   has_many :projects
   # 参考 Project
-  has_many :all_events, class_name: :Event
-  has_many :events, as: :eventable
+  has_many :all_statuses, class_name: :Statue
+  has_many :statuses, as: :statusable
 end

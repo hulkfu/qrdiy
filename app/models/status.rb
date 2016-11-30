@@ -1,6 +1,6 @@
-class Event < ApplicationRecord
+class Status < ApplicationRecord
 
-  belongs_to :eventable, polymorphic: true
+  belongs_to :statusable, polymorphic: true
   belongs_to :project
   belongs_to :user
 

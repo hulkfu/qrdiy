@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129170252) do
+ActiveRecord::Schema.define(version: 20161130070920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,21 +21,6 @@ ActiveRecord::Schema.define(version: 20161129170252) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "qr_png_uid"
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.integer  "action_type"
-    t.text     "content"
-    t.integer  "eventable_id"
-    t.string   "eventable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["eventable_id", "eventable_type"], name: "index_events_on_eventable_id_and_eventable_type", using: :btree
-    t.index ["eventable_type"], name: "index_events_on_eventable_type", using: :btree
-    t.index ["project_id"], name: "index_events_on_project_id", using: :btree
-    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "prints", force: :cascade do |t|
@@ -54,6 +39,21 @@ ActiveRecord::Schema.define(version: 20161129170252) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "action_type"
+    t.text     "content"
+    t.integer  "statusable_id"
+    t.string   "statusable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["project_id"], name: "index_statuses_on_project_id", using: :btree
+    t.index ["statusable_id", "statusable_type"], name: "index_statuses_on_statusable_id_and_statusable_type", using: :btree
+    t.index ["statusable_type"], name: "index_statuses_on_statusable_type", using: :btree
+    t.index ["user_id"], name: "index_statuses_on_user_id", using: :btree
   end
 
   create_table "user_profiles", force: :cascade do |t|
