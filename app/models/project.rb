@@ -5,4 +5,6 @@ class Project < ApplicationRecord
   has_many :all_statuses, class_name: :Status
   # 项目也有很多事件，比如创建。当项目不在时，也还是算用户的，需要在其也没显示，只是项目名标识一下
   has_many :statuses, as: :statusable
+
+  has_many :publications
 end

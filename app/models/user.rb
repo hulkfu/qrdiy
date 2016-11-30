@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_one :user_profile
   has_many :projects
+  has_many :publications
   # 参考 Project
   has_many :all_statuses, class_name: :Statue
   has_many :statuses, as: :statusable
