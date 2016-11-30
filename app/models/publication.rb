@@ -9,4 +9,16 @@ class Publication < ApplicationRecord
   belongs_to :project
 
   belongs_to :publishable, polymorphic: true
+
+  after_create :create_status
+
+  def create_status
+    statuses.create(user_id: user_id, project_id: project_id, action_type: "add")
+  end
+
+  # 创建 publishable，并关联创建其 publication
+  def self.create_publishable(publishable_type, publishable_params={}, publication_params={})
+    publishable = publishable_type.classify.constantize.create(publishable_params)
+    publishable.create_publication(publication_params)
+  end
 end
