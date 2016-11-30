@@ -1,0 +1,3 @@
+class Attachment < ApplicationRecord
+
+end
