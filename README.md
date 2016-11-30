@@ -4,6 +4,21 @@
 
 怎么把qrdiy在服务器上跑起来。
 
+# 概念
+
+### Status
+显示用户或项目的状态。
+
+一个多态类，发布想法或follow多会出现，像豆瓣的用户流，当然还有项目的。
+
+### Publication
+可以发布的东西。比如Idea、Image、文件等。
+
+多态类。
+
+content_html 属性是 content 经过处理后显示在网页上的 html 代码。
+
+
 # Server Env
 - Ruby 2.3.0
 - Linux Ubuntu 16.04
