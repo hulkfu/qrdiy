@@ -1,0 +1,24 @@
+<% statusable = status.statusable %>
+
+<div class="status-item">
+  <div class="status-item-head">
+    Someone:
+  </div>
+  <div class="status-item-body">
+    <div class="content">
+      <% if statusable.instance_of?(Publication) %>
+        <%= statusable.content_html %>
+      <% else %>
+        <%= statusable.content %>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <span class="created_at">
+        <%= status.created_at %>
+      </span>
+      <a href="/">回应</a>
+    </div>
+  </div>
+
+</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "statuses#index"
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :projects
@@ -11,6 +12,15 @@ Rails.application.routes.draw do
 
   mount RuCaptcha::Engine => "/rucaptcha"
 
+  resources :statuses
+
+
+
+
+  # 会匹配所有剩下的 url，并 render error，它之后的 route 不会匹配
+  match '*path', to: 'home#error_404', via: :all
+
+  # 之前二维码的，先不用
   resources :codes do
     member do
       get :download
@@ -23,10 +33,4 @@ Rails.application.routes.draw do
 
   post "text", to: "home#text"
   get "text(/:qr_id)", to: "home#text"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "home#text"
-
-
-  # error
-  match '*path', to: 'home#error_404', via: :all
 end

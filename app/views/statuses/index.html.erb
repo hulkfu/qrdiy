@@ -1,0 +1,13 @@
+
+<div class="col-md-7">
+  <h1>状态</h1>
+  <% @statuses.each do |status| %>
+    <%= render "status", status: status %>
+  <% end %>
+</div>
+
+<div class="col-md-1"></div>
+
+<div class="col-md-4">
+  <h2>推荐</h2>
+</div>

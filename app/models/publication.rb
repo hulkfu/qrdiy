@@ -19,6 +19,7 @@ class Publication < ApplicationRecord
   # 创建 publishable，并关联创建其 publication
   def self.create_publishable(publishable_type, publishable_params={}, publication_params={})
     publishable = publishable_type.classify.constantize.create(publishable_params)
+    publication_params[:content_html] = publishable.content
     publishable.create_publication(publication_params)
   end
 end

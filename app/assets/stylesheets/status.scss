@@ -1,0 +1,26 @@
+.status-item {
+  margin-bottom: 28px;
+
+  .status-item-head {
+
+  }
+
+  .status-item-body {
+    position: relative;
+    left: 28px;
+    padding-bottom: 24px;
+    overflow: hidden;
+    zoom: 1;
+    border-bottom: 1px solid #e5e5e5;
+
+    .content {
+
+    }
+
+    .actions {
+      .created_at {
+
+      }
+    }
+  }
+}

@@ -16,7 +16,9 @@
 
     <div class="container">
       <%= render "layouts/flash" %>
-      <%= yield %>
+      <div class="main-content row">
+        <%= yield %>
+      </div>
     </div>
 
     <%= render "layouts/footer" %>
