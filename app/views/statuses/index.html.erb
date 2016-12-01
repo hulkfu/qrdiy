@@ -1,13 +1,9 @@
 
-<div class="col-md-7">
-  <h1>状态</h1>
-  <% @statuses.each do |status| %>
-    <%= render "status", status: status %>
-  <% end %>
-</div>
+<h1>状态</h1>
+<% @statuses.each do |status| %>
+  <%= render "status", status: status %>
+<% end %>
 
-<div class="col-md-1"></div>
-
-<div class="col-md-4">
+<% content_for "right-content" do %>
   <h2>推荐</h2>
-</div>
+<% end %>

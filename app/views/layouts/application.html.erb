@@ -16,8 +16,18 @@
 
     <div class="container">
       <%= render "layouts/flash" %>
-      <div class="main-content row">
-        <%= yield %>
+      <div id="main-content" class="row">
+        <% if content_for?("right-content") %>
+          <div id="left-content" class="col-md-7">
+            <%= yield %>
+          </div>
+          <div class="col-md-1"></div>
+          <div id="right-content" class="col-md-4">
+            <%= yield("right-content") %>
+          </div>
+        <% else %>
+          <%= yield %>
+        <% end %>
       </div>
     </div>
 
