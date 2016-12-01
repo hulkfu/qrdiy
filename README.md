@@ -100,13 +100,35 @@ production SECRET_KEY_BASE，使用 rails secret 生成。
 
 现在是第一次部署会提升找不到上述文件，然后在Server里目录里去创建，应该能更好的方法的，反正也只用一次。
 
+# 测试
+测试就使用 Rails 自带的 Minitest 和 Fixture，简单好用。
+
+
+## 数据库
+
+连接数据库的 PostgreSQL 账号需要有 superuser 权限，在 psql 里执行：
+
+```sql
+ALTER USER myuser WITH SUPERUSER;
+```
+
+## 执行测试
+默认 rake 就是测试。
+
+```sh
+# 执行测试
+bin/rails test  # 或 bin/rake
+# 对某个文件测试
+bin/rails test -d test/models/publication_test.rb
+```
+
 ## 发布
 
 ```sh
 cap production install
 ```
 
-# 跑测试
+
 
 # Services (job queues, cache servers, search engines, etc.)
 
