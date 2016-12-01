@@ -10,4 +10,5 @@ class Status < ApplicationRecord
   belongs_to :user
 
   enum action_type: [:add, :change, :remove, :finish, :wait]
+
 end

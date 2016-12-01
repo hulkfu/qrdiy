@@ -2,14 +2,14 @@
 
 <div class="status-item">
   <div class="status-item-head">
-    Someone:
+    <%= "#{status.user.try(:email).to_s}  #{status.try(:action_type).to_s} #{status.statusable_type}" %>
   </div>
   <div class="status-item-body">
     <div class="content">
       <% if statusable.instance_of?(Publication) %>
         <%= statusable.content_html %>
       <% else %>
-        <%= statusable.content %>
+        <%= statusable.title %>
       <% end %>
     </div>
 
