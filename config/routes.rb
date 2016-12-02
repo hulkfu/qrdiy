@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "statuses#index"
 
+  get 'd/:id', to: "projects#show"
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :projects
   resources :user_profiles
