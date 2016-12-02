@@ -122,12 +122,34 @@ bin/rails test  # 或 bin/rake
 bin/rails test -d test/models/publication_test.rb
 ```
 
-## 发布
+# 发布
 
 ```sh
 cap production install
 ```
 
+# 设置
+
+- Setting 类，配着经常变的
+- security.yml，配置不经常变的，一般就存个 security_base_key
+- Rails Admin，总的配置接口
+
+## Setting
+
+使用的 [rails-settings-cached gem](https://github.com/huacnlee/rails-settings-cached)，
+config/app.yml 配合着初始化配着。
+
+缓存流：
+
+```
+Setting.foo -> Check Cache -> Exist - Write Cache -> Return
+                   |
+                Check DB -> Exist -> Write Cache -> Return
+                   |
+               Check Default -> Exist -> Write Cache -> Return
+                   |
+               Return nil
+```               
 
 
 # Services (job queues, cache servers, search engines, etc.)
