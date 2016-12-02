@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root to: "statuses#index"
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'd/:id', to: "projects#show"
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :projects
+  resources :diy, controller: :projects, as: :projects
+
   resources :user_profiles
   devise_for :users, controllers: {
     registrations: 'users/registrations',
