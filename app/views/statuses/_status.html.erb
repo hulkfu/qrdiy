@@ -1,24 +1,26 @@
 <% statusable = status.statusable %>
 
-<div class="status-item">
-  <div class="status-item-head">
-    <%= "#{status.user.try(:email).to_s}  #{status.try(:action_type).to_s} #{status.statusable_type}" %>
-  </div>
-  <div class="status-item-body">
-    <div class="content">
-      <% if statusable.instance_of?(Publication) %>
-        <%= statusable.content_html %>
-      <% else %>
-        <%= statusable.title %>
-      <% end %>
+<% if statusable.present? %>
+  <div class="status-item">
+    <div class="status-item-head">
+      <%= "#{status.user.try(:email).to_s}  #{status.try(:action_type).to_s} #{status.statusable_type}" %>
+    </div>
+    <div class="status-item-body">
+      <div class="content">
+        <% if statusable.instance_of?(Publication) %>
+          <%= statusable.content_html %>
+        <% else %>
+          <%= statusable.title %>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <span class="created_at">
+          <%= status.created_at %>
+        </span>
+        <a href="/">回应</a>
+      </div>
     </div>
 
-    <div class="actions">
-      <span class="created_at">
-        <%= status.created_at %>
-      </span>
-      <a href="/">回应</a>
-    </div>
   </div>
-
-</div>
+<% end %>
