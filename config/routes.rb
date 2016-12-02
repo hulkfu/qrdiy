@@ -3,10 +3,8 @@ Rails.application.routes.draw do
 
   get 'd/:id', to: "projects#show"
 
-  resources :diy, controller: 'projects'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
+  resources :projects
   resources :user_profiles
   devise_for :users, controllers: {
     registrations: 'users/registrations',
