@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'd/:id', to: "projects#show"
 
   resources :diy, controller: :projects, as: :projects
+  resources :i, controller: :user_profiles, as: :user_profiles
 
-  resources :user_profiles
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
