@@ -2,13 +2,12 @@ Rails.application.routes.draw do
   root to: "statuses#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  get 'd/:id', to: "projects#show"
-
   resources :diy, controller: :projects, as: :projects do
     member do
       post :reply
     end
   end
+  
   resources :i, controller: :user_profiles, as: :user_profiles, param: :domain
 
   devise_for :users, controllers: {

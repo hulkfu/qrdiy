@@ -2,20 +2,17 @@
 <div class="input-box clearfix" data-project-id="<%= @project.id  %>">
   <%= form_tag(reply_project_path(@project)) do %>
     <div>
-      <%= text_area_tag(:content) %>
+      <%= text_area_tag(:content, "", rows: "4") %>
     </div>
-    <div>
-      <ul class="unstyled pull-left actions">
-          <li class="ui-state-disabled">想法</li>
-          <li class="ui-state-disabled">图片</li>
-          <li class="ui-state-disabled">文件</li>
+      <ul class="pull-left actions">
+        <li class="ui-state-disabled">想法</li>
+        <li class="ui-state-disabled">图片</li>
+        <li class="ui-state-disabled">文件</li>
       </ul>
-    </div>
     <div class="pull-right">
       <%= submit_tag("发布") %>
     </div>
   <% end %>
-
 </div>
 
 <%= render @statuses %>

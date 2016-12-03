@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @statuses = Status.all
+    @statuses = @project.all_statuses
   end
 
   # 回应项目，发布想法、图片等
