@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'd/:id', to: "projects#show"
-  get 'i/:domain', to: "user_profiles#show"
 
   resources :diy, controller: :projects, as: :projects
-  resources :i, controller: :user_profiles, as: :user_profiles
+  resources :i, controller: :user_profiles, as: :user_profiles, param: :domain
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -19,10 +18,11 @@ Rails.application.routes.draw do
   resources :statuses
 
 
-
-
   # 会匹配所有剩下的 url，并 render error，它之后的 route 不会匹配
   match '*path', to: 'home#error_404', via: :all
+
+
+
 
   # 之前二维码的，先不用
   resources :codes do
