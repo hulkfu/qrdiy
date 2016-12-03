@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :reply]
 
   # GET /projects
   # GET /projects.json
@@ -11,6 +11,13 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @statuses = Status.all
+  end
+
+  # 回应项目，发布想法、图片等
+  def reply
+    @publication = Publication.create_publishable("idea", {content: params[:content]}, {user: current_user, project: @project})
+    redirect_to @project, notice: "发布成功！"
   end
 
   # GET /projects/new
@@ -71,5 +78,9 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:title, :description)
+    end
+
+    def publication_params
+      params.require(:publication).permit()
     end
 end

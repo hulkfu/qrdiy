@@ -1,19 +1,35 @@
 
 <div class="input-box clearfix" data-project-id="<%= @project.id  %>">
-  <form>
-    <textarea name="" id="" cols="30" rows="4" class="full-width"></textarea>
-  </form>
-  <ul class="unstyled pull-left actions">
-      <li class="ui-state-disabled">想法</li>
-      <li class="ui-state-disabled">图片</li>
-      <li class="ui-state-disabled">文件</li>
-      <li class="ui-state-disabled">投票</li>
-      <li class="ui-state-disabled">计划</li>
-      <li class="ui-state-disabled">任务</li>
-      <li class="ui-state-disabled">文档</li>
-  </ul>
-  <div class="pull-right">
-    <button class="btn submit">发布</button>
-  </div>
+  <%= form_tag(reply_project_path(@project)) do %>
+    <div>
+      <%= text_area_tag(:content) %>
+    </div>
+    <div>
+      <ul class="unstyled pull-left actions">
+          <li class="ui-state-disabled">想法</li>
+          <li class="ui-state-disabled">图片</li>
+          <li class="ui-state-disabled">文件</li>
+      </ul>
+    </div>
+    <div class="pull-right">
+      <%= submit_tag("发布") %>
+    </div>
+  <% end %>
 
 </div>
+
+<%= render @statuses %>
+
+<% content_for "right-content" do %>
+  <h4>做者</h4>
+
+  <h2>介绍</h2>
+
+  <div>
+    <%= @project.description %>
+  </div>
+
+  <h2>最近关注</h2>
+
+
+<% end %>

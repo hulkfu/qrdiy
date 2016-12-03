@@ -11,4 +11,7 @@ class Status < ApplicationRecord
 
   enum action_type: [:add, :change, :remove, :finish, :wait]
 
+  # 默认最新的在前
+  default_scope { order(created_at: :desc) }
+
 end
