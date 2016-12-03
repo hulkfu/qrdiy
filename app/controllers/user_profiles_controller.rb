@@ -64,7 +64,13 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
-      @user_profile = UserProfile.find(params[:id])
+      if params[:id].present?
+        @user_profile = UserProfile.find(params[:id])
+      elsif params[:domain].present?
+        @user_profile = UserProfile.find_by(domain: params[:domain])
+      else
+        @user_profile = nil
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

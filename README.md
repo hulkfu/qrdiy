@@ -18,6 +18,9 @@
 
 content_html 属性是 content 经过处理后显示在网页上的 html 代码。
 
+## User
+
+User 是 Devise 用来管理用户登录等的，UserProfile 是 User 的相关信息。
 
 # Server Env
 - Ruby 2.3.0

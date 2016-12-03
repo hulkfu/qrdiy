@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'd/:id', to: "projects#show"
+  get 'i/:domain', to: "user_profiles#show"
 
   resources :diy, controller: :projects, as: :projects
   resources :i, controller: :user_profiles, as: :user_profiles
