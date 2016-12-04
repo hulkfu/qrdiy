@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
 
     collection do
-      get :change_reply_type
+      get "change_reply_type/:type", action: "change_reply_type", as: "change_reply_type"
     end
   end
 

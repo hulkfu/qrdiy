@@ -1,3 +1,2 @@
-type = $(this).data("publishable-type")
-$("#publishable_type").val(type)
+$("#publishable_type").val('<%= @type %>')
 $("#input-content").html("<%=j render('projects/replies/' + @type) %>")
