@@ -2,11 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.input-box {
+.project-reply {
   margin-bottom: 30px;
-  
-  textarea {
-    width: 100%;
+
+  #input-content {
+    textarea {
+      width: 100%;
+    }
   }
 
   .actions {

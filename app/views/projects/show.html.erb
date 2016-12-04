@@ -1,14 +1,13 @@
 
-<div class="input-box clearfix" data-project-id="<%= @project.id  %>">
-  <%= form_tag(reply_project_path(@project)) do %>
-    <div>
-      <%= text_area_tag(:content, "", rows: "4") %>
+<div class="project-reply clearfix" data-project-id="<%= @project.id  %>">
+  <%= form_tag(create_reply_project_path(@project)) do %>
+    <%= hidden_field_tag(:publishable_type, "idea") %>
+    <div id="input-content">
+      <%= render "projects/replies/idea" %>
     </div>
-      <ul class="pull-left actions">
-        <li class="ui-state-disabled">想法</li>
-        <li class="ui-state-disabled">图片</li>
-        <li class="ui-state-disabled">文件</li>
-      </ul>
+    <ul class="pull-left actions">
+      <%= render "projects/replies/actions" %>
+    </ul>
     <div class="pull-right">
       <%= submit_tag("发布") %>
     </div>

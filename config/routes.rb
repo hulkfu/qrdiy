@@ -4,10 +4,14 @@ Rails.application.routes.draw do
 
   resources :diy, controller: :projects, as: :projects do
     member do
-      post :reply
+      post :create_reply
+    end
+
+    collection do
+      get :change_reply_type
     end
   end
-  
+
   resources :i, controller: :user_profiles, as: :user_profiles, param: :domain
 
   devise_for :users, controllers: {

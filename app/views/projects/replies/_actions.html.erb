@@ -1,0 +1,3 @@
+<% Publication::PUBLISHABLE_TYPES.each do |type, name| %>
+  <%= content_tag :li, link_to(name, "/diy/change_reply_type?type=#{type}", remote: true), "data-publishable-type": type %>
+<% end %>

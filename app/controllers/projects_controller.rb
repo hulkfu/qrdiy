@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :reply]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :create_reply]
 
   # GET /projects
   # GET /projects.json
@@ -15,9 +15,13 @@ class ProjectsController < ApplicationController
   end
 
   # 回应项目，发布想法、图片等
-  def reply
-    @publication = Publication.create_publishable("idea", {content: params[:content]}, {user: current_user, project: @project})
+  def create_reply
+    @publication = Publication.create_publishable(params[:publishable_type], {content: params[:content]}, {user: current_user, project: @project})
     redirect_to @project, notice: "发布成功！"
+  end
+
+  def change_reply_type
+    @type = params[:type]
   end
 
   # GET /projects/new
