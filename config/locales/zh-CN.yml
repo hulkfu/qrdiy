@@ -1,3 +1,14 @@
 zh-CN:
   rucaptcha:
     input: "请输入验证码"
+
+  errors:
+    messages:
+      file_size_is_in: ! '文件需要大于 %{min} 并小于 %{max}'
+      file_size_is_less_than: ! '文件需要小于 %{count}'
+      file_size_is_less_than_or_equal_to: ! '文件需要不大于 %{count}'
+      file_size_is_greater_than: ! '文件需要大于 %{count}'
+      file_size_is_greater_than_or_equal_to: ! '文件需要不小于 %{count}'
+
+      allowed_file_content_types: ! '文件类型需要是 %{types}'
+      excluded_file_content_types: ! '文件类型不能是 %{types}'

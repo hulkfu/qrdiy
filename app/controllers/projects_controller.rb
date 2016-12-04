@@ -16,8 +16,12 @@ class ProjectsController < ApplicationController
 
   # 回应项目，发布想法、图片等
   def create_reply
-    @publication = Publication.create_publishable(params[:publishable_type], {content: params[:content]}, {user: current_user, project: @project})
-    redirect_to @project, notice: "发布成功！"
+    begin
+      @publication = Publication.create_publishable!(params[:publishable_type], publishable_params, {user: current_user, project: @project})
+      redirect_to @project, notice: "发布成功！"
+    rescue Exception => e
+      redirect_to @project, alert: "#{e.message}."
+    end
   end
 
   def change_reply_type
@@ -84,7 +88,7 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(:title, :description)
     end
 
-    def publication_params
-      params.require(:publication).permit()
+    def publishable_params
+      params.require(:reply).permit(:content, :attachment)
     end
 end
