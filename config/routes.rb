@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :i, controller: :user_profiles, as: :user_profiles, param: :domain
 
+  resources :attachments, only: [:show]
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',

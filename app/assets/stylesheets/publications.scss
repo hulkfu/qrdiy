@@ -1,0 +1,38 @@
+
+[link-type] {
+  display: block;
+  width: 87%;
+  height: 40px;
+  padding-top: 20px;
+  padding-left: 47px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-image: url(/assets/file-icons/file-default.png);
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+@mixin file-icon($suffix, $icon) {
+  [link-type][href$=".#{$suffix}"], [link-type][data-file-name$=".#{$suffix}"] {
+    background-image: url(/assets/file-icons/#{$icon});
+  }
+}
+
+@mixin each-file-icon($suffixs, $icon) {
+  @each $press in $suffixs {
+    @include file-icon($press, $icon);
+  }
+}
+
+@include file-icon(apk, "file-apk.jpg");
+@include file-icon(ai, "file-ai.jpg");
+@include file-icon(pdf, "file-pdf.jpg");
+@include each-file-icon((axure, rp), "file-axure.jpg");
+@include each-file-icon((doc, docx), "file-doc.jpg");
+@include each-file-icon((xls, xlsx), "file-excel.jpg");
+@include each-file-icon((ppt, pptx), "file-ppt.jpg");
+@include each-file-icon((ps, psd), "file-ps.jpg");
+@include each-file-icon((rar, 7z, zip), "file-rar.jpg");
+@include each-file-icon((txt, log), "file-txt.jpg");
