@@ -10,7 +10,7 @@
           <a class="nav-link" href="/">我的趣人</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">浏览发现</a>
+          <%= link_to "浏览发现", projects_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/">移动应用</a>
@@ -18,21 +18,35 @@
         <li class="nav-item">
           <%= link_to "创建DIY", new_project_path, class: "nav-link" %>
         </li>
-      </ul>
 
-      <div class="nav-login">
-        <% if user_signed_in? %>
-          <div id="myqr_out">
-            <%= link_to "退 出", destroy_user_session_path, method: "delete" %>
-            <%= link_to "管 理", '/', class: "first" %>
-          </div>
-        <% else %>
-          <div id="login_join" style="display: block;">
-            <%= link_to "注 册", new_user_registration_path %>
-            <%= link_to "登 录", new_user_session_path, class: "first" %>
-          </div>
-        <% end %>
-      </div>
+        <div class="nav-login">
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.user_profile.name %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">我的主页</a>
+                <a class="dropdown-item" href="#">私信</a>
+                <a class="dropdown-item" href="#">设置</a>
+                <div class="dropdown-divider"></div>
+                <%= link_to "退 出", destroy_user_session_path, class:"dropdown-item", method: "delete" %>
+              </div>
+              </div>
+            </li>
+
+          <% else %>
+            <div id="login_join" style="display: block;">
+              <li class="nav-item">
+                <%= link_to "注 册", new_user_registration_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "登 录", new_user_session_path, class: "first" %>
+              </li>
+            </div>
+          <% end %>
+        </div>
+      </ul>
     </nav>
   </div>
   <div class="nav-bottom-line"></div>

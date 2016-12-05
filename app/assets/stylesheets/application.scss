@@ -19,11 +19,14 @@
  @import "colors";
  @import "font-awesome";
 
-$navbar-height: 54px;
+$navbar-height: 46px;
 
 a {
   &:hover {
     color: $active-color !important;
+    text-decoration: none;
+  }
+  &:visited {
     text-decoration: none;
   }
 }
@@ -31,7 +34,7 @@ a {
 
 .navbar {
   background: white;
-  padding: 0.3rem 1rem;
+  padding: 0;
 
   .nav-login {
     float: right;
@@ -41,10 +44,9 @@ a {
     line-height: $navbar-height;
     height: $navbar-height;
 
-    #login_join, #myqr_out {
+    #login_join {
       width: 200px;
-      float: right;
-      margin-top: 13px;
+      margin-top: 10px;
     }
 
     .first {
