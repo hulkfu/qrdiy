@@ -47,20 +47,17 @@ a {
     #login_join {
       width: 200px;
       margin-top: 10px;
-    }
 
-    .first {
-      border: 1px solid $active-color;
-      color: $active-color;
-      border-radius: 4px;
+      .first {
+        border: 1px solid $active-color;
+        color: $active-color;
+        border-radius: 4px;
+      }
     }
 
     a {
-      font-size: 14px;
       line-height: 20px;
       color: #666666;
-      padding: 5px 15px;
-      float: right;
     }
   }
 }
