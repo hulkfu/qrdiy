@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "statuses#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :diy, controller: :projects, as: :projects do
+  resources :projects, path: :diy do
     member do
       post :create_reply
     end
