@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :projects
   has_many :publications
   # 参考 Project
-  has_many :all_statuses, class_name: :Statue
+  has_many :all_statuses, class_name: :Status
   has_many :statuses, as: :statusable
 
   after_create :create_tmp_profile

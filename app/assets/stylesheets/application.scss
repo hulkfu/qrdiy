@@ -31,10 +31,15 @@ a {
   }
 }
 
+body {
+  font: 13px Helvetica,Arial,sans-serif;
+}
+
 
 .navbar {
   background: white;
   padding: 0;
+  font-size: 1rem;
 
   .nav-login {
     float: right;

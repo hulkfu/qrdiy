@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :i, controller: :user_profiles, as: :user_profiles, param: :domain
+  scope :i do
+    resources :users, path: '', only: [:show], param: :domain
+  end
+
+  resources :user_profiles, path: :i, param: :domain
 
   resources :attachments, only: [:show]
 
