@@ -2,26 +2,29 @@
 
 <% if statusable.present? %>
   <div class="status-item">
-    <div class="status-item-head">
+    <div class="avatar">
       <%= image_tag status.user.profile.avatar.normal.url.to_s %>
-      <%= "#{status.user.profile.name}  #{status.action_name}了 #{status.statusable_name}：" %>
     </div>
-    <div class="status-item-body">
-      <div class="content">
-        <% if statusable.instance_of?(Publication) %>
-          <%= statusable.content_html %>
-        <% else %>
-          <%= statusable.title %>
-        <% end %>
+    <div class="status-main">
+      <div class="status-item-head">
+        <%= "#{status.user.profile.name}  #{status.action_name}了 #{status.statusable_name}：" %>
       </div>
+      <div class="status-item-body">
+        <div class="content">
+          <% if statusable.respond_to?(:publishable_type) %>
+            <%= render "publications/#{statusable.publishable_type.downcase}", publication: statusable %>
+          <% else %>
+            <%= statusable.title %>
+          <% end %>
+        </div>
 
-      <div class="actions">
-        <span class="created_at">
-          <%= status.created_at %>
-        </span>
-        <a href="/">回应</a>
+        <div class="actions">
+          <span class="created_at">
+            <%= status.created_at %>
+          </span>
+          <a href="/">回应</a>
+        </div>
       </div>
     </div>
-
   </div>
 <% end %>

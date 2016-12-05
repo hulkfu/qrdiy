@@ -1,25 +1,37 @@
+$avatar-width: 48px;
+
 .status-item {
   margin-bottom: 28px;
 
-  .status-item-head {
-
+  .avatar {
+    height: $avatar-width;
+    width: $avatar-width;
+    float: left;
   }
 
-  .status-item-body {
-    position: relative;
-    left: 28px;
-    padding-bottom: 24px;
-    overflow: hidden;
-    zoom: 1;
-    border-bottom: 1px solid #e5e5e5;
+  .status-main {
+    margin-left: $avatar-width + 10px;
 
-    .content {
+    .status-item-head {
 
     }
 
-    .actions {
-      .created_at {
+    .status-item-body {
+      position: relative;
+      left: 28px;
+      padding-bottom: 24px;
+      overflow: hidden;
+      zoom: 1;
+      border-bottom: 1px solid #e5e5e5;
 
+      .content {
+
+      }
+
+      .actions {
+        .created_at {
+
+        }
       }
     }
   }
