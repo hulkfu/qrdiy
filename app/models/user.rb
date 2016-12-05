@@ -5,19 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :lastseenable
 
-  has_one :user_profile
+  has_one :profile, class_name: "UserProfile"
   has_many :projects
   has_many :publications
   # 参考 Project
   has_many :all_statuses, class_name: :Statue
   has_many :statuses, as: :statusable
 
-  after_create :create_profile
+  after_create :create_tmp_profile
 
   # TODO 第三方登录，获得名号
-  def create_profile
+  def create_tmp_profile
     # 根据邮箱名生成临时 name
     tmp_name = "#{email.split('@').first}_#{id}"
-    create_user_profile(name: tmp_name, domain: tmp_name)
+    create_profile(name: tmp_name, domain: tmp_name)
   end
 end

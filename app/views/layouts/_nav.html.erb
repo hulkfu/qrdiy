@@ -26,12 +26,12 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag(current_user.user_profile.avatar.tiny.url.to_s) %>
+                <%= image_tag(current_user.profile.avatar.tiny.url.to_s) %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to fa_icon("user", text: "我的主页"), "/", class:"dropdown-item" %>
                 <%= link_to fa_icon("envelope", text: "私信"), "/", class:"dropdown-item" %>
-                <%= link_to fa_icon("cog", text: "设置"), edit_user_profile_path(current_user.user_profile), class:"dropdown-item" %>
+                <%= link_to fa_icon("cog", text: "设置"), edit_user_profile_path(current_user.profile), class:"dropdown-item" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to fa_icon("sign-out", text: "退出"), destroy_user_session_path, class:"dropdown-item", method: "delete" %>
               </div>
