@@ -157,6 +157,17 @@ Setting.foo -> Check Cache -> Exist - Write Cache -> Return
 
 # Services (job queues, cache servers, search engines, etc.)
 
+# TODO
+
+把一般的 TODO 等标记写到代码里，用 rake notes 查看：
+
+```sh
+# 查看所有
+rake notes
+
+# 只看 TODO
+rake notes:todo
+```
 
 # 遇到的问题
 

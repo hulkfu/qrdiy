@@ -23,6 +23,7 @@ class Publication < ApplicationRecord
   def self.create_publishable!(publishable_type, publishable_params={}, publication_params={})
     self.transaction do
       publishable = publishable_type.classify.constantize.create!(publishable_params)
+      # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
       publication_params[:content_html] = publishable.content
       publishable.create_publication(publication_params)
     end

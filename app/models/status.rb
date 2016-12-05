@@ -15,6 +15,7 @@ class Status < ApplicationRecord
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
+  # OPTIMIZE 需要翻译成多种语言时，可以返回 t(status.name) 的翻译后的结果
   def action_name
     ACTION_TYPE_NAMES[action_type.to_sym]
   end
