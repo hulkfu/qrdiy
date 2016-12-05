@@ -9,6 +9,7 @@
       <div class="status-item-head">
         <%= "#{status.user.profile.name}  #{status.action_name}了 #{status.statusable_name}：" %>
       </div>
+
       <div class="status-item-body">
         <div class="content">
           <% if statusable.respond_to?(:publishable_type) %>
