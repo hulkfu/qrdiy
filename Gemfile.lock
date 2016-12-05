@@ -197,6 +197,9 @@ GEM
       railties (~> 5.0)
     rails-settings-cached (0.6.5)
       rails (>= 4.2.0)
+    rails-timeago (2.15.0)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     rails_admin (1.1.0)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
@@ -312,6 +315,7 @@ DEPENDENCIES
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-i18n (~> 5.0.0)
   rails-settings-cached
+  rails-timeago (~> 2.0)
   rails_admin (~> 1.0)
   rails_admin-i18n
   rqrcode

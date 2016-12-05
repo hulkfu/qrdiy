@@ -58,6 +58,7 @@ gem 'autoprefixer-rails'
 gem "font-awesome-rails"
 gem 'tether-rails'
 gem 'simple_form'
+gem 'rails-timeago', '~> 2.0'
 
 # Admin
 gem 'rails_admin', '~> 1.0'
