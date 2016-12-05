@@ -3,15 +3,27 @@
 # 东西，比如 Idea 被 user 在 project 里发布后，就会创建一个 status，然后能够显示在 user 和
 # project 的动态列表里。也可以是 user follow 了另一个 user。
 class Status < ApplicationRecord
+  # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
+  ACTION_TYPE_NAMES = {add: "发布", change: "更新", remove: "删除"}
+  enum action_type: ACTION_TYPE_NAMES.keys
 
   belongs_to :statusable, polymorphic: true
 
   belongs_to :project
   belongs_to :user
 
-  enum action_type: [:add, :change, :remove, :finish, :wait]
-
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
+  def action_name
+    ACTION_TYPE_NAMES[action_type.to_sym]
+  end
+
+  def statusable_name
+    if statusable_type == "Publication"
+      Publication::PUBLISHABLE_TYPE_NAMES[statusable.publishable_type.downcase.to_sym]
+    else
+      '其他'
+    end
+  end
 end

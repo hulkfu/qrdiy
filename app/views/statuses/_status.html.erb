@@ -4,7 +4,7 @@
   <div class="status-item">
     <div class="status-item-head">
       <%= image_tag status.user.profile.avatar.normal.url.to_s %>
-      <%= "#{status.user.profile.name}  #{status.try(:action_type).to_s} #{status.statusable_type}" %>
+      <%= "#{status.user.profile.name}  #{status.action_name}了 #{status.statusable_name}：" %>
     </div>
     <div class="status-item-body">
       <div class="content">
