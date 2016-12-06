@@ -17,4 +17,5 @@
 //= require turbolinks
 //= require rails-timeago
 //= require locales/jquery.timeago.zh-CN.js
+//= require trix
 //= require_tree .
