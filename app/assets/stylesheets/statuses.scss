@@ -2,6 +2,7 @@ $avatar-width: 48px;
 
 .status-item {
   margin-bottom: 28px;
+  color: #555;
 
   .avatar {
     height: $avatar-width;
@@ -13,7 +14,7 @@ $avatar-width: 48px;
     margin-left: $avatar-width + 10px;
 
     .status-item-head {
-
+      font-size: 13px;
     }
 
     .status-item-body {
@@ -23,12 +24,23 @@ $avatar-width: 48px;
       zoom: 1;
 
       .content {
-        margin-bottom: 20px;
+        .title {
+          margin-bottom: 4px;
+          font-size: 14px;
+          line-height: 1.38;
+        }
+        margin-bottom: 16px;
       }
 
       .actions {
+        color: #aaa;
+        padding-left: 20px;
         padding-bottom: 24px;
         border-bottom: 1px solid #e5e5e5;
+
+        a {
+          color: #7094b7;
+        }
         .created_at {
 
         }

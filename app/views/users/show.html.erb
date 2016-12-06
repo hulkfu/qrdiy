@@ -1,11 +1,19 @@
-
-<%= render partial: "statuses/status", collection: @user.all_statuses, locals: { is_show_project_title: true } %>
+<div class="user-homepage">
+  <%= render partial: "statuses/status", collection: @user.all_statuses, locals: { is_show_project_title: true } %>
+</div>
 
 <% content_for "secondary-content" do %>
-  <h1><%= @user_profile.name %></h1>
-  <%= image_tag @user_profile.avatar.url %>
-  <%= @user_profile.description %>
+  <div class="user-homepage">
 
-  <h2>我的关注</h2>
-  <%= render @user.projects %>
+    <h1><%= @user_profile.name %></h1>
+    <div class="avatar">
+      <%= image_tag @user_profile.avatar.url %>
+    </div>
+    <%= @user_profile.description %>
+
+    <h2>我的DIY</h2>
+    <%= render "projects/projects", projects: @user.projects %>
+
+    <h2>我的关注</h2>
+  </div>
 <% end %>
