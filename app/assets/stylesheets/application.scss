@@ -44,7 +44,7 @@ h1 {
 
 h2 {
   font: 15px Arial, Helvetica, sans-serif;
-  color: orange;
+  color: $primary-color;
   margin: 0 0 12px 0;
   line-height: 150%;
 }
@@ -67,9 +67,8 @@ body {
     line-height: $navbar-height;
     height: $navbar-height;
 
-    #login_join {
+    #login-join {
       width: 200px;
-      margin-top: 10px;
 
       .first {
         border: 1px solid $active-color;
