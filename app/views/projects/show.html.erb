@@ -1,5 +1,6 @@
 <%= render "shared/error_messages", target: @project %>
 
+<h3><%= @project.title %></h3>
 <div class="project-reply clearfix" data-project-id="<%= @project.id  %>">
   <%= form_tag(create_reply_project_path(@project), multipart: true) do %>
     <%= hidden_field_tag(:publishable_type, "idea") %>
@@ -20,7 +21,7 @@
 <% content_for "secondary-content" do %>
   <h4>作者</h4>
 
-  <h2>介绍</h2>
+  <h2>DIY介绍</h2>
 
   <div>
     <%= @project.description %>
