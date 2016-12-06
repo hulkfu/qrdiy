@@ -31,6 +31,24 @@ a {
   }
 }
 
+h1 {
+  word-wrap: break-word;
+  display: block;
+  font-size: 25px;
+  font-weight: bold;
+  color: #494949;
+  margin: 0;
+  padding: 0 0 15px 0;
+  line-height: 1.1;
+}
+
+h2 {
+  font: 15px Arial, Helvetica, sans-serif;
+  color: orange;
+  margin: 0 0 12px 0;
+  line-height: 150%;
+}
+
 body {
   font: 13px Helvetica,Arial,sans-serif;
 }
