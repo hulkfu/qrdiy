@@ -1,10 +1,10 @@
 
-<%= render @user.all_statuses %>
+<%= render partial: "statuses/status", collection: @user.all_statuses, locals: { is_show_project_title: true } %>
 
 <% content_for "secondary-content" do %>
   <h1><%= @user_profile.name %></h1>
   <%= image_tag @user_profile.avatar.url %>
   <%= @user_profile.description %>
 
-  <%= render "projects/projects", projects: @user.projects %>
+  <%= render @user.projects %>
 <% end %>
