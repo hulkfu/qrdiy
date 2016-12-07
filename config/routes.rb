@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   resources :user_profiles, path: :i, param: :domain
 
-  resources :attachments, only: [:show]
+  resources :publications do
+    member do
+      get :download
+    end
+  end
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

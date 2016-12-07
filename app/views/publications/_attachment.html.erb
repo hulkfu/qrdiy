@@ -1,4 +1,4 @@
 <% attachment = publication.publishable %>
 <div>
-  <%= link_to attachment.file_name, attachment, "link-type": :file, "data-file-name": attachment.file_name, target: "_blank" %>
+  <%= link_to attachment.file_name, download_publication_path(publication), "link-type": :file, "data-file-name": attachment.file_name, target: "_blank" %>
 </div>
