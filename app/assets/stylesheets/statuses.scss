@@ -24,12 +24,16 @@ $avatar-width: 48px;
       zoom: 1;
 
       .content {
+        margin-bottom: 16px;
+        img {
+          max-height: 160px;
+          margin: 3px;
+        }
         .title {
           margin-bottom: 4px;
           font-size: 14px;
           line-height: 1.38;
         }
-        margin-bottom: 16px;
       }
 
       .actions {

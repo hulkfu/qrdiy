@@ -1,0 +1,7 @@
+<% image_array = publication.publishable.image_array %>
+
+<div class="image-array">
+  <% image_array.each_with_index do |image, index| %>
+    <%= image_tag image.normal.url.to_s %>
+  <% end %>
+</div>
