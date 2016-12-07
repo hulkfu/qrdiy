@@ -18,9 +18,10 @@ Rails.application.routes.draw do
 
   resources :user_profiles, path: :i, param: :domain
 
-  resources :publications do
+  resources :publications, only: [] do
     member do
       get :download
+      get ':index', to: "publications#show", as: :preview
     end
   end
 

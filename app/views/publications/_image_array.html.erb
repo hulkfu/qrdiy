@@ -2,6 +2,6 @@
 
 <div class="image-array">
   <% image_array.each_with_index do |image, index| %>
-    <%= image_tag image.normal.url.to_s %>
+    <%= link_to image_tag(image.normal.url.to_s), preview_publication_path(publication, index) %>
   <% end %>
 </div>

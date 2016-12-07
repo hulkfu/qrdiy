@@ -5,6 +5,15 @@ class PublicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_publication
 
+  def show
+    if @publishable.respond_to? :image_array
+      @index = params[:index].to_i
+      @image = @publishable.image_array[@index]
+    else
+      render_404
+    end
+  end
+
   # Download attachment
   def download
     if @publishable.respond_to? :attachment_url
