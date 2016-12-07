@@ -3,7 +3,7 @@
 # 用来在 status 里显示。一个 publishable 可以有多个 statuses，比如 创建，修改等
 #
 class Publication < ApplicationRecord
-  PUBLISHABLE_TYPE_NAMES = {idea: "想法", image: "图片", attachment: "文件"}
+  PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件"}
 
   has_many :statuses, as: :statusable
 

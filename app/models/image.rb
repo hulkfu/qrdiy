@@ -1,5 +1,5 @@
 ##
-# TODO db table
+# 用 ImageArray 来管理
 class Image < ApplicationRecord
-  has_one :publication, as: :publishable
+
 end

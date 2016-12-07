@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204123749) do
+ActiveRecord::Schema.define(version: 20161207085507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 20161204123749) do
 
   create_table "ideas", force: :cascade do |t|
     t.text "content"
+  end
+
+  create_table "image_arrays", force: :cascade do |t|
+    t.string "content"
+    t.string "images",        default: [], array: true
+    t.string "file_names",    default: [], array: true
+    t.string "file_sizes",    default: [], array: true
+    t.string "content_types", default: [], array: true
   end
 
   create_table "prints", force: :cascade do |t|

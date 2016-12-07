@@ -20,7 +20,7 @@
       <div class="status-item-body">
         <div class="content">
           <% if statusable.respond_to?(:publishable_type) %>
-            <%= render "publications/#{statusable.publishable_type.downcase}", publication: statusable %>
+            <%= render "publications/#{statusable.publishable_type.underscore}", publication: statusable %>
           <% else %>
             <%= statusable.title %>
           <% end %>
