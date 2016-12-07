@@ -12,3 +12,13 @@ zh-CN:
 
       allowed_file_content_types: ! '文件类型需要是 %{types}'
       excluded_file_content_types: ! '文件类型不能是 %{types}'
+
+  # wysisyg:
+  #   bold: '粗体'
+  #   heading: '标题'
+  #   italic: '斜体'
+  #   link: '链接'
+  #   strike: '删除线'
+  #   underline: '下划线'
+  #   unlink: '取消链接'
+  #   urlPlaceholder: '请输入超级链接'
