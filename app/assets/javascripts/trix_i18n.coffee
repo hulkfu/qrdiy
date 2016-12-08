@@ -1,3 +1,6 @@
+
+##
+# i18n
 langMapping = {}
 
 for key, value of Trix.config.lang

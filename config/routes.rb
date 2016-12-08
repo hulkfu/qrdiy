@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :user_profiles, path: :i, param: :domain
 
   resources :publications, only: [] do
+    collection do
+      post "trix_attachment"
+    end
     member do
       get 'file(/:index)', to: "publications#file", as: :file
       get ':index', to: "publications#preview", as: :preview

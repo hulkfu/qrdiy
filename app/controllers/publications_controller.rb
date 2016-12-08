@@ -3,7 +3,8 @@
 #
 class PublicationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_publication
+  before_action :set_publication, except: [:trix_attachment]
+
 
   def preview
     if @publishable.respond_to? :image_array
@@ -29,6 +30,12 @@ class PublicationsController < ApplicationController
     else
       render_404
     end
+  end
+
+
+  def trix_attachment
+    a = Attachment.create(attachment: params[:file] )
+    render json: {id: a.id, url:a.attachment.url}.to_json
   end
 
 
