@@ -85,10 +85,15 @@ blockquote {
     line-height: $navbar-height;
     height: $navbar-height;
 
+    .fa {
+      padding-top: 4px;
+    }
+
     #login-join {
       width: 200px;
 
       .first {
+        padding: 3px;
         border: 1px solid $active-color;
         color: $active-color;
         border-radius: 4px;
