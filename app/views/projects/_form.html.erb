@@ -4,7 +4,8 @@
   <div class="form-inputs">
     <%= f.input :title, label: "一个名字" %>
     <label>一些描述</label>
-    <%= f.trix_editor :description, class: "trix-content" %>
+    <input id="trix-editor" value="" type="hidden" name="project[description]">
+    <trix-editor input="trix-editor" class="trix-content"></trix-editor>
   </div>
 
   <div class="form-actions">

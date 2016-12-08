@@ -34,8 +34,8 @@ class PublicationsController < ApplicationController
 
 
   def trix_attachment
-    a = Attachment.create(attachment: params[:file] )
-    render json: {id: a.id, url:a.attachment.url}.to_json
+    a = Attachment.create(attachment: params[:file])
+    render json: {id: a.id, url: a.attachment.url}.to_json
   end
 
 
