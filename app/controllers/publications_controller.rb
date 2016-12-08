@@ -32,9 +32,9 @@ class PublicationsController < ApplicationController
     end
   end
 
-
+  # 给 trix ajax POST 附件
   def trix_attachment
-    a = Attachment.create(attachment: params[:file])
+    a = Publication.create_publishable!("attachment", {attachment: params[:file]}, {user: current_user})
     render json: {id: a.id, url: a.attachment.url}.to_json
   end
 

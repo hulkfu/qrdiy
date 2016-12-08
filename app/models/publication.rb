@@ -15,7 +15,10 @@ class Publication < ApplicationRecord
   after_create :create_status
 
   def create_status
-    statuses.create(user_id: user_id, project_id: project_id, action_type: "add")
+    # 这样当给 trix create attachment 时，就不会创建 status 了，因子还没有 project
+    if user_id && project_id
+      statuses.create(user_id: user_id, project_id: project_id, action_type: "add")
+    end
   end
 
   # 创建 publishable，并关联创建其 publication
@@ -26,6 +29,7 @@ class Publication < ApplicationRecord
       # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
       publication_params[:content_html] = publishable.content
       publishable.create_publication(publication_params)
+      return publishable
     end
   end
 end
