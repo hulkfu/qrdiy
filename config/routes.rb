@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
   resources :publications, only: [] do
     member do
-      get :download
-      get ':index', to: "publications#show", as: :preview
+      get 'file(/:index)', to: "publications#file", as: :file
+      get ':index', to: "publications#preview", as: :preview
     end
   end
 

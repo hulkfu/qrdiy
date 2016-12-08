@@ -2,24 +2,6 @@
 
 <div class="image-array">
   <% image_array.each_with_index do |image, index| %>
-    <%= link_to image_tag(image.normal.url.to_s, class: "img-thumbnail"), "", "data-toggle": "modal", "data-target": "#image-preview-modal-#{image.hash}" %>
-    <div class="modal fade" id="image-preview-modal-<%=image.hash%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            <%= image_tag image.url %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= link_to image_tag(image.normal.url.to_s, class: "img-thumbnail"), preview_publication_path(publication, index), remote: true %>
   <% end %>
 </div>

@@ -55,12 +55,19 @@
   }
 }
 
-#new_project {
-  trix-editor {
-    min-height: 27rem;
-  }
-}
-
 .trix-content {
 
+}
+
+#preview-modal {
+  .modal-dialog {
+    text-align:center;
+    max-width: 80%;
+  }
+  .modal-content {
+    display:inline-block;
+    img {
+      max-width: 95%;
+    }
+  }
 }

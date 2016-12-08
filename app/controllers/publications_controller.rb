@@ -5,20 +5,27 @@ class PublicationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_publication
 
-  def show
+  def preview
     if @publishable.respond_to? :image_array
       @index = params[:index].to_i
       @image = @publishable.image_array[@index]
+      @image_name = @publishable.file_names[@index]
     else
       render_404
     end
   end
 
   # Download attachment
-  def download
+  def file
     if @publishable.respond_to? :attachment_url
       send_file(File.join(Rails.root, 'public', @publishable.attachment_url),
         filename: @publishable.file_name, type: @publishable.content_type)
+    # 发送 Img file
+    # elsif @publishable.respond_to? :image_array
+    #   @index = params[:index].to_i
+    #   @image = @publishable.image_array[@index]
+    #   send_file(File.join(Rails.root, 'public', @image.url),
+    #     type: 'img/png', disposition: 'inline')
     else
       render_404
     end
