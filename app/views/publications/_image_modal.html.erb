@@ -8,9 +8,10 @@
         <h4 class="modal-title"><%= title %></h4>
       </div>
       <div class="modal-body">
-        <%= link_to image_tag(image.url), image.url, target: "_blank" %>
+        <%= link_to image_tag(image.url), "#", "data-dismiss": "modal", title: "关闭" %>
       </div>
       <div class="modal-footer">
+        <%= link_to "原图", image.url, target: "_blank", class: "btn btn-secondary" %>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
       </div>
     </div><!-- /.modal-content -->
