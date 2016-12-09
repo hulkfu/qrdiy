@@ -14,7 +14,7 @@ RailsAdmin.config do |config|
   ## == Pundit ==
   # config.authorize_with :pundit
   config.authorize_with do
-    redirect_to "/404.html" unless current_user.admin?
+    redirect_to "/404.html" unless current_user.try(:admin?)
   end
 
   ## == PaperTrail ==
