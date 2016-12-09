@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  enum role: [:user, :manage, :admin]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,5 +21,10 @@ class User < ApplicationRecord
     # 根据邮箱名生成临时 name
     tmp_name = "#{email.split('@').first}_#{id}"
     create_profile(name: tmp_name, domain: tmp_name)
+  end
+
+  # 重写 manage?，admin 也能 manage
+  def manage?
+    %w(manage admin).include? role
   end
 end
