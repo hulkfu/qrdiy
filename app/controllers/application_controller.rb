@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include Pundit
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def render_404
     render_optional_error_file(404)
@@ -9,15 +12,22 @@ class ApplicationController < ActionController::Base
     render_optional_error_file(403)
   end
 
-  def render_optional_error_file(status_code)
-    respond_to do |format|
-      format.html do
-        status = status_code.to_s
-        fname = %w(404 403 422 500).include?(status) ? status : 'unknown'
-        render template: "/errors/#{fname}", format: [:html],
-               handler: [:erb], status: status, layout: 'error'
-      end
-      format.all { render :nothing => true, :status => 404 }
+  private
+
+    def user_not_authorized
+      flash[:alert] = "你没有权限。"
+      redirect_to(request.referrer || root_path)
     end
-  end
+
+    def render_optional_error_file(status_code)
+      respond_to do |format|
+        format.html do
+          status = status_code.to_s
+          fname = %w(404 403 422 500).include?(status) ? status : 'unknown'
+          render template: "/errors/#{fname}", format: [:html],
+                 handler: [:erb], status: status, layout: 'error'
+        end
+        format.all { render :nothing => true, :status => 404 }
+      end
+    end
 end

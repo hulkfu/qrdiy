@@ -22,6 +22,12 @@ content_html 属性是 content 经过处理后显示在网页上的 html 代码�
 
 User 是 Devise 用来管理用户登录等的，UserProfile 是 User 的相关信息。
 
+## 权限管理
+使用 pundit，它就像 Ruby 一样，没有 DSL，只是把权限相关的分离出来，让代码更漂亮。
+
+- authorize  验证权限，不通过会触发
+- policy 验证权限，不通过返回 false，用在 view 里可以让没有权限的操作不显示
+
 # Server Env
 - Ruby 2.3.0
 - Linux Ubuntu 16.04
