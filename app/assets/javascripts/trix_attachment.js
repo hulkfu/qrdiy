@@ -20,6 +20,7 @@
     form.append("Content-Type", file.type);
     form.append("file", file);
     xhr = new XMLHttpRequest;
+    xhr.responseType = 'json';
     xhr.open("POST", host, true);
     xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));  // 放入 CSRF
     xhr.upload.onprogress = function(event) {
@@ -30,8 +31,7 @@
     xhr.onload = function() {
       var href, url;
       if (xhr.status === 200) {
-        url = href = JSON.parse(xhr.response).url;
-        console.log(url)
+        url = href = xhr.response.url;
         return attachment.setAttributes({
           url: url,
           href: href
