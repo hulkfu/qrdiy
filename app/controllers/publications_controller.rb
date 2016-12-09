@@ -38,6 +38,16 @@ class PublicationsController < ApplicationController
     render json: {id: a.id, url: a.attachment.url}.to_json
   end
 
+  # DELETE /publications/1
+  # DELETE /publications/1.json
+  def destroy
+    # TODO soft destroy
+    # @publication.destroy
+    puts "current_user:  #{current_user.id}"
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
 
   private
     def set_publication

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :user_profiles, path: :i, param: :domain
 
-  resources :publications, only: [] do
+  resources :publications, only: [:destroy] do
     collection do
       post "trix_attachment"
     end
