@@ -9,3 +9,4 @@ user1_profile:
   gender: 1
   birthday: 2016-11-29
   description: MyText
+  user: user1
