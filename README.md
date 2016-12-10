@@ -25,8 +25,9 @@ User 是 Devise 用来管理用户登录等的，UserProfile 是 User 的相关�
 ## 权限管理
 使用 pundit，它就像 Ruby 一样，没有 DSL，只是把权限相关的分离出来，让代码更漂亮。
 
-- authorize  验证权限，不通过会触发
-- policy 验证权限，不通过返回 false，用在 view 里可以让没有权限的操作不显示
+- authorize  验证权限，不通过会触发 Pundit::NotAuthorizedError，比如：authorize @status
+- policy 验证权限，不通过返回 false，用在 view 里可以让没有权限的操作不显示，比如 if policy(@status).destroy?
+- scope 处理 array 的
 
 # Server Env
 - Ruby 2.3.0
