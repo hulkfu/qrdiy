@@ -17,6 +17,9 @@ class Publication < ApplicationRecord
   after_create :create_status
   after_create :generate_content_html
 
+  # 默认最新的在前
+  default_scope { order(created_at: :desc) }
+
   def create_status
     # 这样当给 trix create attachment 时，就不会创建 status 了，因子还没有 project
     if user_id && project_id
