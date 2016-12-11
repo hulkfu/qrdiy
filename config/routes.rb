@@ -36,7 +36,9 @@ Rails.application.routes.draw do
 
   mount RuCaptcha::Engine => "/rucaptcha"
 
-  resources :statuses, only: [:index, :destroy]
+  resources :statuses, only: [:index, :destroy] do
+    resources :comments
+  end
 
 
   # 会匹配所有剩下的 url，并 render error，它之后的 route 不会匹配

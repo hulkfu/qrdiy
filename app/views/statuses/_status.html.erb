@@ -36,6 +36,13 @@
             <%= link_to "删除", status, method: :delete, data: {confirm: "确定删除吗？"} %>
           <% end %>
         </div>
+
+        <div class="comment">
+          <%= render "statuses/comment_form", status: status %>
+          <% status.comments.each do |comment| %>
+            <%= render "statuses/comment", comment: comment %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

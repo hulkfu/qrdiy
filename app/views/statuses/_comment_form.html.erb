@@ -1,0 +1,9 @@
+<%= form_tag status_comments_path(status) do %>
+  <div class="form-inputs">
+    <%= text_area_tag("comment[content]", "", rows: "1") %>
+  </div>
+
+  <div class="form-actions">
+    <%= submit_tag("发布") %>
+  </div>
+<% end %>

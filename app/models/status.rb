@@ -12,6 +12,8 @@ class Status < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
+  has_many :comments
+
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 

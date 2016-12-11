@@ -15,6 +15,7 @@ class Publication < ApplicationRecord
   belongs_to :publishable, polymorphic: true
 
   after_create :create_status
+  after_create :generate_content_html
 
   def create_status
     # 这样当给 trix create attachment 时，就不会创建 status 了，因子还没有 project
@@ -23,13 +24,16 @@ class Publication < ApplicationRecord
     end
   end
 
+  def generate_content_html
+    # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
+    update_attributes(content_html: content)
+  end
+
   # 创建 publishable，并关联创建其 publication
   # 比如：publication = Publication.create_publishable("idea", {}, {content: "okok", user_id:1, project_id: 1})
   def self.create_publishable!(publishable_type, publishable_params={}, publication_params={})
     self.transaction do
       publishable = publishable_type.classify.constantize.create!(publishable_params)
-      # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
-      publication_params[:content_html] = publication_params[:content]
       publishable.create_publication(publication_params)
       return publishable
     end
