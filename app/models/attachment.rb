@@ -3,7 +3,6 @@ class Attachment < ApplicationRecord
 
   mount_uploader :attachment, AttachmentUploader
 
-  validates :content, length: {maximum: 200}
   validates :attachment, :presence => true,
             :file_size => { :less_than => 10.megabytes.to_i }
 

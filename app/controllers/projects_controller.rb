@@ -20,8 +20,7 @@ class ProjectsController < ApplicationController
     begin
       @publication = Publication.create_publishable!(params[:publishable_type],
         publishable_params,
-        {user: current_user, project: @project})
-
+        {content: params[:reply][:content], user: current_user, project: @project})
       redirect_to @project, notice: "发布成功！"
     rescue Exception => e
       redirect_to @project, alert: "#{e.message}."
@@ -93,6 +92,6 @@ class ProjectsController < ApplicationController
     end
 
     def publishable_params
-      params.require(:reply).permit(:content, :attachment, {image_array: []})
+      params.require(:reply).permit(:attachment, {image_array: []})
     end
 end

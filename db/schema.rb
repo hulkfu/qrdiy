@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209142015) do
+ActiveRecord::Schema.define(version: 20161211043839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20161209142015) do
     t.string "file_size"
     t.string "content_type"
     t.string "attachment"
-    t.string "content"
   end
 
   create_table "codes", force: :cascade do |t|
@@ -32,11 +31,9 @@ ActiveRecord::Schema.define(version: 20161209142015) do
   end
 
   create_table "ideas", force: :cascade do |t|
-    t.text "content"
   end
 
   create_table "image_arrays", force: :cascade do |t|
-    t.string "content"
     t.string "image_array",   default: [], array: true
     t.string "file_names",    default: [], array: true
     t.string "file_sizes",    default: [], array: true
@@ -69,6 +66,7 @@ ActiveRecord::Schema.define(version: 20161209142015) do
     t.string   "publishable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.text     "content"
     t.index ["project_id"], name: "index_publications_on_project_id", using: :btree
     t.index ["publishable_id", "publishable_type"], name: "index_publications_on_publishable_id_and_publishable_type", using: :btree
     t.index ["user_id"], name: "index_publications_on_user_id", using: :btree

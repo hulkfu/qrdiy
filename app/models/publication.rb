@@ -5,6 +5,8 @@
 class Publication < ApplicationRecord
   PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件"}
 
+  validates :content, length: {maximum: 200}
+
   has_many :statuses, as: :statusable
 
   belongs_to :user
@@ -22,12 +24,12 @@ class Publication < ApplicationRecord
   end
 
   # 创建 publishable，并关联创建其 publication
-  # 比如：publication = Publication.create_publishable("idea", {content: "okok"}, {user_id:1, project_id: 1})
+  # 比如：publication = Publication.create_publishable("idea", {}, {content: "okok", user_id:1, project_id: 1})
   def self.create_publishable!(publishable_type, publishable_params={}, publication_params={})
     self.transaction do
       publishable = publishable_type.classify.constantize.create!(publishable_params)
       # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
-      publication_params[:content_html] = publishable.content
+      publication_params[:content_html] = publication_params[:content]
       publishable.create_publication(publication_params)
       return publishable
     end

@@ -3,7 +3,6 @@ class ImageArray < ApplicationRecord
 
   has_one :publication, as: :publishable
 
-  validates :content, length: {maximum: 200}
   validates :image_array, :presence => true,
             :file_size => { :less_than => 10.megabytes.to_i }
 
