@@ -4,7 +4,12 @@
 
 <%= render "projects/replies/reply_form", project: @project %>
 
-<%= render @statuses %>
+
+<% @publications.each do |publication| %>
+  <% if publication.statuses.present? %>
+    <%= render publication.statuses.first %>
+  <% end %>
+<% end %>
 
 <% content_for "secondary-content" do %>
   <h2>作者</h2>

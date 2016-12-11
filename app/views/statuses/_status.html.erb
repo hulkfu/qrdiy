@@ -35,14 +35,13 @@
           <% if policy(status).destroy? %>
             <%= link_to "删除", status, method: :delete, data: {confirm: "确定删除吗？"} %>
           <% end %>
+
+          <div class="comments">
+            <%= render "statuses/comment_form", status: status %>
+            <%= render "statuses/comments", comments: status.comments %>
+          </div>
         </div>
 
-        <div class="comment">
-          <%= render "statuses/comment_form", status: status %>
-          <% status.comments.each do |comment| %>
-            <%= render "statuses/comment", comment: comment %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>

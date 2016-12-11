@@ -1,0 +1,7 @@
+<ul>
+  <% comments.each do |comment| %>
+    <li>
+      <%= comment.publication.content_html %>
+    </li>
+  <% end %>
+</ul>

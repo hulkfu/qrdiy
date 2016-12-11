@@ -49,6 +49,15 @@ $avatar-width: 48px;
 
         }
 
+        .comments {
+          margin-top: 1rem;
+          .form-inputs {
+            textarea {
+              width: 100%;
+            }
+          }
+        }
+
       }
     }
   }

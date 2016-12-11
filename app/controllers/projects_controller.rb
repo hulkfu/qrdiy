@@ -12,7 +12,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @statuses = @project.all_statuses
+    # Project 里只需要出现有用的东西，即 pubications 的 status
+    # 而且只要 add type 的 status，一般就是 publication.statuses.first
+    # 不带 comments 等的 statuses
+    # 所以不用：@statuses = @project.all_statuses
+    @publications = @project.publications
   end
 
   # 回应项目，发布想法、图片等
