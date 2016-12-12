@@ -1,9 +1,11 @@
 <%= form_tag status_comments_path(status) do %>
-  <span class="form-inputs">
-    <%= text_field_tag("comment[content]", "") %>
-  </span>
+  <div class="col-md-12">
+    <div class="input-group input-group-sm">
+      <%= text_field_tag("comment[content]", "", class: "form-control") %>
 
-  <span class="form-actions">
-    <%= submit_tag("回应") %>
-  </span>
+      <span class="input-group-btn">
+        <%= submit_tag("回应", class: "btn btn-secondary") %>
+      </span>
+    </div>
+  </div>
 <% end %>

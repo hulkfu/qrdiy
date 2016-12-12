@@ -39,7 +39,7 @@ $avatar-width: 48px;
       .actions {
         color: #aaa;
         padding-left: 20px;
-        padding-bottom: 24px;
+        padding-bottom: 32px;
         border-bottom: 1px solid #e5e5e5;
 
         a {
@@ -53,13 +53,7 @@ $avatar-width: 48px;
           margin-top: 1rem;
           ul {
             li {
-              
-            }
-          }
-          .form-inputs {
 
-            input {
-              width: calc(100% - 50px);
             }
           }
         }
