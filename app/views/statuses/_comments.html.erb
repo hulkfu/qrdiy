@@ -5,7 +5,7 @@
       <%= comment.user.name %>:
       <%= comment.content_html %>
       <% if policy(comment).destroy? %>
-        <%= link_to "删除", comment, method: "delete", data:{ confirm: t("confirm.delete") } %>
+        <%= link_to ">删除", comment, class: "delete", method: "delete", data:{ confirm: t("confirm.delete") } %>
       <% end %>
     </li>
   <% end %>

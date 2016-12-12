@@ -54,8 +54,18 @@ $avatar-width: 48px;
           margin-top: 1rem;
           ul {
             padding: 0;
+            .mover {
+              background-color: #f2f2f2;
+            }
+
             li {
               margin-bottom: 2px;
+              .delete {
+                padding-top: 3px;
+                float: right;
+                color: #aaa;
+              }
+
             }
           }
 
