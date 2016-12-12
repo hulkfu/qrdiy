@@ -1,5 +1,5 @@
 class Attachment < ApplicationRecord
-  has_one :publication, as: :publishable
+  include Publishable
 
   mount_uploader :attachment, AttachmentUploader
 

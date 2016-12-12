@@ -1,7 +1,7 @@
 class ImageArray < ApplicationRecord
-  mount_uploaders :image_array, ImageUploader
+  include Publishable
 
-  has_one :publication, as: :publishable
+  mount_uploaders :image_array, ImageUploader
 
   validates :image_array, :presence => true,
             :file_size => { :less_than => 10.megabytes.to_i }

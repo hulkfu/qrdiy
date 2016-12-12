@@ -27,4 +27,11 @@ class User < ApplicationRecord
   def manage?
     %w(manage admin).include? role
   end
+
+  # 映射 user profile 的常用方法
+  %w(avatar name domain).each do |m|
+    define_method m do
+      profile.__send__ m
+    end
+  end
 end

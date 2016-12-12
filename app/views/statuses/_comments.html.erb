@@ -1,9 +1,9 @@
 <ul>
   <% comments.each do |comment| %>
     <li>
-      <%= image_tag (comment.publication.user.profile.avatar.tiny.url.to_s) %>
-      <%= comment.publication.user.profile.name %>:
-      <%= comment.publication.content_html %>
+      <%= image_tag (comment.user.avatar.tiny.url.to_s) %>
+      <%= comment.user.name %>:
+      <%= comment.content_html %>
     </li>
   <% end %>
 </ul>

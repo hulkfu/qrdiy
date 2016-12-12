@@ -1,3 +1,3 @@
 class Idea < ApplicationRecord
-  has_one :publication, as: :publishable
+  include Publishable
 end

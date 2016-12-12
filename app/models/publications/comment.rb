@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
-  has_one :publication, as: :publishable
+  include Publishable
+
   belongs_to :status
 end
