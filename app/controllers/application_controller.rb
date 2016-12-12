@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
     def user_not_authorized
-      flash[:alert] = "你没有权限。"
+      flash[:error] = "你没有权限。"
       redirect_to(request.referrer || root_path)
     end
 
