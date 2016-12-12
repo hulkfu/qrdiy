@@ -13,6 +13,8 @@ zh-CN:
       allowed_file_content_types: ! '文件类型需要是 %{types}'
       excluded_file_content_types: ! '文件类型不能是 %{types}'
 
+  confirm:
+    delete: 确定删除吗？
   # wysisyg:
   #   bold: '粗体'
   #   heading: '标题'

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "statuses#index"
+  root to: "home#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :projects, path: :diy do
@@ -36,8 +36,9 @@ Rails.application.routes.draw do
 
   mount RuCaptcha::Engine => "/rucaptcha"
 
+  resources :comments, only: [:destroy]
   resources :statuses, only: [:index, :destroy] do
-    resources :comments
+    resources :comments, only: [:create]
   end
 
 

@@ -32,7 +32,7 @@
           </span>
           <a href="/">赞</a>
           <% if policy(status).destroy? %>
-            <%= link_to "删除", status, method: :delete, data: {confirm: "确定删除吗？"} %>
+            <%= link_to "删除", status, method: :delete, data: {confirm: t("confirm.delete") } %>
           <% end %>
 
           <div class="comments">

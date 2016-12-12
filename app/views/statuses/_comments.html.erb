@@ -4,6 +4,9 @@
       <%= image_tag (comment.user.avatar.tiny.url.to_s) %>
       <%= comment.user.name %>:
       <%= comment.content_html %>
+      <% if policy(comment).destroy? %>
+        <%= link_to "删除", comment, method: "delete", data:{ confirm: t("confirm.delete") } %>
+      <% end %>
     </li>
   <% end %>
 </ul>
