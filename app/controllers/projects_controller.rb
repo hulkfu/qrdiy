@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
     # 而且只要 add type 的 status，一般就是 publication.statuses.first
     # 不带 comments 等的 statuses
     # 所以不用：@statuses = @project.all_statuses
-    @publications = @project.publications
+    @publications = @project.publications.where.not(publishable_type: "Comment")
   end
 
   # 回应项目，发布想法、图片等
