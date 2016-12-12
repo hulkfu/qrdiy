@@ -50,11 +50,17 @@ $avatar-width: 48px;
         }
 
         .comments {
+          color: #666;
           margin-top: 1rem;
           ul {
+            padding: 0;
             li {
-
+              margin-bottom: 2px;
             }
+          }
+
+          .comment-form: {
+            width: 100%;
           }
         }
       }
