@@ -10,3 +10,11 @@ $ ->
     if $.trim(this.value) and e.keyCode == 13
       $(this).closest('form').submit()
       $(this).attr("disabled", "")
+      # submit button
+      $(this).next().find('input').attr("disabled","")
+
+  .on "click", "[name='commit']", (e) ->
+    console.log this
+    if not $(this).parent().prev().val()
+      e.preventDefault()
+      $(this).removeAttr("disabled")
