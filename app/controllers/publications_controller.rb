@@ -2,7 +2,6 @@
 # Idea, ImageArray, Attachment 等的统一的 Controller
 #
 class PublicationsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_publication, except: [:trix_attachment]
 
 

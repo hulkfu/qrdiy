@@ -2,7 +2,6 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    raise Pundit::NotAuthorizedError, "必须登录！" unless user
     @user = user
     @record = record
   end

@@ -23,6 +23,13 @@ content_html 属性是 content 经过处理后显示在网页上的 html 代码�
 User 是 Devise 用来管理用户登录等的，UserProfile 是 User 的相关信息。
 
 ## 权限管理
+权限管理分为两部分，一是用 devise 的 authenticate_user! 验证的登录权限，默认不登录只能 [:index, :show]，剩下的 [:create, :update, :destroy] 等需要登录后才能操作。这是就需要验证使用权限了，这里用 Pundit 对每个 action 进行验证。
+
+Pundit 里权限，需要使用 current_user 来判断当前用户是否具有操作的权限，所有必须先登录，否则就会报错的。可以在 Pundit 的 initialize 里验证是否登录，但是要在 except [:index, :show]，否则不登录就不能看了。
+
+### 登录权限
+
+### 使用权限
 使用 pundit，它就像 Ruby 一样，没有 DSL，只是把权限相关的分离出来，让代码更漂亮。
 
 - authorize  验证权限，不通过会触发 Pundit::NotAuthorizedError，比如：authorize @status
