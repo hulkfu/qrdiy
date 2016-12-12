@@ -188,3 +188,16 @@ blockquote {
      }
    }
  }
+
+.btn-outline-primary {
+  color: $primary-color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $primary-color;
+
+  &:hover {
+    color: #fff;
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+}

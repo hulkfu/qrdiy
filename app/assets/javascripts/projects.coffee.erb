@@ -2,8 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-# $ ->
+$ ->
 #   $(".project-reply .actions li").click ->
 #     type = $(this).data("publishable-type")
 #     $("#publishable_type").val(type)
 #     $("#input-content").html("type view")
+
+  $(".reply-actions a").click ->
+    $(".reply-actions a").removeClass("active")
+    $(this).addClass("active")
