@@ -36,3 +36,12 @@
 @include each-file-icon((ps, psd), "file-ps.jpg");
 @include each-file-icon((rar, 7z, zip), "file-rar.jpg");
 @include each-file-icon((txt, log), "file-txt.jpg");
+
+.quote-content {
+  i {
+    color: #cccccc;
+  }
+  span {
+    margin: 0 5px;
+  }
+}

@@ -4,4 +4,5 @@
   <% image_array.each_with_index do |image, index| %>
     <%= link_to image_tag(image.normal.url.to_s, class: "img-thumbnail"), preview_publication_path(publication, index), remote: true %>
   <% end %>
+  <%= quote_content publication.content_html, class: "image-array" %>
 </div>
