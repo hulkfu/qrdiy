@@ -51,13 +51,18 @@ $avatar-width: 48px;
 
         .comments {
           margin-top: 1rem;
+          ul {
+            li {
+              
+            }
+          }
           .form-inputs {
-            textarea {
-              width: 100%;
+
+            input {
+              width: calc(100% - 50px);
             }
           }
         }
-
       }
     }
   }
