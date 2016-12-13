@@ -10,10 +10,6 @@ class Relation < ApplicationRecord
 
   has_many :statuses
 
-  scope :follow, -> { where(relation: "follow") }
-  scope :like, -> { where(relation: "like") }
-
-
   private
 
     def relation_params
