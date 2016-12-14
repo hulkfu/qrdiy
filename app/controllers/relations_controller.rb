@@ -6,17 +6,17 @@ class RelationsController < ApplicationController
   ## post /i/domain/relations
   ##
   def create
-    @relation = current_user.relations.new(relation_params)
+    @relation = current_user.all_relations.new(relation_params)
 
     if @relation.save
-      redirect_to :root, notice: "ok"
+      redirect_to :back, notice: "ok"
     end
   end
 
   def destroy
     @relation = Relation.find(params[:id])
     @relation.destroy
-    redirect_to :root, notice: "delete"
+    redirect_to :back, notice: "delete"
   end
 
   private

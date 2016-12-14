@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Relationable  # 可以被关系啦
   enum role: [:user, :manage, :admin]
 
   # Include default devise modules. Others available are:
@@ -12,14 +13,29 @@ class User < ApplicationRecord
   has_many :publications
   # 参考 Project
   has_many :all_statuses, class_name: :Status
+  # 有很多关系，喜欢这个，follow 那个的
+  has_many :all_relations, class_name: :Relation
   has_many :statuses, as: :statusable
-  has_many :relations
 
   after_create :create_tmp_profile
 
   # find user by domain, if not exist reutrn nil
   def self.find_by_domain(domain)
     UserProfile.find_by(domain: domain).try(:user)
+  end
+
+  # Relation 的糖方法，当前用户神否与其他有那种关系？
+  Relation::NAMES.keys.each do |name|
+    define_method "#{name}?" do |relationable|
+      Relation.relation? self, name, relationable
+    end
+  end
+
+  # 获得relation
+  Relation::NAMES.keys.each do |name|
+    define_method "#{name}_relation" do |relationable|
+      Relation.get_relation self, name, relationable
+    end
   end
 
   # TODO 第三方登录，获得名号

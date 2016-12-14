@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find_by_domain(params[:user_domain])
+      @user_profile = UserProfile.find_by(domain: params[:domain])
+      @user = @user_profile.try(:user)
     end
 
 end
