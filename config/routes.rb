@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
 
   scope :i do
-    resources :users, path: '', only: [:show], param: :domain
+    resources :users, path: '', only: [:show], param: :domain do
+      resources :ralations, only: [:create, :destroy]
+    end
   end
 
   resources :user_profiles, path: :i, param: :domain

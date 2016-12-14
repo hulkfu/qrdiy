@@ -10,10 +10,4 @@ class Relation < ApplicationRecord
 
   has_many :statuses
 
-  private
-
-    def relation_params
-      params.require(:user_project_relation)
-        .permit(:user_id, :relation, :relationable_id, :relationable_type)
-    end
 end
