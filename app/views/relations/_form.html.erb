@@ -1,0 +1,6 @@
+<%= form_for(Relation.new) do |f| %>
+  <%= f.hidden_field :name, value: name %>
+  <%= f.hidden_field :relationable_type, value: relationable.class.name %>
+  <%= f.hidden_field :relationable_id, value: relationable.id %>
+  <%= f.submit %>
+<% end %>

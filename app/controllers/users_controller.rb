@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show]
 
   def show
-    @user_profile = UserProfile.find_by(domain: params[:domain])
-    @user = @user_profile.user
+
   end
+
+  private
+    def set_user
+      @user = User.find_by_domain(params[:user_domain])
+    end
+
 end

@@ -13,8 +13,14 @@ class User < ApplicationRecord
   # 参考 Project
   has_many :all_statuses, class_name: :Status
   has_many :statuses, as: :statusable
+  has_many :relations
 
   after_create :create_tmp_profile
+
+  # find user by domain, if not exist reutrn nil
+  def self.find_by_domain(domain)
+    UserProfile.find_by(domain: domain).try(:user)
+  end
 
   # TODO 第三方登录，获得名号
   def create_tmp_profile

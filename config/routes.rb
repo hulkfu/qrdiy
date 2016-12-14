@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: "home#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  resources :relations, only: [:create, :destroy]
+
   resources :projects, path: :diy do
     member do
       post :create_reply
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
 
   scope :i do
     resources :users, path: '', only: [:show], param: :domain do
-      resources :ralations, only: [:create, :destroy]
+
     end
   end
 

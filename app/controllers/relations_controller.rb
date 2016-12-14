@@ -1,26 +1,27 @@
 ##
 # Relations Controllers
 #
-class RelationsControllers < ApplicationController
-  # post /i/domain/relations
+class RelationsController < ApplicationController
+
+  ## post /i/domain/relations
+  ##
   def create
-    @relation = @user.relations.new(relation_params)
+    @relation = current_user.relations.new(relation_params)
 
     if @relation.save
+      redirect_to :root, notice: "ok"
     end
   end
 
   def destroy
-
+    @relation = Relation.find(params[:id])
+    @relation.destroy
+    redirect_to :root, notice: "delete"
   end
 
   private
-    def set_user
-      @user = User.find_by(user_domain: params[:user_domain])
-    end
 
     def relation_params
-      params.require(:user_project_relation)
-        .permit(:relation, :relationable_id, :relationable_type)
+      params.require(:relation).permit(:name, :relationable_id, :relationable_type)
     end
 end
