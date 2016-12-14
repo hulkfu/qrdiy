@@ -108,9 +108,10 @@ ActiveRecord::Schema.define(version: 20161214100615) do
     t.text     "description"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "domain"
     t.datetime "domain_updated_at"
     t.datetime "name_updated_at"
-    t.string   "domain"
+    t.index ["domain"], name: "index_user_profiles_on_domain", unique: true, using: :btree
     t.index ["name"], name: "index_user_profiles_on_name", unique: true, using: :btree
     t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
