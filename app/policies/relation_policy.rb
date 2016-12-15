@@ -1,7 +1,7 @@
 class RelationPolicy < ApplicationPolicy
 
   def create?
-    super
+    true
   end
 
   def destroy?

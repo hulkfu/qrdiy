@@ -7,7 +7,7 @@ class RelationsController < ApplicationController
   ##
   def create
     @relation = current_user.all_relations.new(relation_params)
-
+    authorize @relation
     if @relation.save
       redirect_to :back, notice: "ok"
     end
@@ -15,6 +15,7 @@ class RelationsController < ApplicationController
 
   def destroy
     @relation = Relation.find(params[:id])
+    authorize @relation
     @relation.destroy
     redirect_to :back, notice: "delete"
   end
