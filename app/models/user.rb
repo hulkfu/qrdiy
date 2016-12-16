@@ -24,19 +24,24 @@ class User < ApplicationRecord
     UserProfile.find_by(domain: domain).try(:user)
   end
 
-  # Relation 的糖方法，当前用户神否与其他有那种关系？
+  ## Relation 的糖方法
   Relation::NAMES.keys.each do |name|
+    # 当前用户神否与其他有那种关系？
     define_method "#{name}?" do |relationable|
       Relation.relation? self, name, relationable
     end
-  end
 
-  # 获得relation
-  Relation::NAMES.keys.each do |name|
+    # 获得relation
     define_method "#{name}_relation" do |relationable|
       Relation.get_relation self, name, relationable
     end
+
+    # relation 的东西
+    define_method "#{name}_relations" do
+      all_relations.where(name: name)
+    end
   end
+  
 
   # TODO 第三方登录，获得名号
   def create_tmp_profile

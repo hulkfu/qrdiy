@@ -10,13 +10,16 @@ class Relation < ApplicationRecord
 
   has_many :statuses
 
-  # 判断是否有关系
-  def self.relation?(user, relation_name, relationable)
-    where(user: user, name: relation_name, relationable: relationable).present?
+  class << self
+    # 判断是否有关系
+    def relation?(user, relation_name, relationable)
+      where(user: user, name: relation_name, relationable: relationable).present?
+    end
+
+    # 获得关系
+    def get_relation(user, relation_name, relationable)
+      where(user: user, name: relation_name, relationable: relationable).take
+    end
   end
 
-  # 获得关系
-  def self.get_relation(user, relation_name, relationable)
-    where(user: user, name: relation_name, relationable: relationable).take
-  end
 end
