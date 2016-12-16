@@ -7,6 +7,13 @@ GIT
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
 
+GIT
+  remote: git://github.com/elabs/pundit.git
+  revision: 8b2d6381037ffe6792d193a2a4442b58a961e9e2
+  specs:
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,7 +60,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ansi (1.5.0)
     arel (7.1.4)
-    autoprefixer-rails (6.5.3.1)
+    autoprefixer-rails (6.5.4)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -67,7 +74,7 @@ GEM
       sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.6)
-    capistrano (3.6.1)
+    capistrano (3.7.0)
       airbrussh (>= 1.0.0)
       capistrano-harrow
       i18n
@@ -118,7 +125,7 @@ GEM
     file_validators (2.1.0)
       activemodel (>= 3.0)
       mime-types (>= 1.0)
-    font-awesome-rails (4.7.0.0)
+    font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -177,8 +184,6 @@ GEM
       pry (>= 0.9.10)
     public_suffix (2.0.4)
     puma (3.6.2)
-    pundit (1.1.0)
-      activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
@@ -323,7 +328,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma (~> 3.0)
-  pundit
+  pundit!
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-i18n (~> 5.0.0)
   rails-settings-cached

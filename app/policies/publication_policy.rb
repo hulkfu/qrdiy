@@ -1,0 +1,3 @@
+class PublicationPolicy < ApplicationPolicy
+
+end

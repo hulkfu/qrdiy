@@ -37,7 +37,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise_lastseenable'
-gem "pundit"
+gem "pundit", github: 'elabs/pundit'
 
 gem 'rucaptcha'   # 验证码
 
