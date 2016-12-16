@@ -1,7 +1,8 @@
 class RelationPolicy < ApplicationPolicy
 
   def create?
-    true
+    # 不能重复发生关系
+    not Relation.where(record.attributes.except("id", "created_at", "updated_at")).present?
   end
 
   def destroy?
