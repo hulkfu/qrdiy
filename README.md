@@ -176,6 +176,9 @@ Setting.foo -> Check Cache -> Exist - Write Cache -> Return
 
 # TODO
 
+- exception_notification gem
+
+## 代码中的
 把一般的 TODO 等标记写到代码里，用 rake notes 查看：
 
 ```sh
