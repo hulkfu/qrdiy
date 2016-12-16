@@ -2,7 +2,7 @@
 # Relation 类，polymorphic，user 对 其他一切可 relationable 的关系，比如 user， project， status，
 # publication， comment 等，只要能发生关系
 class Relation < ApplicationRecord
-  NAMES = {follow: "关注", like: "喜欢"}
+  NAMES = {follow: "关注", like: "喜欢"}.freeze
   enum name: NAMES.keys
 
   belongs_to :user
