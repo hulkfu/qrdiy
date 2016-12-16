@@ -1,0 +1,8 @@
+<% user = notification.actor %>
+<% if user.blank? %>
+  相关信息已删除
+<% else %>
+  <div class="media-heading">
+    <%= user.name %> 开始喜欢你了。
+  </div>
+<% end %>

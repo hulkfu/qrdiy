@@ -1,4 +1,3 @@
-<%= cache(['notifications', Notifications::VERSION, notification]) do %>
 <div id="notification-<%= notification.id %>"
      data-id="<%= notification.id %>"
      class="media notification notification-<%= notification.notify_type %><%= ' unread' if !notification.read? %>">
@@ -11,5 +10,4 @@
   <div class="media-right">
     <%= l notification.created_at, format: :short %>
   </div>
-</div>
-<% end %>
+</div>

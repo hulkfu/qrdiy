@@ -16,6 +16,8 @@ class User < ApplicationRecord
   # 有很多关系，喜欢这个，follow 那个的
   has_many :all_relations, class_name: :Relation
   has_many :statuses, as: :statusable
+  # 本用户 user 的 notification 是被其他用户 actor 创建的
+  has_many :notifications
 
   after_create :create_tmp_profile
 
@@ -41,7 +43,7 @@ class User < ApplicationRecord
       all_relations.where(name: name)
     end
   end
-  
+
 
   # TODO 第三方登录，获得名号
   def create_tmp_profile

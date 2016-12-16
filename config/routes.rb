@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Notifications::Engine => "/notifications"
   root to: "home#index"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -39,6 +38,11 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  resources :notifications do
+    collection do
+      post :clean
+    end
+  end
   mount RuCaptcha::Engine => "/rucaptcha"
 
   resources :comments, only: [:destroy]

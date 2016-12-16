@@ -46,7 +46,6 @@ gem 'dalli'
 
 # features
 gem 'rqrcode'
-gem 'notifications'
 
 # 存储
 gem 'dragonfly', '~> 1.0.12'

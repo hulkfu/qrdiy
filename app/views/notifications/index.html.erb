@@ -1,14 +1,14 @@
 <div class="notifications row">
   <div class="heading clearfix">
-    <%= t('notifications.all_notifications') %>
+    所有通知
 
     <span class="pull-xs-right">
-      <%= link_to t('notifications.clean_all'), notifications.clean_notifications_path, class: 'btn btn-sm btn-secondary', method: 'delete' %>
+      <%= button_to "清空", clean_notifications_path, class: 'btn btn-sm btn-secondary', method: 'clean' %>
     </span>
   </div>
   <div class="list">
     <% if @notifications.blank? %>
-      <div class="no-records"><%= t('notifications.no_records') %></div>
+      <div class="no-records">没有通知</div>
     <% else %>
       <% @notification_groups.each do |group, notifications| %>
         <div class="notification-group">
@@ -18,5 +18,4 @@
       <% end %>
     <% end %>
   </div>
-  <%= will_paginate @notifications %>
 </div>
