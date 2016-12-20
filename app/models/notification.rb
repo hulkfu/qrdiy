@@ -6,6 +6,7 @@ class Notification < ActiveRecord::Base
 
   belongs_to :actor, class_name: :User
   belongs_to :user
+  belongs_to :notificationable, polymorphic: true
 
   scope :unread, -> { where(read_at: nil) }
 
