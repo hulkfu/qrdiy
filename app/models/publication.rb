@@ -3,11 +3,10 @@
 # 用来在 status 里显示。一个 publishable 可以有多个 statuses，比如 创建，修改等
 #
 class Publication < ApplicationRecord
+  include Statusable
   PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件", comment: "评论"}.freeze
 
   validates :content, length: {maximum: 200}
-
-  has_many :statuses, as: :statusable
 
   belongs_to :user
   belongs_to :project

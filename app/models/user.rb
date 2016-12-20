@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include Relationable  # 可以被关系啦
+  include Statusable
   enum role: [:user, :manage, :admin]
 
   # Include default devise modules. Others available are:
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   has_many :all_statuses, class_name: :Status
   # 有很多关系，喜欢这个，follow 那个的
   has_many :all_relations, class_name: :Relation
-  has_many :statuses, as: :statusable
+
   # 本用户 user 的 notification 是被其他用户 actor 创建的
   has_many :notifications
 

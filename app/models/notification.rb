@@ -6,6 +6,7 @@ class Notification < ActiveRecord::Base
 
   belongs_to :actor, class_name: :User
   belongs_to :user
+  # 记录触发通知的东西，比如：发的留言、关注的项目、发布的图片等
   belongs_to :notificationable, polymorphic: true
 
   scope :unread, -> { where(read_at: nil) }
