@@ -1,6 +1,6 @@
 <% statusable = status.statusable %>
 <% user_profile = status.user.profile %>
-<% is_show_project_title ||= false %>
+<% is_show_project_name ||= false %>
 
 <% if statusable.present? %>
   <div class="status-item">
@@ -11,8 +11,8 @@
     <div class="status-main">
       <div class="status-item-head">
         <%= link_to user_profile.name, user_path(user_profile) %>
-        <% if is_show_project_title && status.project %>
-          在 <%= link_to status.project.try(:title), project_path(status.project) %>
+        <% if is_show_project_name && status.project %>
+          在 <%= link_to status.project.try(:name), project_path(status.project) %>
         <% end %>
         <%= "#{status.action_name}了 " %>
         <%= status.statusable_name %>
@@ -23,7 +23,7 @@
           <% if statusable.respond_to?(:publishable_type) %>
             <%= render "publications/#{statusable.publishable_type.underscore}", publication: statusable %>
           <% else %>
-            <%= statusable.try(:title) %>
+            <%= statusable.try(:name) %>
           <% end %>
         </div>
 

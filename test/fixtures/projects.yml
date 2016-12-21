@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 project1:
-  title: MyString
+  name: MyString
   description: MyText
   user: user1

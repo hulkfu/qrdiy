@@ -1,7 +1,7 @@
 <ul>
   <% projects.each do |project| %>
     <li>
-      <%= link_to project.title, project_path(project) %>
+      <%= link_to project.name, project_path(project) %>
       <div>DIY 描述：<%= project.description %></div>
     </li>
   <% end %>

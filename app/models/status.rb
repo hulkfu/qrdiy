@@ -60,7 +60,7 @@ class Status < ApplicationRecord
     when "Project"
       "DIY"
     when "Relation"
-      # FIXME 将 project 的 title 改成 name
+      # user 或 project 的 name
       statusable.relationable.name
     else
       "其他"

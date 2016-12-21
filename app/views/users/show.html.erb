@@ -1,5 +1,5 @@
 <div class="user-homepage">
-  <%= render partial: "statuses/status", collection: @user.all_statuses, locals: { is_show_project_title: true } %>
+  <%= render partial: "statuses/status", collection: @user.all_statuses, locals: { is_show_project_name: true } %>
 </div>
 
 <% content_for "secondary-content" do %>
