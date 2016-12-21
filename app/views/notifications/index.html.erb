@@ -1,9 +1,8 @@
-<div class="notifications row">
+<div class="notifications">
   <div class="heading clearfix">
-    所有通知
-
-    <span class="pull-xs-right">
-      <%= button_to "清空", clean_notifications_path, class: 'btn btn-sm btn-secondary', method: 'clean' %>
+    <h1>所有通知</h1>
+    <span class="pull-right">
+      <%= button_to "清空", clean_notifications_path, class: 'btn btn-sm btn-danger', method: 'clean' %>
     </span>
   </div>
   <div class="list">

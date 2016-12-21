@@ -10,6 +10,7 @@ class NotificationsController < ApplicationController
     end
     Notification.read!(unread_ids)
 
+    # 对于已经取出来的，其 read_at 还是不变的
     @notification_groups = @notifications.group_by { |note| note.created_at.to_date }
   end
 

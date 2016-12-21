@@ -33,7 +33,7 @@ class Notification < ActiveRecord::Base
 
   def actor_avatar_url
     return DEFAULT_AVATAR if self.actor.blank?
-    self.actor.avatar.url
+    self.actor.avatar.small.url.to_s
   end
 
   def actor_profile_url

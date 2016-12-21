@@ -8,8 +8,10 @@
     border-bottom: 1px solid #eee;
     padding: 5px;
     margin-bottom: 10px;
+    h1 {
+      display: inline;
+    }
   }
-
 
   .notification-group {
     padding: 10px;
@@ -47,8 +49,8 @@
       }
     }
 
-    .user-avatar {
-      img { width: 32px; height: 32px; border-radius: 120px; }
+    .avatar {
+      img { width: 33px; height: 33px; }
     }
 
     .media-right {
