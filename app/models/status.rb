@@ -3,7 +3,6 @@
 # 东西，比如 Idea 被 user 在 project 里发布后，就会创建一个 status，然后能够显示在 user 和
 # project 的动态列表里。也可以是 user follow 了另一个 user。
 class Status < ApplicationRecord
-  include Statusable
   # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
   ACTION_TYPE_NAMES = {add: "发布", change: "更新", remove: "删除"}.freeze
   enum action_type: ACTION_TYPE_NAMES.keys

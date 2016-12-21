@@ -7,10 +7,4 @@ class Project < ApplicationRecord
   has_many :all_statuses, class_name: :Status
 
   has_many :publications
-
-  after_create :create_status
-
-  def create_status
-    statuses.create(user_id: user_id, project_id: id, action_type: "add")
-  end
 end
