@@ -23,6 +23,8 @@ class Status < ApplicationRecord
 
   # 创建通知。TODO 异步创建通知
   def create_notifications
+    actor = user  # 触发通知的人，也就是触发这个 status 的人
+
     # project owner
 
     # project following
@@ -35,12 +37,7 @@ class Status < ApplicationRecord
 
     # user relations
     if statusable_type == "Relation"
-      actor = user
-      if statusable.relationable_type == "User"
-        notification_receiver = statusable.relationable
-      else  # project, publication
-        notification_receiver = statusable.relationable.user
-      end
+      notification_receiver = statusable.relationable_user
       if actor != notification_receiver
         notifications.create(actor: actor, user: notification_receiver,
           notify_type: action_type.to_s)
@@ -56,7 +53,7 @@ class Status < ApplicationRecord
   def statusable_name
     case statusable_type
     when "Publication"
-      Publication::PUBLISHABLE_TYPE_NAMES[statusable.publishable_type.downcase.to_sym]
+      statusable.name
     when "Project"
       "DIY"
     when "Relation"

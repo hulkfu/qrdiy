@@ -10,9 +10,21 @@ class Relation < ApplicationRecord
   belongs_to :user
   belongs_to :relationable, polymorphic: true
 
+  # 可以和自己或自己的东西发生关系，但是就不用在生成新的 status 了
+  skip_callback :create, :after, :create_status, if: -> { user == relationable_user}
+
   # 为 Status 定义获得 action 的方法
   def action_type
     name
+  end
+
+  # relaitonable 的 user
+  def relationable_user
+    if relationable_type == "User"
+      relationable
+    else  # project, publication
+      relationable.user
+    end
   end
 
   class << self

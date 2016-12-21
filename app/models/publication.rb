@@ -19,6 +19,10 @@ class Publication < ApplicationRecord
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
+  def name
+    PUBLISHABLE_TYPE_NAMES[publishable_type.downcase.to_sym]
+  end
+
   def generate_content_html
     # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
     update_attributes(content_html: content)

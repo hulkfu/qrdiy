@@ -23,6 +23,7 @@
           <% if statusable.respond_to?(:publishable_type) %>
             <%= render "publications/#{statusable.publishable_type.underscore}", publication: statusable %>
           <% else %>
+            <%# TODO: relation 的 view %>
             <%= statusable.try(:name) %>
           <% end %>
         </div>
@@ -31,7 +32,7 @@
           <span class="created_at">
             <%= timeago_tag status.created_at %>
           </span>
-          <a href="/">赞</a>
+          <%= relation_for statusable, name: :like, submit_name: "赞" %>
           <% if policy(status).destroy? %>
             <%= link_to "删除", status, method: :delete, data: {confirm: t("confirm.delete") } %>
           <% end %>
