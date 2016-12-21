@@ -8,22 +8,54 @@
 
 ## 概念
 
+### Publication
+多态类，可以发布的东西。比如Idea、Image、文件等，包括：
+
+- Idea
+- ImageArray
+- Attachment
+- Comment 评论
+- Message 私信
+
+content_html 属性是 content 经过处理后显示在网页上的 html 代码。
+
+Publication 的发布都会产生 status，是否显示还有别：
+
+- Replies 类：Idea，ImageArray， Attachment 都显示。
+- Comment：只在用户的页面显示。
+- Message：都不显示。
+
 ### Status
 一个多态类，显示用户或项目的状态。
 
 发布想法或follow多会出现，像豆瓣的用户流，当然还有项目的。
 
-### Publication
-多态类，可以发布的东西。比如Idea、Image、文件等。
+User 的 status:
 
-content_html 属性是 content 经过处理后显示在网页上的 html 代码。
+- 发布内容: Project，Idea, ImageArray, Attachment, Comment
+- 赞内容： 同上
+- 关注： project，其他 User
+
+
+Project 的 status:
+
+- 发布内容： Idea, ImageArray, Attachment
+- 新关注的 User
+
+
+### Notification
+通知类。当关注的人、DIY，自己发布的内容，评论过或赞过的内容等等有更新时，发出通知。
+
+相比 Status，它是针对用户的，只要与用户相关的东西有更新，就会给他发通知。但是更新的东西又都会有 status。一个 status 可以有多个 notification。
 
 ### Relation
 多态类，表示用户于其他一切的关系，包括其他用户。
 
-## User
-
+### User
 User 是 Devise 用来管理用户登录等的，UserProfile 是 User 的相关信息。
+
+### UserProfile
+用户的 Profile。
 
 ## 权限管理
 权限管理分为两部分，一是用 devise 的 authenticate_user! 验证的登录权限，默认不登录只能 [:index, :show]，剩下的 [:create, :update, :destroy] 等需要登录后才能操作。这是就需要验证使用权限了，这里用 Pundit 对每个 action 进行验证。
