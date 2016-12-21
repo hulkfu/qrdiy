@@ -13,7 +13,7 @@ class Relation < ApplicationRecord
   # 可以和自己或自己的东西发生关系，但是就不用在生成新的 status 了
   skip_callback :create, :after, :create_status, if: -> { user == relationable_user}
 
-  # 为 Status 定义获得 action 的方法
+  # 为 Status 定义获得 action 的方法，在 statusable 里被调用
   def action_type
     name
   end
