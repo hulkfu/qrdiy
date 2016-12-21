@@ -89,8 +89,15 @@ blockquote {
     line-height: $navbar-height;
     height: $navbar-height;
 
-    .fa {
-      padding-top: 4px;
+    .notification-count {
+      .fa {
+        padding-top: 4px;
+      }
+      .count { margin-left: 4px; display: none; font-size: 12px;}
+      .new {
+        color: $active-color !important;
+        .count { display: inline; line-height: 100%; }
+      }
     }
 
     #login-join {

@@ -21,8 +21,12 @@
 
         <div class="nav-login">
           <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to fa_icon("bell"), notifications_path, class: "nav-link" %>
+            <li class="nav-item notification-count">
+              <% notification_count = Notification.unread_count(current_user) %>
+              <%= link_to notifications_path, class: "nav-link#{' new' if notification_count > 0}" do %>
+                <%= fa_icon("bell") %>
+                <span class="count"><%= notification_count %></span>
+              <% end %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle avatar" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
