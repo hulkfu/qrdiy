@@ -14,6 +14,7 @@ class Status < ApplicationRecord
   belongs_to :user
 
   has_many :comments
+  has_many :notifications
 
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
@@ -22,9 +23,24 @@ class Status < ApplicationRecord
 
   # 创建通知。TODO 异步创建通知
   def create_notifications
-    if user != statusable.user
-      Notification.create(actor: user, user: statusable.user, notificationable: self,
-        notify_type: action_type.to_s)
+    # project owner
+
+    # project following
+
+    # user following
+
+    # publication owner
+
+    # mention users
+
+    # user
+    if statusable_type == "Relation"
+      actor = user
+      notification_receiver = statusable.relationable
+      if actor != notification_receiver
+        notifications.create(actor: actor, user: notification_receiver,
+          notify_type: action_type.to_s)
+      end
     end
   end
 
