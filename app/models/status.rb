@@ -33,10 +33,14 @@ class Status < ApplicationRecord
 
     # mention users
 
-    # user
+    # user relations
     if statusable_type == "Relation"
       actor = user
-      notification_receiver = statusable.relationable
+      if statusable.relationable_type == "User"
+        notification_receiver = statusable.relationable
+      else  # project, publication
+        notification_receiver = statusable.relationable.user
+      end
       if actor != notification_receiver
         notifications.create(actor: actor, user: notification_receiver,
           notify_type: action_type.to_s)
