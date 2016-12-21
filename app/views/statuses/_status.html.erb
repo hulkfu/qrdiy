@@ -11,10 +11,11 @@
     <div class="status-main">
       <div class="status-item-head">
         <%= link_to user_profile.name, user_path(user_profile) %>
-        <% if is_show_project_title %>
-          在 <%= link_to status.project.title, project_path(status.project) %>
+        <% if is_show_project_title && status.project %>
+          在 <%= link_to status.project.try(:title), project_path(status.project) %>
         <% end %>
-        <%= "#{status.action_name}了#{status.statusable_name}:" %>
+        <%= "#{status.action_name}了 " %>
+        <%= status.statusable_name %>
       </div>
 
       <div class="status-item-body">
@@ -22,7 +23,7 @@
           <% if statusable.respond_to?(:publishable_type) %>
             <%= render "publications/#{statusable.publishable_type.underscore}", publication: statusable %>
           <% else %>
-            <%= statusable.title %>
+            <%= statusable.try(:title) %>
           <% end %>
         </div>
 

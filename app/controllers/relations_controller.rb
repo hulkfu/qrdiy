@@ -9,10 +9,6 @@ class RelationsController < ApplicationController
     @relation = authorize current_user.all_relations.new(relation_params)
 
     if @relation.save
-      if @relation.relationable_type == "User"
-        Notification.create(actor: current_user, user_id: @relation.relationable_id,
-          notify_type: @relation.name)
-      end
       redirect_to :back, notice: "ok"
     end
   end

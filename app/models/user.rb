@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   include Relationable  # 可以被关系啦
-  # FIXME 是否需要发布状态？因为已经有 relation 了
-  include Statusable
+
   enum role: [:user, :manage, :admin]
 
   # Include default devise modules. Others available are:

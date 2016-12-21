@@ -10,6 +10,11 @@ class Relation < ApplicationRecord
   belongs_to :user
   belongs_to :relationable, polymorphic: true
 
+  # 为 Status 定义获得 action 的方法
+  def action_type
+    name
+  end
+
   class << self
     # 判断是否有关系
     def relation?(user, relation_name, relationable)

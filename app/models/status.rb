@@ -4,7 +4,8 @@
 # project 的动态列表里。也可以是 user follow 了另一个 user。
 class Status < ApplicationRecord
   # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
-  ACTION_TYPE_NAMES = {add: "发布", change: "更新", remove: "删除"}.freeze
+  ACTION_TYPE_NAMES = {add: "发布", change: "更新", remove: "删除",
+    follow: "关注", like: "喜欢"}.freeze
   enum action_type: ACTION_TYPE_NAMES.keys
 
   belongs_to :statusable, polymorphic: true
@@ -17,10 +18,13 @@ class Status < ApplicationRecord
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
-  after_create do
+  after_create :create_notifications
+
+  # 创建通知。TODO 异步创建通知
+  def create_notifications
     if user != statusable.user
       Notification.create(actor: user, user: statusable.user, notificationable: self,
-        notify_type: "add")
+        notify_type: action_type.to_s)
     end
   end
 
@@ -30,10 +34,16 @@ class Status < ApplicationRecord
   end
 
   def statusable_name
-    if statusable_type == "Publication"
+    case statusable_type
+    when "Publication"
       Publication::PUBLISHABLE_TYPE_NAMES[statusable.publishable_type.downcase.to_sym]
+    when "Project"
+      "DIY"
+    when "Relation"
+      # FIXME 将 project 的 title 改成 name
+      statusable.relationable.name
     else
-      '其他'
+      "其他"
     end
   end
 end
