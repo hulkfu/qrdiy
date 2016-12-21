@@ -84,7 +84,6 @@ blockquote {
   .nav-login {
     float: right;
     display: inline-block;
-    width: 150px;
     color: #666;
     line-height: $navbar-height;
     height: $navbar-height;
@@ -101,8 +100,6 @@ blockquote {
     }
 
     #login-join {
-      width: 200px;
-
       .first {
         padding: 3px;
         border: 1px solid $active-color;
