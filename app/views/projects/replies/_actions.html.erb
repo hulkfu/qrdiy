@@ -1,5 +1,5 @@
 <ul class="nav nav-pills">
-<% Publication::PUBLISHABLE_TYPE_NAMES.except(:comment).each do |type, name| %>
+<% Publication::REPLIES_TYPE_NAMES.each do |type, name| %>
   <li class="nav-item", data-publishable-type="<%= type %>">
     <%= link_to(name, change_reply_type_projects_path(type), remote: true, class: "nav-link #{type.eql?(:idea) ? 'active' : ''}") %>
   </li>
