@@ -4,6 +4,8 @@
 #
 class Publication < ApplicationRecord
   include Statusable
+  include Relationable
+
   PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件",
     comment: "评论", message: "私信"}.freeze
   REPLIES_TYPE_NAMES = PUBLISHABLE_TYPE_NAMES.except(:comment, :message)

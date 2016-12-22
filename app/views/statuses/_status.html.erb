@@ -32,7 +32,7 @@
           <span class="created_at">
             <%= timeago_tag status.created_at %>
           </span>
-          <%= relation_for statusable, name: :like, submit_name: "赞" %>
+          <%= relation_for statusable, name: :praise, submit_name: "赞", show_count: true %>
           <% if policy(status).destroy? %>
             <%= link_to "删除", status, method: :delete, data: {confirm: t("confirm.delete") } %>
           <% end %>

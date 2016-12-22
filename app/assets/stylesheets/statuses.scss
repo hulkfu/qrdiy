@@ -1,3 +1,4 @@
+@import "colors";
 $avatar-width: 48px;
 
 .status-item {
@@ -47,6 +48,31 @@ $avatar-width: 48px;
         }
         .created_at {
 
+        }
+
+        .relation {
+          display: inline;
+          form {
+            display: inline;
+          }
+          input, button {
+            background: transparent;
+            border: none;
+            color: #7094b7;
+            &:hover {
+              color: $active-color;
+              cursor: pointer;
+            }
+            &:focus {
+              border: none;
+            }
+          }
+          .add {
+
+          }
+          .remove {
+
+          }
         }
 
         .comments {

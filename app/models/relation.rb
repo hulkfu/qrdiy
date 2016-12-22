@@ -4,7 +4,7 @@
 class Relation < ApplicationRecord
   include Statusable
 
-  NAMES = {follow: "关注", like: "喜欢"}.freeze
+  NAMES = {follow: "关注", like: "喜欢", praise: "赞"}.freeze
   enum name: NAMES.keys
 
   belongs_to :user

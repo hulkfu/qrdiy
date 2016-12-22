@@ -1,11 +1,24 @@
 module RelationsHelper
   def relation_for(relationable, opts={})
-    if relation = current_user.send("#{opts[:name]}_relation", relationable)
-      # TODO 将 不再 改成可定义的 html
-      button_to "不再#{opts[:submit_name]}", relation, method:"delete"
-    else
-      render "relations/form", relationable: relationable,
-        name: opts[:name], submit_name: opts[:submit_name]
+    count = ""
+    if opts[:show_count]
+      c = relationable.send("who_#{opts[:name]}").count
+      count = "(#{c})" if c > 0
+    end
+    content_tag(:div, class: "relation #{opts[:name]}") do
+      if relation = current_user.send("#{opts[:name]}_relation", relationable)
+        # TODO 可定义的 html
+        content_tag(:span, class: "remove") do
+          button_to relation, method: :delete do
+             "已#{opts[:submit_name]}#{count}"
+          end
+        end
+      else
+        content_tag(:span, class: "add") do
+          render "relations/form", relationable: relationable,
+            name: opts[:name], submit_name: opts[:submit_name]<<count
+        end
+      end
     end
   end
 end

@@ -15,7 +15,8 @@
   <h2>作者</h2>
 
   <h2>DIY介绍</h2>
-
+  <%= relation_for @project, name: :follow, submit_name: "关注" %>
+  <%= relation_for @project, name: :like, submit_name: "喜欢" %>
   <div class="trix-content">
     <%=raw @project.description %>
   </div>
