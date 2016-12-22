@@ -52,7 +52,7 @@ class Status < ApplicationRecord
     # 3. 记入 mention users
 
 
-    # 4. 为所以接收者创建通知
+    # 4. 为所有接收者创建通知
     Notification.bulk_insert(set_size: 100) do |worker|
       receiver_ids.each do |uid|
         worker.add(user_id: uid, actor_id: actor.id, status_id: self.id, notify_type: notify_type)

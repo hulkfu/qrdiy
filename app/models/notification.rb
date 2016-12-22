@@ -44,11 +44,16 @@ class Notification < ActiveRecord::Base
 
   def title
     if actor_name
-      pre = "#{actor_name} #{status.action_name}了 "
-
-      pre << "#{status.statusable_name}。"
+      name = status.statusable_name == user.name ? "你" : status.statusable_name
+      # TODO: "你的评论 小汪的评论"
+      "#{actor_name} #{status.action_name}了 #{name}。"
     else
       "相关信息已删除。"
     end
+  end
+
+  # TODO: 需要显示的内容
+  def content
+
   end
 end
