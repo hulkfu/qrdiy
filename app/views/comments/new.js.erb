@@ -1,2 +1,3 @@
-$("#status-<%= @status.id %>").find(".comments")
-  .append("<%=j render 'form', status: @status %>")
+$commenForm = $("#status-<%= @status.id %>").find("#comment-form")
+$commenForm.html("<%=j render 'form', status: @status %>")
+$commenForm.find("#comment_content").focus()
