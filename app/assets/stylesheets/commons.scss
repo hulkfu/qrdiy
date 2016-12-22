@@ -8,6 +8,18 @@
   img {
     border-radius: 0.25rem
   }
+  &.big {
+    img { width: 180px; height: 180px;}
+  }
+  &.normal {
+    img { width: 48px; height: 48px;}
+  }
+  &.small {
+    img { width: 33px; height: 33px;}
+  }
+  &.tiny {
+    img { width: 24px; height: 24px;}
+  }
 }
 
 .row.no-gutter [class*=col-] {
@@ -66,4 +78,10 @@
       max-width: 95%;
     }
   }
+}
+
+.section {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: #e0e0e0 solid 1px;
 }

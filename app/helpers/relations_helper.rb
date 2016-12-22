@@ -1,4 +1,12 @@
 module RelationsHelper
+  ##
+  # 发生关系功能
+  # 参数
+  # relationable 发生关系的对象（Project, Publication, User)
+  # opts
+  #  - name 关系的类别
+  #  - submit_name 显示的提交按钮的内容
+  #  - show_count 是否显示发生关系的人数
   def relation_for(relationable, opts={})
     count = ""
     if opts[:show_count]

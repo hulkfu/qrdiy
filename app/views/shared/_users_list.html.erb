@@ -1,0 +1,9 @@
+<ul class="unstyled">
+  <% users.each do |user| %>
+  	<% if user %>
+	    <li>
+	       <%= link_to image_tag( (user.avatar&&user.avatar.tiny) ? user.avatar.tiny.url : "/images/tiny_sample-user.png"), user, title: user.name, data: {toggle: 'tooltip'}, target: '_blank', class: 'avatar tiny' %>
+	    </li>
+    <% end %>
+  <% end %>
+</ul>

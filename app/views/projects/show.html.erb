@@ -12,16 +12,22 @@
 <% end %>
 
 <% content_for "secondary-content" do %>
-  <h2>作者</h2>
-
-  <h2>DIY介绍</h2>
-  <%= relation_for @project, name: :follow, submit_name: "关注" %>
-  <%= relation_for @project, name: :like, submit_name: "喜欢" %>
-  <div class="trix-content">
-    <%=raw @project.description %>
+  <div class="section">
+    <h2>作者</h2>
   </div>
 
-  <h2>最近关注</h2>
+  <div class="section">
+    <h2>DIY介绍</h2>
+    <div class="trix-content">
+      <%=raw @project.description %>
+    </div>
+    <%= relation_for @project, name: :praise, submit_name: "赞" %>
+    <%= relation_for @project, name: :follow, submit_name: "关注" %>
+  </div>
 
+  <div class="section">
+    <h2>最近关注</h2>
+    <%= render "shared/users_list", users: @project.who_follow %>
+  </div>
 
 <% end %>
