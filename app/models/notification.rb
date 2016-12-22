@@ -2,7 +2,8 @@
 class Notification < ActiveRecord::Base
   DEFAULT_AVATAR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJixmgAAAAFVBMVEWkpKSnp6eqqqq3t7fS0tLV1dXZ2dmshcKEAAAAtklEQVR4Ae3XsRGAAAjAQFRk/5HtqaTz5H+DlInvAQAAAAAAAAAAAAAAAAAAAACymiveO6o7BQsWLFiwYMGCBS8PFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBc4IFCxYsWLBgwYIFC14ZfOeAPRQ8IliwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQv+JQAAAAAAAAAAAAAAAAAAAOAB4KJfdHmj+kwAAAAASUVORK5CYII='
 
-  enum notify_type: [:follow, :like, :add]
+  # 为后面的 notification view 服务的，指明模板的名字，而不是操作的action
+  enum notify_type: [:relationship, :publication, :project]
 
   belongs_to :actor, class_name: :User
   belongs_to :user
@@ -41,4 +42,13 @@ class Notification < ActiveRecord::Base
     self.actor.profile
   end
 
+  def title
+    if actor_name
+      pre = "#{actor_name} #{status.action_name}了 "
+
+      pre << "#{status.statusable_name}。"
+    else
+      "相关信息已删除。"
+    end
+  end
 end

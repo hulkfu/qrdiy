@@ -23,7 +23,23 @@ class Status < ApplicationRecord
 
   # 创建通知。TODO 异步创建通知
   def create_notifications
+    # 1. 基本信息
     actor = user  # 触发通知的人，也就是触发这个 status 的人
+    receiver_ids = []  # 接收通知的人
+
+    # 2. 根据不同的statusable_type 和 action_type
+    #    得出相应的 notify_type，及对应的响应的通知用户
+    case statusable
+    when Relation
+      notify_type = "relationship"
+      receiver = statusable.relationable_user
+      receiver_ids << receiver.id if actor != receiver
+
+    when Publication
+
+    when Project
+
+    end
 
     # project owner
 
@@ -33,14 +49,13 @@ class Status < ApplicationRecord
 
     # publication owner
 
-    # mention users
+    # 3. 记入 mention users
 
-    # user relations
-    if statusable_type == "Relation"
-      notification_receiver = statusable.relationable_user
-      if actor != notification_receiver
-        notifications.create(actor: actor, user: notification_receiver,
-          notify_type: action_type.to_s)
+
+    # 4. 为所以接收者创建通知
+    Notification.bulk_insert(set_size: 100) do |worker|
+      receiver_ids.each do |uid|
+        worker.add(user_id: uid, actor_id: actor.id, status_id: self.id, notify_type: notify_type)
       end
     end
   end
@@ -51,12 +66,12 @@ class Status < ApplicationRecord
   end
 
   def statusable_name
-    case statusable_type
-    when "Publication"
+    case statusable
+    when Publication
       statusable.name
-    when "Project"
+    when Project
       "DIY"
-    when "Relation"
+    when Relation
       # user 或 project 的 name
       statusable.relationable.name
     else

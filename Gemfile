@@ -60,6 +60,9 @@ gem "font-awesome-rails"
 gem 'tether-rails'
 gem 'simple_form'
 
+# 优化
+gem 'bulk_insert'
+
 # JavaScript
 gem 'rails-timeago', '~> 2.0'
 
