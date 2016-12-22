@@ -1,1 +1,2 @@
-$("#status-<%= @status.id %>").find(".comments").append("<%=j render 'form', status: @status %>")
+$("#status-<%= @status.id %>").find(".comments")
+  .append("<%=j render 'form', status: @status %>")
