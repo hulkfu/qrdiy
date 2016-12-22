@@ -7,14 +7,18 @@
           <a class="nav-link" href="/">首页</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/">我的趣人</a>
+          <% if user_signed_in? %>
+            <%= link_to "我的趣人", user_path(current_user.profile), class: "nav-link" %>
+          <% else %>
+            <a class="nav-link" href="/">我的趣人</a>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to "浏览发现", projects_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="/">移动应用</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <%= link_to "创建DIY", new_project_path, class: "nav-link" %>
         </li>
