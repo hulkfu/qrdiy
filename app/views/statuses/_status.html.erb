@@ -3,7 +3,7 @@
 <% is_show_project_name ||= false %>
 
 <% if statusable.present? %>
-  <div class="status-item">
+  <div class="status-item" id="status-<%= status.id %>">
     <div class="avatar">
       <%= link_to image_tag(user_profile.avatar.normal.url.to_s), user_path(user_profile) %>
     </div>
@@ -33,13 +33,13 @@
             <%= timeago_tag status.created_at %>
           </span>
           <%= relation_for statusable, name: :like, submit_name: "喜欢", show_count: true %>
+          <%= link_to "回应", new_status_comment_path(status), remote: true %>
           <% if policy(status).destroy? %>
             <%= link_to "删除", status, method: :delete, data: {confirm: t("confirm.delete") } %>
           <% end %>
 
           <div class="comments">
-            <%= render "statuses/comments", comments: status.comments %>
-            <%= render "statuses/comment_form", status: status %>
+            <%= render "comments/comments", comments: status.comments %>
           </div>
         </div>
 
