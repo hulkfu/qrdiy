@@ -218,9 +218,17 @@ blockquote {
   background-color: transparent;
   border-color: $primary-color;
 
-  &:hover, &:focus, .focus {
+  &:hover, &:focus, &.focus, &:active, &.active {
     color: #fff;
     background-color: $primary-color;
     border-color: $primary-color;
+  }
+
+  &:active, &.active {
+    &:hover, &:focus, &.focus {
+      color: #fff;
+      background-color: $primary-dark-color;
+      border-color: $primary-dark-color;
+    }
   }
 }
