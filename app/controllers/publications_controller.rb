@@ -4,7 +4,7 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, except: [:trix_attachment]
 
-
+  # TODO: prewview 和 file 可以合并到 show 里
   def preview
     if @publishable.respond_to? :image_array
       @index = params[:index].to_i
@@ -31,6 +31,7 @@ class PublicationsController < ApplicationController
     end
   end
 
+  # TODO: 可以合到 create 里，用参数区分
   # 给 trix ajax POST 附件
   def trix_attachment
     a = Publication.create_publishable!("attachment", {attachment: params[:file]}, {user: current_user})

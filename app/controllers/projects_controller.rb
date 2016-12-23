@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
     @publications = @project.publications.where.not(publishable_type: "Comment")
   end
 
+  # TODO: 移到 publication controler 里的 create 里
   # 回应项目，发布想法、图片等
   def create_reply
     # begin
