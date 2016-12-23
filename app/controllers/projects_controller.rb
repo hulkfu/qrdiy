@@ -21,14 +21,14 @@ class ProjectsController < ApplicationController
 
   # 回应项目，发布想法、图片等
   def create_reply
-    begin
+    # begin
       @publication = Publication.create_publishable!(params[:publishable_type],
         publishable_params,
         {content: params[:reply][:content], user: current_user, project: @project})
       redirect_to @project, notice: "发布成功！"
-    rescue Exception => e
-      redirect_to @project, alert: "#{e.message}."
-    end
+    # rescue Exception => e
+    #   redirect_to @project, alert: "#{e.message}."
+    # end
   end
 
   def change_reply_type
