@@ -201,13 +201,24 @@ blockquote {
    }
  }
 
+.btn-primary {
+   color: #fff;
+   background-color: $primary-color;
+   border-color: $primary-color;
+   &:hover, &:focus, .focus {
+     color: #fff;
+     background-color: $primary-dark-color;
+     border-color: $primary-dark-color;
+   }
+ }
+
 .btn-outline-primary {
   color: $primary-color;
   background-image: none;
   background-color: transparent;
   border-color: $primary-color;
 
-  &:hover {
+  &:hover, &:focus, .focus {
     color: #fff;
     background-color: $primary-color;
     border-color: $primary-color;

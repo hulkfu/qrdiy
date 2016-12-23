@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   include Relationable
 
   belongs_to :user
+  mount_uploader :avatar, AvatarUploader
 
   # 用来查找 project 所有的 statuses
   has_many :all_statuses, class_name: :Status

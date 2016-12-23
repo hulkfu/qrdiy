@@ -15,6 +15,12 @@ zh-CN:
 
   confirm:
     delete: 确定删除吗？
+
+  helpers:
+    submit:
+      project:
+        create: "创建 DIY"
+        update: "更新 DIY"
   # wysisyg:
   #   bold: '粗体'
   #   heading: '标题'
