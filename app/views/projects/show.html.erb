@@ -1,6 +1,6 @@
 <%= render "shared/error_messages", target: @project %>
 
-<h1><%= @project.name %></h1>
+
 
 <%= render "projects/replies/reply_form", project: @project %>
 
@@ -13,17 +13,17 @@
 
 <% content_for "secondary-content" do %>
   <div class="section">
-    <h2>作者</h2>
-  </div>
-
-  <div class="section">
-    <h2>DIY介绍</h2>
+    <h1><%= @project.name %></h1>
     <%= @project.desc %>
     <div class="trix-content">
       <%=raw @project.description %>
     </div>
     <%= relation_for @project, name: :praise, submit_name: "赞" %>
     <%= relation_for @project, name: :follow, submit_name: "关注" %>
+  </div>
+
+  <div class="section">
+    <h2>作者</h2>
   </div>
 
   <div class="section">

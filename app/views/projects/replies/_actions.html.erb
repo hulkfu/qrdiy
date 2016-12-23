@@ -1,7 +1,7 @@
-<ul class="nav nav-pills">
+<ul class="nav nav-tabs reply-actions">
 <% Publication::REPLIES_TYPE_NAMES.each do |type, name| %>
   <li class="nav-item", data-publishable-type="<%= type %>">
-    <%= link_to(name, change_reply_type_projects_path(type), remote: true, class: "nav-link #{type.eql?(:idea) ? 'active' : ''}") %>
+    <%= link_to(name, change_reply_type_projects_path(type), remote: true, class: "nav-link #{ 'active' if type.eql?(:idea)}") %>
   </li>
 <% end %>
 </ul>
