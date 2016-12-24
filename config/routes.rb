@@ -22,13 +22,12 @@ Rails.application.routes.draw do
 
   resources :user_profiles, path: :i, param: :domain
 
-  resources :publications, only: [:destroy] do
+  resources :publications, except: [:show, :index, :edit, :update] do
     collection do
       post "trix_attachment"
     end
     member do
-      get 'file(/:index)', to: "publications#file", as: :file
-      get ':index', to: "publications#preview", as: :preview
+      get '(/:index)', to: "publications#show", as: ""
     end
   end
 

@@ -4,28 +4,23 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, except: [:trix_attachment]
 
-  # TODO: prewview 和 file 可以合并到 show 里
-  def preview
-    if @publishable.respond_to? :image_array
+  def new
+  end
+
+  def create
+
+  end
+
+  def show
+    case @publishable
+    when ImageArray
       @index = params[:index].to_i
       @image = @publishable.image_array[@index]
       @image_name = @publishable.file_names[@index]
-    else
-      render_404
-    end
-  end
-
-  # Download attachment
-  def file
-    if @publishable.respond_to? :attachment_url
+      render :preview
+    when Attachment
       send_file(File.join(Rails.root, 'public', @publishable.attachment_url),
         filename: @publishable.file_name, type: @publishable.content_type)
-    # 发送 Img file
-    # elsif @publishable.respond_to? :image_array
-    #   @index = params[:index].to_i
-    #   @image = @publishable.image_array[@index]
-    #   send_file(File.join(Rails.root, 'public', @image.url),
-    #     type: 'img/png', disposition: 'inline')
     else
       render_404
     end
