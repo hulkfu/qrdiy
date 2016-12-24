@@ -1,11 +1,12 @@
 <div class="project-reply clearfix" data-project-id="<%= project.id  %>">
-  <%= form_tag(create_reply_project_path(project), multipart: true) do %>
+  <%= form_tag(publications_path, multipart: true) do %>
     <%= hidden_field_tag(:publishable_type, "idea") %>
+    <%= hidden_field_tag(:project_id, project.try(:id)) %>
 
-    <%= render "projects/replies/actions" %>
+    <%= render "publications/new/actions" %>
 
     <div id="input-content">
-      <%= render "projects/replies/idea" %>
+      <%= render "publications/new/idea" %>
     </div>
 
     <div class="pull-right">

@@ -2,13 +2,24 @@
 # Idea, ImageArray, Attachment 等的统一的 Controller
 #
 class PublicationsController < ApplicationController
-  before_action :set_publication, except: [:trix_attachment]
+  before_action :set_publication, except: [:trix_attachment, :new, :create]
 
   def new
+    @type = params[:type]
   end
 
   def create
-
+    # begin
+    if params[:project_id].present?
+      @project = Project.find(params[:project_id])
+      @publication = Publication.create_publishable!(params[:publishable_type],
+        publishable_params,
+        {content: params[:publishable][:content], user: current_user, project: @project})
+      redirect_to @project, notice: "发布成功！"
+    end
+    # rescue Exception => e
+    #   redirect_to @project, alert: "#{e.message}."
+    # end
   end
 
   def show
@@ -48,6 +59,10 @@ class PublicationsController < ApplicationController
     def set_publication
       @publication = Publication.find(params[:id])
       @publishable = @publication.publishable
+    end
+
+    def publishable_params
+      params.require(:publishable).permit(:attachment, {image_array: []})
     end
 
     # def set_publishable

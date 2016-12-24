@@ -1,0 +1,5 @@
+<div class="form-group">
+  <%= text_area_tag("publishable[content]", "", rows: "1", class: "form-control form-control-sm") %>
+</div>
+
+<%= file_field_tag "publishable[image_array][]", type: :file, class: "", multiple: true, class: "from-control-file" %>

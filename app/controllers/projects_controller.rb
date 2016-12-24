@@ -19,23 +19,6 @@ class ProjectsController < ApplicationController
     @publications = @project.publications.where.not(publishable_type: "Comment")
   end
 
-  # TODO: 移到 publication controler 里的 create 里
-  # 回应项目，发布想法、图片等
-  def create_reply
-    # begin
-      @publication = Publication.create_publishable!(params[:publishable_type],
-        publishable_params,
-        {content: params[:reply][:content], user: current_user, project: @project})
-      redirect_to @project, notice: "发布成功！"
-    # rescue Exception => e
-    #   redirect_to @project, alert: "#{e.message}."
-    # end
-  end
-
-  def change_reply_type
-    @type = params[:type]
-  end
-
   # GET /projects/new
   def new
     @project = Project.new
@@ -94,9 +77,5 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :avatar, :desc, :description)
-    end
-
-    def publishable_params
-      params.require(:reply).permit(:attachment, {image_array: []})
     end
 end

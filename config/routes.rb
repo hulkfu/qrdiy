@@ -4,30 +4,23 @@ Rails.application.routes.draw do
 
   resources :relations, only: [:create, :destroy]
 
-  resources :projects, path: :diy do
-    member do
-      post :create_reply
-    end
-
-    collection do
-      get "change_reply_type/:type", action: "change_reply_type", as: "change_reply_type"
-    end
-  end
+  resources :projects, path: :diy
 
   scope :i do
-    resources :users, path: '', only: [:show], param: :domain do
-
-    end
+    resources :users, path: '', only: [:show], param: :domain
   end
 
   resources :user_profiles, path: :i, param: :domain
 
-  resources :publications, except: [:show, :index, :edit, :update] do
+  resources :publications, only: [:create, :destroy] do
+    new do
+      get ':type', action: :new, as: ""
+    end
     collection do
       post "trix_attachment"
     end
     member do
-      get '(/:index)', to: "publications#show", as: ""
+      get '(/:index)', action: :show, as: ""
     end
   end
 
