@@ -49,7 +49,6 @@ class PublicationsController < ApplicationController
   def destroy
     # TODO soft destroy
     # @publication.destroy
-    puts "current_user:  #{current_user.id}"
     respond_to do |format|
       format.json { head :no_content }
     end
