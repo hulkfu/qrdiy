@@ -10,4 +10,15 @@ class Project < ApplicationRecord
   has_many :all_statuses, class_name: :Status
 
   has_many :publications
+
+  after_create :create_tmp_profile
+
+  def create_tmp_profile
+    if avatar.blank?
+      File.open(LetterAvatar.generate(PinYin.of_string(name.first).first, 180)) do |f|
+        self.avatar = f
+      end
+      save
+    end
+  end
 end

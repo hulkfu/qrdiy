@@ -13,9 +13,14 @@
 
 <% content_for "secondary-content" do %>
   <div class="section">
-    <h1><%= @project.name %></h1>
-    <%= @project.desc %>
-    <div class="trix-content">
+    <div class="name">
+      <h1><%= @project.name %></h1>
+    </div>
+    <div class="desc">
+      <%= @project.desc %>
+    </div>
+    <%= image_tag @project.avatar.url.to_s %>
+    <div class="description">
       <%=raw @project.description %>
     </div>
     <%= relation_for @project, name: :praise, submit_name: "赞" %>

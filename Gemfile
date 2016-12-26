@@ -41,6 +41,7 @@ gem "pundit", github: 'elabs/pundit'
 
 gem 'rucaptcha'   # 验证码
 gem 'letter_avatar' # 头像
+gem 'ruby-pinyin'
 
 # cache
 gem 'dalli'
