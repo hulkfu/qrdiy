@@ -1,6 +1,8 @@
 <li id="comment-<%= comment.id %>">
-  <%= image_tag (comment.user.avatar.tiny.url.to_s) %>
-  <%= comment.user.name %>:
+  <%= link_to user_path(comment.user.profile) do %>
+    <%= image_tag (comment.user.avatar.tiny.url.to_s) %>
+    <%= comment.user.name %>:
+  <% end %>
   <%= comment.content_html %>
   <% if policy(comment).destroy? %>
     <%= link_to ">删除", comment, class: "delete", remote: true, method: "delete", data:{ confirm: t("confirm.delete") } %>
