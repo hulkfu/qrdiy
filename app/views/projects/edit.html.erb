@@ -3,4 +3,5 @@
 <%= render 'form', project: @project %>
 
 <%= link_to 'Show', @project %> |
+<%= link_to '删除', @project, method: :delete, data: { confirm: t("confirm.delete") } %> |
 <%= link_to 'Back', projects_path %>

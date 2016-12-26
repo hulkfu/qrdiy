@@ -22,7 +22,7 @@
     </div>
     <%= image_tag @project.avatar.url.to_s %>
     <div class="description">
-      <%=raw @project.description %>
+      <%= @project.description %>
     </div>
     <%= relation_for @project, name: :praise, submit_name: "赞" %>
     <%= relation_for @project, name: :follow, submit_name: "关注" %>
