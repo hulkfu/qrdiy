@@ -15,7 +15,7 @@ class Project < ApplicationRecord
 
   def create_tmp_profile
     if avatar.blank?
-      File.open(LetterAvatar.generate(PinYin.of_string(name.first).first, 180)) do |f|
+      File.open(LetterAvatar.generate(PinYin.abbr(name), 180)) do |f|
         self.avatar = f
       end
       save

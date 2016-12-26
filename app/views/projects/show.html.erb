@@ -15,6 +15,7 @@
   <div class="section">
     <div class="name">
       <h1><%= @project.name %></h1>
+      <%= link_to "编辑", edit_project_path(@project), class: "pull-right" %>
     </div>
     <div class="desc">
       <%= @project.desc %>
