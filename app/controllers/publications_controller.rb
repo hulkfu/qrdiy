@@ -57,6 +57,7 @@ class PublicationsController < ApplicationController
   private
     def set_publication
       @publication = Publication.find(params[:id])
+      authorize @publication
       @publishable = @publication.publishable
     end
 

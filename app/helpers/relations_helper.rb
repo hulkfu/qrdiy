@@ -8,14 +8,14 @@ module RelationsHelper
   #  - submit_name 显示的提交按钮的内容
   #  - show_count 是否显示发生关系的人数
   def relation_for(relationable, opts={})
-    return if relationable.instance_of? Relation
+    return if relationable.is_a? Relation
     count = ""
     if opts[:show_count]
       c = relationable.send("who_#{opts[:name]}").count
       count = "(#{c})" if c > 0
     end
     content_tag(:div, class: "relation #{opts[:name]}") do
-      if relation = current_user.send("#{opts[:name]}_relation", relationable)
+      if current_user && elation = current_user.send("#{opts[:name]}_relation", relationable)
         # TODO 可定义的 html
         content_tag(:span, class: "remove") do
           button_to relation, method: :delete do
