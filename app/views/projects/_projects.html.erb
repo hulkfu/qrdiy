@@ -1,8 +1,8 @@
-<ul>
+<ul class="unstyled">
   <% projects.each do |project| %>
     <li>
       <%= link_to project.name, project_path(project) %>
-      <div>DIY 描述：<%= project.description %></div>
+      <span> - <%= project.description %></span>
     </li>
   <% end %>
 </ul>
