@@ -40,6 +40,7 @@ gem 'devise_lastseenable'
 gem "pundit", github: 'elabs/pundit'
 
 gem 'rucaptcha'   # 验证码
+gem 'letter_avatar' # 头像
 
 # cache
 gem 'dalli'

@@ -48,9 +48,13 @@ class User < ApplicationRecord
 
   # TODO 第三方登录，获得名号
   def create_tmp_profile
-    # 根据邮箱名生成临时 name
+    # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
     tmp_name = "#{email.split('@').first}_#{id}"
-    create_profile(name: tmp_name, domain: tmp_name)
+    tmp_profile = create_profile(name: tmp_name, domain: tmp_name)
+    File.open(LetterAvatar.generate tmp_name, 180) do |f|
+      tmp_profile.avatar = f
+    end
+    tmp_profile.save
   end
 
   # 重写 manage?，admin 也能 manage

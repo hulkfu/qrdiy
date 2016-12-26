@@ -4,6 +4,7 @@ class UserProfile < ApplicationRecord
 
   enum gender: [ :male, :female, :secret ]
 
+  # 用 domain 来当做默认 find 属性
   def to_param
     domain
   end
