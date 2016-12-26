@@ -36,6 +36,7 @@
 @include each-file-icon((ps, psd), "file-ps.jpg");
 @include each-file-icon((rar, 7z, zip), "file-rar.jpg");
 @include each-file-icon((txt, log), "file-txt.jpg");
+@include each-file-icon((png, jpg, svg, gif), 'file-img.png');
 
 .quote-content {
   margin-bottom: 8px;
