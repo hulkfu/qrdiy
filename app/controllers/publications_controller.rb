@@ -2,6 +2,7 @@
 # Idea, ImageArray, Attachment 等的统一的 Controller
 #
 class PublicationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_publication, except: [:trix_attachment, :new, :create]
 
   def new
@@ -22,6 +23,8 @@ class PublicationsController < ApplicationController
     # end
   end
 
+  # 预览图片，下载附件
+  # TODO: 没有登录的情况，登录后的跳转
   def show
     case @publishable
     when ImageArray
