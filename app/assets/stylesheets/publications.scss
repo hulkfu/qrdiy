@@ -38,6 +38,7 @@
 @include each-file-icon((txt, log), "file-txt.jpg");
 
 .quote-content {
+  margin-bottom: 8px;
   i {
     color: #cccccc;
   }
