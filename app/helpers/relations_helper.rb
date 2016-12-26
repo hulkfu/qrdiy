@@ -15,7 +15,7 @@ module RelationsHelper
       count = "(#{c})" if c > 0
     end
     content_tag(:div, class: "relation #{opts[:name]}") do
-      if current_user && elation = current_user.send("#{opts[:name]}_relation", relationable)
+      if current_user && relation = current_user.send("#{opts[:name]}_relation", relationable)
         # TODO 可定义的 html
         content_tag(:span, class: "remove") do
           button_to relation, method: :delete do

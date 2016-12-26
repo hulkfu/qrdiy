@@ -15,7 +15,7 @@
 }
 
 @mixin file-icon($suffix, $icon) {
-  [link-type][href$=".#{$suffix}"], [link-type][data-file-name$=".#{$suffix}"] {
+  [link-type][href$=".#{$suffix}" i], [link-type][data-file-name$=".#{$suffix}" i] {
     background-image: url(/assets/file_icons/#{$icon});
   }
 }
