@@ -11,6 +11,9 @@ class Project < ApplicationRecord
 
   has_many :publications
 
+  validates :name, presence: true, length: 2..20, uniqueness: { case_sensitive: false }
+  validates :desc, presence: true, length: 2..50
+
   after_create :create_tmp_profile
 
   def create_tmp_profile

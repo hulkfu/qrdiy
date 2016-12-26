@@ -16,6 +16,8 @@ class Publication < ApplicationRecord
 
   belongs_to :publishable, polymorphic: true
 
+  validates :content, presence: true, length: 1..20000
+
   after_create :generate_content_html
 
   # 默认最新的在前
