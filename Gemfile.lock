@@ -1,4 +1,23 @@
 GIT
+  remote: git://github.com/DavyJonesLocker/client_side_validations-simple_form.git
+  revision: d3466f50f681d2fbd2ec68ee29b8668fec6f51d0
+  branch: rails5
+  specs:
+    client_side_validations-simple_form (3.3.1)
+      client_side_validations (~> 5.0.0)
+      simple_form (~> 3.3)
+
+GIT
+  remote: git://github.com/DavyJonesLocker/client_side_validations.git
+  revision: f1c13a523e4e9e339621635ca48d33db0baff90b
+  branch: rails5
+  specs:
+    client_side_validations (5.0.0)
+      jquery-rails (~> 4.0, >= 4.0.1)
+      js_regex (~> 1.0, >= 1.0.19)
+      rails (>= 5.0.0, < 5.1.0)
+
+GIT
   remote: git://github.com/carrierwaveuploader/carrierwave.git
   revision: 237328dbcbd5a18f5c737fb1c7e9197e8c118c31
   specs:
@@ -143,6 +162,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
+    js_regex (1.2.0)
+      regexp_parser (>= 0.3.6, <= 0.4.1)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -242,6 +263,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    regexp_parser (0.4.1)
     remotipart (1.3.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -317,6 +339,8 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   carrierwave!
+  client_side_validations!
+  client_side_validations-simple_form!
   coffee-rails (~> 4.2)
   dalli
   database_cleaner

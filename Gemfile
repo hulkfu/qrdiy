@@ -61,6 +61,9 @@ gem 'autoprefixer-rails'
 gem "font-awesome-rails"
 gem 'tether-rails'
 gem 'simple_form'
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations', branch: 'rails5'
+gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form', branch: 'rails5'
+
 
 # 优化
 gem 'bulk_insert'
