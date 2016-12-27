@@ -1,4 +1,4 @@
-<%= simple_form_for(@user_profile) do |f| %>
+<%= simple_form_for @user_profile, validate: true do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -10,7 +10,6 @@
     <%= f.input :gender %>
     <%= f.input :birthday %>
     <%= f.input :description %>
-    <%= f.input :user_id %>
   </div>
 
   <div class="form-actions">
