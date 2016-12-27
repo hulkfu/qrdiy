@@ -10,17 +10,17 @@ class PublicationsController < ApplicationController
   end
 
   def create
-    # begin
-    if params[:project_id].present?
-      @project = Project.find(params[:project_id])
-      @publication = Publication.create_publishable!(params[:publishable_type],
-        publishable_params,
-        {content: params[:publishable][:content], user: current_user, project: @project})
-      redirect_to @project, notice: "发布成功！"
+    begin
+      if params[:project_id].present?
+        @project = Project.find(params[:project_id])
+        @publication = Publication.create_publishable!(params[:publishable_type],
+          publishable_params,
+          {content: params[:publishable][:content], user: current_user, project: @project})
+        redirect_to @project, notice: "发布成功！"
+      end
+    rescue ActiveRecord::RecordInvalid => e
+      redirect_to @project, alert: "#{e.message}."
     end
-    # rescue Exception => e
-    #   redirect_to @project, alert: "#{e.message}."
-    # end
   end
 
   # 预览图片，下载附件
