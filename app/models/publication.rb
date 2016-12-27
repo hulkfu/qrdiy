@@ -10,13 +10,10 @@ class Publication < ApplicationRecord
     comment: "评论", message: "私信"}.freeze
   REPLIES_TYPE_NAMES = PUBLISHABLE_TYPE_NAMES.except(:comment, :message)
 
-
   belongs_to :user
   belongs_to :project
 
   belongs_to :publishable, polymorphic: true
-
-  # validates :content, presence: true, length: 1..20000
 
   after_create :generate_content_html
 
