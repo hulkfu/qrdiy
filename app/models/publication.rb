@@ -35,9 +35,9 @@ class Publication < ApplicationRecord
   # 创建 publishable，并关联创建其 publication
   # 比如：publication = Publication.create_publishable("idea", {}, {content: "okok", user_id:1, project_id: 1})
   def self.create_publishable!(publishable_type, publishable_params={}, publication_params={})
-    self.transaction do
+    Publication.transaction do
       publishable = publishable_type.classify.constantize.create!(publishable_params)
-      publishable.create_publication(publication_params)
+      publication = publishable.create_publication!(publication_params)
       return publishable
     end
   end

@@ -1,7 +1,7 @@
 <%= form_tag status_comments_path(status), remote: true do %>
   <div class="comment-form">
     <div class="input-group input-group-sm">
-      <%= text_field_tag("comment[content]", "", class: "form-control", autofocus:"", autocomplete: "off") %>
+      <%= text_field_tag("publication[content]", "", class: "form-control", autofocus:"", autocomplete: "off") %>
 
       <span class="input-group-btn">
         <%= submit_tag("回应", class: "btn btn-secondary", disabled: "") %>
