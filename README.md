@@ -255,3 +255,10 @@ create database qrdiy_production owner qrdiy;
 
 ## 部署和访问是404
 主要Nginx上qrdiy的目录是current/public，因为用的capistrano部署的。
+
+## native build 不过 nokogiri
+
+```rb
+xcode-select --install
+gem install nokogiri
+```
