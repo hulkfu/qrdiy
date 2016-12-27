@@ -18,4 +18,6 @@
 //= require rails-timeago
 //= require locales/jquery.timeago.zh-CN.js
 //= require trix
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .

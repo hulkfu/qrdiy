@@ -1,4 +1,4 @@
-<%= simple_form_for(@project) do |f| %>
+<%= simple_form_for @project, validate: true do |f| %>
   <%= render "shared/error_messages", target: @project %>
 
   <div class="form-inputs">
