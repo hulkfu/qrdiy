@@ -14,7 +14,7 @@ class Relation < ApplicationRecord
   skip_callback :create, :after, :create_status, if: -> { user == relationable_user}
 
   # 为 Status 定义获得 action 的方法，在 statusable 里被调用
-  def action_type
+  def status_action_type
     name
   end
 
@@ -25,6 +25,10 @@ class Relation < ApplicationRecord
     else  # project, publication
       relationable.user
     end
+  end
+
+  def desc
+    NAMES[name.to_sym]
   end
 
   class << self

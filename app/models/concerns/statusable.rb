@@ -14,7 +14,7 @@ module Statusable
     # message 也没有 project_id
     if user_id
       status = statuses.new(user_id: user_id,
-        action_type: try(:action_type) || "add")  # 判断是否定义了 action_type 方法
+        action_type: try(:status_action_type) || "add")  # 判断是否定义了 action_type 方法
       status.project_id = try(:project_id)
       status.save!
     end

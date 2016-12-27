@@ -9,14 +9,14 @@ class RelationsController < ApplicationController
     @relation = authorize current_user.all_relations.new(relation_params)
 
     if @relation.save
-      redirect_to :back, notice: "ok"
+      redirect_to (request.referer || root_path), notice: "已#{@relation.desc}"
     end
   end
 
   def destroy
     @relation = authorize Relation.find(params[:id])
     @relation.destroy
-    redirect_to :back, notice: "delete"
+    redirect_to (request.referer || root_path), notice: "已取消#{@relation.desc}"
   end
 
   private
