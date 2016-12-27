@@ -15,7 +15,7 @@ class PublicationsController < ApplicationController
         @project = Project.find(params[:project_id])
         @publication = Publication.create_publishable!(params[:publishable_type],
           publishable_params,
-          {content: params[:publishable][:content], user: current_user, project: @project})
+          {user: current_user, project: @project})
         redirect_to @project, notice: "发布成功！"
       end
     rescue ActiveRecord::RecordInvalid => e
@@ -65,7 +65,7 @@ class PublicationsController < ApplicationController
     end
 
     def publishable_params
-      params.require(:publishable).permit(:attachment, {image_array: []})
+      params.require(:publishable).permit(:attachment, {image_array: []}, :content)
     end
 
     # def set_publishable

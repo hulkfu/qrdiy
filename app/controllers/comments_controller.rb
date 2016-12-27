@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Publication.create_publishable!("comment", {status: @status },
-      {content: params[:publication][:content], user: current_user, project: @status.project})
+    @comment = Publication.create_publishable!("comment", {status: @status, content: params[:publishable][:content] },
+      {user: current_user, project: @status.project})
   end
 
   def destroy

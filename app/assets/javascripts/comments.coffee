@@ -2,7 +2,7 @@ $ ->
   $(".comments").on "mouseover mouseout", ".delete", ->
     $(this).parent().toggleClass("mover")
 
-  .on "keydown", "[name='publication[content]']", (e) ->
+  .on "keydown", "[name='publishable[content]']", (e) ->
     $submit = $(this).next().find('input')
     # bootstrap 默认自动提交，一下 preventDefault 的话又会不能输入
     if e.keyCode == 13
