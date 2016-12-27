@@ -34,7 +34,7 @@ class PublicationsController < ApplicationController
       render :preview
     when Attachment
       send_file(File.join(Rails.root, 'public', @publishable.attachment_url),
-        filename: @publishable.file_name, type: @publishable.content_type)
+        filename: @publishable.file_name, type: @publishable.file_type)
     else
       render_404
     end

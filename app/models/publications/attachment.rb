@@ -12,7 +12,7 @@ class Attachment < ApplicationRecord
 
   def set_attachment_attributes
     if attachment.present? && attachment_changed?
-      self.content_type = attachment.file.content_type
+      self.file_type = attachment.file.content_type
       self.file_size = attachment.file.size
       self.file_name = attachment.file.original_filename
     end

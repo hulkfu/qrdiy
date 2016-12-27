@@ -20,7 +20,7 @@ class ImageArray < ApplicationRecord
 
   def set_image_attributes(image, index)
     file = image.file
-    self.content_types[index] = file.content_type
+    self.file_types[index] = file.content_type
     self.file_sizes[index] = file.size
     self.file_names[index] = file.original_filename
   end
