@@ -18,7 +18,7 @@ module RelationsHelper
     count = ""
     if opts[:show_count]
       c = relationable.send("who_#{opts[:action_type]}").count
-      count = "(#{c})" if c > 0
+      count = " #{c}" if c > 0
     end
 
     content_tag(:div, class: "relation #{opts[:action_type]} #{opts[:class]}") do

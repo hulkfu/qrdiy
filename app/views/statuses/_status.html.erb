@@ -32,7 +32,7 @@
           <span class="created_at">
             <%= timeago_tag status.created_at %>
           </span>
-          <%= relation_for statusable, action_type: :like, submit_name: "喜欢", show_count: true, class: "link", button_class: "btn btn-link btn-sm" %>
+          <%= relation_for statusable, action_type: :like, submit_name: "喜欢", show_count: true, class: "link", button_class: "btn btn-link btn-sm", destroy_button_html: fa_icon("heart"), create_button_html: fa_icon("heart-o") %>
           <%= link_to "回应", new_status_comment_path(status), remote: true %>
           <% if policy(status).destroy? %>
             <%= link_to "删除", status, method: :delete, data: {confirm: t("confirm.delete") } %>
