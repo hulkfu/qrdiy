@@ -35,16 +35,18 @@ module RelationsHelper
       else
         content_tag(:span, class: "create") do
           form_for(Relation.new) do |f|
-            f.hidden_field(:action_type, value: opts[:action_type])
-            f.hidden_field(:relationable_type, value: relationable.class.name)
-            f.hidden_field(:relationable_id, value: relationable.id)
+            html = ""
+            html << f.hidden_field(:action_type, value: opts[:action_type])
+            html << f.hidden_field(:relationable_type, value: relationable.class.name)
+            html << f.hidden_field(:relationable_id, value: relationable.id)
 
-            button_tag type: "submit", name: "commit", class: opts[:button_class] do
+            html << (button_tag type: "submit", name: "commit", class: opts[:button_class] do
               button_html = opts[:create_button_html] ?
                 opts[:create_button_html] :
                 "#{opts[:submit_name]}"
               raw(button_html).concat count.to_s
-            end # button_tag
+            end) # button_tag
+            raw html
           end # form_tag
         end
       end
