@@ -3,7 +3,7 @@
     <% @projects.each do |project| %>
       <li class="media">
         <div class="media-top">
-          <%= link_to image_tag(project.avatar.url.to_s), project %>
+          <%= link_to image_tag(project.avatar.url.to_s, class: "avatar big"), project %>
         </div>
         <div class="media-body">
           <div class="name">

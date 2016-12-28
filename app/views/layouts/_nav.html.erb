@@ -33,8 +33,8 @@
               <% end %>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle avatar" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag(current_user.profile.avatar.tiny.url.to_s) %>
+              <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag(current_user.profile.avatar.tiny.url.to_s, class: "avatar tiny") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to fa_icon("user", text: "我的主页"), user_path(current_user.profile), class:"dropdown-item" %>

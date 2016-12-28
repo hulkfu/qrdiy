@@ -19,7 +19,7 @@
     <div class="desc">
       <%= @project.desc %>
     </div>
-    <%= image_tag @project.avatar.url.to_s %>
+    <%= image_tag @project.avatar.url.to_s, class:"avatar big" %>
     <div class="relations">
       <%= relation_for @project, action_type: :follow, submit_name: "关注", button_class: "btn btn-secondary btn-sm" %>
     </div>

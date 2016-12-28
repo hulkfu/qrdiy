@@ -4,8 +4,8 @@
 
 <% if statusable.present? %>
   <div class="status-item" id="status-<%= status.id %>">
-    <div class="avatar">
-      <%= link_to image_tag(user_profile.avatar.normal.url.to_s), user_path(user_profile) %>
+    <div class="pull-left">
+      <%= link_to image_tag(user_profile.avatar.normal.url.to_s, class: "avatar normal"), user_path(user_profile) %>
     </div>
 
     <div class="status-main">

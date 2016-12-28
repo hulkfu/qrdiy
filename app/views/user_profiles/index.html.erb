@@ -21,7 +21,7 @@
     <% @user_profiles.each do |user_profile| %>
       <tr>
         <td><%= user_profile.name %></td>
-        <td><%= image_tag(user_profile.avatar.small.url.to_s) %></td>
+        <td><%= image_tag(user_profile.avatar.small.url.to_s, class: "avatar small") %></td>
         <td><%= user_profile.homepage %></td>
         <td><%= user_profile.location %></td>
         <td><%= user_profile.gender %></td>
