@@ -9,6 +9,8 @@ module RelationsHelper
   #  - show_count 是否显示发生关系的人数
   #  - class      生成的 div 的附加 class
   #  - button_class 显示的按钮的 class
+  #  - create_button_html   创建关系的 html
+  #  - destroy_button_html  断绝关系的 thml
   def relation_for(relationable, opts={})
     return "" if relationable.blank?
     return if relationable.is_a? Relation
@@ -18,20 +20,32 @@ module RelationsHelper
       c = relationable.send("who_#{opts[:action_type]}").count
       count = "(#{c})" if c > 0
     end
+
     content_tag(:div, class: "relation #{opts[:action_type]} #{opts[:class]}") do
+      # 用户已经登录，并且发生了关系
       if current_user && relation = current_user.send("#{opts[:action_type]}_relation", relationable)
-        # TODO 可定义的 html
-        content_tag(:span, class: "remove") do
+        content_tag(:span, class: "destroy") do
           button_to relation, method: :delete, class: opts[:button_class] do
-             "已#{opts[:submit_name]}#{count}"
+            html = opts[:destroy_button_html] ?
+              opts[:destroy_button_html] :
+              "已#{opts[:submit_name]}"
+            raw "#{html}#{count.to_s}"
           end
         end
       else
-        content_tag(:span, class: "add") do
-          render "relations/form", relationable: relationable,
-            button_class: opts[:button_class],
-            action_type: opts[:action_type],
-            submit_name: opts[:submit_name]<<count
+        content_tag(:span, class: "create") do
+          form_for(Relation.new) do |f|
+            f.hidden_field(:action_type, value: opts[:action_type])
+            f.hidden_field(:relationable_type, value: relationable.class.name)
+            f.hidden_field(:relationable_id, value: relationable.id)
+
+            button_tag type: "submit", name: "commit", class: opts[:button_class] do
+              button_html = opts[:create_button_html] ?
+                opts[:create_button_html] :
+                "#{opts[:submit_name]}"
+              raw(button_html).concat count.to_s
+            end # button_tag
+          end # form_tag
         end
       end
     end
