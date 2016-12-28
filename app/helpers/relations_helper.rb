@@ -8,7 +8,9 @@ module RelationsHelper
   #  - submit_name 显示的提交按钮的内容
   #  - show_count 是否显示发生关系的人数
   def relation_for(relationable, opts={})
+    return "" if.relationable.blank?
     return if relationable.is_a? Relation
+
     count = ""
     if opts[:show_count]
       c = relationable.send("who_#{opts[:name]}").count
