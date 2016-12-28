@@ -34,3 +34,17 @@
     }
   }
 }
+
+.projects-list-tiny {
+  li {
+    margin-bottom: 3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    img {
+      height: 38px;
+    }
+    .media-heading {
+      font-size: 14px;
+    }
+  }
+}

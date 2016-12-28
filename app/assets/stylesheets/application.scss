@@ -22,6 +22,12 @@
 
 $navbar-height: 46px;
 
+body {
+  font: 12px Helvetica,Arial,sans-serif;
+  overflow: hidden;
+}
+
+
 a {
   &:hover {
     color: $active-color !important;
@@ -38,6 +44,9 @@ a {
 
 li {
   list-style-type: none;
+  &:hover, &:focus {
+    background-color: #f2f2f2;
+  }
 }
 
 label {
@@ -70,10 +79,6 @@ ul, ol {
     margin-left: 0;
     list-style: none;
   }
-}
-
-body {
-  font: 12px Helvetica,Arial,sans-serif;
 }
 
 blockquote {

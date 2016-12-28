@@ -5,18 +5,24 @@
 <% content_for "secondary-content" do %>
   <div class="user-homepage">
 
-    <h1><%= @user_profile.name %></h1>
-    <div class="avatar">
-      <%= image_tag @user_profile.avatar.url %>
+    <div class="section">
+      <h1><%= @user_profile.name %></h1>
+      <div class="avatar">
+        <%= image_tag @user_profile.avatar.url %>
+      </div>
+
+      <%= relation_for @user, action_type: :follow, submit_name: "关注" %>
+
+      <%= @user_profile.description %>
     </div>
 
-    <%= relation_for @user, action_type: :follow, submit_name: "关注" %>
+    <div class="section">
+      <h2>我的DIY</h2>
+      <%= render "projects/projects_list_tiny", projects: @user.projects %>
+    </div>
 
-    <%= @user_profile.description %>
-
-    <h2>我的DIY</h2>
-    <%= render "projects/projects", projects: @user.projects %>
-
-    <h2>我的关注</h2>
+    <div class="section">
+      <h2>我的关注</h2>
+    </div>
   </div>
 <% end %>
