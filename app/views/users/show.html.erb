@@ -10,7 +10,7 @@
       <%= image_tag @user_profile.avatar.url %>
     </div>
 
-    <%= relation_for @user, name: :follow, submit_name: "关注" %>
+    <%= relation_for @user, action_type: :follow, submit_name: "关注" %>
 
     <%= @user_profile.description %>
 

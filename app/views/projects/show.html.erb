@@ -24,7 +24,7 @@
     </div>
     <%= image_tag @project.avatar.url.to_s %>
     <div class="relations">
-      <%= relation_for @project, name: :follow, submit_name: "关注" %>
+      <%= relation_for @project, action_type: :follow, submit_name: "关注" %>
     </div>
 
     <div class="description">

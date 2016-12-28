@@ -22,6 +22,6 @@ class RelationsController < ApplicationController
   private
 
     def relation_params
-      params.require(:relation).permit(:name, :relationable_id, :relationable_type)
+      params.require(:relation).permit(:action_type, :relationable_id, :relationable_type)
     end
 end

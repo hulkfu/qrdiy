@@ -4,10 +4,10 @@ module Relationable
   included do
     has_many :relations, as: :relationable
 
-    Relation::NAMES.keys.each do |name|
+    Relation::ACTION_TYPES.each do |action_type|
       # follow，like 等这个东西的用户
-      define_method "who_#{name}" do
-        User.where(id: relations.where(name: name).map(&:user_id))
+      define_method "who_#{action_type}" do
+        User.where(id: relations.where(action_type: action_type).map(&:user_id))
       end
     end
   end

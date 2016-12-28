@@ -28,20 +28,20 @@ class User < ApplicationRecord
   end
 
   ## Relation 的糖方法
-  Relation::NAMES.keys.each do |name|
+  Relation::ACTION_TYPES.each do |action_type|
     # 当前用户神否与其他有那种关系？
-    define_method "#{name}?" do |relationable|
-      Relation.relation? self, name, relationable
+    define_method "#{action_type}?" do |relationable|
+      Relation.relation? self, action_type, relationable
     end
 
     # 获得relation
-    define_method "#{name}_relation" do |relationable|
-      Relation.get_relation self, name, relationable
+    define_method "#{action_type}_relation" do |relationable|
+      Relation.get_relation self, action_type, relationable
     end
 
     # relation 的东西
-    define_method "#{name}_relations" do
-      all_relations.where(name: name)
+    define_method "#{action_type}_relations" do
+      all_relations.where(name: action_type)
     end
   end
 

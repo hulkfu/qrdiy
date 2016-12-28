@@ -4,8 +4,9 @@
 class Relation < ApplicationRecord
   include Statusable
 
-  NAMES = {follow: "关注", like: "喜欢", praise: "赞"}.freeze
-  enum name: NAMES.keys
+  ACTION_TYPE_NAMES = {follow: "关注", like: "喜欢", praise: "赞"}.freeze
+  ACTION_TYPES = ACTION_TYPE_NAMES.keys
+  enum action_type: ACTION_TYPES
 
   belongs_to :user
   belongs_to :relationable, polymorphic: true
@@ -15,7 +16,7 @@ class Relation < ApplicationRecord
 
   # 为 Status 定义获得 action 的方法，在 statusable 里被调用
   def status_action_type
-    name
+    action_type
   end
 
   # relaitonable 的 user
@@ -27,19 +28,23 @@ class Relation < ApplicationRecord
     end
   end
 
+  def action_name
+    ACTION_TYPE_NAMES[action_type.to_sym]
+  end
+
   def desc
-    NAMES[name.to_sym]
+    action_name
   end
 
   class << self
     # 判断是否有关系
-    def relation?(user, relation_name, relationable)
-      where(user: user, name: relation_name, relationable: relationable).present?
+    def relation?(user, action_type, relationable)
+      where(user: user, action_type: action_type, relationable: relationable).present?
     end
 
     # 获得关系
-    def get_relation(user, relation_name, relationable)
-      where(user: user, name: relation_name, relationable: relationable).take
+    def get_relation(user, action_type, relationable)
+      where(user: user, action_type: action_type, relationable: relationable).take
     end
   end
 
