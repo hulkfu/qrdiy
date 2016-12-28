@@ -4,6 +4,17 @@
   box-sizing: border-box;
 }
 
+
+img {
+  &.avatar {
+    border-radius: 0.25rem;
+    &.big { width: 180px; height: 180px;}
+    &.normal { width: 48px; height: 48px;}
+    &.small { width: 33px; height: 33px;}
+    &.tiny { width: 24px; height: 24px;}
+  }
+}
+
 .avatar {
   img {
     border-radius: 0.25rem
@@ -83,6 +94,13 @@
 .section {
   margin-bottom: 20px;
   padding-bottom: 20px;
+
+  h1, h2 {
+    &::after {
+      content: "\a0\a0\a0 · · · · · ·";
+      font-weight: normal;
+    }
+  }
 }
 
 .form-inputs {
