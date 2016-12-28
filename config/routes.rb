@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   resources :projects, path: :diy
 
   scope :i do
-    resources :users, path: '', only: [:show]
+    resources :users, path: '', only: [:show] do
+      resource :user_profile, path: "profile", as: "profile", only: [:show, :edit, :update]
+    end
   end
-  resources :user_profiles, path: :i
 
   resources :publications, only: [:create, :destroy] do
     new do

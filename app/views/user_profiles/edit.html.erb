@@ -1,6 +1,22 @@
 <h1>Editing User Profile</h1>
 
-<%= render 'form', user_profile: @user_profile %>
+<%= simple_form_for @user_profile, url: user_profile_path(@user), multipart: true, validate: true do |f| %>
+  <%= f.error_notification %>
 
-<%= link_to 'Show', @user_profile %> |
-<%= link_to 'Back', user_profiles_path %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :domain %>
+    <%= f.input :avatar, as: :file %>
+    <%= f.input :homepage %>
+    <%= f.input :location %>
+    <%= f.input :gender %>
+    <%= f.input :birthday %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @user %>
