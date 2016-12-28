@@ -24,7 +24,7 @@ $navbar-height: 46px;
 
 body {
   font: 12px Helvetica,Arial,sans-serif;
-  overflow: hidden;
+  overflow: auto;
 }
 
 
@@ -44,8 +44,10 @@ a {
 
 li {
   list-style-type: none;
-  &:hover, &:focus {
-    background-color: #f2f2f2;
+  &.mover, .mover {
+    &:hover, &:focus {
+      background-color: #f2f2f2;
+    }
   }
 }
 

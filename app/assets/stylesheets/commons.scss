@@ -95,7 +95,7 @@ img {
   margin-bottom: 20px;
   padding-bottom: 20px;
 
-  h1, h2 {
+  h2 {
     &::after {
       content: "\a0\a0\a0 · · · · · ·";
       font-weight: normal;
