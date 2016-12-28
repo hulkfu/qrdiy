@@ -2,5 +2,5 @@
   <%= f.hidden_field :action_type, value: action_type %>
   <%= f.hidden_field :relationable_type, value: relationable.class.name %>
   <%= f.hidden_field :relationable_id, value: relationable.id %>
-  <%= f.submit submit_name %>
+  <%= f.submit submit_name, class: button_class %>
 <% end %>
