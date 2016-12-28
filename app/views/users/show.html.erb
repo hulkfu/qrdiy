@@ -6,12 +6,16 @@
   <div class="user-homepage">
 
     <div class="section">
-      <h1><%= @user_profile.name %></h1>
-      <%= image_tag @user_profile.avatar.url, class: "avatar big"%>
-
-      <%= relation_for @user, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
-
-      <%= @user_profile.description %>
+      <div class="border-none card text-xs-center ">
+        <div class="card-block">
+          <h1 class="card-title"><%= @user_profile.name %></h1>
+          <h6 class="card-subtitle text-muted"><%= @user_profile.description %></h6>
+        </div>
+        <%= image_tag @user_profile.avatar.url, class: "avatar big card-image-top"%>
+        <div class="card-block">
+          <%= relation_for @user, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
+        </div>
+      </div>
     </div>
 
     <div class="section">
