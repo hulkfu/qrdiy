@@ -232,3 +232,11 @@ blockquote {
     }
   }
 }
+
+.btn-link {
+  &:focus, &:hover {
+    color: $primary-color;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}

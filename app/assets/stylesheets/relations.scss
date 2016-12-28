@@ -1,26 +1,18 @@
 @import "colors";
 
 .relation {
-  display: inline;
-  form {
+
+  &.link {
     display: inline;
-  }
-  input, button {
-    background: transparent;
-    border: none;
-    color: #7094b7;
-    &:hover {
-      color: $active-color;
-      cursor: pointer;
+    form {
+      display: inline;
     }
-    &:focus {
+    input, button {
+      padding: 0;
+      background: transparent;
       border: none;
+      color: #7094b7;
+      font-size: 12px;
     }
-  }
-  .add {
-
-  }
-  .remove {
-
   }
 }
