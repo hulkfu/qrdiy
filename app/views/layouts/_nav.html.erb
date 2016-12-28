@@ -8,7 +8,7 @@
         </li>
         <li class="nav-item">
           <% if user_signed_in? %>
-            <%= link_to "我的趣人", user_path(current_user.profile), class: "nav-link" %>
+            <%= link_to "我的趣人", user_path(current_user), class: "nav-link" %>
           <% else %>
             <a class="nav-link" href="/">我的趣人</a>
           <% end %>
@@ -37,7 +37,7 @@
                 <%= image_tag(current_user.profile.avatar.tiny.url.to_s, class: "avatar tiny") %>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to fa_icon("user", text: "我的主页"), user_path(current_user.profile), class:"dropdown-item" %>
+                <%= link_to fa_icon("user", text: "我的主页"), user_path(current_user), class:"dropdown-item" %>
                 <% link_to fa_icon("envelope", text: "私信"), "/", class:"dropdown-item" %>
                 <%= link_to fa_icon("cog", text: "设置"), edit_user_profile_path(current_user.profile), class:"dropdown-item" %>
                 <div class="dropdown-divider"></div>
