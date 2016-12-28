@@ -2,9 +2,9 @@ module RelationsHelper
   ##
   # 发生关系功能
   # 参数
-  # relationable 发生关系的对象（Project, Publication, User)
+  # relationable 可以发生关系的对象（Project, Publication, User)
   # opts
-  #  - name 关系的类别
+  #  - action_type 关系的类别
   #  - submit_name 显示的提交按钮的内容
   #  - show_count 是否显示发生关系的人数
   #  - button_class 显示的按钮的 class

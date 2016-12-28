@@ -1,9 +1,6 @@
 <%= render "shared/error_messages", target: @project %>
 
-
-
 <%= render "publications/new/form", project: @project %>
-
 
 <% @publications.each do |publication| %>
   <% if publication.statuses.present? %>
