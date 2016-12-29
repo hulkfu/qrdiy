@@ -21,12 +21,25 @@ zh-CN:
       project:
         create: "创建 DIY"
         update: "更新 DIY"
-  # wysisyg:
-  #   bold: '粗体'
-  #   heading: '标题'
-  #   italic: '斜体'
-  #   link: '链接'
-  #   strike: '删除线'
-  #   underline: '下划线'
-  #   unlink: '取消链接'
-  #   urlPlaceholder: '请输入超级链接'
+
+  simple_form:
+    labels:
+      user_profile:
+        name: '名 号'
+        domain: '我的域名'
+        avatar: '头 像'
+        homepage: '主 页'
+        location: '长居地'
+        gender: '性 别'
+        birthday: '生 日'
+        description: '个性签名'
+      project:
+        name: '一个名字'
+        desc: '一句描述'
+        description: '详细描述'
+    placeholders:
+      project:
+        name: '好记的名字'
+        desc: '简短的介绍'
+        description: '还在思考中...'
+    hints:
