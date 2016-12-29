@@ -1,6 +1,6 @@
 <h1>Editing User Profile</h1>
 
-<%= simple_form_for @user_profile, url: user_profile_path(@user), multipart: true, validate: true do |f| %>
+<%= simple_form_for @user_profile, url: user_profile_path(@user), html: { multipart: true }, validate: true do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
