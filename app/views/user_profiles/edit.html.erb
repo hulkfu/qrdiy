@@ -10,7 +10,12 @@
     <%= f.input :avatar %>
     <%= f.input :homepage %>
     <%= f.input :location %>
-    <%= f.input :gender %>
+
+    <%= f.input :gender, collection: UserProfile::GENDER_TYPE_NAMES,
+                         value_method: :first,
+                         label_method: :last,
+                         include_blank: false %>
+
     <%= f.input :birthday %>
     <%= f.input :description %>
   </div>

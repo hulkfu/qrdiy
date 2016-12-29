@@ -7,6 +7,13 @@ defaults: &defaults
   email_user_name: no-reply@qrdiy.com
   email_user_password: f2t*VN>Jhf4n
 
+  exclusion:
+    user_profile:
+      domain:
+        - admin
+      name:
+        - 管理员
+
 development:
   <<: *defaults
 

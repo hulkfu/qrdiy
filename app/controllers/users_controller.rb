@@ -2,8 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user_and_profile, only: [:show]
 
   def show
-
   end
+
+  # TODO: edit passwords...
+
   private
     def set_user_and_profile
       @user = User.find params[:id]
