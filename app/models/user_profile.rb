@@ -20,7 +20,6 @@ class UserProfile < ApplicationRecord
   # validates :birthday
   validates :description, length: 0..2000
 
-
   def gender_name
     GENDER_TYPE_NAMES(gender.to_sym)
   end

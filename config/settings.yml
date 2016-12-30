@@ -11,8 +11,10 @@ defaults: &defaults
     user_profile:
       domain:
         - admin
+        - root
       name:
         - 管理员
+        - 站长
 
 development:
   <<: *defaults
