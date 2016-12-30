@@ -1,4 +1,4 @@
-<ul class="reply-actions nav nav-tabs card-header-tabs float-xs-left">
+<ul class="publications-actions nav nav-tabs card-header-tabs float-xs-left">
   <% Publication::REPLIES_TYPE_NAMES.each do |type, name| %>
     <li class="nav-item", data-publishable-type="<%= type %>">
       <%= link_to(name, new_publication_path(type), remote: true, class: "nav-link #{ 'active' if type.eql?(:idea)}") %>
