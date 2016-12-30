@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   validates :name, presence: true, length: 2..20, uniqueness: { case_sensitive: false }
   validates :desc, presence: true, length: 2..50
   validates :description, length: 0..10000
+  validates :avatar, file_size: { less_than: 10.megabytes.to_i }
 
   after_create :create_tmp_profile
 
