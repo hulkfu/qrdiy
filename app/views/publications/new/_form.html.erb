@@ -1,16 +1,18 @@
-<div class="project-reply clearfix" data-project-id="<%= project.id  %>">
+<div class="project-reply card" data-project-id="<%= project.id  %>">
   <%= form_tag(publications_path, multipart: true) do %>
     <%= hidden_field_tag(:publishable_type, "idea") %>
     <%= hidden_field_tag(:project_id, project.try(:id)) %>
 
-    <%= render "publications/new/actions" %>
+    <div class="card-header">
+      <%= render "publications/new/actions" %>
+    </div>
 
-    <div id="input-content">
+    <div id="input-content" class="card-block">
       <%= render "publications/new/idea" %>
     </div>
 
-    <div class="pull-right">
-      <%= submit_tag("发布", class: "btn btn-outline-primary btn-sm") %>
+    <div class="card-footer">
+      <%= submit_tag("发布", class: "btn btn-outline-primary btn-sm float-xs-right") %>
     </div>
   <% end %>
 </div>
