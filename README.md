@@ -182,14 +182,35 @@ cap production install
 
 # 设置
 
-- Setting 类，配着经常变的
-- security.yml，配置不经常变的，一般就存个 security_base_key
+- Setting 类，配置经常变的，可以公开的，可以传到 github 上同步的
+- security.yml，配置不经常变的，一般就存个 security_base_key, auth-key 等
 - Rails Admin，总的配置接口
 
 ## Setting
 
 使用的 [rails-settings-cached gem](https://github.com/huacnlee/rails-settings-cached)，
 config/app.yml 配合着初始化配着。
+
+因为加了 cached，所有使用的时候需要注意打开 config.cache_store.
+
+```ruby
+# Enable/disable caching. By default caching is disabled.
+if Rails.root.join('tmp/caching-dev.txt').exist?
+  config.action_controller.perform_caching = true
+
+  config.cache_store = :dalli_store
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, max-age=172800'
+  }
+else
+  config.action_controller.perform_caching = false
+
+  config.cache_store = :null_store
+end
+```
+
+
+我可以在源码它的源码里加个 can_cache? 方法来判断。
 
 缓存流：
 
@@ -201,7 +222,7 @@ Setting.foo -> Check Cache -> Exist - Write Cache -> Return
                Check Default -> Exist -> Write Cache -> Return
                    |
                Return nil
-```               
+```
 
 
 # Services (job queues, cache servers, search engines, etc.)
