@@ -37,7 +37,7 @@
 
 .projects-list-tiny {
   li {
-    margin-bottom: 3px;
+    height: 40px;
     white-space: nowrap;
     text-overflow: ellipsis;
     img {
@@ -45,6 +45,7 @@
     }
     .media-heading {
       font-size: 14px;
+      margin-bottom: 0;
     }
   }
 }
