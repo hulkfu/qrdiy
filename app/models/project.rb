@@ -11,6 +11,11 @@ class Project < ApplicationRecord
 
   has_many :publications
 
+  auto_strip_attributes :name, :desc,
+                        delete_whitespaces: true, nullify: false
+  auto_strip_attributes :description,
+                        squish: true, nullify: false
+
   validates :name, presence: true, length: 2..20, uniqueness: { case_sensitive: false }
   validates :desc, presence: true, length: 2..50
   validates :description, length: 0..10000

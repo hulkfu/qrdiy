@@ -6,6 +6,11 @@ class UserProfile < ApplicationRecord
   GENDER_TYPES = GENDER_TYPE_NAMES.keys.freeze
   enum gender: GENDER_TYPES
 
+  auto_strip_attributes :name, :homepage,
+                        delete_whitespaces: true, nullify: false
+  auto_strip_attributes :location, :description,
+                        squish: true, nullify: false
+
   validates :name, presence: true, length: 2..20,
     uniqueness: {case_sensitive: false},
     exclusion: { in: Setting['exclusion.user_profile'].values.flatten }

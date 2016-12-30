@@ -79,6 +79,8 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ansi (1.5.0)
     arel (7.1.4)
+    auto_strip_attributes (2.1.0)
+      activerecord (>= 3.0)
     autoprefixer-rails (6.6.0)
       execjs
     bcrypt (3.1.11)
@@ -328,6 +330,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto_strip_attributes (~> 2.1)
   autoprefixer-rails
   better_errors
   binding_of_caller

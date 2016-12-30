@@ -38,6 +38,8 @@ gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise_lastseenable'
 gem "pundit", github: 'elabs/pundit'
+# gem 'attribute_normalizer'  # 处理传入的 attribute
+gem "auto_strip_attributes", "~> 2.1"   # before validate 处理 attribute
 
 gem 'rucaptcha'   # 验证码
 gem 'letter_avatar' # 头像
