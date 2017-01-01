@@ -11,6 +11,7 @@ class Project < ApplicationRecord
 
   has_many :publications
 
+  # before validates
   auto_strip_attributes :name, :desc,
                         delete_whitespaces: true, nullify: false
   auto_strip_attributes :description,

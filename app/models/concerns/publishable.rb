@@ -12,7 +12,4 @@ module Publishable
     end
   end
 
-  class_methods do
-
-  end
 end
