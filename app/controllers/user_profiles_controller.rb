@@ -1,5 +1,5 @@
 class UserProfilesController < ApplicationController
-  before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_profile, only: [:show, :edit, :update]
 
 
 
@@ -29,6 +29,7 @@ class UserProfilesController < ApplicationController
     def set_user_profile
       @user = User.find params[:user_id]
       @user_profile = @user.profile
+      authorize @user_profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
