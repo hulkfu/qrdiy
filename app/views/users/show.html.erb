@@ -26,7 +26,13 @@
     </div>
 
     <div class="section">
-      <h2>我的关注</h2>
+      <h2>我关注的 DIY</h2>
+      <%= render "projects/projects_list_small", projects: @user.related_projects("follow") %>
+    </div>
+
+    <div class="section">
+      <h2>我关注的用户</h2>
+      <%= render "users/users_list_tiny", users: @user.related_users("follow") %>
     </div>
   </div>
 <% end %>

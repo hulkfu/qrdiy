@@ -46,14 +46,18 @@ class User < ApplicationRecord
   end
 
   # 与用户发生关系的东西
-  def related_relationables(relationable_type)
+  def related_relationables(relationable_type, *action_types)
+    # 默认关系, [[]].blank?  #=> false
+    action_types = %w(follow like praise) if action_types.flatten.blank?
     relationable_type.classify.constantize.joins(:relations)
-      .where('relations.user' => self).distinct
+      .where('relations.user' => self)
+      .where('relations.action_type' => action_types)
+      .distinct
   end
 
   %w(project user).each do |relationable_type|
-    define_method "related_#{relationable_type}s" do
-      related_relationables relationable_type
+    define_method "related_#{relationable_type}s" do | *action_types |
+      related_relationables relationable_type, action_types
     end
   end
 
