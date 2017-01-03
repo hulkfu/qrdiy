@@ -15,19 +15,23 @@
     <div class="border-none card text-xs-center ">
       <div class="card-block">
         <h1 class="card-title"><%= @project.name %></h1>
-        <% if policy(@project).edit? %>
-          <%= link_to "编辑", edit_project_path(@project), class: "pull-right" %>
-        <% end %>
         <h6 class="card-subtitle text-muted"><%= @project.desc %></h6>
       </div>
       <%= image_tag @project.avatar.url, class: "avatar big card-image-top"%>
       <div class="card-block">
-        <%= relation_for @project, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
+        <div class="btn-group" role="group">
+          <%= relation_for @project, action_type: :follow, submit_name: "关注",
+            button_class: "btn btn-success btn-sm" %>
+        </div>
       </div>
       <div class="card-block">
         <p class="card-text">
           <%= @project.description %>
         </p>
+        <% if policy(@project).edit? %>
+          <%= link_to "编辑", edit_project_path(@project),
+            class: "btn btn-secondary btn-sm" %>
+        <% end %>
       </div>
     </div>
   </div>
