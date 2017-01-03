@@ -21,6 +21,8 @@ zh-CN:
       project:
         create: "创建 DIY"
         update: "更新 DIY"
+      user_profile:
+        update: "更新个人信息"
 
   will_paginate:
     previous_label: "<<"
