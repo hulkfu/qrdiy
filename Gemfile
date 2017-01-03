@@ -38,6 +38,7 @@ gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise_lastseenable'
 gem "pundit", github: 'elabs/pundit'
+gem 'will_paginate','~> 3.1.0'  # 分页
 
 gem 'rucaptcha'   # 验证码
 gem 'letter_avatar' # 头像

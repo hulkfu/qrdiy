@@ -97,3 +97,27 @@ img {
 .help-block {
   color: red;
 }
+
+.pagination {
+  a, span, em {
+    position: relative;
+    float: left;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    color: #0275d8;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    &:hover {
+
+    }
+  }
+
+  .disabled {
+    color: $gray;
+  }
+
+  .current {
+    color: $primary-color;
+  }
+}

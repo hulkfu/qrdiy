@@ -9,6 +9,7 @@ class HomeController < ApplicationController
       @statuses = Status.all
     end
 
+    @statuses = @statuses.paginate(page: params[:page])
   end
 
   def error_404

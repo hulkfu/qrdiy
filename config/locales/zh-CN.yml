@@ -22,6 +22,10 @@ zh-CN:
         create: "创建 DIY"
         update: "更新 DIY"
 
+  will_paginate:
+    previous_label: "<<"
+    next_label: ">>"
+
   simple_form:
     labels:
       user_profile:

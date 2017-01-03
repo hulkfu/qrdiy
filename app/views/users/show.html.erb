@@ -1,6 +1,8 @@
 <div class="user-homepage">
-  <%= render partial: "statuses/status", collection: @user.all_statuses, locals: { is_show_project_name: true } %>
+  <%= render partial: "statuses/status", collection: @statuses, locals: { is_show_project_name: true } %>
 </div>
+
+<%= will_paginate @statuses %>
 
 <% content_for "secondary-content" do %>
   <div class="user-homepage">

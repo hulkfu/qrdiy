@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     authorize Project
-    @projects = Project.all
+    @projects = Project.all.paginate(page: params[:page])
   end
 
   # GET /projects/1
@@ -16,7 +16,9 @@ class ProjectsController < ApplicationController
     # 不带 comments 等的 statuses
     # 所以不用：@statuses = @project.all_statuses
     # FIXME 新用户关注还是要显示的
-    @publications = @project.publications.where.not(publishable_type: "Comment")
+    @publications = @project.publications
+      .where.not(publishable_type: "Comment")
+      .paginate(page: params[:page])
   end
 
   # GET /projects/new
