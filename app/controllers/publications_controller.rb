@@ -25,7 +25,6 @@ class PublicationsController < ApplicationController
 
   # 预览图片，下载附件
   # TODO: 没有登录的情况，登录后的跳转
-  # TODO: 从 status 来，跳转到相应的 status 锚点
   def show
     case @publishable
     when ImageArray
