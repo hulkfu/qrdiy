@@ -6,7 +6,8 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :domain %>
-    <%= image_tag(@user_profile.avatar.normal.url.to_s, class: "avatar naomal") if @user_profile.avatar.present? %>
+    <%= image_tag(@user_profile.avatar.normal.url.to_s,
+      class: "avatar naomal") if @user_profile.avatar.present? %>
     <%= f.input :avatar %>
     <%= f.input :homepage %>
     <%= f.input :location %>
@@ -25,4 +26,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @user %>
+<%= link_to '返回', @user %>
