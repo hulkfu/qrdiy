@@ -45,8 +45,22 @@ class User < ApplicationRecord
     end
   end
 
-  def related_projects
-    projects = Project.joins(:relations).where(user: self).distinct
+  # 与用户发生关系的东西
+  def related_relationables(relationable_type)
+    relationable_type.classify.constantize.joins(:relations)
+      .where('relations.user' => self).distinct
+  end
+
+  %w(project user).each do |relationable_type|
+    define_method "related_#{relationable_type}s" do
+      related_relationables relationable_type
+    end
+  end
+
+  def related_statuses
+    Status.where(user: self.related_users).or(
+      Status.where(project: self.related_projects)
+    )
   end
 
   # TODO 第三方登录，获得名号
