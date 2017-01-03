@@ -45,6 +45,9 @@ class User < ApplicationRecord
     end
   end
 
+  def related_projects
+    projects = Project.joins(:relations).where(user: self).distinct
+  end
 
   # TODO 第三方登录，获得名号
   def create_tmp_profile

@@ -1,1 +1,8 @@
-<h1>欢迎欢迎，热烈欢迎！！！</h1>
+<%= render partial: "statuses/status", collection: @statuses, locals: { is_show_project_name: true } %>
+
+<% content_for "secondary-content" do %>
+  <div class="section">
+    <h2>DIY</h2>
+    <%= render "projects/projects_list_small", projects: @projects %>
+  </div>
+<% end %>
