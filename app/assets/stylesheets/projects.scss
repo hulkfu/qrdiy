@@ -35,14 +35,12 @@
   }
 }
 
-.projects-list-tiny {
+.projects-list-small {
   li {
     height: 40px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    img {
-      height: 38px;
-    }
+
     .media-heading {
       font-size: 14px;
       margin-bottom: 0;
