@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   mount RuCaptcha::Engine => "/rucaptcha"
 
   resources :comments, only: [:destroy]
-  resources :statuses, only: [:index, :destroy] do
+  resources :statuses, only: [:index, :show, :destroy] do
     resources :comments, only: [:new, :create]
   end
 

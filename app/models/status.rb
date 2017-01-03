@@ -62,7 +62,7 @@ class Status < ApplicationRecord
 
   # OPTIMIZE 需要翻译成多种语言时，可以返回 t(status.name) 的翻译后的结果
   def action_name
-    ACTION_TYPE_NAMES[action_type.to_sym]
+    ACTION_TYPE_NAMES[action_type.underscore.to_sym]
   end
 
   def statusable_name
@@ -74,8 +74,6 @@ class Status < ApplicationRecord
     when Relation
       # user 或 project 的 name
       statusable.relationable.name
-    else
-      "其他"
     end
   end
 end

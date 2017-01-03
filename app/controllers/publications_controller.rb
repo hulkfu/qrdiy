@@ -3,7 +3,7 @@
 #
 class PublicationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_publication, except: [:trix_attachment, :new, :create]
+  before_action :set_publication, only: [:show, :destroy]
 
   def new
     @type = params[:type]
@@ -25,13 +25,16 @@ class PublicationsController < ApplicationController
 
   # 预览图片，下载附件
   # TODO: 没有登录的情况，登录后的跳转
+  # TODO: 从 status 来，跳转到相应的 status 锚点
   def show
     case @publishable
     when ImageArray
-      @index = params[:index].to_i
-      @image = @publishable.image_array[@index]
-      @image_name = @publishable.file_names[@index]
-      render :preview
+      if params[:index].present?
+        @index = params[:index].to_i
+        @image = @publishable.image_array[@index]
+        @image_name = @publishable.file_names[@index]
+        render :preview
+      end
     when Attachment
       send_file(File.join(Rails.root, 'public', @publishable.attachment_url),
         filename: @publishable.file_name, type: @publishable.file_type)

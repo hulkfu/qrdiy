@@ -2,6 +2,7 @@
 # Relations Controllers
 #
 class RelationsController < ApplicationController
+  before_action :set_relation, :only => [:destroy]
 
   ## post /i/domain/relations
   ##
@@ -14,12 +15,15 @@ class RelationsController < ApplicationController
   end
 
   def destroy
-    @relation = authorize Relation.find(params[:id])
     @relation.destroy
     redirect_to (request.referer || root_path), notice: "已取消#{@relation.desc}"
   end
 
   private
+
+    def set_relation
+      @relation = authorize Relation.find(params[:id])
+    end
 
     def relation_params
       params.require(:relation).permit(:action_type, :relationable_id, :relationable_type)

@@ -1,3 +1,7 @@
+##
+# 可以发布展示的东西。
+# 目前有： Attachment, Idea, ImageArray, Comment
+#
 module Publishable
   extend ActiveSupport::Concern
 

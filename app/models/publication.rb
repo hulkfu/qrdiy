@@ -21,7 +21,7 @@ class Publication < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   def name
-    PUBLISHABLE_TYPE_NAMES[publishable_type.downcase.to_sym]
+    PUBLISHABLE_TYPE_NAMES[publishable_type.underscore.to_sym]
   end
 
   def generate_content_html
