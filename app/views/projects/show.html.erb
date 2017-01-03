@@ -12,28 +12,29 @@
 
 <% content_for "secondary-content" do %>
   <div class="section">
-    <div class="name">
-      <h1><%= @project.name %></h1>
-      <% if policy(@project).edit? %>
-        <%= link_to "编辑", edit_project_path(@project), class: "pull-right" %>
-      <% end %>
+    <div class="border-none card text-xs-center ">
+      <div class="card-block">
+        <h1 class="card-title"><%= @project.name %></h1>
+        <% if policy(@project).edit? %>
+          <%= link_to "编辑", edit_project_path(@project), class: "pull-right" %>
+        <% end %>
+        <h6 class="card-subtitle text-muted"><%= @project.desc %></h6>
+      </div>
+      <%= image_tag @project.avatar.url, class: "avatar big card-image-top"%>
+      <div class="card-block">
+        <%= relation_for @project, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          <%= @project.description %>
+        </p>
+      </div>
     </div>
-    <div class="desc">
-      <%= @project.desc %>
-    </div>
-    <%= image_tag @project.avatar.url.to_s, class:"avatar big" %>
-    <div class="relations">
-      <%= relation_for @project, action_type: :follow, submit_name: "关注", button_class: "btn btn-secondary btn-sm" %>
-    </div>
-
-    <div class="description">
-      <%= @project.description %>
-    </div>
-
   </div>
 
   <div class="section">
     <h2>作者</h2>
+    <%= render "users/user_item_small", user: @project.user %>
   </div>
 
   <div class="section">
