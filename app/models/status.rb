@@ -19,7 +19,7 @@ class Status < ApplicationRecord
   has_many :notifications
 
   # 默认最新的在前
-  default_scope { order(created_at: :desc) }
+  default_scope { order(id: :desc) }
 
   scope :without_comments, -> { where.not(action_type: "comment")}
 

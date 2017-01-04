@@ -3,6 +3,9 @@ class Project < ApplicationRecord
   include Statusable
   include Relationable
 
+  # 在 project show 里每页显示的 status 的个数
+  STATUSES_PER_PAGE = 18
+
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
 
@@ -41,6 +44,12 @@ class Project < ApplicationRecord
   # 即 pubications 的发布，项目的创建，有人 follow 项目（好来欢迎）
   def statuses_to_show
     all_statuses.where(
-    action_type: %w(publication follow project) )
+      action_type: %w(publication follow project) )
+  end
+
+  # 返回一个 status 在 project show 里的 page 页数
+  def page_of_status(status)
+    before_count = statuses_to_show.where("id > ?", status.id).count
+    before_count / STATUSES_PER_PAGE + 1
   end
 end

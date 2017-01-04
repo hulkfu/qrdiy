@@ -1,8 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
-  SHOW_PER_PAGE = 18
-
   # GET /projects
   # GET /projects.json
   def index
@@ -14,7 +12,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @statuses = @project.statuses_to_show
-      .paginate(page: params[:page], per_page: SHOW_PER_PAGE)
+      .paginate(page: params[:page], per_page: Project::STATUSES_PER_PAGE)
   end
 
   # GET /projects/new
