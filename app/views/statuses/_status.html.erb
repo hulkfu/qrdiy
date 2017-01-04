@@ -15,7 +15,7 @@
           在 <%= link_to status.project.try(:name), project_path(status.project) %>
         <% end %>
         <%= "#{status.action_name}了 " %>
-        <%= link_to status.statusable_name, status %>
+        <%= link_to status.statusable_name, status, "data-turbolinks" => "false" %>
       </div>
 
       <div class="status-item-body">
