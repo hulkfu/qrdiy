@@ -1,1 +1,4 @@
-<%= content_tag :div, publication.content_html, class: "comment" %>
+<%= quote_content publication.content_html, class: "comment" %>
+
+<%# TODO: 插入评论的内容 %>
+<%#=  render "statuses/statusable", statusable: publication.publishable.try(:commentable) %>

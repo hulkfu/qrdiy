@@ -20,13 +20,7 @@
 
       <div class="status-item-body">
         <div class="content">
-          <% if statusable.respond_to?(:publishable_type) %>
-            <%= render "publications/show/#{statusable.publishable_type.underscore}",
-              publication: statusable %>
-          <% else %>
-            <%# TODO: relation 的 view %>
-            <%= statusable.try(:name) %>
-          <% end %>
+          <%= render "statuses/statusable", statusable: statusable %>
         </div>
 
         <div class="actions">
