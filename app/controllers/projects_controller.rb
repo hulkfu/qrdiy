@@ -17,7 +17,6 @@ class ProjectsController < ApplicationController
     # 而且只要 add type 的 status，一般就是 publication.statuses.first
     # 不带 comments 等的 statuses
     # 所以不用：@statuses = @project.all_statuses
-    # FIXME 新用户关注还是要显示的
 
     @statuses = @project.all_statuses.without_comments
       .paginate(page: params[:page], per_page: SHOW_PER_PAGE)

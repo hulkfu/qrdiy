@@ -26,6 +26,14 @@ class Publication < ApplicationRecord
     PUBLISHABLE_TYPE_NAMES[publishable_type.underscore.to_sym]
   end
 
+  def comment?
+    publishable_type == "Comment"
+  end
+
+  def status_action_type
+    comment? ? "comment" : "publication"
+  end
+
   def generate_content_html
     # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
     update_attributes(content_html: publishable.content)

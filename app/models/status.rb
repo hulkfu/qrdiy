@@ -5,8 +5,9 @@
 class Status < ApplicationRecord
   # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
   # TODO: 好好设计 status 的 action type，根据它生成 status view 或 判定它的类型
-  ACTION_TYPE_NAMES = {add: "发布", change: "更新", remove: "删除",
-    follow: "关注", like: "喜欢", praise: "赞", comment: "评论"}.freeze
+  ACTION_TYPE_NAMES = {publication: "发布", change: "更新", remove: "删除",
+    follow: "关注", like: "喜欢", praise: "赞", comment: "评论",
+    project: "创建"}.freeze
   enum action_type: ACTION_TYPE_NAMES.keys.freeze
 
   belongs_to :statusable, polymorphic: true
@@ -21,6 +22,7 @@ class Status < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   scope :without_comments, -> { where.not(action_type: "comment")}
+
 
   after_create :create_notifications
 
@@ -71,7 +73,13 @@ class Status < ApplicationRecord
   def statusable_name
     case statusable
     when Publication
-      statusable.name
+      publishable = statusable.publishable
+      case publishable  # 多个 xxxxable 真是容易乱啊
+      when Comment
+        publishable.status.statusable_name
+      else
+        statusable.name  # statusable 就是 publication
+      end
     when Project
       "DIY"
     when Relation

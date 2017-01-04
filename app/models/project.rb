@@ -32,4 +32,8 @@ class Project < ApplicationRecord
       save
     end
   end
+
+  def status_action_type
+    "project"
+  end
 end
