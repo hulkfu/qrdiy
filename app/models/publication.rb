@@ -20,6 +20,8 @@ class Publication < ApplicationRecord
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
+  scope :without_comments, -> { where.not(publishable_type: "Comment")}
+
   def name
     PUBLISHABLE_TYPE_NAMES[publishable_type.underscore.to_sym]
   end

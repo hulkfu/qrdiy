@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+  SHOW_PER_PAGE = 18
+
   # GET /projects
   # GET /projects.json
   def index
@@ -16,9 +18,13 @@ class ProjectsController < ApplicationController
     # 不带 comments 等的 statuses
     # 所以不用：@statuses = @project.all_statuses
     # FIXME 新用户关注还是要显示的
-    @publications = @project.publications
-      .where.not(publishable_type: "Comment")
-      .paginate(page: params[:page])
+
+    @statuses = @project.all_statuses.without_comments
+      .paginate(page: params[:page], per_page: SHOW_PER_PAGE)
+
+    # @publications = @project.publications
+    #   .where.not(publishable_type: "Comment")
+    #   .paginate(page: params[:page], per_page: SHOW_PER_PAGE)
   end
 
   # GET /projects/new

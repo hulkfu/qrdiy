@@ -4,8 +4,9 @@
 # project 的动态列表里。也可以是 user follow 了另一个 user。
 class Status < ApplicationRecord
   # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
+  # TODO: 好好设计 status 的 action type，根据它生成 status view 或 判定它的类型
   ACTION_TYPE_NAMES = {add: "发布", change: "更新", remove: "删除",
-    follow: "关注", like: "喜欢", praise: "赞"}.freeze
+    follow: "关注", like: "喜欢", praise: "赞", comment: "评论"}.freeze
   enum action_type: ACTION_TYPE_NAMES.keys.freeze
 
   belongs_to :statusable, polymorphic: true
@@ -18,6 +19,8 @@ class Status < ApplicationRecord
 
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
+
+  scope :without_comments, -> { where.not(action_type: "comment")}
 
   after_create :create_notifications
 

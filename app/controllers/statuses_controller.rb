@@ -38,6 +38,7 @@ class StatusesController < ApplicationController
 
   # TODO: 跳转到 publication 的锚点，分辨出 comment
   def redirect_to_publication(publication)
+    # 算出在 status 在 project show 的第几页
     redirect_to project_path(@status.project, anchor: "status-#{@status.id}")
   end
 end

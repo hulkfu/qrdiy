@@ -2,13 +2,9 @@
 
 <%= render "publications/new/form", project: @project %>
 
-<% @publications.each do |publication| %>
-  <% if publication.statuses.present? %>
-    <%= render publication.statuses.first %>
-  <% end %>
-<% end %>
+<%= render partial: "statuses/status", collection: @statuses %>
 
-<%= will_paginate @publications %>
+<%= will_paginate @statuses %>
 
 <% content_for "secondary-content" do %>
   <div class="section">
