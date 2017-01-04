@@ -1,4 +1,4 @@
-<%= simple_form_for @project, validate: true do |f| %>
+<%= simple_form_for @project, validate: true, html: { multipart: true } do |f| %>
   <%= render "shared/error_messages", target: @project %>
 
   <div class="form-inputs">
