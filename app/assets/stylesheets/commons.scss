@@ -2,6 +2,9 @@
 
 * {
   box-sizing: border-box;
+  &:target {
+    background-color: #f8eec7;
+  }
 }
 
 
