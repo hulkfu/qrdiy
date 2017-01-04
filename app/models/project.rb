@@ -36,4 +36,11 @@ class Project < ApplicationRecord
   def status_action_type
     "project"
   end
+
+  # Project 里只需要出现有用的东西，
+  # 即 pubications 的发布，项目的创建，有人 follow 项目（好来欢迎）
+  def statuses_to_show
+    all_statuses.where(
+    action_type: %w(publication follow project) )
+  end
 end

@@ -13,17 +13,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    # Project 里只需要出现有用的东西，即 pubications 的 status
-    # 而且只要 add type 的 status，一般就是 publication.statuses.first
-    # 不带 comments 等的 statuses
-    # 所以不用：@statuses = @project.all_statuses
-
-    @statuses = @project.all_statuses.without_comments
+    @statuses = @project.statuses_to_show
       .paginate(page: params[:page], per_page: SHOW_PER_PAGE)
-
-    # @publications = @project.publications
-    #   .where.not(publishable_type: "Comment")
-    #   .paginate(page: params[:page], per_page: SHOW_PER_PAGE)
   end
 
   # GET /projects/new
