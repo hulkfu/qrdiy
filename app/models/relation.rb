@@ -8,6 +8,8 @@ class Relation < ApplicationRecord
   ACTION_TYPES = ACTION_TYPE_NAMES.keys
   enum action_type: ACTION_TYPES
 
+  POSITIVE_RELATIONS = %w(follow like praise)
+
   belongs_to :user
   belongs_to :relationable, polymorphic: true
 

@@ -23,27 +23,50 @@ class Status < ApplicationRecord
 
   scope :without_comments, -> { where.not(action_type: "comment")}
 
-
   after_create :create_notifications
 
-  # 创建通知。TODO 异步创建通知
+  # 创建通知。
+  # TODO 异步创建通知。但是目前只是给 owner 一个人创建了通知，因此不必。
+  # 通知里要显示自己关心的东西，即自己参与的东西，能激励用户进一步互动的东西
   def create_notifications
     # 1. 基本信息
     actor = user  # 触发通知的人，也就是触发这个 status 的人
     receiver_ids = []  # 接收通知的人
+    notify_type = nil   # 通知的类型
 
     # 2. 根据不同的statusable_type 和 action_type
     #    得出相应的 notify_type，及对应的响应的通知用户
     case statusable
+    ## 发生关系:
+    # 关注我, 关注我的项目, 赞我的项目, 赞我的内容, 喜欢我的内容
     when Relation
+      # 负面关系就不发通知了
+      return if Relation::POSITIVE_RELATIONS.exclude?(statusable.action_type)
       notify_type = "relationship"
       receiver = statusable.relationable_user
       receiver_ids << receiver.id if actor != receiver
 
+    ## 发布东西
     when Publication
+      publishable = statusable.publishable
+      case publishable
+      # 我的东西有人评论
+      when Comment
+        commented_status = publishable.status
+        notify_type = "comment"
+        # 我的东西
+        receiver = commented_status.user
+        receiver_ids << receiver.id if actor != receiver
+        # TODO: 我喜欢的东西
 
-    when Project
-
+      # 在我的项目里发布内容
+      else
+        notify_type ="publication"
+        receiver = publishable.project.user
+        receiver_ids << receiver.id if actor != receiver
+      end
+    when Project  # 创建 DIY
+      return
     end
 
     # project owner
@@ -55,7 +78,7 @@ class Status < ApplicationRecord
     # publication owner
 
     # 3. 记入 mention users
-
+    # 别人提到我，包括我的评论有人回复
 
     # 4. 为所有接收者创建通知
     Notification.bulk_insert(set_size: 100) do |worker|
