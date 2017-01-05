@@ -92,26 +92,26 @@ class Status < ApplicationRecord
     ACTION_TYPE_NAMES[action_type.underscore.to_sym]
   end
 
+  # 生成 status 的东西的 name
   def statusable_name
     case statusable
     when Publication
-      publishable = statusable.publishable
-      case publishable  # 多个 xxxxable 真是容易乱啊
-      when Comment
-        publishable.status.statusable_name
-      else
-        statusable.name  # statusable 就是 publication
-      end
+      statusable.name  # statusable 就是 publication
     when Project
       "DIY"
     when Relation
       # user 或 project 的 name
-      # 或 status 的 statusable_name，因为可以和一个 status 发生关系
+      # 或 status 的 statusable_name，因为可以和一个 status 发生关系，最好还是回到这里找到
+      # 真正的 name
       statusable.relationable.name
     end
   end
 
+  # status 想显示的 name
   def name
-    statusable_name
+    # 如果是评论的 status，那么它的 name 就是评论的 status 的 statusable_name
+    statusable.is_a?(Publication) && statusable.publishable.is_a?(Comment) ?
+      statusable.publishable.status.statusable_name
+      : statusable_name
   end
 end

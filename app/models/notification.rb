@@ -45,34 +45,39 @@ class Notification < ActiveRecord::Base
     self.actor.profile
   end
 
-  # TODO
+  ##
+  # 标题，谁 在 哪里 干 了 什么
   # publication：小王 在 趣人网 发布 了 图片
   # relation： 小王 喜欢了 你发布在 趣人网的 图片，小王关注了你
   # comment： 小王 评论了 你发布在 趣人网的 图片
   def title
-    # statusable = status.statusable
-    # case notify_type
-    # when "relationship"
-    #   relationable = statusable.relationable
-    #   case relationable
-    #
-    #   when Status
-    #   else
-    #
-    #
-    #   end
-    # when "publication"
-    # when "comment"
-    # when "project"
-    # end
-    if actor_name
-      name = status.statusable_name == user.name ? "你"
-        : "你的 #{status.statusable_name}"
+    who = actor_name
+    do_what = ""
+    to_what = ""
 
-      "#{actor_name} #{status.action_name}了 #{name}。"
-    else
-      "相关信息已删除。"
+    statusable = status.statusable
+    case notify_type
+    when "relationship"
+      do_what = status.action_name
+      relationable = statusable.relationable
+
+      case relationable
+      when User
+        to_what = relationable.name == user.name ? "你" : relationable.name
+      when Project
+        to_what = "你的 DIY #{relationable.name}"
+      when Status  # publication,包括 comment 的 status
+        to_what = "你在 #{relationable.project.name} 的 #{relationable.statusable_name}"
+      when Publication
+        # Publication 还不能被发生关系，转移到了 status
+      end
+
+      "#{who} #{do_what}了 #{to_what}。"
+    when "publication"
+    when "comment"
+    when "project"
     end
+
   end
 
   # TODO: 需要显示的内容
