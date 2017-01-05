@@ -82,10 +82,8 @@ class Status < ApplicationRecord
     # 别人提到我，包括我的评论有人回复
 
     # 4. 为所有接收者创建通知
-    Notification.bulk_insert(set_size: 100) do |worker|
-      receiver_ids.each do |uid|
-        worker.add(user_id: uid, actor_id: actor.id, status_id: self.id, notify_type: notify_type)
-      end
+    receiver_ids.each do |uid|
+      notifications.create(user_id: uid, actor_id: actor.id, notify_type: notify_type)
     end
   end
 
