@@ -1,4 +1,7 @@
-# Auto generate with notifications gem.
+##
+# 通知类。
+# 在 status 创建后自动创建，通知相关用户。
+#
 class Notification < ActiveRecord::Base
   DEFAULT_AVATAR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJixmgAAAAFVBMVEWkpKSnp6eqqqq3t7fS0tLV1dXZ2dmshcKEAAAAtklEQVR4Ae3XsRGAAAjAQFRk/5HtqaTz5H+DlInvAQAAAAAAAAAAAAAAAAAAAACymiveO6o7BQsWLFiwYMGCBS8PFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBc4IFCxYsWLBgwYIFC14ZfOeAPRQ8IliwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQv+JQAAAAAAAAAAAAAAAAAAAOAB4KJfdHmj+kwAAAAASUVORK5CYII='
 
@@ -42,16 +45,30 @@ class Notification < ActiveRecord::Base
     self.actor.profile
   end
 
+  # TODO
+  # publication：小王 在 趣人网 发布 了 图片
+  # relation： 小王 喜欢了 你发布在 趣人网的 图片，小王关注了你
+  # comment： 小王 评论了 你发布在 趣人网的 图片
   def title
-    case notify_type
-    when "relationship"
-    when "publication"
-    when "comment"
-    when "project"
-    end
+    # statusable = status.statusable
+    # case notify_type
+    # when "relationship"
+    #   relationable = statusable.relationable
+    #   case relationable
+    #
+    #   when Status
+    #   else
+    #
+    #
+    #   end
+    # when "publication"
+    # when "comment"
+    # when "project"
+    # end
     if actor_name
-      name = status.statusable_name == user.name ? "你" : status.statusable_name
-      # TODO: "你的评论 小汪的评论"
+      name = status.statusable_name == user.name ? "你"
+        : "你的 #{status.statusable_name}"
+
       "#{actor_name} #{status.action_name}了 #{name}。"
     else
       "相关信息已删除。"
