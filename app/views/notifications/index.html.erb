@@ -11,7 +11,7 @@
     <% else %>
       <% @notification_groups.each do |group, notifications| %>
         <div class="notification-group">
-          <div class="group-title"><%= group %></div>
+          <div class="group-title"><%= fa_icon('clock-o') + " #{group}" %></div>
           <%= render notifications %>
         </div>
       <% end %>

@@ -1,6 +1,6 @@
 ##
 # 可以被发生关系的东西。
-# 目前有： User, Project, Publication
+# 目前有： User, Project, Publication, Status
 #
 module Relationable
   extend ActiveSupport::Concern

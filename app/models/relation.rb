@@ -33,7 +33,7 @@ class Relation < ApplicationRecord
   def relationable_user
     if relationable_type == "User"
       relationable
-    else  # project, publication
+    else  # project, publication, status
       relationable.user
     end
   end

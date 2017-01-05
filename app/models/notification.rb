@@ -43,6 +43,12 @@ class Notification < ActiveRecord::Base
   end
 
   def title
+    case notify_type
+    when "relationship"
+    when "publication"
+    when "comment"
+    when "project"
+    end
     if actor_name
       name = status.statusable_name == user.name ? "你" : status.statusable_name
       # TODO: "你的评论 小汪的评论"

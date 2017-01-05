@@ -9,7 +9,14 @@ class StatusesController < ApplicationController
       redirect_to statusable
     when Relation
       case statusable.relationable
-      when Project, User
+      ##
+      # 如果这个 relation 是和一个 status 发生的关系，那么回跳两次：
+      # 1. 下面跳到 status 处。
+      # 2. 再次来到 show 里，得到 status 的 statusable 后再跳，比如是个 publication。
+      # 有些递归的意思，停止条件是：statusable 不再是 status。
+      # （趁现在还能记清赶快记下，之后又要分析 :p）
+      #
+      when Project, User, Status
         redirect_to statusable.relationable
       when Publication
         redirect_to_publication statusable.relationable

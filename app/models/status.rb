@@ -3,6 +3,7 @@
 # 东西，比如 Idea 被 user 在 project 里发布后，就会创建一个 status，然后能够显示在 user 和
 # project 的动态列表里。也可以是 user follow 了另一个 user。
 class Status < ApplicationRecord
+  include Relationable
   # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
   # status 的 action type，根据它生成 status view 或 判定它的类型
   ACTION_TYPE_NAMES = {publication: "发布", change: "更新", remove: "删除",
@@ -107,7 +108,12 @@ class Status < ApplicationRecord
       "DIY"
     when Relation
       # user 或 project 的 name
+      # 或 status 的 statusable_name，因为可以和一个 status 发生关系
       statusable.relationable.name
     end
+  end
+
+  def name
+    statusable_name
   end
 end
