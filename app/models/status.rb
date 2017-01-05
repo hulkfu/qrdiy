@@ -67,6 +67,7 @@ class Status < ApplicationRecord
         receiver_ids << receiver.id if actor != receiver
       end
     when Project  # 创建 DIY
+      # 不要通知
       return
     end
 

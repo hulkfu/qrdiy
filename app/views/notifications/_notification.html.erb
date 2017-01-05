@@ -8,7 +8,12 @@
 
   <div class="media-body">
     <%= link_to notification.status, "data-turbolinks" => "false" do %>
-      <%= render "notifications/#{notification.notify_type}", notification: notification %>
+      <div class="media-heading">
+        <%= notification.title %>
+      </div>
+      <div class="media-content">
+        <%= render "notifications/#{notification.notify_type}", notification: notification %>
+      </div>
     <% end %>
   </div>
 

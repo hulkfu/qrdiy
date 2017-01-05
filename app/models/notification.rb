@@ -52,11 +52,9 @@ class Notification < ActiveRecord::Base
   # comment： 小王 评论了 你发布在 趣人网的 图片
   def title
     who = actor_name
-    do_what = ""
-    to_what = ""
 
     statusable = status.statusable
-    case notify_type
+    case notify_type  # 根据 statusable 的类型定的
     when "relationship"
       do_what = status.action_name
       relationable = statusable.relationable
@@ -65,7 +63,7 @@ class Notification < ActiveRecord::Base
       when User
         to_what = relationable.name == user.name ? "你" : relationable.name
       when Project
-        to_what = "你的 DIY #{relationable.name}"
+        to_what = "你的 #{relationable.name}"
       when Status  # publication,包括 comment 的 status
         to_what = "你在 #{relationable.project.name} 的 #{relationable.statusable_name}"
       when Publication
@@ -74,8 +72,16 @@ class Notification < ActiveRecord::Base
 
       "#{who} #{do_what}了 #{to_what}。"
     when "publication"
+      at_where = statusable.project.name
+      do_what = status.action_name
+      to_what = statusable.name
+
+      "#{who} 在你的 #{at_where} #{do_what}了 #{to_what}。"
     when "comment"
+      to_what = "你在 #{statusable.project.name} 的 #{status.name}"
+      "#{who} 评论了 #{to_what}"
     when "project"
+      # 不用通知
     end
 
   end
