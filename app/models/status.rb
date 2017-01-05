@@ -99,7 +99,7 @@ class Status < ApplicationRecord
     when Publication
       statusable.name  # statusable 就是 publication
     when Project
-      "DIY"
+      "DIY #{statusable.name}"
     when Relation
       # user 或 project 的 name
       # 或 status 的 statusable_name，因为可以和一个 status 发生关系，最好还是回到这里找到
