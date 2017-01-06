@@ -3,6 +3,9 @@ class Project < ApplicationRecord
   include Statusable
   include Relationable
 
+  extend FriendlyId
+  friendly_id :name
+
   # 在 project show 里每页显示的 status 的个数
   STATUSES_PER_PAGE = 18
 

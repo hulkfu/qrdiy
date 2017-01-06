@@ -44,6 +44,8 @@ gem 'rucaptcha'   # 验证码
 gem 'letter_avatar' # 头像
 gem 'ruby-pinyin'
 
+gem 'friendly_id', '~> 5.1.0'
+
 # cache
 gem 'dalli'
 
