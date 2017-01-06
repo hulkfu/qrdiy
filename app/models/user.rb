@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   include Relationable  # 可以被关系啦
+  extend FriendlyId
+
+  friendly_id :domain
 
   mount_uploader :avatar, AvatarUploader
 
