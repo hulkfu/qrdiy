@@ -11,7 +11,7 @@
     <div class="status-main">
       <div class="status-item-head">
         <%= link_to user_profile.name, user_path(user_profile) %>
-        <% if is_show_project_name && status.project %>
+        <% if is_show_project_name && status.project && status.project.try(:name) != status.name %>
           在 <%= link_to status.project.try(:name), project_path(status.project) %>
         <% end %>
         <%= "#{status.action_name}了 " %>
