@@ -4,5 +4,8 @@
     <div class="media-heading">
       <%= link_to user.name, user_path(user) %>
     </div>
+    <div class="media-content">
+      <%= user.profile.try(:description) %>
+    </div>
   </div>
 </li>
