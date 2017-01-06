@@ -1,8 +1,6 @@
 class UserProfilesController < ApplicationController
   before_action :set_user_profile, only: [:show, :edit, :update]
 
-
-
   # GET /i/user_id/profile
   def show
   end
@@ -34,6 +32,6 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user_profile).permit(:name, :domain, :avatar, :homepage, :location, :gender, :birthday, :description)
+      params.require(:user_profile).permit(:homepage, :location, :gender, :birthday, :description)
     end
 end

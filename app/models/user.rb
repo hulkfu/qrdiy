@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Relationable  # 可以被关系啦
 
+  mount_uploader :avatar, AvatarUploader
+
   enum role: [:user, :manage, :admin]
 
   # Include default devise modules. Others available are:
@@ -20,7 +22,38 @@ class User < ApplicationRecord
   # 本用户 user 的 notification 是被其他用户 actor 创建的
   has_many :notifications
 
-  after_create :create_tmp_profile
+
+  auto_strip_attributes :name,
+                        delete_whitespaces: true, nullify: false
+  validates :name, presence: true, length: 2..20,
+    uniqueness: {case_sensitive: false},
+    exclusion: { in: Setting['exclusion.user'].values.flatten }
+
+  validates :domain, presence: true, length: 4..18,
+    uniqueness: {case_sensitive: false},
+    format: {
+      with: /\A[a-z][a-z0-9_\-]*\z/i,
+      message: "请以字母开头，并且只能包含字母、数字、_ 和 - "
+    },
+    exclusion: { in: Setting['exclusion.user.domain'] }
+
+    # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
+  validates :avatar, file_size: { less_than: 10.megabytes.to_i }
+
+  after_create :create_tmp_info
+
+  # TODO 第三方登录，获得名号
+  def create_tmp_info
+    # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
+    tmp_name = "#{email.split('@').first}_#{id}"
+    self.name = tmp_name
+    self.domain = tmp_name
+
+    File.open(LetterAvatar.generate tmp_name, 180) do |f|
+      self.avatar = f
+    end
+    self.save!
+  end
 
   # find user by domain, if not exist reutrn nil
   def self.find_by_domain(domain)
@@ -67,26 +100,10 @@ class User < ApplicationRecord
     )
   end
 
-  # TODO 第三方登录，获得名号
-  def create_tmp_profile
-    # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
-    tmp_name = "#{email.split('@').first}_#{id}"
-    tmp_profile = create_profile(name: tmp_name, domain: tmp_name)
-    File.open(LetterAvatar.generate tmp_name, 180) do |f|
-      tmp_profile.avatar = f
-    end
-    tmp_profile.save
-  end
-
   # 重写 manage?，admin 也能 manage
   def manage?
     %w(manage admin).include? role
   end
 
-  # 映射 user profile 的常用方法
-  %w(avatar name domain).each do |m|
-    define_method m do
-      profile.__send__ m
-    end
-  end
+  # :name, :domain, :avatar,
 end

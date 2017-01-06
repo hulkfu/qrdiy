@@ -8,7 +8,7 @@ defaults: &defaults
   email_user_password: f2t*VN>Jhf4n
 
   exclusion:
-    user_profile:
+    user:
       domain:
         - admin
         - root

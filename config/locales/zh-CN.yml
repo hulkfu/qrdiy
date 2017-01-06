@@ -30,10 +30,11 @@ zh-CN:
 
   simple_form:
     labels:
-      user_profile:
+      users:
         name: '名 号'
         domain: '我的域名'
         avatar: '头 像'
+      user_profile:        
         homepage: '主 页'
         location: '长居地'
         gender: '性 别'

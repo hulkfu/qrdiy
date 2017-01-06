@@ -1,16 +1,16 @@
 <% statusable = status.statusable %>
-<% user_profile = status.user.profile %>
+<% user = status.user %>
 <% is_show_project_name ||= false %>
 
 <% if statusable.present? %>
   <div class="status-item" id="status-<%= status.id %>" name="status-<%= status.id %>">
     <div class="pull-left">
-      <%= link_to image_tag(user_profile.avatar.normal.url.to_s, class: "avatar normal"), user_profile.user %>
+      <%= link_to image_tag(user.avatar.normal.url.to_s, class: "avatar normal"), user %>
     </div>
 
     <div class="status-main">
       <div class="status-item-head">
-        <%= link_to user_profile.name, user_path(user_profile) %>
+        <%= link_to user.name, user %>
         <% if is_show_project_name && status.project && status.project.try(:name) != status.name %>
           在 <%= link_to status.project.try(:name), project_path(status.project) %>
         <% end %>
