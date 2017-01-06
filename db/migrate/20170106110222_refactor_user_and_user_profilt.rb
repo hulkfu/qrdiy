@@ -8,10 +8,14 @@ class RefactorUserAndUserProfilt < ActiveRecord::Migration[5.0]
     add_index :users, :domain, unique: true
 
     User.find_each do |u|
-      %w(name domain avatar).each do |k|
+      %w(name domain).each do |k|
         u.send("#{k}=", u.profile.send(k))
-        u.save!
       end
+      File.open(u.profile.avatar.file.file) do |f|
+        u.avatar = f
+      end
+
+      u.save!
     end
 
     %w(name domain avatar).each do |k|
