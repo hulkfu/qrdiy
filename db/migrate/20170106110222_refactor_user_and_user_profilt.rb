@@ -11,8 +11,10 @@ class RefactorUserAndUserProfilt < ActiveRecord::Migration[5.0]
       %w(name domain).each do |k|
         u.send("#{k}=", u.profile.send(k))
       end
-      File.open(u.profile.avatar.file.file) do |f|
-        u.avatar = f
+      if file = u.profile.try(:avatar).try(:file).try(:file)
+        File.open(file) do |f|
+          u.avatar = f || ""
+        end
       end
 
       u.save!
