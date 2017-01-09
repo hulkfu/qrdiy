@@ -58,10 +58,6 @@ class User < ApplicationRecord
     self.save!
   end
 
-  # find user by domain, if not exist reutrn nil
-  def self.find_by_domain(domain)
-    UserProfile.find_by(domain: domain).try(:user)
-  end
 
   ## Relation 的糖方法
   Relation::ACTION_TYPES.each do |action_type|
@@ -108,5 +104,4 @@ class User < ApplicationRecord
     %w(manage admin).include? role
   end
 
-  # :name, :domain, :avatar,
 end
