@@ -7,7 +7,9 @@
           <div class="media-heading">
             <%= link_to project.name, project_path(project) %>
           </div>
-          <%= project.desc %>
+          <div class="text-muted">
+            <%= project.desc %>
+          </div>
         </div>
       </li>
     <% end %>

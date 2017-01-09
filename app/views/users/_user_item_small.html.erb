@@ -4,7 +4,7 @@
     <div class="media-heading">
       <%= link_to user.name, user_path(user) %>
     </div>
-    <div class="media-content">
+    <div class="media-content text-muted">
       <%= user.profile.try(:description) %>
     </div>
   </div>
