@@ -1,56 +1,52 @@
-<h2><%= t('.title', resource: resource_class.model_name.human) %></h2>
+<div class="col-md-3">
+  <h1>更新账号信息</h1>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="col-md-7">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <p>
-      <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
-    </p>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <%= f.input :email %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>
+        <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
+      </p>
+    <% end %>
+
+    <%= f.input :avatar %>
+    <%= f.input :name %>
+    <%= f.input :domain %>
+
+
+    <div class="field">
+      <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+      <%= f.password_field :current_password %>
+    </div>
+
+    <%= render "devise/shared/captcha" %>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
+  <%= t('.cancel_my_account') %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+  <p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
 
-  <div class="field">
-    <%= f.label :domain %><br />
-    <%= f.text_field :domain %>
-  </div>
+  <%= link_to t('devise.shared.links.back'), :back %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password %>
-  </div>
-
-  <%= render "devise/shared/captcha" %>
-
-  <div><%= f.submit t('.update') %></div>
-<% end %>
-
-<h3><%= t('.cancel_my_account') %></h3>
-
-<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
-
-<%= link_to t('devise.shared.links.back'), :back %>
+</div>
