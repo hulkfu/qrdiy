@@ -1,5 +1,5 @@
 <li id="comment-<%= comment.id %>" name="comment-<%= comment.id %>">
-  <%= link_to user_path(comment.user.profile) do %>
+  <%= link_to user_path comment.user do %>
     <%= image_tag (comment.user.avatar.tiny.url.to_s), class: "avatar tiny" %>
     <%= comment.user.name %>:
   <% end %>
