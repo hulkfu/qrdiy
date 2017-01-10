@@ -1,5 +1,5 @@
 <li class="media mover">
-  <%= link_to image_tag(user.avatar.small.url.to_s, class: "avatar small"), user_path(user), class: "media-left" %>
+  <%= avatar_tag user, :small %>
   <div class="media-body">
     <div class="media-heading">
       <%= link_to user.name, user_path(user) %>

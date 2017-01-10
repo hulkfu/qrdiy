@@ -2,7 +2,9 @@
   <ul class="unstyled projects-list-small media-list">
     <% projects.each do |project| %>
       <li class="media mover">
-        <%= link_to image_tag(project.avatar.small.url.to_s, class: "avatar small"), project_path(project), class: "media-left" %>
+        <div class="media-left">
+          <%= avatar_tag(project, :small) %>
+        </div>
         <div class="media-body">
           <div class="media-heading">
             <%= link_to project.name, project_path(project) %>

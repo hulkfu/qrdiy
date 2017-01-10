@@ -7,7 +7,9 @@
           <h1 class="card-title"><%= @user.name %></h1>
           <h6 class="card-subtitle text-muted"><%= @user.profile.description %></h6>
         </div>
-        <%= image_tag @user.avatar.url, class: "avatar big card-image-top"%>
+        <div class="card-image-top">
+          <%= avatar_tag @user, :big, link: false %>
+        </div>
         <div class="card-block">
           <%= relation_for @user, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
         </div>

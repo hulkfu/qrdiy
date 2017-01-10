@@ -13,7 +13,9 @@
         <h1 class="card-title"><%= @project.name %></h1>
         <h6 class="card-subtitle text-muted"><%= @project.desc %></h6>
       </div>
-      <%= image_tag @project.avatar.url, class: "avatar big card-image-top"%>
+      <div class="card-image-top">
+        <%= avatar_tag @project, :big, link: false %>
+      </div>
       <div class="card-block">
         <div class="btn-group" role="group">
           <%= relation_for @project, action_type: :follow, submit_name: "关注",

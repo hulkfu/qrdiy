@@ -2,7 +2,7 @@
   <% users.each do |user| %>
   	<% if user %>
 	    <li>
-	       <%= link_to image_tag(user.avatar.tiny.url.to_s, class: "avatar tiny"), user, title: user.name, data: {toggle: 'tooltip'}, target: '_blank' %>
+        <%= avatar_tag user, :tiny %>
 	    </li>
     <% end %>
   <% end %>

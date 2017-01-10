@@ -24,13 +24,17 @@ class AvatarUploader < BaseUploader
 
   # Process files as they are uploaded:
   # process scale: [180, 180]
-  process resize_to_fill: [180, 180]
+  # process resize_to_fill: [180, 180]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
+  version :big do
+    process resize_to_fill: [180, 180]
+  end
+
   version :normal do
     process resize_to_fit: [48, 48]
   end

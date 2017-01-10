@@ -3,7 +3,6 @@
 # 在 status 创建后自动创建，通知相关用户。
 #
 class Notification < ActiveRecord::Base
-  DEFAULT_AVATAR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAMAAAAJixmgAAAAFVBMVEWkpKSnp6eqqqq3t7fS0tLV1dXZ2dmshcKEAAAAtklEQVR4Ae3XsRGAAAjAQFRk/5HtqaTz5H+DlInvAQAAAAAAAAAAAAAAAAAAAACymiveO6o7BQsWLFiwYMGCBS8PFixYsGDBggULFixYsGDBggULFixYsGDBggULFixYsGDBc4IFCxYsWLBgwYIFC14ZfOeAPRQ8IliwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQsWLFiwYMGCBQv+JQAAAAAAAAAAAAAAAAAAAOAB4KJfdHmj+kwAAAAASUVORK5CYII='
 
   # 为后面的 notification view 服务的，指明模板的名字，而不是操作的action
   enum notify_type: [:relationship, :publication, :comment, :project]
@@ -30,28 +29,13 @@ class Notification < ActiveRecord::Base
     self.read_at.present?
   end
 
-  def actor_name
-    return '' if self.actor.blank?
-    self.actor.name
-  end
-
-  def actor_avatar_url
-    return DEFAULT_AVATAR if self.actor.blank?
-    self.actor.avatar.small.url.to_s
-  end
-
-  def actor_profile_url
-    return '#' if self.actor.blank?
-    self.actor.profile
-  end
-
   ##
   # 标题，谁 在 哪里 干 了 什么
   # publication：小王 在 趣人网 发布 了 图片
   # relation： 小王 喜欢了 你发布在 趣人网的 图片，小王关注了你
   # comment： 小王 评论了 你发布在 趣人网的 图片
   def title
-    who = actor_name
+    who = actor.name
 
     statusable = status.statusable
     case notify_type  # 根据 statusable 的类型定的
