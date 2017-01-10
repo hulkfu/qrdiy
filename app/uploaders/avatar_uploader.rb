@@ -14,6 +14,12 @@ class AvatarUploader < BaseUploader
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  # 一个用户只有一个头像
+  def filename
+    name = Digest::MD5.hexdigest(File.dirname(store_dir))
+    "#{name}.#{file.extension.downcase}"
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
