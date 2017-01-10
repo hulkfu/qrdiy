@@ -30,7 +30,7 @@ class User < ApplicationRecord
                         delete_whitespaces: true, nullify: false
   validates :name, presence: true, length: 2..20,
     uniqueness: {case_sensitive: false},
-    exclusion: { in: Setting['exclusion.user'].values.flatten }
+    exclusion: { in: %w(管理员 站长 admin root) }
 
   validates :domain, presence: true, length: 4..18,
     uniqueness: {case_sensitive: false},
@@ -38,7 +38,7 @@ class User < ApplicationRecord
       with: /\A[a-z][a-z0-9_\-]*\z/i,
       message: "请以字母开头，并且只能包含字母、数字、_ 和 - "
     },
-    exclusion: { in: Setting['exclusion.user.domain'] }
+    exclusion: { in: %w(admin root) }
 
     # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
   validates :avatar, file_size: { less_than: 10.megabytes.to_i }
