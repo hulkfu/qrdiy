@@ -48,11 +48,12 @@ class User < ApplicationRecord
   # TODO 第三方登录，获得名号
   def create_tmp_info
     # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
-    tmp_name = "#{email.split('@').first}_#{id}"
+    email_name = email.split('@').first
+    tmp_name = "qrdiy_#{email_name}_#{id}"
     self.name = tmp_name
     self.domain = tmp_name
 
-    File.open(LetterAvatar.generate tmp_name, 180) do |f|
+    File.open(LetterAvatar.generate "#{email_name}_#{id}", 180) do |f|
       self.avatar = f
     end
     self.save!
