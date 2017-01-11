@@ -108,4 +108,10 @@ class User < ApplicationRecord
     %w(manage admin).include? role
   end
 
+  def update_without_password(params, *options)
+    params.delete(:email)
+    params.delete(:current_password)
+    super(params)
+  end
+
 end

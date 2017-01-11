@@ -63,6 +63,17 @@ before_action :configure_account_update_params, only: [:update]
 
   protected
 
+  # By default we want to require a password checks on update.
+  # You can overwrite this method in your own RegistrationsController.
+  def update_resource(resource, params)
+    # 需要修改密码或者 email 才需要再次输入密码
+    if params[:password].present? || params[:email] != resource.email
+      resource.update_with_password(params)
+    else
+      resource.update_without_password(params)
+    end
+  end
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
