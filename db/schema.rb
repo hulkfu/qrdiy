@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106110222) do
+ActiveRecord::Schema.define(version: 20170111030040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(version: 20170106110222) do
     t.string   "homepage"
     t.string   "location"
     t.integer  "gender",            default: 0
-    t.date     "birthday"
     t.text     "description"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

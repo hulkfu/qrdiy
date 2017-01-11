@@ -13,7 +13,6 @@ class UserProfile < ApplicationRecord
   validates :homepage, length: 0..100
   validates :location, length: 0..50
   validates :gender, inclusion: GENDER_TYPES.map(&:to_s)
-  # validates :birthday
   validates :description, length: 0..2000
 
   def gender_name
