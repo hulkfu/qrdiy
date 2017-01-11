@@ -7,7 +7,7 @@ class Attachment < ApplicationRecord
   auto_strip_attributes :content,
                         squish: true
 
-  validates :content, length: 0..2000
+  validates :content, length: { maximum: 2000 }
   validates :attachment, :presence => true,
             :file_size => { :less_than => 10.megabytes.to_i }
 
