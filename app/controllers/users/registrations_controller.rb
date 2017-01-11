@@ -61,7 +61,7 @@ before_action :configure_account_update_params, only: [:update]
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -84,4 +84,11 @@ before_action :configure_account_update_params, only: [:update]
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  # Overwrite the default url to be used after updating a resource.
+  # It should be edit_user_registration_path
+  # Note: resource param can't miss, because it's the super caller way.
+  def after_update_path_for(_)
+    edit_user_registration_path
+  end
 end
