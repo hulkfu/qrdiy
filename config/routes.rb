@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   scope :i do
     resources :users, path: '', only: [:show] do
-      resource :user_profile, path: "profile", as: "profile", only: [:show, :edit, :update]
     end
   end
 
