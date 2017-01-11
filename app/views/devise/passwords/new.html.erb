@@ -1,7 +1,7 @@
 <h2><%= t(".forgot_your_password") %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+  <%= render "shared/error_messages", target: resource %>
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>

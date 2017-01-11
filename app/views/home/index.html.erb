@@ -10,7 +10,7 @@
         <%= f.password_field :password %>
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
-        <%= render "devise/shared/captcha" %>
+        <%= render "shared/captcha" %>
         <%= f.submit t('devise.shared.links.sign_in') %>
         <%= link_to t("devise.shared.links.forgot_your_password"), new_password_path(:user) %>
       <% end %>

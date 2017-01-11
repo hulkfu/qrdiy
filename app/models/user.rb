@@ -30,11 +30,11 @@ class User < ApplicationRecord
 
   auto_strip_attributes :name,
                         delete_whitespaces: true, nullify: false
-  validates :name, presence: true, length: 2..20,
+  validates :name, presence: true, length: 2..20, on: :update,
     uniqueness: {case_sensitive: false},
     exclusion: { in: %w(管理员 站长 admin root) }
 
-  validates :domain, presence: true, length: 4..18,
+  validates :domain, presence: true, length: 4..18, on: :update,
     uniqueness: {case_sensitive: false},
     format: {
       with: /\A[a-z][a-z0-9_\-]*\z/i,
@@ -43,12 +43,12 @@ class User < ApplicationRecord
     exclusion: { in: %w(admin root) }
 
     # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
-  validates :avatar, file_size: { less_than: 10.megabytes.to_i }
+  validates :avatar, file_size: { less_than: 10.megabytes.to_i }, on: :update
 
-  after_create :create_tmp_info
+  after_create :create_others
 
   # TODO 第三方登录，获得名号
-  def create_tmp_info
+  def create_others
     # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
     email_name = email.split('@').first
     tmp_name = "qrdiy_#{email_name}_#{id}"
@@ -59,6 +59,7 @@ class User < ApplicationRecord
       self.avatar = f
     end
     self.save!
+    self.create_profile!
   end
 
 
