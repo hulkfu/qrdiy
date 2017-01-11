@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root to: "home#index", as: :user_root
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :relations, only: [:create, :destroy]

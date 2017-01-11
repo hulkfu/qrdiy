@@ -10,10 +10,10 @@ class UserProfile < ApplicationRecord
   auto_strip_attributes :location, :description,
                         squish: true, nullify: false
 
-  validates :homepage, length: 0..100
-  validates :location, length: 0..50
-  validates :gender, inclusion: GENDER_TYPES.map(&:to_s)
-  validates :description, length: 0..2000
+  validates :homepage, length: { maximum: 100 }, on: :update
+  validates :location, length: { maximum: 50 }, on: :update
+  validates :gender, inclusion: GENDER_TYPES.map(&:to_s), on: :update
+  validates :description, length: { maximum: 2000 }, on: :update
 
   def gender_name
     GENDER_TYPE_NAMES(gender.to_sym)
