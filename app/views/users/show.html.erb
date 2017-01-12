@@ -5,7 +5,7 @@
       <div class="border-none card text-xs-center ">
         <div class="card-block">
           <h1 class="card-title"><%= @user.name %></h1>
-          <h6 class="card-subtitle text-muted"><%= @user.profile.description %></h6>
+          <h6 class="card-subtitle text-muted"><%= @user.profile.try(:description) %></h6>
         </div>
         <div class="card-image-top">
           <%= avatar_tag @user, :big, link: false %>

@@ -67,7 +67,7 @@ before_action :configure_account_update_params, only: [:update]
   # You can overwrite this method in your own RegistrationsController.
   def update_resource(resource, params)
     # 需要修改密码或者 email 才需要再次输入密码
-    if params[:password].present? || params[:email] != resource.email
+    if params[:password].present? || (params[:email] && params[:email] != resource.email)
       resource.update_with_password(params)
     else
       # 不能修改 email，在 update_without_password 已经 delete 了 password，
