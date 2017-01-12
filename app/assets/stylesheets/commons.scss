@@ -124,3 +124,10 @@ img {
     color: $primary-color;
   }
 }
+
+#rails-flash {
+  .close {
+    position: relative;
+    bottom: 4px;
+  }
+}
