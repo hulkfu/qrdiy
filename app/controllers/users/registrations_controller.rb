@@ -48,9 +48,22 @@ before_action :configure_account_update_params, only: [:update]
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    current_password = params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    if resource.valid_password?(current_password)
+      super
+    else
+      resource.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      clean_up_passwords resource
+      respond_with resource, location: after_update_path_for(resource)
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

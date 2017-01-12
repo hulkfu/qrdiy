@@ -1,58 +1,54 @@
 <div class="col-md-2">
 </div>
 
-<div class="col-md-9">
+<div class="col-md-6">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
     <%= render "shared/error_messages", target: resource %>
 
     <div class="form-inputs">
-      <div class="col-md-7 ">
-        <h1>个人信息</h1>
-        <% if resource.avatar? %>
-          <%= avatar_tag resource, :big, link: false %>
-        <% end %>
-        <%= f.input :avatar, label: "头 像" %>
-        <%= f.input :name, label: "名 号", autofocus: true %>
-        <%= f.input :domain, label: "我的域名" %>
 
-        <%= f.simple_fields_for :profile do |profile_form| %>
-          <%= profile_form.input :homepage, label: "主 页" %>
-          <%= profile_form.input :location, label: "长居地" %>
+      <h1>个人信息</h1>
+      <% if resource.avatar? %>
+      <%= avatar_tag resource, :big, link: false %>
+      <% end %>
+      <%= f.input :avatar, label: "头 像" %>
+      <%= f.input :name, label: "名 号", autofocus: true %>
+      <%= f.input :domain, label: "我的域名" %>
 
-          <%= profile_form.input :gender, label: "性 别",
-                               collection: UserProfile::GENDER_TYPE_NAMES,
-                               value_method: :first,
-                               label_method: :last,
-                               include_blank: false %>
+      <%= f.simple_fields_for :profile do |profile_form| %>
+      <%= profile_form.input :homepage, label: "主 页" %>
+      <%= profile_form.input :location, label: "长居地" %>
 
-          <%= profile_form.input :description, label: "个人说明" %>
-          <div class="form-actions">
-            <%= f.button :submit, t(".update") %>
-          </div>
-        <% end %>
+      <%= profile_form.input :gender, label: "性 别",
+      collection: UserProfile::GENDER_TYPE_NAMES,
+      value_method: :first,
+      label_method: :last,
+      include_blank: false %>
 
+      <%= profile_form.input :description, label: "个人说明" %>
+      <div class="form-actions">
+        <%= f.button :submit, t(".update") %>
+      </div>
+      <% end %>
+
+
+      <h1 class="mt-3">账号</h1>
+      <%= f.input :email, required: true, disabled: true %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>
+        <%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %>
+      </p>
+      <% end %>
+      <%= f.input :password, autocomplete: "off", hint: t(".leave_blank_if_you_don_t_want_to_change_it"), required: false %>
+      <%= f.input :password_confirmation, required: false %>
+      <%= f.input :current_password, hint: t(".we_need_your_current_password_to_confirm_your_changes"), required: true %>
+
+      <div class="form-actions">
+        <%= f.button :submit, t(".update") %>
       </div>
 
-      <div class="col-md-4 offset-md-1">
-        <h1>账号</h1>
-          <%= f.input :email, required: true, disabled: true %>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>
-              <%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %>
-            </p>
-          <% end %>
-          <%= f.input :password, autocomplete: "off", hint: t(".leave_blank_if_you_don_t_want_to_change_it"), required: false %>
-          <%= f.input :password_confirmation, required: false %>
-          <%= f.input :current_password, hint: t(".we_need_your_current_password_to_confirm_your_changes"), required: true %>
+      <%= link_to t("devise.shared.links.back"), :back %>
 
-        <div class="form-actions">
-          <%= f.button :submit, t(".update") %>
-        </div>
-
-        <p><%= t(".unhappy") %> <%= link_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: t(".are_you_sure") }, method: :delete %></p>
-
-        <%= link_to t("devise.shared.links.back"), :back %>
-      </div>
     </div>
   <% end %>
 
