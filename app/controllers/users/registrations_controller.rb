@@ -70,6 +70,11 @@ before_action :configure_account_update_params, only: [:update]
     if params[:password].present? || params[:email] != resource.email
       resource.update_with_password(params)
     else
+      # 不能修改 email，在 update_without_password 已经 delete 了 password，
+      # 所以也不能修改密码。
+      params.delete(:email)
+      # 不用验证密码
+      params.delete(:current_password)
       resource.update_without_password(params)
     end
   end
