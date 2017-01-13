@@ -7,6 +7,8 @@
 # 主要是可以按需求正常运行，没有必要独立。实在满足不了，需要独立的话。只需要
 # 迁移数据库，并修改相关。工作量也不大。
 #
+# TODO 独立! Publication 只是能在 Project 里发布的内容,是创造的内容!
+#
 class Comment < ApplicationRecord
   include Publishable
 
