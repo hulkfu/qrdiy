@@ -6,7 +6,7 @@ module Relationable
   extend ActiveSupport::Concern
 
   included do
-    has_many :relations, as: :relationable
+    has_many :relations, as: :relationable, dependent: :destroy
 
     Relation::ACTION_TYPES.each do |action_type|
       # follow，like 等这个东西的用户

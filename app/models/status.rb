@@ -16,8 +16,8 @@ class Status < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  has_many :comments
-  has_many :notifications
+  has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # 默认最新的在前
   default_scope { order(id: :desc) }
