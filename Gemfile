@@ -46,6 +46,9 @@ gem 'ruby-pinyin'
 
 gem 'friendly_id', '~> 5.1.0'
 
+# soft delete
+# gem "paranoia", "~> 2.2"
+
 # cache
 gem 'dalli'
 

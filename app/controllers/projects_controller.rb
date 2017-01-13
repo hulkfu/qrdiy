@@ -56,12 +56,14 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1
   # DELETE /projects/1.json
+  # TODO soft delete
   def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'DIY 删除成功。' }
-      format.json { head :no_content }
-    end
+    # @project.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to projects_url, notice: 'DIY 删除成功。' }
+    #   format.json { head :no_content }
+    # end
+    redirect_to '/'
   end
 
   private

@@ -57,7 +57,8 @@ before_action :configure_account_update_params, only: [:update]
     end
 
     if resource.valid_password?(current_password)
-      super
+      # TODO soft delete it
+      # super
     else
       resource.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
       clean_up_passwords resource
