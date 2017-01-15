@@ -43,6 +43,10 @@ class Project < ApplicationRecord
     "project"
   end
 
+  def content_type
+    "project"
+  end
+
   def project
     self
   end

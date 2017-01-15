@@ -1,6 +1,6 @@
 <% if statusable.respond_to?(:content_type) %>
   <%= render "statuses/statusables/#{statusable.content_type.underscore}",
-    publication: statusable %>
+    contentable: statusable %>
 <% else %>
   <%# TODO: relation 的 view %>
   <%= statusable.try(:name) %>

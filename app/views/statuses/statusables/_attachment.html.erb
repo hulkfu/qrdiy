@@ -1,5 +1,5 @@
-<% attachment = publication.publishable %>
+<% attachment = contentable.publishable %>
 <div class="attachment">
-  <%= quote_content publication.content_html, class: "attachment" %>
-  <%= link_to attachment.file_name, publication_path(publication), "link-type": :file, "data-file-name": attachment.file_name, target: "_blank" %>
+  <%= quote_content contentable.content_html, class: "attachment" %>
+  <%= link_to attachment.file_name, publication_path(contentable), "link-type": :file, "data-file-name": attachment.file_name, target: "_blank" %>
 </div>
