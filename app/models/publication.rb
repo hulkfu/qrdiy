@@ -15,8 +15,6 @@ class Publication < ApplicationRecord
 
   belongs_to :publishable, polymorphic: true
 
-  after_create :generate_content_html
-
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
@@ -33,9 +31,8 @@ class Publication < ApplicationRecord
     publishable_type
   end
 
-  def generate_content_html
-    # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
-    update_attributes(content_html: publishable.content)
+  def content
+    publishable.content
   end
 
   # 创建 publishable，并关联创建其 publication

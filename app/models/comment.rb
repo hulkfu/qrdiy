@@ -23,13 +23,6 @@ class Comment < ApplicationRecord
                         squish: true, nullify: false
   validates :content, presence: true, length: 1..500
 
-  after_create :generate_content_html
-
-  def generate_content_html
-    # TODO content_html 存的是经过 html_pipline 处理后的代码：把 @，链接等 标示出来
-    update_attributes(content_html: self.content)
-  end
-
   def project
     commentable.try(:project)
   end
