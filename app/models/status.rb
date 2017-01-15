@@ -58,6 +58,7 @@ class Status < ApplicationRecord
 
     # 我的东西有人评论
     when Comment
+      # TODO 如果 commentable 不是个 status?
       commented_status = statusable.commentable
       notify_type = "comment"
       # 我的东西
@@ -113,6 +114,7 @@ class Status < ApplicationRecord
   def name
     # 如果是评论的 status，那么它的 name 就是评论的 status 的 statusable_name
     statusable.is_a?(Comment) ?
+      # TODO 如果 commentable 不是个 status 怎么办?
       statusable.commentable.statusable_name
       : statusable_name
   end

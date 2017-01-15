@@ -10,7 +10,7 @@
 # 迁移数据库，并修改相关。工作量也不大。
 #
 # 已经独立! Publication 只是能在 Project 里发布的内容,是创造的内容!
-#
+# 做完后发现还是有些工作量的，不过这也是再说难免的，工程就是发现跟想的不一样。
 class Comment < ApplicationRecord
   include Statusable    # 评论也会生成状态
   include Relationable
