@@ -43,6 +43,10 @@ class Project < ApplicationRecord
     "project"
   end
 
+  def project
+    self
+  end
+
   # Project 里只需要出现有用的东西，
   # 即 pubications 的发布，项目的创建，有人 follow 项目（好来欢迎）
   def statuses_to_show

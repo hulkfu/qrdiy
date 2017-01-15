@@ -15,11 +15,11 @@ module Statusable
 
   def create_status
     # FIXME 不显示 trix create attachment
-    # message 也没有 project_id
+    # message 也没有 project
     if user_id
       status = statuses.new(user_id: user_id,
         action_type: status_action_type)  # 判断是否定义了 action_type 方法
-      status.project_id = try(:project_id)
+      status.project = try(:project)
       status.save!
     end
   end

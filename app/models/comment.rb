@@ -30,8 +30,8 @@ class Comment < ApplicationRecord
     update_attributes(content_html: self.content)
   end
 
-  def project_id
-    commentable.try(:project_id)
+  def project
+    commentable.try(:project)
   end
 
   ##

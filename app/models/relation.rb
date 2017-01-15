@@ -21,12 +21,8 @@ class Relation < ApplicationRecord
     action_type
   end
 
-  def project_id
-    if relationable.is_a? Project
-      relationable.id
-    else
-      relationable.try(:project_id)
-    end
+  def project
+    relationable.try(:project)
   end
 
   # relaitonable 的 user
