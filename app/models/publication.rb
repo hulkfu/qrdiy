@@ -5,10 +5,10 @@
 class Publication < ApplicationRecord
   include Statusable
   include Relationable
+  include Contentable
 
-  PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件",
-    comment: "评论", message: "私信"}.freeze
-  REPLIES_TYPE_NAMES = PUBLISHABLE_TYPE_NAMES.except(:comment, :message).freeze
+  PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件"}.freeze
+  REPLIES_TYPE_NAMES = PUBLISHABLE_TYPE_NAMES.freeze
 
   belongs_to :user
   belongs_to :project
@@ -20,18 +20,17 @@ class Publication < ApplicationRecord
   # 默认最新的在前
   default_scope { order(created_at: :desc) }
 
-  scope :without_comments, -> { where.not(publishable_type: "Comment")}
 
   def name
     PUBLISHABLE_TYPE_NAMES[publishable_type.underscore.to_sym]
   end
 
-  def comment?
-    publishable_type == "Comment"
+  def status_action_type
+    "publication"
   end
 
-  def status_action_type
-    comment? ? "comment" : "publication"
+  def content_type
+    publishable_type
   end
 
   def generate_content_html

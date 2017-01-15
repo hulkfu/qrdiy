@@ -4,6 +4,8 @@
 # project 的动态列表里。也可以是 user follow 了另一个 user。
 class Status < ApplicationRecord
   include Relationable
+  include Commentable
+
   # actions 的 enum 顺序不能变，因为数据库是按这个记的，从 0 往后拍
   # status 的 action type，根据它生成 status view 或 判定它的类型
   ACTION_TYPE_NAMES = {publication: "发布", change: "更新", remove: "删除",
@@ -16,7 +18,6 @@ class Status < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   # 默认最新的在前
@@ -50,22 +51,19 @@ class Status < ApplicationRecord
     ## 发布东西
     when Publication
       publishable = statusable.publishable
-      case publishable
-      # 我的东西有人评论
-      when Comment
-        commented_status = publishable.status
-        notify_type = "comment"
-        # 我的东西
-        receiver = commented_status.user
-        receiver_ids << receiver.id if actor != receiver
-        # TODO: 我喜欢的东西
-
       # 在我的项目里发布内容
-      else
-        notify_type ="publication"
-        receiver = publishable.project.user
-        receiver_ids << receiver.id if actor != receiver
-      end
+      notify_type ="publication"
+      receiver = publishable.project.user
+      receiver_ids << receiver.id if actor != receiver
+
+    # 我的东西有人评论
+    when Comment
+      commented_status = statusable.commentable
+      notify_type = "comment"
+      # 我的东西
+      receiver = commented_status.user
+      receiver_ids << receiver.id if actor != receiver
+      # TODO: 我喜欢的东西
     when Project  # 创建 DIY
       # 不要通知
       return
@@ -98,6 +96,8 @@ class Status < ApplicationRecord
     case statusable
     when Publication
       statusable.name  # statusable 就是 publication
+    when Comment
+      "评论"
     when Project
       "DIY #{statusable.name}"
     when Relation
@@ -108,11 +108,12 @@ class Status < ApplicationRecord
     end
   end
 
-  # status 想显示的 name
+  # 这条 status 想显示的 name，会在 action_type 后面，比如：关注了某人，评论了某个图片
+  # 所以 comment 的 status 的 name 应该是评论的东西的
   def name
     # 如果是评论的 status，那么它的 name 就是评论的 status 的 statusable_name
-    statusable.is_a?(Publication) && statusable.publishable.is_a?(Comment) ?
-      statusable.publishable.status.statusable_name
+    statusable.is_a?(Comment) ?
+      statusable.commentable.statusable_name
       : statusable_name
   end
 end

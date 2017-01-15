@@ -51,6 +51,7 @@ class Project < ApplicationRecord
   end
 
   # 返回一个 status 在 project show 里的 page 页数
+  # TODO 如果没有 project 呢？
   def page_of_status(status)
     before_count = statuses_to_show.where("id > ?", status.id).count
     before_count / STATUSES_PER_PAGE + 1

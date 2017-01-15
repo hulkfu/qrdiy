@@ -24,11 +24,11 @@ class StatusesController < ApplicationController
       #
       when Project, User, Status
         redirect_to statusable.relationable
-      when Publication
-        redirect_to_publication statusable.relationable
+      when Publication, Comment
+        redirect_to_content statusable.relationable
       end
-    when Publication
-      redirect_to_publication statusable
+    when Publication, Comment
+      redirect_to_content statusable
     end
   end
 
@@ -38,7 +38,6 @@ class StatusesController < ApplicationController
 
   def destroy
     @status.destroy
-
     redirect_to :back
   end
 
@@ -49,18 +48,17 @@ class StatusesController < ApplicationController
     authorize @status
   end
 
-  # 跳转到 publication 的锚点
-  def redirect_to_publication(publication)
+  ##
+  # Publication, Comment
+  #
+  def redirect_to_content(content)
     project = @status.project
     # 分辨出 comment 的锚点
-    anchor = if publication.publishable.is_a? Comment
-      "comment-#{publication.publishable.id}"
-    else
-      "status-#{@status.id}"
-    end
+    anchor = content.is_a?(Comment) ? "comment-#{content.id}" : "status-#{@status.id}"
 
     redirect_to project_path(project,
       page: project.page_of_status(@status),  # 算出在 status 在 project show 的第几页
       anchor: anchor)
   end
+
 end

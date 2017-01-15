@@ -1,6 +1,6 @@
 ##
 # 可以发布状态。
-# 目前有： Project, Relation, Publication
+# 目前有： Project, Relation, Publication, Comment
 module Statusable
   extend ActiveSupport::Concern
 
