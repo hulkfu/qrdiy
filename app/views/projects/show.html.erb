@@ -1,6 +1,6 @@
 <%= render "shared/error_messages", target: @project %>
 
-<%= render "publications/new/form", project: @project %>
+<%= render "publications/new/form", project: @project if current_user == @project.user%>
 
 <%= render partial: "statuses/status", collection: @statuses %>
 

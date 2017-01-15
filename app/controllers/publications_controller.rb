@@ -13,6 +13,11 @@ class PublicationsController < ApplicationController
     begin
       if params[:project_id].present?
         @project = Project.find(params[:project_id])
+
+        # just for authorize
+        @publication = Publication.new(project: @project)
+        authorize @publication
+
         @publication = Publication.create_publishable!(params[:publishable_type],
           publishable_params,
           {user: current_user, project: @project})
