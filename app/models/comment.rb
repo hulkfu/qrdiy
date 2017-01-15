@@ -34,13 +34,6 @@ class Comment < ApplicationRecord
     commentable.try(:project)
   end
 
-  ##
-  # 评论的东西的 的 status
-  #
-  def status_of_commentable
-
-  end
-
   def status_action_type
     "comment"
   end
