@@ -13,6 +13,7 @@ class BaseUploader < CarrierWave::Uploader::Base
       #    current_path 在 store_dir 里。所以会生成一个不存在新的文件名。
       # 这就是 avatar 的 filename 要根据 store_dir 来定，保证了即使 recreate_versions 也不变。
       # 而直接 create 的时候，不会经历 save 这一步。
+      # TODO recreate_versions! 的处理
       name = Digest::MD5.hexdigest(File.dirname(current_path))
       "#{name}.#{file.extension.downcase}"
     end

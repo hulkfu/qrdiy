@@ -15,9 +15,11 @@ class AvatarUploader < BaseUploader
   end
 
   # 一个用户只有一个头像
-  def filename
-    "img.#{file.nil? ? 'png' : file.extension.downcase}"
-  end
+  # 不能用固定的名字，因为浏览器也会缓冲，会造成显示的图片不变
+  # def filename
+  #   name = "img"
+  #   "#{name}.#{file.nil? ? 'png' : file.extension.downcase}"
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
