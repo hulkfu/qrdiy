@@ -3,6 +3,6 @@
 <div class="image-array">
   <%= quote_content contentable.content_html, class: "image-array" %>
   <% image_array.each_with_index do |image, index| %>
-    <%= link_to image_tag(image.normal.url.to_s, class: "img-thumbnail"), publication_path(publication, index), remote: true %>
+    <%= link_to image_tag(image.normal.url.to_s, class: "img-thumbnail"), publication_path(contentable, index), remote: true %>
   <% end %>
 </div>
