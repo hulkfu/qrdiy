@@ -14,7 +14,7 @@ class SoloateComment < ActiveRecord::Migration[5.0]
     Comment.find_each do |c|
       c.commentable = c.status if c.status
       c.content_html = c.content
-      # should temp as publishable
+      # should temp as publishable, and belongs_to :status
       c.user = c.publication.user
       c.publication.delete
       c.save
