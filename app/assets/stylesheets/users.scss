@@ -11,3 +11,15 @@
     display: inline;
   }
 }
+
+.user-profile-list {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  li {
+    list-style-position:inside;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -6,12 +6,12 @@ class UserProfile < ApplicationRecord
   enum gender: GENDER_TYPES
 
   auto_strip_attributes :homepage,
-                        delete_whitespaces: true, nullify: false
+                        delete_whitespaces: true, nullify: true
   auto_strip_attributes :location, :description,
-                        squish: true, nullify: false
+                        squish: true, nullify: true
 
   validates :homepage, length: { maximum: 100 }, on: :update
-  validates :location, length: { maximum: 50 }, on: :update
+  validates :location, length: { maximum: 10 }, on: :update
   validates :gender, inclusion: GENDER_TYPES.map(&:to_s), on: :update
   validates :description, length: { maximum: 2000 }, on: :update
 

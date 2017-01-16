@@ -11,6 +11,14 @@
           <%= avatar_tag @user, :big, link: false %>
         </div>
         <div class="card-block">
+          <ul class="user-profile-list">
+            <li>常居: <%= @user.profile.try(:location) || "地球" %></li>
+            <li><%= @user.created_at.strftime('%Y-%m-%d') %> 加入</li>
+            <% if @user.profile.homepage.present? %>
+              <li>主页: <%= link_to @user.profile.try(:homepage), @user.profile.try(:homepage) %></li>
+            <% end %>
+          </ul>
+
           <%= relation_for @user, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
         </div>
       </div>

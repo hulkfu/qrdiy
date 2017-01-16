@@ -15,7 +15,7 @@ class User < ApplicationRecord
          :lastseenable
 
   has_one :profile, class_name: "UserProfile"
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile, update_only: true
 
   has_many :projects
   has_many :publications

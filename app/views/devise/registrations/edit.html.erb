@@ -17,7 +17,7 @@
 
       <%= f.simple_fields_for :profile do |profile_form| %>
       <%= profile_form.input :homepage, label: "主 页" %>
-      <%= profile_form.input :location, label: "长居地" %>
+      <%= profile_form.input :location, label: "常居地" %>
 
       <%= profile_form.input :gender, label: "性 别",
       collection: UserProfile::GENDER_TYPE_NAMES,
