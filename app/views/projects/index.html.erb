@@ -1,21 +1,25 @@
-<div class="projects-list">
-  <ul class="media-list">
-    <% @projects.each do |project| %>
-      <li class="media">
-        <div class="media-top">
-          <%= avatar_tag project, :big %>
-        </div>
-        <div class="media-body">
-          <div class="name">
-            <%= project.name %>
-          </div>
-          <div class="desc">
-            <%= project.desc %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<% cache @projects do %>
+  <div class="projects-list">
+    <ul class="media-list">
+      <% @projects.each do |project| %>
+        <% cache project do %>
+          <li class="media">
+            <div class="media-top">
+              <%= avatar_tag project, :big %>
+            </div>
+            <div class="media-body">
+              <div class="name">
+                <%= project.name %>
+              </div>
+              <div class="desc">
+                <%= project.desc %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 
-<%= will_paginate @projects %>
+  <%= will_paginate @projects %>
+<% end %>
