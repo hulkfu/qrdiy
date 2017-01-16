@@ -1,9 +1,9 @@
 <ul class="unstyled user-list">
   <% users.each do |user| %>
   	<% if user %>
-	    <li>
-        <%= avatar_tag user, :tiny %>
-	    </li>
+      <% cache user do %>
+        <li><%= avatar_tag user, :tiny %></li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>

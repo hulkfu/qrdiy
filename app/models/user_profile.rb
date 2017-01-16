@@ -1,5 +1,5 @@
 class UserProfile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, touch: true
 
   GENDER_TYPE_NAMES = {secret: '保密', female: '女', male: '男'}.freeze
   GENDER_TYPES = GENDER_TYPE_NAMES.keys.freeze

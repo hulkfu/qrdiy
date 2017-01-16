@@ -1,13 +1,15 @@
-<li class="media mover">
-  <div class="media-left">
-    <%= avatar_tag user, :small %>
-  </div>
-  <div class="media-body">
-    <div class="media-heading">
-      <%= link_to user.name, user_path(user) %>
+<% cache user do %>
+  <li class="media mover">
+    <div class="media-left">
+      <%= avatar_tag user, :small %>
     </div>
-    <div class="media-content text-muted">
-      <%= user.profile.try(:description) %>
+    <div class="media-body">
+      <div class="media-heading">
+        <%= link_to user.name, user_path(user) %>
+      </div>
+      <div class="media-content text-muted">
+        <%= user.profile.try(:description) %>
+      </div>
     </div>
-  </div>
-</li>
+  </li>
+<% end %>

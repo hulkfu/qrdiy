@@ -1,19 +1,21 @@
 <% if projects %>
   <ul class="unstyled projects-list-small media-list">
     <% projects.each do |project| %>
-      <li class="media mover">
-        <div class="media-left">
-          <%= avatar_tag(project, :small) %>
-        </div>
-        <div class="media-body">
-          <div class="media-heading">
-            <%= link_to project.name, project_path(project) %>
+      <% cache project do %>
+        <li class="media mover">
+          <div class="media-left">
+            <%= avatar_tag(project, :small) %>
           </div>
-          <div class="media-content text-muted">
-            <%= project.desc %>
+          <div class="media-body">
+            <div class="media-heading">
+              <%= link_to project.name, project_path(project) %>
+            </div>
+            <div class="media-content text-muted">
+              <%= project.desc %>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
