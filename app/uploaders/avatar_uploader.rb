@@ -16,8 +16,7 @@ class AvatarUploader < BaseUploader
 
   # 一个用户只有一个头像
   def filename
-    name = Digest::MD5.hexdigest(File.dirname(store_dir))
-    "#{name}.#{file.nil? ? 'png' : file.extension.downcase}"
+    "img.#{file.nil? ? 'png' : file.extension.downcase}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
