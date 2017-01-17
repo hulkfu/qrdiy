@@ -16,4 +16,14 @@ module CachesHelper
     users = User.where(id: comments.map(&:user_id).uniq)
     "comments/all-#{count}-#{max_updated_at}-#{cache_key_for_users(users)}"
   end
+
+  ##
+  # TODO 要考虑到所有会影响 status view 的因素：
+  # - status 自己
+  # - status.user
+  # - statusable
+  # - comments
+  def cache_key_for_status(status)
+
+  end
 end

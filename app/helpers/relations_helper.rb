@@ -1,9 +1,11 @@
 module RelationsHelper
+
   ##
   # 发生关系功能
   # 参数
   # relationable 可以发生关系的对象（Project, Publication, User)
   # opts
+  #  - TODO cache 为 true 时，异步 relation_for，页面加载完后才去异步显示
   #  - action_type 关系的类别
   #  - submit_name 显示的提交按钮的内容
   #  - show_count 是否显示发生关系的人数
