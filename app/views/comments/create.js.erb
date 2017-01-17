@@ -1,3 +1,6 @@
 $comments = $("#status-<%= @commentable.id %>").find(".comments")
-$comments.find("ul").append("<%=j render @comment %>")
+$comment = $("<%=j render @comment %>")
+// remove auth hidden，另一种思路是默认都显示 auth，然后再 hidden，但毕竟不显示的多。
+$comment.find(".auth").removeClass("hidden")
+$comments.find("ul").append($comment)
 $comments.find("#publishable_content").focus().val("")
