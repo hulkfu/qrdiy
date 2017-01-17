@@ -36,9 +36,8 @@
                                          create_button_html: fa_icon("heart-o") %>
           <% end %>
           <%= link_to "回应", new_status_comment_path(status), remote: true %>
-          <% if policy(status).destroy? %>
-            <%= link_to "删除", status, method: :delete, data: {confirm: t("confirm.delete") } %>
-          <% end %>
+          <%= link_to "删除", status, method: :delete, class: "auth hidden",
+              data: {confirm: t("confirm.delete"), "user-id" => "#{user.id}"  } %>
 
           <div class="comments">
             <%= render "comments/comments", comments: status.comments %>

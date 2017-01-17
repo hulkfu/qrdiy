@@ -3,7 +3,6 @@
   <%= avatar_tag user, :tiny %>
   <%= link_to user.name, user %>:
   <%= comment.content_html %>
-  <% if policy(comment).destroy? %>
-    <%= link_to ">删除", comment, class: "delete", remote: true, method: "delete", data:{ confirm: t("confirm.delete") } %>
-  <% end %>
+  <%= link_to ">删除", comment, class: "delete auth hidden", remote: true, method: "delete",
+      data:{ confirm: t("confirm.delete"), "user-id" => "#{user.id}" } %>
 </li>

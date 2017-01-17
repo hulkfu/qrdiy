@@ -7,6 +7,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= timeago_script_tag %>
+    <% if user_signed_in? %>
+      <meta name="current-user" data-id="<%= current_user.id %>">
+    <% end %>
     <%= render "layouts/statistics" %>
   </head>
 
