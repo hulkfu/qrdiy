@@ -1,5 +1,6 @@
 <% statusable = status.statusable %>
 <% user = status.user %>
+<% comments = status.comments %>
 <% is_show_project_name ||= false %>
 
 <% if statusable.present? %>
@@ -40,7 +41,7 @@
               data: {confirm: t("confirm.delete"), "user-id" => "#{user.id}"  } %>
 
           <div class="comments">
-            <%= render "comments/comments", comments: status.comments %>
+            <%= render "comments/comments", comments: comments %>
             <div id="comment-form"></div>
           </div>
         </div>
