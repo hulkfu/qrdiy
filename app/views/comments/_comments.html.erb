@@ -1,5 +1,7 @@
-<ul>
-  <% comments.each do |comment| %>
+<% cache cache_key_for_comments(comments) do %>
+  <ul>
+    <% comments.each do |comment| %>
     <%= render comment %>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+<% end %>

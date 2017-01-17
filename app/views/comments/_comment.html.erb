@@ -1,8 +1,10 @@
-<% user ||= comment.user %>
-<li id="comment-<%= comment.id %>" name="comment-<%= comment.id %>">
-  <%= avatar_tag user, :tiny %>
-  <%= link_to user.name, user %>:
-  <%= comment.content_html %>
-  <%= link_to ">删除", comment, class: "delete auth hidden", remote: true, method: "delete",
-      data:{ confirm: t("confirm.delete"), "user-id" => "#{user.id}" } %>
-</li>
+<% cache [comment, comment.user] do %>
+  <% user ||= comment.user %>
+  <li id="comment-<%= comment.id %>" name="comment-<%= comment.id %>">
+    <%= avatar_tag user, :tiny %>
+    <%= link_to user.name, user %>:
+    <%= comment.content_html %>
+    <%= link_to ">删除", comment, class: "delete auth hidden", remote: true, method: "delete",
+        data:{ confirm: t("confirm.delete"), "user-id" => "#{user.id}" } %>
+  </li>
+<% end %>
