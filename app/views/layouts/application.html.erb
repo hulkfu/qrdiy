@@ -10,6 +10,7 @@
     <% if user_signed_in? %>
       <meta name="current-user" data-id="<%= current_user.id %>">
     <% end %>
+    <meta name="controller" data-name="<%= controller.controller_name %>">
     <%= render "layouts/statistics" %>
   </head>
 

@@ -10,3 +10,10 @@ $ ->
   # 根据用户的 role，需要先在 meta 里加入 role 信息
   # role = $("meta[name='current-user']").data("role")
   # $("[data-role='#{role}']").removeClass("hidden")
+
+  ##
+  # status project name
+  #
+  controller = $("meta[name='controller']").data("name")
+  if controller is "projects"
+    $(".status-project-name").addClass("hidden")

@@ -92,6 +92,12 @@ class Status < ApplicationRecord
     ACTION_TYPE_NAMES[action_type.underscore.to_sym]
   end
 
+  # 用于 status 显示的 project，如果 status 是创建 project 的, 那么它的 status_project
+  # 就是第一个 project —— 趣人DIY网
+  def status_project
+    project? ? Project.first : self.project
+  end
+
   # 生成 status 的东西的 name
   def statusable_name
     case statusable
@@ -100,7 +106,7 @@ class Status < ApplicationRecord
     when Comment
       "评论"
     when Project
-      "DIY #{statusable.name}"
+      statusable.name
     when Relation
       # user 或 project 的 name
       # 或 status 的 statusable_name，因为可以和一个 status 发生关系，最好还是回到这里找到

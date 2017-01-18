@@ -1,7 +1,6 @@
 <% statusable = status.statusable %>
 <% user = status.user %>
 <% comments = status.comments %>
-<% is_show_project_name ||= false %>
 
 <% if statusable.present? %>
   <div class="status-item" id="status-<%= status.id %>" name="status-<%= status.id %>">
@@ -12,11 +11,15 @@
     <div class="status-main">
       <div class="status-item-head">
         <%= link_to user.name, user %>
-        <% if is_show_project_name && status.project && status.project.try(:name) != status.name %>
-          在 <%= link_to status.project.try(:name), project_path(status.project) %>
-        <% end %>
-        <%= "#{status.action_name}了 " %>
-        <%= link_to status.name, status, "data-turbolinks" => "false" %>
+
+        <span class="status-project-name">
+          在 <%= link_to status.status_project.try(:name), project_path(status.status_project) %>
+        </span>
+
+        <span>
+          <%= "#{status.action_name}了 " %>
+          <%= link_to status.name, status, "data-turbolinks" => "false" %>
+        </span>
       </div>
 
       <div class="status-item-body">
