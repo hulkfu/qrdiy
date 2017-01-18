@@ -8,6 +8,8 @@ module Publishable
   included do
     has_one :publication, as: :publishable, dependent: :destroy
 
+    after_update { publication.touch }
+
     # 映射 Publication 的关系，这样就不用每次先输入 publication 了
     %w(user project statuses content_html).each do |m|
       define_method m do
