@@ -1,4 +1,7 @@
-$ ->
+##
+# 因为使用了 Turbolink，需要在 Turbolink load 时执行，而不是 page ready 时
+#
+$(document).on 'turbolinks:load', ->
   $(".comments").on "mouseover mouseout", ".delete", ->
     $(this).parent().toggleClass("mover")
 

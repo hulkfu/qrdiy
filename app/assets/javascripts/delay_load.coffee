@@ -1,6 +1,6 @@
 ##
 # 延迟加载，为了方便 cache，即加快加载速度
-$ ->
+$(document).on 'turbolinks:load', ->
   ##
   # authorizations，根据 current-user meta 里用户 id 和 role 来判断是否有相应的权限。
   # 有的话，则显示当前内容。
