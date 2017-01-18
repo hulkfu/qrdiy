@@ -94,8 +94,8 @@ class Status < ApplicationRecord
 
   # 用于 status 显示的 project，如果 status 是创建 project 的, 那么它的 status_project
   # 就是第一个 project —— 趣人DIY网
-  def status_project
-    project? ? Project.first : self.project
+  def statusable_project
+    project? ? Project.first : (self.project || Project.first)
   end
 
   # 生成 status 的东西的 name

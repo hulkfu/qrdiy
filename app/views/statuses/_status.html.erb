@@ -13,7 +13,7 @@
         <%= link_to user.name, user %>
 
         <span class="status-project-name">
-          在 <%= link_to status.status_project.try(:name), project_path(status.status_project) %>
+          在 <%= link_to status.statusable_project.try(:name), project_path(status.statusable_project) %>
         </span>
 
         <span>
