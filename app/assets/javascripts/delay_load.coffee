@@ -13,7 +13,11 @@ $(document).on 'turbolinks:load', ->
 
   ##
   # status project name
+  # 比如，“在趣人网”
   #
   controller = $("meta[name='controller']").data("name")
   if controller is "projects"
     $(".status-project-name").addClass("hidden")
+
+  # 评论的 status 不能再被评论
+  $("[data-type='comment'].new-comment").addClass("hidden")

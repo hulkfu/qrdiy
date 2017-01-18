@@ -6,9 +6,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create!(commentable: @commentable,
+    @comment = Comment.new(commentable: @commentable,
       content: params[:publishable][:content],
       user: current_user)
+
+    authorize @comment
+    @comment.save
   end
 
   def destroy
