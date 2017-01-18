@@ -10,7 +10,11 @@
 
     <div class="status-main">
       <div class="status-item-head">
-        <%= link_to user.name, user %>
+
+        <% cache user do %>
+          <%= link_to user.name, user %>
+        <% end %>
+
 
         <span class="status-project-name">
           在 <%= link_to status.statusable_project.try(:name), project_path(status.statusable_project) %>
@@ -23,9 +27,11 @@
       </div>
 
       <div class="status-item-body">
-        <div class="content">
-          <%= render "statuses/content", statusable: statusable %>
-        </div>
+        <% cache statusable do %>
+          <div class="content">
+            <%= render "statuses/content", statusable: statusable %>
+          </div>
+        <% end %>
 
         <div class="actions">
           <span class="created_at">
