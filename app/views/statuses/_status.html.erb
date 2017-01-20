@@ -2,7 +2,7 @@
 <% user = status.user %>
 <% comments = status.comments %>
 
-<% cache [status, statusable, user, cache_key_for_comments(comments), :relation_v1] do %>
+<%# cache [status, statusable, user, cache_key_for_comments(comments), :relation_v1] do %>
 
   <% if statusable.present? %>
     <div class="status-item" id="status-<%= status.id %>" name="status-<%= status.id %>">
@@ -46,7 +46,7 @@
                                          button_class: "btn btn-link btn-sm",
                                          destroy_button_html: fa_icon("heart"),
                                          create_button_html: fa_icon("heart-o"),
-                                         cached: true, remote: true %>
+                                         cached: false, remote: false %>
 
             <%= link_to "回应", new_status_comment_path(status), remote: true, class: "new-comment", "data-type" => status.statusable.class.to_s.downcase %>
             <%= link_to "删除", status, method: :delete, class: "auth hidden",
@@ -61,4 +61,4 @@
       </div>
     </div>
   <% end %>
-<% end %>
+<%# end %>

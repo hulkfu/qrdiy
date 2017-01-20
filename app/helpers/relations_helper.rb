@@ -18,45 +18,53 @@ module RelationsHelper
     return "" if relationable.blank?
     return if relationable.is_a? Relation
 
-    remote = opts[:remote].present?
+    # 1. 处理 opts
+    cached = opts[:cached] == true
+    remote = opts[:remote] == true
 
-    count = ""
-    if !opts[:cached] && opts[:show_count]
+    count_html = content_tag(:span, class: "relation-count") {}
+    if !cached && opts[:show_count]
       c = relationable.send("who_#{opts[:action_type]}").count
-      count = " #{c}" if c > 0
+      count_html = content_tag(:span, class: "relation-count") { " #{c.to_s}" if c > 0 }
     end
 
-    # TODO: create 和 destroy 都显示，默认destroy hidden
-    content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}", class: "relation #{opts[:action_type]} #{opts[:class]}") do
-      # 不需要 cached，且用户已经登录，并且发生了关系
-      if !opts[:cached] && current_user && relation = current_user.send("#{opts[:action_type]}_relation", relationable)
-        content_tag(:span, class: "destroy") do
-          button_to relation, method: :delete, remote: remote, class: opts[:button_class] do
-            html = opts[:destroy_button_html] ?
-              opts[:destroy_button_html] :
-              "已#{opts[:submit_name]}"
-            raw "#{html}#{count.to_s}"
-          end
-        end
-      else
-        content_tag(:span, class: "create") do
-          form_for(Relation.new, remote: remote) do |f|
+    create_button_html = opts[:create_button_html] || opts[:submit_name]
+    destroy_button_html = opts[:destroy_button_html] || "已#{opts[:submit_name]}"
+
+    # 2. 生成 html
+    if cached  # 有缓存
+      content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}",
+        class: "relation #{opts[:action_type]} #{opts[:class]}",
+        "data-show-count" => opts[:show_count]) do
+          button_tag(remote: remote, class: opts[:button_class]) do
             html = ""
-            html << f.hidden_field(:action_type, value: opts[:action_type])
-            html << f.hidden_field(:relationable_type, value: relationable.class.name)
-            html << f.hidden_field(:relationable_id, value: relationable.id)
-
-            html << (button_tag type: "submit", name: "commit", class: opts[:button_class] do
-              button_html = opts[:create_button_html] ?
-                opts[:create_button_html] :
-                "#{opts[:submit_name]}"
-              raw(button_html).concat count.to_s
-            end) # button_tag
+            html << content_tag(:span, class: "create") { create_button_html }
+            html << content_tag(:span, class: "destroy hidden") { destroy_button_html }
+            html << count_html
             raw html
-          end # form_tag
-        end # create span
-
+          end
       end
-    end
+
+    else  # 不缓存
+      # 用户已经登录，并且发生了关系
+      content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}", class: "relation #{opts[:action_type]} #{opts[:class]}") do
+        if current_user && relation = current_user.send("#{opts[:action_type]}_relation", relationable)
+          render("relations/destroy_form",
+            relation: relation,
+            remote: remote,
+            button_class: opts[:button_class],
+            destroy_button_html: destroy_button_html.concat(count_html)
+          )
+        else
+          render("relations/create_form",
+            relationable: relationable,
+            remote: remote,
+            action_type: opts[:action_type],
+            button_class: opts[:button_class],
+            create_button_html: create_button_html.concat(count_html)
+          )
+        end
+      end # relation div
+    end # cache
   end
 end

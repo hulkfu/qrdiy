@@ -1,0 +1,11 @@
+<span class="create">
+  <%= form_for(Relation.new, remote: remote) do |f| %>
+    <%= f.hidden_field :action_type, value: action_type %>
+    <%= f.hidden_field :relationable_type, value: relationable.class.name %>
+    <%= f.hidden_field :relationable_id, value: relationable.id %>
+
+    <%= button_tag type: "submit", name: "commit", class: button_class do %>
+      <%= create_button_html %>
+    <% end %>
+  <% end %>
+</span>

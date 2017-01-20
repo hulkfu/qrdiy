@@ -1,0 +1,7 @@
+<span class="destroy">
+  <%= form_for relation, method: :delete, remote: remote do %>
+    <%= button_tag type: "submit", name: "commit", class: button_class do %>
+      <%= destroy_button_html %>
+    <% end %>
+  <% end %>
+</span>
