@@ -13,9 +13,12 @@ module RelationsHelper
   #  - button_class 显示的按钮的 class
   #  - create_button_html   创建关系的 html
   #  - destroy_button_html  断绝关系的 thml
+  #  - remote  是否 ajax
   def relation_for(relationable, opts={})
     return "" if relationable.blank?
     return if relationable.is_a? Relation
+
+    remote = opts[:remote].present?
 
     count = ""
     if !opts[:cached] && opts[:show_count]
@@ -23,11 +26,12 @@ module RelationsHelper
       count = " #{c}" if c > 0
     end
 
-    content_tag(:div, class: "relation #{opts[:action_type]} #{opts[:class]}") do
+    # TODO: create 和 destroy 都显示，默认destroy hidden
+    content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}", class: "relation #{opts[:action_type]} #{opts[:class]}") do
       # 不需要 cached，且用户已经登录，并且发生了关系
       if !opts[:cached] && current_user && relation = current_user.send("#{opts[:action_type]}_relation", relationable)
         content_tag(:span, class: "destroy") do
-          button_to relation, method: :delete, class: opts[:button_class] do
+          button_to relation, method: :delete, remote: remote, class: opts[:button_class] do
             html = opts[:destroy_button_html] ?
               opts[:destroy_button_html] :
               "已#{opts[:submit_name]}"
@@ -36,7 +40,7 @@ module RelationsHelper
         end
       else
         content_tag(:span, class: "create") do
-          form_for(Relation.new) do |f|
+          form_for(Relation.new, remote: remote) do |f|
             html = ""
             html << f.hidden_field(:action_type, value: opts[:action_type])
             html << f.hidden_field(:relationable_type, value: relationable.class.name)
