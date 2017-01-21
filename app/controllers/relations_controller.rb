@@ -12,7 +12,7 @@ class RelationsController < ApplicationController
     respond_to do |format|
       if @relation.save
         format.html {redirect_to (request.referer || root_path), notice: "已#{@relation.desc}"}
-        format.js
+        format.js {render "update"}
       end
     end
   end
@@ -31,8 +31,15 @@ class RelationsController < ApplicationController
   # 删除 relation
   #
   def destroy
+    authorize @relation
     @relation.destroy
-    redirect_to (request.referer || root_path), notice: "已取消#{@relation.desc}"
+
+    respond_to do |format|
+      if @relation.save
+        format.html {redirect_to (request.referer || root_path), notice: "已取消#{@relation.desc}"}
+        format.js {render "update"}
+      end
+    end
   end
 
   private

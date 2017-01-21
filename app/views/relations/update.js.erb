@@ -1,2 +1,6 @@
-// TODO: 更新 relation 的状态，通过数据更新。因为 view 都在了。
-$("#relation-#{relationable.class.name}-#{relationable.id}")
+
+<% relationable = @relation.relationable %>
+$('#<%= "relation-#{relationable.class.name}-#{relationable.id}" %>').replaceWith(
+  '<%=j render "relations/#{@relation.action_type}_#{relationable.class.to_s.downcase}",
+    relationable: relationable %>'
+)
