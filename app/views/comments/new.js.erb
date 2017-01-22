@@ -1,3 +1,3 @@
-$commenForm = $("#status-<%= @commentable.id %>").find("#comment-form")
-$commenForm.html("<%=j render 'form', status: @commentable %>")
-$commenForm.find("#publishable_content").focus()
+$commentForm = $("#status-<%= @commentable.id %>").find("#comment-form")
+$commentForm.html("<%=j render 'form', status: @commentable %>")
+$commentForm.find("#publishable_content").focus()
