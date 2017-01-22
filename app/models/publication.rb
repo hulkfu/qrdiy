@@ -7,7 +7,7 @@ class Publication < ApplicationRecord
   include Relationable
   include Contentable
 
-  PUBLISHABLE_TYPE_NAMES = {idea: "想法", image_array: "图片", attachment: "文件"}.freeze
+  PUBLISHABLE_TYPE_NAMES = {idea: "状态", image_array: "图片", attachment: "文件"}.freeze
   REPLIES_TYPE_NAMES = PUBLISHABLE_TYPE_NAMES.freeze
 
   belongs_to :user
