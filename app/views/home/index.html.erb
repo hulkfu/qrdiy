@@ -6,8 +6,8 @@
   <% if !current_user %>
     <div class="sign-in">
       <%= simple_form_for(:user, :url => session_path(:user)) do |f| %>
-        <%= f.input :email, label: false %>
-        <%= f.input :password, label: false %>
+        <%= f.input :email, label: false, placeholder: "请输入邮箱" %>
+        <%= f.input :password, label: false, placeholder: "请输入密码" %>
         <%= render "shared/captcha" %>
         <div>
           <%= f.check_box :remember_me %>
