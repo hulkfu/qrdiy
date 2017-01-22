@@ -19,7 +19,7 @@
             <% end %>
           </ul>
 
-          <%= relation_for @user, action_type: :follow, submit_name: "关注", button_class: "btn btn-success btn-sm" %>
+          <%= render "relations/follow_user", relationable: @user %>
         </div>
       </div>
     </div>

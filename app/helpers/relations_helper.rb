@@ -28,8 +28,8 @@ module RelationsHelper
       count_html = content_tag(:span, class: "relation-count") { " #{c.to_s}" if c > 0 }
     end
 
-    create_button_html = opts[:create_button_html] || opts[:submit_name]
-    destroy_button_html = opts[:destroy_button_html] || "已#{opts[:submit_name]}"
+    create_button_html = content_tag(:span) {opts[:create_button_html] || opts[:submit_name]}
+    destroy_button_html = content_tag(:span) {opts[:destroy_button_html] || "已#{opts[:submit_name]}"}
 
     # 2. 生成 html
     if cached  # 有缓存

@@ -18,8 +18,7 @@
       </div>
       <div class="card-block">
         <div class="btn-group" role="group">
-          <%= relation_for @project, action_type: :follow, submit_name: "关注",
-            button_class: "btn btn-success btn-sm" %>
+          <%= render "relations/follow_project", relationable: @project %>
         </div>
       </div>
       <div class="card-block">
