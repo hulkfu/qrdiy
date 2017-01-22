@@ -20,15 +20,16 @@
         <div class="btn-group" role="group">
           <%= render "relations/follow_project", relationable: @project %>
         </div>
-      </div>
-      <div class="card-block">
-        <p class="card-text">
-          <%= @project.description %>
-        </p>
+
         <% if policy(@project).edit? %>
           <%= link_to "编辑", edit_project_path(@project),
             class: "btn btn-secondary btn-sm" %>
         <% end %>
+
+        <p class="card-text">
+          <%= @project.description %>
+        </p>
+
       </div>
     </div>
   </div>

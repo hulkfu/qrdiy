@@ -3,3 +3,7 @@
 <%= render 'form', project: @project %>
 
 <%= link_to '返回', @project %>
+
+<% content_for "secondary-content" do %>
+  来和大家分享吧！
+<% end %>
