@@ -2,7 +2,7 @@
 <% user = status.user %>
 <% comments = status.comments %>
 
-<%# cache [status, statusable, user, cache_key_for_comments(comments), :relation_v1] do %>
+<% cache [status, statusable, user, cache_key_for_comments(comments), :relation_v1] do %>
 
   <% if statusable.present? %>
     <div class="status-item" id="status-<%= status.id %>" name="status-<%= status.id %>">
@@ -56,4 +56,4 @@
       </div>
     </div>
   <% end %>
-<%# end %>
+<% end %>
