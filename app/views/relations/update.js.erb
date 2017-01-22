@@ -1,6 +1,0 @@
-
-<% relationable = @relationable || @relation.relationable %>
-$('#<%= "relation-#{relationable.class.name}-#{relationable.id}" %>').replaceWith(
-  '<%=j render "relations/#{@relation.action_type}_#{relationable.class.to_s.downcase}",
-    relationable: relationable %>'
-)

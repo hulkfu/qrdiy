@@ -1,11 +1,17 @@
 module RelationsHelper
+  ##
+  # 为 cache 提供的占位 div，load 后 ajax 更新
+  #
+  def relation_tag_for_cache(relationable, action_type)
+    content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}",
+      class: "cache-relation", "data-action-type" => action_type) {}
+  end
 
   ##
   # 发生关系功能
   # 参数
   # relationable 可以发生关系的对象（Project, Publication, User)
   # opts
-  #  - TODO cached 为 true 时，异步 relation_tag，页面加载完后才去异步显示
   #  - action_type 关系的类别
   #  - submit_name 显示的提交按钮的内容
   #  - show_count 是否显示发生关系的人数
@@ -32,39 +38,24 @@ module RelationsHelper
     destroy_button_html = content_tag(:span) {opts[:destroy_button_html] || "已#{opts[:submit_name]}"}
 
     # 2. 生成 html
-    if cached  # 有缓存
-      content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}",
-        class: "relation #{opts[:action_type]} #{opts[:class]}",
-        "data-show-count" => opts[:show_count]) do
-          button_tag(remote: remote, class: opts[:button_class]) do
-            html = ""
-            html << content_tag(:span, class: "create") { create_button_html }
-            html << content_tag(:span, class: "destroy hidden") { destroy_button_html }
-            html << count_html
-            raw html
-          end
+    # 用户已经登录，并且发生了关系
+    content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}", class: "relation #{opts[:action_type]} #{opts[:class]}") do
+      if current_user && relation = current_user.send("#{opts[:action_type]}_relation", relationable)
+        render("relations/destroy_form",
+          relation: relation,
+          remote: remote,
+          button_class: opts[:button_class],
+          destroy_button_html: destroy_button_html.concat(count_html)
+        )
+      else
+        render("relations/create_form",
+          relationable: relationable,
+          remote: remote,
+          action_type: opts[:action_type],
+          button_class: opts[:button_class],
+          create_button_html: create_button_html.concat(count_html)
+        )
       end
-
-    else  # 不缓存
-      # 用户已经登录，并且发生了关系
-      content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}", class: "relation #{opts[:action_type]} #{opts[:class]}") do
-        if current_user && relation = current_user.send("#{opts[:action_type]}_relation", relationable)
-          render("relations/destroy_form",
-            relation: relation,
-            remote: remote,
-            button_class: opts[:button_class],
-            destroy_button_html: destroy_button_html.concat(count_html)
-          )
-        else
-          render("relations/create_form",
-            relationable: relationable,
-            remote: remote,
-            action_type: opts[:action_type],
-            button_class: opts[:button_class],
-            create_button_html: create_button_html.concat(count_html)
-          )
-        end
-      end # relation div
-    end # cache
+    end # relation div
   end
 end

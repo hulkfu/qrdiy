@@ -12,7 +12,7 @@ class RelationsController < ApplicationController
     respond_to do |format|
       if @relation.save
         format.html {redirect_to (request.referer || root_path), notice: "已#{@relation.desc}"}
-        format.js {render "update"}
+        format.js {render "refresh"}
       end
     end
   end
@@ -22,9 +22,10 @@ class RelationsController < ApplicationController
   # 有多少人和它发生关系。
   # 而这时 view 的状态是要初始的没有一个人发生关系的状态，所有有 create 里 params
   #
-  def update
+  def refresh
     @relationable = params[:relationable_type].constantize.find(
       params[:relationable_id])
+    render "refresh", locals: { action_type: params[:action_type] }
   end
 
   ##
@@ -37,7 +38,7 @@ class RelationsController < ApplicationController
     respond_to do |format|
       if @relation.save
         format.html {redirect_to (request.referer || root_path), notice: "已取消#{@relation.desc}"}
-        format.js {render "update"}
+        format.js {render "refresh"}
       end
     end
   end
@@ -45,7 +46,7 @@ class RelationsController < ApplicationController
   private
 
     def set_relation
-      @relation = authorize Relation.find(params[:id])
+      @relation = Relation.find(params[:id])
     end
 
     def relation_params

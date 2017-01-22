@@ -41,7 +41,7 @@
             </span>
 
             <%# 这里是和 status 发生关系，这样便于从 notification 那里跳到这个status %>
-            <%= render "relations/like_status", relationable: status %>
+            <%= relation_tag_for_cache status, :like %>
 
             <%= link_to "回应", new_status_comment_path(status), remote: true, class: "new-comment", "data-type" => status.statusable.class.to_s.downcase %>
             <%= link_to "删除", status, method: :delete, class: "auth hidden",

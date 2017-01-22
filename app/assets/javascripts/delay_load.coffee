@@ -22,4 +22,14 @@ $(document).on 'turbolinks:load', ->
   # 评论的 status 不能再被评论
   $("[data-type='comment'].new-comment").addClass("hidden")
 
-  # TODO 更新 relation 的状态，一开始都是初始状态的
+  # 更新 cache relation 的状态，一开始只有占位 div
+  $(".cache-relation").each ->
+    $.ajax({
+      url: "/relations/refresh",
+      type: "get",
+      data: {
+        'relationable_type': this.id.split("-")[1],
+        'relationable_id': this.id.split("-")[2],
+        'action_type': this.getAttribute("data-action-type")
+      }
+    })
