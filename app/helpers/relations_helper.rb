@@ -5,7 +5,7 @@ module RelationsHelper
   # 参数
   # relationable 可以发生关系的对象（Project, Publication, User)
   # opts
-  #  - TODO cached 为 true 时，异步 relation_for，页面加载完后才去异步显示
+  #  - TODO cached 为 true 时，异步 relation_tag，页面加载完后才去异步显示
   #  - action_type 关系的类别
   #  - submit_name 显示的提交按钮的内容
   #  - show_count 是否显示发生关系的人数
@@ -14,7 +14,7 @@ module RelationsHelper
   #  - create_button_html   创建关系的 html
   #  - destroy_button_html  断绝关系的 thml
   #  - remote  是否 ajax
-  def relation_for(relationable, opts={})
+  def relation_tag(relationable, opts={})
     return "" if relationable.blank?
     return if relationable.is_a? Relation
 
