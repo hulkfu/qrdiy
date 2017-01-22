@@ -3,7 +3,7 @@ module RelationsHelper
   # 为 cache 提供的占位 div，load 后 ajax 更新
   #
   def relation_tag_for_cache(relationable, action_type)
-    content_tag(:div, id: "relation-#{relationable.class.name}-#{relationable.id}",
+    content_tag(:span, id: "relation-#{relationable.class.name}-#{relationable.id}",
       class: "cache-relation", "data-action-type" => action_type) {}
   end
 
