@@ -140,3 +140,14 @@ img {
 .hidden {
   display: none !important;
 }
+
+.rucaptcha {
+  position: relative;
+}
+
+.rucaptcha-image {
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  width: 82px;
+}
