@@ -9,9 +9,9 @@ class RefactorUserAndUserProfilt < ActiveRecord::Migration[5.0]
 
     User.find_each do |u|
       %w(name domain).each do |k|
-        u.send("#{k}=", u.profile.send(k))
+        u.send("#{k}=", u.profile.send(k)) if u && u.try(:profile)
       end
-      if file = u.profile.try(:avatar).try(:file).try(:file)
+      if file = u.try(:profile).try(:avatar).try(:file).try(:file)
         File.open(file) do |f|
           u.avatar = f || ""
         end
