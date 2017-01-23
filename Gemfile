@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#
+gem 'sprockets', '3.7.0'
+
 # basic
 gem 'devise'
 gem 'devise-i18n'
