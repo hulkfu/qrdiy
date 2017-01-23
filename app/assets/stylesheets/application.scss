@@ -20,13 +20,10 @@
  @import "font-awesome";
  @import "trix";
 
-$navbar-height: 46px;
-
 body {
   font: 12px Helvetica,Arial,sans-serif;
   overflow: auto;
 }
-
 
 a {
   &:hover {
@@ -100,8 +97,6 @@ blockquote {
     float: right;
     display: inline-block;
     color: #666;
-    line-height: $navbar-height;
-    height: $navbar-height;
 
     .notification-count {
       .fa {
@@ -115,17 +110,14 @@ blockquote {
     }
 
     #login-join {
+      padding-top: 5px;
+      a { color: #666666; }
       .first {
         padding: 3px;
         border: 1px solid $active-color;
         color: $active-color;
         border-radius: 4px;
       }
-    }
-
-    a {
-      line-height: 20px;
-      color: #666666;
     }
   }
 }
