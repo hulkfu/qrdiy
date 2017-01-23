@@ -57,7 +57,7 @@ gem 'rqrcode'
 
 # 存储
 gem 'dragonfly', '~> 1.0.12'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
 gem 'file_validators'
 gem 'mini_magick'
 
@@ -69,8 +69,8 @@ gem 'tether-rails'
 gem 'simple_form'
 
 # 处理和验证
-gem 'client_side_validations', git: 'https://github.com/DavyJonesLocker/client_side_validations', branch: 'rails5'
-gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form', branch: 'rails5'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 gem "auto_strip_attributes", "~> 2.1"   # before validate 处理 attribute
 # gem 'attribute_normalizer'  # 处理传入的 attribute
 
