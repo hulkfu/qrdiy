@@ -1,5 +1,4 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
 
 set :application, 'qrdiy.com'
 set :repo_url, 'git@bitbucket.org:phun/qrdiy.com.git'
