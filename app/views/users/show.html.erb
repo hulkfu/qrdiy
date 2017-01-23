@@ -1,52 +1,49 @@
+<div class="col-md-3">
+  <div class="section">
+    <div class="border-none card text-xs-center ">
+      <div class="card-block">
+        <h1 class="card-title"><%= @user.name %></h1>
+        <h6 class="card-subtitle text-muted"><%= @user.profile.try(:description) %></h6>
+      </div>
+      <div class="card-image-top">
+        <%= avatar_tag @user, :big, link: false %>
+      </div>
+      <div class="card-block">
+        <ul class="user-profile-list">
+          <li>常居: <%= @user.profile.try(:location) || "地球" %></li>
+          <li><%= @user.created_at.strftime('%Y-%m-%d') %> 加入</li>
+          <% if @user.profile.homepage.present? %>
+            <li>主页: <%= link_to @user.profile.try(:homepage), @user.profile.try(:homepage) %></li>
+          <% end %>
+        </ul>
 
-<div class="user-homepage">
-  <div class="col-md-3">
-    <div class="section">
-      <div class="border-none card text-xs-center ">
-        <div class="card-block">
-          <h1 class="card-title"><%= @user.name %></h1>
-          <h6 class="card-subtitle text-muted"><%= @user.profile.try(:description) %></h6>
-        </div>
-        <div class="card-image-top">
-          <%= avatar_tag @user, :big, link: false %>
-        </div>
-        <div class="card-block">
-          <ul class="user-profile-list">
-            <li>常居: <%= @user.profile.try(:location) || "地球" %></li>
-            <li><%= @user.created_at.strftime('%Y-%m-%d') %> 加入</li>
-            <% if @user.profile.homepage.present? %>
-              <li>主页: <%= link_to @user.profile.try(:homepage), @user.profile.try(:homepage) %></li>
-            <% end %>
-          </ul>
-
-          <%= render "relations/follow_user", relationable: @user %>
-        </div>
+        <%= render "relations/follow_user", relationable: @user %>
       </div>
     </div>
-
-    <div class="section">
-      <h2>我的 DIY</h2>
-      <%= render "projects/projects_list_small", projects: @user.projects %>
-    </div>
-
-    <div class="section">
-      <h2>我关注的 DIY</h2>
-      <%= render "projects/projects_list_small", projects: @user.related_projects("follow") %>
-    </div>
-
-    <div class="section">
-      <h2>我关注的用户</h2>
-      <%= render "users/users_list_tiny", users: @user.related_users("follow") %>
-    </div>
-
-    <div class="section">
-      <h2>关注我的用户</h2>
-      <%= render "users/users_list_tiny", users: @user.who_follow %>
-    </div>
   </div>
 
-  <div class="col-md-7">
-    <%= render partial: "statuses/status", collection: @statuses %>
-    <%= will_paginate @statuses %>
+  <div class="section">
+    <h2>我的 DIY</h2>
+    <%= render "projects/projects_list_small", projects: @user.projects %>
   </div>
+
+  <div class="section">
+    <h2>我关注的 DIY</h2>
+    <%= render "projects/projects_list_small", projects: @user.related_projects("follow") %>
+  </div>
+
+  <div class="section">
+    <h2>我关注的用户</h2>
+    <%= render "users/users_list_tiny", users: @user.related_users("follow") %>
+  </div>
+
+  <div class="section">
+    <h2>关注我的用户</h2>
+    <%= render "users/users_list_tiny", users: @user.who_follow %>
+  </div>
+</div>
+
+<div class="col-md-7">
+  <%= render partial: "statuses/status", collection: @statuses %>
+  <%= will_paginate @statuses %>
 </div>
