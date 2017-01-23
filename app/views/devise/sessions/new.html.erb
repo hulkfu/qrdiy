@@ -11,8 +11,9 @@
 
     <div class="form-actions">
       <%= f.button :submit, t(".sign_in"), class: "btn btn-success" %>
+            <%= link_to "注 册", new_user_registration_path, class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <%= link_to "忘记密码", new_password_path(resource_name) %>
 </div>
