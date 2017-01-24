@@ -146,9 +146,10 @@ shared文件夹：
 - database.yml
 - secret.yml
 
+
 production SECRET_KEY_BASE，使用 rails secret 生成。
 
-也可用ENV从环境读。
+变量从ENV读，使用 .rbenv-vars 文件来配着，它是 rbenv 的一个插件，能自动把 .rbenv-vars 里的文件 export 到 环境里。
 
 现在是第一次部署会提升找不到上述文件，然后在Server里目录里去创建，应该能更好的方法的，反正也只用一次。
 

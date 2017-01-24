@@ -10,6 +10,7 @@
 # Ignore config
 /config/database.yml
 /config/config.yml
+.rbenv-vars
 
 # Ignore all logfiles and tempfiles.
 /log/*
