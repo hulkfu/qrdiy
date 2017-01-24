@@ -45,7 +45,7 @@ server 'qrdiy.com', user: 'deploy', roles: %w{app db web}
   #  keys: %w(/home/rlisowski/.ssh/id_rsa),
   #  forward_agent: false,
   #  auth_methods: %w(password),
-   port: 7777
+   port: 22
  }
 #
 # The server-based syntax can be used to override options:
