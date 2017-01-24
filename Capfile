@@ -30,7 +30,7 @@ Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 # config/deploy.rb
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.3.0'
+set :rbenv_ruby, '2.4.0'
 
 # in case you want to set ruby version from the file:
 # set :rbenv_ruby, File.read('.ruby-version').strip
