@@ -11,8 +11,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :lastseenable
+         :recoverable, :rememberable, :validatable,
+         :trackable, :lastseenable
 
   has_one :profile, class_name: "UserProfile"
   accepts_nested_attributes_for :profile, update_only: true
@@ -51,6 +51,7 @@ class User < ApplicationRecord
   # TODO 第三方登录，获得名号
   def create_others
     # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
+
     email_name = email.split('@').first
     tmp_name = "qrdiy_#{email_name}_#{id}"
     self.name = tmp_name
