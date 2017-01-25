@@ -109,7 +109,7 @@ group :development do
 
   gem "capistrano", "~> 3.6"
   gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-passenger'
+  gem 'capistrano3-puma'
   gem 'capistrano-rails', '~> 1.1'
 end
 

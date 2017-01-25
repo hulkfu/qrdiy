@@ -75,7 +75,7 @@ Pundit 里权限，需要使用 current_user 来判断当前用户是否具有�
 - Ruby 2.3.0
 - Linux Ubuntu 16.04
 - Nginx
-- Passenger
+- Puma
 - rbenv
 - PostgreSQL 9.5
 - imagemagick     letter_avatar 用，carrierwave 用MiniMagick修改图片尺寸
@@ -129,15 +129,7 @@ brew install memcached --with-sasl
 ```
 
 # Deploy
-使用Capistrano 3 部署，并用了相关gem：
-
-```rb
-require 'capistrano/rbenv'
-require 'capistrano/bundler'
-require 'capistrano/rails/assets'
-require 'capistrano/rails/migrations'
-require 'capistrano/passenger'
-```
+使用Capistrano 3 部署，并用了相关gem
 
 ## 配置
 
