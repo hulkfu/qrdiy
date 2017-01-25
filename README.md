@@ -129,7 +129,7 @@ brew install memcached --with-sasl
 ```
 
 # Deploy
-使用Capistrano 3 部署，并用了相关gem
+使用Capistrano 3 部署，app server 用的 puma，反向代码服务器是 Nginx。
 
 ## 配置
 
@@ -137,6 +137,7 @@ shared文件夹：
 
 - database.yml
 - secret.yml
+- puma.rb
 
 
 production SECRET_KEY_BASE，使用 rails secret 生成。
