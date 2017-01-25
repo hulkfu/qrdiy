@@ -20,7 +20,7 @@ $(document).on 'turbolinks:load', ->
     $(".status-project-name").addClass("hidden")
 
   # 评论的 status 不能再被评论
-  $("[data-type='comment'].new-comment").addClass("hidden")
+  $("[data-action-type='comment']").find(".new-comment").addClass("hidden")
 
   # 更新 cache relation 的状态，一开始只有占位 div
   $(".cache-relation").each ->
