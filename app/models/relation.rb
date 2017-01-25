@@ -9,6 +9,8 @@ class Relation < ApplicationRecord
   enum action_type: ACTION_TYPES
 
   POSITIVE_RELATIONS = %w(follow like praise)
+  # 过滤可以发生关系的东西，就是 include relationable 的类
+  ACCEPT_RELATIONABLE_TYPES = %w(User Project Publication Status Comment)
 
   belongs_to :user
   belongs_to :relationable, polymorphic: true

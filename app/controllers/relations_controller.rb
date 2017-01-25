@@ -24,9 +24,13 @@ class RelationsController < ApplicationController
   # 而这时 view 的状态是要初始的没有一个人发生关系的状态，所有有 create 里 params
   #
   def refresh
-    @relationable = params[:relationable_type].constantize.find(
-      params[:relationable_id])
-    render "refresh", locals: { action_type: params[:action_type] }
+    relationable_type = params[:relationable_type].to_s
+    if Relation::ACCEPT_RELATIONABLE_TYPES.include? relationable_type
+      @relationable = relationable_type.constantize.find(params[:relationable_id])
+      render "refresh", locals: { action_type: params[:action_type] }
+    else
+      render_404
+    end
   end
 
   ##
