@@ -197,20 +197,12 @@ $footer-height: 58px;
   background-color: #383737;
   text-align: left;
 
-  .footer-content {
-
-    ul {
-      margin: 0;
-      padding: 0;
-      display: block;
-      li {
-        margin-right: 2em;
-        display: inline;
-      }
-    }
-
-    .copy {
-      float: right;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      margin-right: 2em;
+      display: inline;
     }
   }
 }
