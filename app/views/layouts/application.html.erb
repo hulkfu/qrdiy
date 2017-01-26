@@ -2,15 +2,17 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "趣人DIY" %></title>
+    <meta name="description" content="趣人DIY网，记录和分享DIY的过程" />
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= timeago_script_tag %>
     <% if user_signed_in? %>
-      <meta name="current-user" data-id="<%= current_user.id %>">
+      <meta name="current-user" data-id="<%= current_user.id %>" />
     <% end %>
-    <meta name="controller" data-name="<%= controller.controller_name %>">
+    <meta name="controller" data-name="<%= controller.controller_name %>" />
     <%= render "layouts/statistics" %>
   </head>
 
