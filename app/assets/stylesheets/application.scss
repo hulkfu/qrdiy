@@ -94,6 +94,11 @@ blockquote {
   padding: 0;
   font-size: 1rem;
 
+  border-radius: 0;
+  border-bottom: solid;
+  border-bottom-color: $primary-color;
+  border-bottom-width: 2px;
+
   .navbar-brand {
     color: $primary-color;
   }
@@ -125,11 +130,6 @@ blockquote {
       }
     }
   }
-}
-
-.nav-bottom-line {
-  background-color: $active-color;
-  height: 2px;
 }
 
 .sub-nav {
@@ -168,6 +168,14 @@ blockquote {
   }
 }
 
+.wrapper {
+  margin-top: 60px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  // margin: 0 auto -$footer-height; /* the bottom margin is the negative value of the footer's height */
+}
+
 #rails-flash {
 }
 
@@ -181,13 +189,6 @@ blockquote {
 
 // http://ryanfait.com/resources/footer-stick-to-bottom-of-page/
 $footer-height: 58px;
-
-.wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  // margin: 0 auto -$footer-height; /* the bottom margin is the negative value of the footer's height */
-}
 
 .footer {
   color: #7a7d7f;
