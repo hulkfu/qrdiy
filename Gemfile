@@ -70,6 +70,7 @@ gem 'autoprefixer-rails'
 gem "font-awesome-rails"
 gem 'tether-rails'
 gem 'simple_form'
+gem "chartkick"   # 图表
 
 # 处理和验证
 gem 'client_side_validations'

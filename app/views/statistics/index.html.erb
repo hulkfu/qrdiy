@@ -1,0 +1,19 @@
+<style>
+  .users-count {
+    color: green;
+    font-size: 20px;
+  }
+</style>
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<legend>登录用户</legend>
+<%= render partial: "users",locals: { title: "在线", users: Statistic.users_online } %>
+<%= render partial: "users",locals: { title: "当天登录", users: Statistic.users_login_today } %>
+
+<legend>新增用户</legend>
+<%= render partial: "users",locals: { title: "昨天", users: Statistic.new_users_yesterday } %>
+<%= render partial: "users",locals: { title: "当天", users: Statistic.new_users_today } %>
+<%= render partial: "users",locals: { title: "当星期", users: Statistic.new_users_this_week } %>
+<%= render partial: "users",locals: { title: "当月", users: Statistic.new_users_this_month } %>
+
+<%= line_chart User.group("DATE(created_at)").count %>

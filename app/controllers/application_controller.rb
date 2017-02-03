@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
     def user_not_authorized
       flash[:error] = "没有权限。"
-      redirect_to(request.referrer || root_path)
+      redirect_to(request.referrer || user_root_path)
     end
 
     def render_optional_error_file(status_code)
