@@ -186,6 +186,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.0.1)
+    newrelic_rpm (3.18.0.329)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -353,6 +354,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mini_magick
   minitest-reporters
+  newrelic_rpm
   pg
   pry-byebug
   pry-rails
