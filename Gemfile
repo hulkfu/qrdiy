@@ -88,6 +88,7 @@ gem 'rails_admin', '~> 1.0'
 gem 'rails_admin-i18n'
 gem 'rails-settings-cached'
 gem 'exception_notification'
+gem 'newrelic_rpm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
