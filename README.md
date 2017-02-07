@@ -131,20 +131,65 @@ brew install memcached --with-sasl
 # Deploy
 使用Capistrano 3 部署，app server 用的 puma，反向代码服务器是 Nginx。
 
-## 配置
+# 设置
 
-shared文件夹：
+## shared文件夹：
 
 - database.yml
-- secret.yml
-- puma.rb
-
+- secret.yml， 配置不经常变的，一般就存个 security_base_key, auth-key 等
+- puma.rb， puma 的配置文件
 
 production SECRET_KEY_BASE，使用 rails secret 生成。
 
 变量从ENV读，使用 .rbenv-vars 文件来配着，它是 rbenv 的一个插件，能自动把 .rbenv-vars 里的文件 export 到 环境里。
 
 现在是第一次部署会提升找不到上述文件，然后在Server里目录里去创建，应该能更好的方法的，反正也只用一次。
+
+## Setting
+
+Setting 类，配置经常变的，可以公开的，可以传到 github 上同步的
+
+使用的 [rails-settings-cached gem](https://github.com/huacnlee/rails-settings-cached)， config/app.yml 配合着初始化配着。
+
+因为加了 cached，所有使用的时候需要注意打开 config.cache_store.
+
+```ruby
+# Enable/disable caching. By default caching is disabled.
+if Rails.root.join('tmp/caching-dev.txt').exist?
+  config.action_controller.perform_caching = true
+
+  config.cache_store = :dalli_store
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, max-age=172800'
+  }
+else
+  config.action_controller.perform_caching = false
+
+  config.cache_store = :null_store
+end
+```
+
+我可以在源码它的源码里加个 can_cache? 方法来判断。
+
+缓存流：
+
+```
+Setting.foo -> Check Cache -> Exist - Write Cache -> Return
+                   |
+                Check DB -> Exist -> Write Cache -> Return
+                   |
+               Check Default -> Exist -> Write Cache -> Return
+                   |
+               Return nil
+```
+
+# 监控
+Rails 的运行状态，用的 [newrelic](https://newrelic.com/)，配置文件在 config/newrelic.yml.
+
+
+# 管理
+Rails Admin。
+
 
 # 测试
 测试就使用 Rails 自带的 Minitest 和 Fixture，简单好用。
@@ -174,49 +219,6 @@ bin/rails test -d test/models/publication_test.rb
 cap production install
 ```
 
-# 设置
-
-- Setting 类，配置经常变的，可以公开的，可以传到 github 上同步的
-- security.yml，配置不经常变的，一般就存个 security_base_key, auth-key 等
-- Rails Admin，总的配置接口
-
-## Setting
-
-使用的 [rails-settings-cached gem](https://github.com/huacnlee/rails-settings-cached)，
-config/app.yml 配合着初始化配着。
-
-因为加了 cached，所有使用的时候需要注意打开 config.cache_store.
-
-```ruby
-# Enable/disable caching. By default caching is disabled.
-if Rails.root.join('tmp/caching-dev.txt').exist?
-  config.action_controller.perform_caching = true
-
-  config.cache_store = :dalli_store
-  config.public_file_server.headers = {
-    'Cache-Control' => 'public, max-age=172800'
-  }
-else
-  config.action_controller.perform_caching = false
-
-  config.cache_store = :null_store
-end
-```
-
-
-我可以在源码它的源码里加个 can_cache? 方法来判断。
-
-缓存流：
-
-```
-Setting.foo -> Check Cache -> Exist - Write Cache -> Return
-                   |
-                Check DB -> Exist -> Write Cache -> Return
-                   |
-               Check Default -> Exist -> Write Cache -> Return
-                   |
-               Return nil
-```
 
 
 # Services (job queues, cache servers, search engines, etc.)
