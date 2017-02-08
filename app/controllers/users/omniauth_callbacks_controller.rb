@@ -6,6 +6,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
+  def wechat
+    puts request.env["omniauth.wechat"]
+  end
+
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
 

@@ -4,6 +4,7 @@
 
 <% content_for "secondary-content" do %>
   <% if !current_user %>
+    <%= link_to "wechat", user_wechat_omniauth_authorize_path %>
     <div class="sign-in card border-none">
       <%= simple_form_for(:user, :url => session_path(:user)) do |f| %>
         <%= f.input :email, label: false, placeholder: "请输入邮箱" %>
