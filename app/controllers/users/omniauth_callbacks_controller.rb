@@ -7,9 +7,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   def wechat
-    User.from_omniauth(request.env["omniauth.auth"])
-    puts request.env["omniauth.auth"]
-    render plain: "OK"
+    user = User.from_omniauth(request.env["omniauth.auth"])
+    # TODO login user
+    redirect_to user
   end
 
   # More info at:

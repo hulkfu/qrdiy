@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_one :profile, class_name: "UserProfile"
   accepts_nested_attributes_for :profile, update_only: true
 
+  has_many :authentications, dependent: :destroy
+
   has_many :projects
   has_many :publications
   # 参考 Project
@@ -47,26 +49,41 @@ class User < ApplicationRecord
     # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
   validates :avatar, file_size: { less_than: 10.megabytes.to_i }
 
-  after_create :create_others
+  after_create :update_other_info
 
-  # TODO 第三方登录，获得名号
-  def create_others
-    # 根据邮箱名生成临时 name，第三方登录的话就从第三方获取
+  # 不全剩余的信息
+  def update_other_info
+    # 没有name就有email，根据邮箱名生成临时 name，第三方登录的话就从第三方获取
+    self.name = "qrdiy_#{name || email.split('@').first}_#{id}"
+    self.domain = name unless domain
 
-    email_name = email.split('@').first
-    tmp_name = "qrdiy_#{email_name}_#{id}"
-    self.name = tmp_name
-    self.domain = tmp_name
-
-    File.open(LetterAvatar.generate "#{email_name}_#{id}", 180) do |f|
-      self.avatar = f
+    unless avatar
+      File.open(LetterAvatar.generate "#{aname}_#{id}", 180) do |f|
+        self.avatar = f
+      end
     end
+
     self.save
     self.create_profile
   end
 
   # 第三方登录
   def self.from_omniauth(auth)
+    authentication = Authentication.find_by(provider: auth.provider, uid: auth.uid)
+    if authentication
+      return authentication.user
+    else  # 首次登录
+      # create user
+      info = auth.info
+      # TODO: User email
+      name = "#{info.nickname}_#{User.last.id+1}"
+      user = User.new(name: name, email: "name@qrdiy.com" )
+      user.save(validate: false)
+      user.update_other_info
+      # TODO other info
+      user.authentications.create(provider: auth.provider, uid: auth.uid)
+      return user
+    end
     # auth.info.nickname city country headimgurl sex unionid
     # where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     #   user.email = auth.info.email
