@@ -96,7 +96,7 @@ gem 'rails-settings-cached'
 gem 'exception_notification'
 gem 'newrelic_rpm'
 
-# setting
+# 环境变量
 gem 'dotenv-rails'
 
 group :development, :test do

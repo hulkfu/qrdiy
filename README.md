@@ -135,13 +135,14 @@ brew install memcached --with-sasl
 
 ## shared文件夹：
 
-- database.yml
-- secret.yml， 配置不经常变的，一般就存个 security_base_key, auth-key 等
+- config/database.yml
+- config/secret.yml， 配置不经常变的，一般就存个 security_base_key, auth-key 等
 - puma.rb， puma 的配置文件
+- .env, 环境变量，使用的 [dotenv-rails](https://github.com/bkeepers/dotenv)
 
 production SECRET_KEY_BASE，使用 rails secret 生成。
 
-变量从ENV读，使用 .rbenv-vars 文件来配着，它是 rbenv 的一个插件，能自动把 .rbenv-vars 里的文件 export 到 环境里。
+变量从ENV读，使用跟目录里的 .env 文件来配着。
 
 现在是第一次部署会提升找不到上述文件，然后在Server里目录里去创建，应该能更好的方法的，反正也只用一次。
 
