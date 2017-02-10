@@ -3,11 +3,6 @@
 <%= will_paginate @statuses %>
 
 <% content_for "secondary-content" do %>
-  <% if !current_user %>
-    <%= link_to "wechat", user_wechat_omniauth_authorize_path %>
-    <%= render "shared/login" %>
-  <% end %>
-
   <div class="section">
     <h1>热门 DIY</h1>
     <%= render "projects/projects_list_small", projects: @projects %>

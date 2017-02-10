@@ -47,11 +47,12 @@
 
         <% else %>
           <div id="login-join">
-            <li class="nav-item">
-              <%= link_to "注 册", new_user_registration_path %>
+            <li id="wechat" class="nav-item">
+              <%= link_to fa_icon('weixin', text: "微信登录"), user_wechat_omniauth_authorize_path %>
             </li>
+
             <li class="nav-item">
-              <%= link_to "登 录", new_user_session_path, class: "first" %>
+              <%= link_to fa_icon('sign-in', text: "普通登录"), new_user_session_path %>
             </li>
           </div>
         <% end %>
