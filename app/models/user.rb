@@ -84,7 +84,9 @@ class User < ApplicationRecord
 
   # 第三方登录
   def self.from_omniauth(auth)
-    authentication = Authentication.find_by(provider: auth.provider, uid: auth.uid)
+    # 微信使用 unionid 作为其 uid
+    uid = (auth.provider == "wechat") ? auth.info.unionid : auth.uid
+    authentication = Authentication.find_by(provider: auth.provider, uid: uid)
 
     if authentication   # 已经登录过
       return authentication.user
