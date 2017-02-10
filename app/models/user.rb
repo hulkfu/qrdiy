@@ -53,10 +53,12 @@ class User < ApplicationRecord
   # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
   validates :avatar, file_size: { less_than: 10.megabytes.to_i }
 
-  before_create :update_other_info
-  after_create :create_profile#, if: Proc.new { |u| u.profile.nil? }
+  # 只在创建时补全其他信息
+  before_validation :update_other_info, if: Proc.new { |u| u.created_at.nil?}
+  after_create :create_profile
 
-  # 补全剩余的信息，使顺利注册。在第三方登录注册时 validates 前调用，用邮箱注册时 validates 后自动调用。
+  ##
+  # 补全剩余的信息，使顺利注册。
   def update_other_info
     # 没有name就有email，根据邮箱名生成临时 name，第三方登录的话就从第三方获取
     original_name = name || email.split('@').first
@@ -92,7 +94,6 @@ class User < ApplicationRecord
       user = User.new(name: info.nickname,
         remote_avatar_url: info.headimgurl,
         password: Devise.friendly_token[0,20])
-      user.update_other_info
 
       if user.save!
         user.profile.update_attributes(location: "#{info.country}#{info.city}",
