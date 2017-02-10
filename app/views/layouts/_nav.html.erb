@@ -50,6 +50,9 @@
             <li id="wechat" class="nav-item">
               <%= link_to fa_icon('weixin', text: "微信登录"), user_wechat_omniauth_authorize_path %>
             </li>
+            <li id="weibo" class="nav-item">
+              <%= link_to fa_icon('weibo', text: "微博登录"), user_weibo_omniauth_authorize_path %>
+            </li>
 
             <li class="nav-item">
               <%= link_to fa_icon('sign-in', text: "普通登录"), new_user_session_path %>

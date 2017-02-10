@@ -13,7 +13,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :lastseenable,
-         :omniauthable, :omniauth_providers => [:wechat]
+         :omniauthable, :omniauth_providers => [:wechat, :weibo]
 
   has_one :profile, class_name: "UserProfile"
   accepts_nested_attributes_for :profile, update_only: true
@@ -89,16 +89,34 @@ class User < ApplicationRecord
     if authentication   # 已经登录过
       return authentication.user
     else  # 首次登录
+      provider = auth.provider
       info = auth.info
+      data = {}
+      # 归一化数据
+      case provider
+      when "wechat"
+        data[:provider] = "wechat"
+        data[:uid] = info.unionid
+        data[:name] = info.nickname
+        data[:avatar] = info.headimgurl
+        data[:location] = "#{info.country}#{info.city}"
+        data[:gender] = info.sex
+      when "weibo"
+        data[:provider] = "weibo"
+        data[:uid] = auth.uid
+        data[:name] = info.nickname
+        data[:avatar] = info.image
+        data[:location] = info.location
+      end
+
       # create user
-      user = User.new(name: info.nickname,
-        remote_avatar_url: info.headimgurl,
+      user = User.new(name: data[:name],
+        remote_avatar_url: data[:avatar],
         password: Devise.friendly_token[0,20])
 
       if user.save!
-        user.profile.update_attributes(location: "#{info.country}#{info.city}",
-          gender: info.sex)
-        user.authentications.create(provider: auth.provider, uid: info.unionid)
+        user.profile.update_attributes(location: data[:location], gender: data[:gender])
+        user.authentications.create(provider: data[:provider], uid: data[:uid])
         return user
       else
         return nil
