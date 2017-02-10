@@ -69,11 +69,11 @@ class User < ApplicationRecord
       self.name = "qrdiy_#{name}_#{random_string}"
     end
 
-    self.domain = name if domain.blank?
+    self.domain = PinYin.permlink(original_name).delete('-') if domain.blank?
     unless valid_attribute?(:domain)
       self.domain = "qrdiy_#{random_string}"
     end
-    self.email = "#{name}@temp.qrdiy.com" if email.blank?
+    self.email = "#{domain}@temp.qrdiy.com" if email.blank?
 
     if avatar.file.nil?
       File.open(LetterAvatar.generate(PinYin.abbr("#{original_name}#{random_string}"), 180)) do |f|
