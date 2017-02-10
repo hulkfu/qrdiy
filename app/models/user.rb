@@ -114,7 +114,7 @@ class User < ApplicationRecord
         remote_avatar_url: data[:avatar],
         password: Devise.friendly_token[0,20])
 
-      if user.save!
+      if user.save
         user.profile.update_attributes(location: data[:location], gender: data[:gender])
         user.authentications.create(provider: data[:provider], uid: data[:uid])
         return user
