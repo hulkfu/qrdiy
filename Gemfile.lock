@@ -134,6 +134,10 @@ GEM
     devise_lastseenable (0.0.6)
       devise
       rails (>= 3.0.4)
+    dotenv (2.2.0)
+    dotenv-rails (2.2.0)
+      dotenv (= 2.2.0)
+      railties (>= 3.2, < 5.1)
     dragonfly (1.0.12)
       addressable (~> 2.3)
       multi_json (~> 1.0)
@@ -374,6 +378,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise_lastseenable
+  dotenv-rails
   dragonfly (~> 1.0.12)
   exception_notification
   file_validators
