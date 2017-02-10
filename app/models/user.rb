@@ -31,11 +31,15 @@ class User < ApplicationRecord
   # 本用户 user 的 notification 是被其他用户 actor 创建的
   has_many :notifications
 
-
   auto_strip_attributes :name,
                         delete_whitespaces: true, nullify: false
+
   validates :name, presence: true, length: 2..20, on: :update,
     uniqueness: {case_sensitive: false},
+    format: {
+      with: /\A\D/i,
+      message: "不能以数字开头"
+    },
     exclusion: { in: %w(管理员 站长 admin root) }
 
   validates :domain, presence: true, length: 4..18, on: :update,
@@ -46,54 +50,59 @@ class User < ApplicationRecord
     },
     exclusion: { in: %w(admin root) }
 
-    # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
+  # 反正只是更新，就不需要验证 presence 了，空就会默认不变了
   validates :avatar, file_size: { less_than: 10.megabytes.to_i }
 
-  after_create :update_other_info
+  before_create :update_other_info
+  after_create :create_profile#, if: Proc.new { |u| u.profile.nil? }
 
-  # 不全剩余的信息
+  # 补全剩余的信息，使顺利注册。在第三方登录注册时 validates 前调用，用邮箱注册时 validates 后自动调用。
   def update_other_info
     # 没有name就有email，根据邮箱名生成临时 name，第三方登录的话就从第三方获取
-    self.name = "qrdiy_#{name || email.split('@').first}_#{id}"
-    self.domain = name unless domain
+    original_name = name || email.split('@').first
+    random_string = "#{User.last.id}#{SecureRandom.hex(2)}"
 
-    unless avatar
-      File.open(LetterAvatar.generate "#{aname}_#{id}", 180) do |f|
+    self.name = original_name
+    unless valid_attribute?(:name)
+      self.name = "qrdiy_#{name}_#{random_string}"
+    end
+
+    self.domain = name if domain.blank?
+    unless valid_attribute?(:domain)
+      self.domain = "qrdiy_#{random_string}"
+    end
+    self.email = "#{name}@temp.qrdiy.com" if email.blank?
+
+    if avatar.file.nil?
+      File.open(LetterAvatar.generate(PinYin.abbr("#{original_name}#{random_string}"), 180)) do |f|
         self.avatar = f
       end
     end
-
-    self.save
-    self.create_profile
   end
 
   # 第三方登录
   def self.from_omniauth(auth)
     authentication = Authentication.find_by(provider: auth.provider, uid: auth.uid)
-    if authentication
+
+    if authentication   # 已经登录过
       return authentication.user
     else  # 首次登录
-      # create user
       info = auth.info
-      # TODO: User email
-      name = "#{info.nickname}_#{User.last.id+1}"
-      user = User.new(name: name, email: "name@qrdiy.com" )
-      user.save(validate: false)
+      # create user
+      user = User.new(name: info.nickname,
+        remote_avatar_url: info.headimgurl,
+        password: Devise.friendly_token[0,20])
       user.update_other_info
-      # TODO other info
-      user.authentications.create(provider: auth.provider, uid: auth.uid)
-      return user
+
+      if user.save!
+        user.profile.update_attributes(location: "#{info.country}#{info.city}",
+          gender: info.sex)
+        user.authentications.create(provider: auth.provider, uid: info.unionid)
+        return user
+      else
+        return nil
+      end
     end
-    # auth.info.nickname city country headimgurl sex unionid
-    # where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    #   user.email = auth.info.email
-    #   user.password = Devise.friendly_token[0,20]
-    #   user.name = auth.info.name   # assuming the user model has a name
-    #   user.image = auth.info.image # assuming the user model has an image
-    #   # If you are using confirmable and the provider(s) you use validate emails,
-    #   # uncomment the line below to skip the confirmation emails.
-    #   # user.skip_confirmation!
-    # end
   end
 
 
