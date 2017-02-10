@@ -5,19 +5,7 @@
 <% content_for "secondary-content" do %>
   <% if !current_user %>
     <%= link_to "wechat", user_wechat_omniauth_authorize_path %>
-    <div class="sign-in card border-none">
-      <%= simple_form_for(:user, :url => session_path(:user)) do |f| %>
-        <%= f.input :email, label: false, placeholder: "请输入邮箱" %>
-        <%= f.input :password, label: false, placeholder: "请输入密码" %>
-        <%= render "shared/captcha" %>
-        <div>
-          <%= f.input :remember_me, as: :boolean, label: "勿忘我" %>
-        </div>
-        <%= f.button :submit, t('devise.shared.links.sign_in'), class: "btn btn-success" %>
-        <%= link_to "注 册", new_user_registration_path, class: "btn btn-primary" %>
-        <%= link_to t("devise.shared.links.forgot_your_password"), new_password_path(:user) %>
-      <% end %>
-    </div>
+    <%= render "shared/login" %>
   <% end %>
 
   <div class="section">
