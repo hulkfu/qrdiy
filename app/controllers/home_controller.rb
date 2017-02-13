@@ -9,6 +9,9 @@ class HomeController < ApplicationController
       @statuses = Status.all
     end
 
+    @top_projects = Project.all
+    @statuses = Status.all if @status.blank?
+
     @statuses = @statuses.paginate(page: params[:page])
   end
 
