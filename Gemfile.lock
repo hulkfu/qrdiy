@@ -14,14 +14,6 @@ GIT
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
 
-GIT
-  remote: https://github.com/yangsr/omniauth-wechat-oauth2
-  revision: 3dd51708e2fc4019a5c58dbf92e2c17d1733fc0c
-  specs:
-    omniauth-wechat-oauth2 (0.1.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -221,6 +213,9 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-open-wechat-oauth2 (1.0.3)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-weibo-oauth2 (0.4.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -392,7 +387,7 @@ DEPENDENCIES
   minitest-reporters
   newrelic_rpm
   omniauth
-  omniauth-wechat-oauth2!
+  omniauth-open-wechat-oauth2
   omniauth-weibo-oauth2
   pg
   pry-byebug
