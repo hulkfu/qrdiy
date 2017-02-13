@@ -93,19 +93,18 @@ class User < ApplicationRecord
     else  # 首次登录
       provider = auth.provider
       info = auth.info
-      data = {}
+
       # 归一化数据
+      data = {uid: uid}
       case provider
       when "wechat"
         data[:provider] = "wechat"
-        data[:uid] = info.unionid
         data[:name] = info.nickname
         data[:avatar] = info.headimgurl
         data[:location] = "#{info.country}#{info.city}"
         data[:gender] = info.sex
       when "weibo"
         data[:provider] = "weibo"
-        data[:uid] = auth.uid
         data[:name] = info.nickname
         data[:avatar] = info.image
         data[:location] = info.location
