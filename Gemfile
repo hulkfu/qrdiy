@@ -96,8 +96,8 @@ gem 'rails-settings-cached'
 gem 'exception_notification'
 gem 'newrelic_rpm'
 
-# 环境变量
-gem 'dotenv-rails', group: [:development, :test]
+# 开发测试的环境变量，在根目录里的 .env 文件里配置
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

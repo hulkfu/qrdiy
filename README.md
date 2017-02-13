@@ -136,9 +136,9 @@ brew install memcached --with-sasl
 ## shared文件夹：
 
 - config/database.yml
-- config/secret.yml， 配置不经常变的，一般就存个 security_base_key, auth-key 等
+- config/secret.yml， 配置不经常变的，一般就存个 security_base_key, auth-key 等。它会被 push 到 git 上，里面的变量通过读取 ENV 来获得，从而保证变量的安全
 - puma.rb， puma 的配置文件
-- .env, 环境变量，使用的 [dotenv-rails](https://github.com/bkeepers/dotenv)
+- .env, 开发测试的环境变量，使用 [dotenv-rails](https://github.com/bkeepers/dotenv)
 
 production SECRET_KEY_BASE，使用 rails secret 生成。
 
