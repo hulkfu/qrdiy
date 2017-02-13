@@ -51,7 +51,7 @@ gem 'friendly_id', '~> 5.1.0'
 
 # 三方平台 OAuth 验证登陆
 gem 'omniauth'
-gem 'omniauth-open-wechat-oauth2'
+gem "omniauth-wechat-oauth2", git: 'https://github.com/yangsr/omniauth-wechat-oauth2'
 gem 'omniauth-weibo-oauth2'
 
 # soft delete
