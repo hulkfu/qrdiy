@@ -13,7 +13,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :lastseenable,
-         :omniauthable, :omniauth_providers => [:wechat, :weibo]
+         :omniauthable, :omniauth_providers => [:open_wechat, :weibo]
 
   has_one :profile, class_name: "UserProfile"
   accepts_nested_attributes_for :profile, update_only: true
@@ -93,19 +93,18 @@ class User < ApplicationRecord
     else  # 首次登录
       provider = auth.provider
       info = auth.info
-      data = {}
+
       # 归一化数据
+      data = {uid: uid}
       case provider
       when "wechat"
         data[:provider] = "wechat"
-        data[:uid] = uid
         data[:name] = info.nickname
         data[:avatar] = info.headimgurl
         data[:location] = "#{info.country}#{info.city}"
         data[:gender] = info.sex
       when "weibo"
         data[:provider] = "weibo"
-        data[:uid] = uid
         data[:name] = info.nickname
         data[:avatar] = info.image
         data[:location] = info.location
