@@ -10,8 +10,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     providers.each do |provider|
       define_method provider do
         user = User.from_omniauth(request.env["omniauth.auth"])
-        if user
-          sign_in_and_redirect user
+        if user.persisted?
+          sign_in_and_redirect user, notice: "登录成功。"
         else
           redirect_to user_root_path, alert: "请重新登录。"
         end
