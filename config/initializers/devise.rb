@@ -249,7 +249,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :wechat, ENV["WECHAT_APP_ID"], ENV["WECHAT_APP_SECRET"]
-  config.omniauth :weibo, ENV["WEIBO_APP_ID"], ENV["WEIBO_APP_SECRET"]
+  config.omniauth :weibo, ENV["WEIBO_APP_ID"], ENV["WEIBO_APP_SECRET"],
+    image_size: 'original',
+    token_params: {redirect_uri: "http://qrdiy.com/auth/weibo/callback" }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

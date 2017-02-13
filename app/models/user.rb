@@ -109,6 +109,7 @@ class User < ApplicationRecord
         data[:name] = info.nickname
         data[:avatar] = info.image
         data[:location] = info.location
+        data[:gender] = 0
       end
 
       # create user
