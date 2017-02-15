@@ -220,7 +220,8 @@ bin/rails test -d test/models/publication_test.rb
 cap production install
 ```
 
-
+# 备份
+使用 [backup gem](https://github.com/backup/backup).
 
 # Services (job queues, cache servers, search engines, etc.)
 
