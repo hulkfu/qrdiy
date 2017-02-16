@@ -1,10 +1,9 @@
 namespace :cache do
   desc "Clear cache"
   task :clear do
-    on roles(:app) do |host|
+    on roles(:cache) do |host|
       within current_path do
-        info capture(execute :pwd)
-        info capture(execute :rake, "cache:clear")
+        info capture(execute :rake, "cache:clear", "RAILS_ENV=#{fetch(:stage)}")
       end
     end
   end
