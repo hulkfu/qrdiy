@@ -13,10 +13,7 @@ Rails.application.routes.draw do
 
   resources :projects, path: :diy
 
-  scope :i do
-    resources :users, path: '', only: [:show] do
-    end
-  end
+  get "@:id" => "users#show", as: :user
 
   resources :publications, only: [:create, :destroy] do
     new do
