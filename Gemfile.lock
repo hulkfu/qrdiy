@@ -6,6 +6,14 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
+  remote: https://github.com/astonfu/devise_lastseenable
+  revision: df2b0de06b7acea2b027b51314c0a58246fe345e
+  specs:
+    devise_lastseenable (0.0.6)
+      devise
+      rails (>= 3.0.4)
+
+GIT
   remote: https://github.com/carrierwaveuploader/carrierwave
   revision: 9ef68325dd5ea465b4d340af9a9def10934cd677
   specs:
@@ -131,9 +139,6 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-i18n (1.1.1)
-    devise_lastseenable (0.0.6)
-      devise
-      rails (>= 3.0.4)
     dotenv (2.2.0)
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
@@ -377,7 +382,7 @@ DEPENDENCIES
   database_cleaner
   devise
   devise-i18n
-  devise_lastseenable
+  devise_lastseenable!
   dotenv-rails
   dragonfly (~> 1.0.12)
   exception_notification
