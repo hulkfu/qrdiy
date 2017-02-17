@@ -1,4 +1,4 @@
-<div id="rails-flash">
+<div id="flash-message">
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
     <div class="alert alert-dismissable fade in alert-<%= name == "notice" ? "success" : "danger" %>">
