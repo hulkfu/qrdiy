@@ -42,9 +42,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
-  scope :admin do
-    resources :statistics, only: [:index]
-    authenticate :user, -> (user) { user.admin? } do
+  ##
+  # 管理
+  authenticate :user, -> (user) { user.admin? } do
+    scope :admin do
+      resources :statistics, only: [:index]
       mount PgHero::Engine, at: "pghero"
     end
   end
