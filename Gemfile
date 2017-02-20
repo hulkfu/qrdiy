@@ -96,6 +96,7 @@ gem 'rails-settings-cached'
 gem 'exception_notification'
 gem 'newrelic_rpm'
 gem 'pghero'
+gem 'ahoy_matey'
 
 
 # 开发测试的环境变量，在根目录里的 .env 文件里配置
