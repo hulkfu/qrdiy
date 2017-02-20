@@ -53,6 +53,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # 会匹配所有剩下的 url，并 render error，它之后的 route 不会匹配
-  match '*path', to: 'home#error_404', via: :all
+  # match '*path', to: 'home#error_404', via: :all
 
 end
