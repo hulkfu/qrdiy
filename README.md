@@ -281,3 +281,12 @@ create database qrdiy_production owner qrdiy;
 xcode-select --install
 gem install nokogiri
 ```
+
+## pghero enable query stats
+参考 https://github.com/ankane/pghero/blob/master/guides/Query-Stats.md
+
+需要赋予 Superuser 权限：
+
+```bash
+ALTER ROLE user WITH Superuser;
+```
