@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209083113) do
+ActiveRecord::Schema.define(version: 20170220060815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "attachments", force: :cascade do |t|
     t.string "file_name"
@@ -67,7 +68,6 @@ ActiveRecord::Schema.define(version: 20170209083113) do
     t.integer  "status_id"
     t.index ["status_id"], name: "index_notifications_on_status_id", using: :btree
     t.index ["user_id", "notify_type"], name: "index_notifications_on_user_id_and_notify_type", using: :btree
-    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
