@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
   root to: "home#index", as: :user_root
-  scope :admin do
-    resources :statistics, only: [:index]
-  end
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :relations, only: [:create, :destroy] do
     collection do
@@ -46,6 +42,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
+  scope :admin do
+    resources :statistics, only: [:index]
+    authenticate :user, -> (user) { user.admin? } do
+      mount PgHero::Engine, at: "pghero"
+    end
+  end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # 会匹配所有剩下的 url，并 render error，它之后的 route 不会匹配
   match '*path', to: 'home#error_404', via: :all

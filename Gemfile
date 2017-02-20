@@ -95,6 +95,8 @@ gem 'rails_admin-i18n'
 gem 'rails-settings-cached'
 gem 'exception_notification'
 gem 'newrelic_rpm'
+gem 'pghero'
+
 
 # 开发测试的环境变量，在根目录里的 .env 文件里配置
 gem 'dotenv-rails', groups: [:development, :test]
