@@ -103,6 +103,9 @@ GEM
       sass (>= 3.4.19)
     browser (2.3.0)
     builder (3.2.3)
+    bullet (5.5.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     capistrano (3.7.1)
       airbrussh (>= 1.0.0)
@@ -369,6 +372,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.10.0)
     user_agent_parser (2.3.0)
     uuidtools (2.1.5)
     warden (1.2.6)
@@ -393,6 +397,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap (~> 4.0.0.alpha5)
+  bullet
   byebug
   capistrano (~> 3.6)
   capistrano-rails (~> 1.1)

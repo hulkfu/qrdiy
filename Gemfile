@@ -124,6 +124,9 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0', require: false
   gem 'capistrano3-puma', require: false
   gem 'capistrano-rails', '~> 1.1', require: false
+
+  # 性能
+  gem 'bullet'
 end
 
 group :test do
