@@ -68,10 +68,10 @@ Rails.application.configure do
     :tls                  => true
   }
 
-  # Bullet config
+  # Bullet config for n+1 query
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true
     # Bullet.growl = true
@@ -88,5 +88,7 @@ Rails.application.configure do
     # Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
     # Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware' ]
     # Bullet.slack = { webhook_url: 'http://some.slack.url', channel: '#default', username: 'notifier' }
+
+    # Bullet.add_whitelist :type => :n_plus_one_query, :class_name => "Status", :association => :comments
   end
 end

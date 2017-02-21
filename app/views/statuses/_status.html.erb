@@ -1,6 +1,6 @@
 <% statusable = status.statusable %>
 <% user = status.user %>
-<% comments = status.comments %>
+<% comments = status.comments.includes(:user) %>
 
 <% cache [status, statusable, user, cache_key_for_comments(comments), :relation_v1] do %>
 
@@ -16,7 +16,6 @@
           <% cache user do %>
             <%= link_to user.name, user %>
           <% end %>
-
 
           <span class="status-project-name">
             在 <%= link_to status.statusable_project.try(:name), project_path(status.statusable_project) %>

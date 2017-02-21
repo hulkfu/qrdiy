@@ -3,14 +3,14 @@
 #
 module CachesHelper
   def cache_key_for_users(users)
-    return "" unless users
+    return "" if users.blank?
     count = users.count
     max_updated_at = users.maximum(:updated_at).try(:utc).try(:to_s, :number)
     "users/all-#{count}-#{max_updated_at}"
   end
 
   def cache_key_for_comments(comments)
-    return "" unless comments
+    return "" if comments.blank?
     count          = comments.count
     max_updated_at = comments.maximum(:updated_at).try(:utc).try(:to_s, :number)
     users = User.where(id: comments.map(&:user_id).uniq)
