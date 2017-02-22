@@ -8,10 +8,21 @@
     <div class="form-inputs">
 
       <h1>个人信息</h1>
-      <% if resource.avatar? %>
-      <%= avatar_tag resource, :big, link: false %>
-      <% end %>
-      <%= f.input :avatar, label: "头 像" %>
+      <div class="form-group">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 180px; max-height: 180px;">
+            <% if resource.avatar? %>
+            <%= avatar_tag resource, :big, link: false %>
+            <% end %>
+          </div>
+          <div>
+            <span class="btn btn-default btn-file"><span class="fileinput-new">头像</span>
+            <span class="fileinput-exists">修改</span>
+            <input class="file optional" type="file" name="user[avatar]" id="user_avatar">
+          </div>
+        </div>
+      </div>
+
       <%= f.input :name, label: "名 号", autofocus: true %>
       <%= f.input :domain, label: "我的域名" %>
 
