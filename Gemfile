@@ -99,12 +99,11 @@ gem 'pghero'
 gem 'ahoy_matey'
 
 
-# 开发测试的环境变量，在根目录里的 .env 文件里配置
-gem 'dotenv-rails', groups: [:development, :test]
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # 开发测试的环境变量，在根目录里的 .env 文件里配置
+  gem 'dotenv-rails'
 end
 
 group :development do
