@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user_and_profile, only: [:show]
 
   def show
-    @statuses = @user.all_statuses.includes(:user, :project, :statusable)
+    @statuses = @user.all_statuses.includes(:statusable, :user, :comments, :project)
       .paginate(page: params[:page])
   end
 
