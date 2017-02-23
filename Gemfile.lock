@@ -181,6 +181,9 @@ GEM
     geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    goldiloader (0.0.11)
+      activerecord (>= 3.2, < 5.1)
+      activesupport (>= 3.2, < 5.1)
     haml (4.0.7)
       tilt
     hashie (3.5.1)
@@ -419,6 +422,7 @@ DEPENDENCIES
   file_validators
   font-awesome-rails
   friendly_id (~> 5.1.0)
+  goldiloader
   jbuilder (~> 2.5)
   jquery-rails
   letter_avatar

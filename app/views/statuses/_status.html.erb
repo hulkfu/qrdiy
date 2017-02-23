@@ -1,6 +1,6 @@
 <% statusable = status.statusable %>
 <% user = status.user %>
-<% comments = status.comments.includes(:user) %>
+<% comments = status.comments %>
 
 <% cache [status, statusable, user, cache_key_for_comments(comments), :relation_v1] do %>
 

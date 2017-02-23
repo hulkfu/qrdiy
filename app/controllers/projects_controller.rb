@@ -11,9 +11,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @statuses = @project.statuses_to_show
-      .includes(:statusable, :user, :comments, :project)
-      .paginate(page: params[:page], per_page: Project::STATUSES_PER_PAGE)
+    @statuses = @project.statuses_to_show.paginate(page: params[:page], per_page: Project::STATUSES_PER_PAGE)
   end
 
   # GET /projects/new

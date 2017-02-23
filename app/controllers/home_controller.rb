@@ -12,8 +12,7 @@ class HomeController < ApplicationController
     @top_projects = Project.all
     @statuses = Status.all if @status.blank?
 
-    @statuses = @statuses.includes(:statusable, :user, :comments, :project)
-      .paginate(page: params[:page])
+    @statuses = @statuses.paginate(page: params[:page])
   end
 
   def error_404
