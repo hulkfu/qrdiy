@@ -45,7 +45,12 @@ class RelationsController < ApplicationController
         @relationable_with_action_list[relationable] = action_type
       end
     end
-    render "refresh_list"
+
+    if @relationable_with_action_list.present?
+      render "refresh_list"
+    else
+      render plain: ""
+    end
   end
 
   ##
