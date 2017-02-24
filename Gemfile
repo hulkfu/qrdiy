@@ -87,6 +87,9 @@ gem "auto_strip_attributes", "~> 2.1"   # before validate 处理 attribute
 # gem 'bulk_insert'
 gem 'goldiloader'   # n+1 query
 
+# 安全
+gem 'rack-attack'
+
 # JavaScript
 gem 'rails-timeago', '~> 2.0'
 

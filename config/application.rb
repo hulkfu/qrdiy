@@ -17,5 +17,8 @@ module QrdiyCom
     config.time_zone = 'Beijing'
 
     config.i18n.default_locale = 'zh-CN'
+
+    # middlewares
+    config.middleware.use Rack::Attack
   end
 end
