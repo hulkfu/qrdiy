@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :relations, only: [:create, :destroy] do
     collection do
       get "refresh"
+      post "refresh_list"
     end
   end
 

@@ -1,4 +1,4 @@
-
+// @relation 是删除关系时刷新用的
 <% relationable = @relationable || @relation.relationable %>
 <% action_type ||= @relation.action_type %>
 $('#<%= "relation-#{relationable.class.name}-#{relationable.id}" %>').replaceWith(

@@ -1,0 +1,5 @@
+<% @relationable_with_action_list.each do |relationable, action_type| %>
+  $('#<%= "relation-#{relationable.class.name}-#{relationable.id}" %>').replaceWith(
+      '<%=j render "relations/#{action_type}_#{relationable.class.to_s.downcase}", relationable: relationable %>'
+    )
+<% end %>

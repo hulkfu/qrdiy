@@ -33,6 +33,21 @@ class RelationsController < ApplicationController
     end
   end
 
+  def refresh_list
+    @relationable_with_action_list = {}
+    params[:relations].each do |index, relation|
+      relationable_type = relation[0]
+      relationable_id = relation[1].to_i
+      action_type = relation[2]
+
+      if Relation::ACCEPT_RELATIONABLE_TYPES.include? relationable_type
+        relationable = relationable_type.constantize.find(relationable_id)
+        @relationable_with_action_list[relationable] = action_type
+      end
+    end
+    render "refresh_list"
+  end
+
   ##
   # 删除 relation
   #
