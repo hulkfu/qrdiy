@@ -102,11 +102,8 @@ blockquote {
     color: $primary-color;
   }
 
-  .nav-login {
-    float: right;
-    display: inline-block;
+  #nav-login {
     color: #666;
-
     .notification-count {
       .fa {
         padding-top: 4px;
@@ -115,17 +112,6 @@ blockquote {
       .new {
         color: $active-color !important;
         .count { display: inline; line-height: 100%; }
-      }
-    }
-
-    #login-join {
-      padding-top: 5px;
-      a { color: #666666; }
-      .first {
-        padding: 3px;
-        border: 1px solid $active-color;
-        color: $active-color;
-        border-radius: 4px;
       }
     }
   }
@@ -168,7 +154,7 @@ blockquote {
 }
 
 .wrapper {
-  margin-top: 60px;
+  margin-top: 27px;
   min-height: 100%;
   height: auto !important;
   height: 100%;
@@ -176,7 +162,6 @@ blockquote {
 }
 
 #main-content {
-  margin-top: 20px;
 
   #secondary-content {
     margin-left: 0px;

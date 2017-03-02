@@ -1,28 +1,34 @@
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-md navbar-fixed-top navbar-light bg-faded">
   <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <a class="navbar-brand" href="/">趣人DIY</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">首页</a>
-      </li>
-      <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to "我的趣人", user_path(current_user), class: "nav-link" %>
-        <% else %>
-          <a class="nav-link" href="/">我的趣人</a>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "浏览发现", projects_path, class: "nav-link" %>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="/">移动应用</a>
-      </li> -->
-      <li class="nav-item">
-        <%= link_to "创建DIY", new_project_path, class: "nav-link" %>
-      </li>
 
-      <div class="nav-login">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">首页</a>
+        </li>
+        <li class="nav-item">
+          <% if user_signed_in? %>
+            <%= link_to "我的趣人", user_path(current_user), class: "nav-link" %>
+          <% else %>
+            <a class="nav-link" href="/">我的趣人</a>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "浏览发现", projects_path, class: "nav-link" %>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/">移动应用</a>
+        </li> -->
+        <li class="nav-item">
+          <%= link_to "创建DIY", new_project_path, class: "nav-link" %>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav" id="nav-login">
         <% if user_signed_in? %>
           <li class="nav-item notification-count">
             <% notification_count = Notification.unread_count(current_user) %>
@@ -42,24 +48,19 @@
               <div class="dropdown-divider"></div>
               <%= link_to fa_icon("sign-out", text: "退出"), destroy_user_session_path, class:"dropdown-item", method: "delete" %>
             </div>
-            </div>
           </li>
-
         <% else %>
-          <div id="login-join">
-            <li id="wechat" class="nav-item">
-              <%= link_to fa_icon('weixin', text: "微信登录"), user_wechat_omniauth_authorize_path %>
-            </li>
-            <li id="weibo" class="nav-item">
-              <%= link_to fa_icon('weibo', text: "微博登录"), user_weibo_omniauth_authorize_path %>
-            </li>
-
-            <li class="nav-item">
-              <%= link_to fa_icon('sign-in', text: "普通登录"), new_user_session_path %>
-            </li>
-          </div>
+          <li id="wechat" class="nav-item">
+            <%= link_to fa_icon('weixin', text: "微信登录"), user_wechat_omniauth_authorize_path, class: "nav-link" %>
+          </li>
+          <li id="weibo" class="nav-item">
+            <%= link_to fa_icon('weibo', text: "微博登录"), user_weibo_omniauth_authorize_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to fa_icon('sign-in', text: "普通登录"), new_user_session_path, class: "nav-link" %>
+          </li>
         <% end %>
-      </div>
-    </ul>
+      </ul>
+    </div>
   </div>
 </nav>
