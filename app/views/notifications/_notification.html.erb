@@ -2,7 +2,7 @@
      data-id="<%= notification.id %>"
      class="media notification notification-<%= notification.notify_type %>
        <%= ' unread' if !notification.read? %>">
-  <div class="media-left">
+  <div class="media-left mr-2">
     <%= avatar_tag notification.actor, :small %>
   </div>
 
