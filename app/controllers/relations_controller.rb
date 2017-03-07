@@ -3,7 +3,7 @@
 #
 class RelationsController < ApplicationController
   before_action :set_relation, :only => [:destroy]
-  skip_before_filter :authenticate_user!, only: :refresh
+  skip_before_filter :authenticate_user!, only: [:refresh, :refresh_list]
 
   ## post /i/domain/relations
   ##
@@ -33,6 +33,9 @@ class RelationsController < ApplicationController
     end
   end
 
+  ##
+  # 更新一组 relation
+  #
   def refresh_list
     @relationable_with_action_list = {}
     params[:relations].each do |index, relation|
