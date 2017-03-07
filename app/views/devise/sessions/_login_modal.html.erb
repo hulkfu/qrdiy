@@ -7,15 +7,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <li id="wechat" class="">
-          <%= link_to fa_icon('weixin', text: "微信登录"), user_wechat_omniauth_authorize_path, class: "nav-link" %>
+      <div class="modal-body text-center">
+        <li id="wechat" class="h5">
+          <%= link_to fa_icon('weixin', text: "微信"), user_wechat_omniauth_authorize_path, class: "nav-link" %>
         </li>
-        <li id="weibo" class="">
-          <%= link_to fa_icon('weibo', text: "微博登录"), user_weibo_omniauth_authorize_path, class: "nav-link" %>
+        <li id="weibo" class="h5">
+          <%= link_to fa_icon('weibo', text: "微博"), user_weibo_omniauth_authorize_path, class: "nav-link" %>
         </li>
-        <li class="">
-          <%= link_to fa_icon('sign-in', text: "普通登录"), new_user_session_path, class: "nav-link" %>
+        <li class="h5">
+          <%= link_to fa_icon('envelope-o', text: "邮箱"), new_user_session_path, class: "nav-link" %>
         </li>
       </div>
       <div class="modal-footer">
