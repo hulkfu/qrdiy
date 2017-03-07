@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  respond_to :html, :js
   # before_action :configure_sign_in_params, only: [:create]
   prepend_before_action :valify_captcha!, only: [:create]
 

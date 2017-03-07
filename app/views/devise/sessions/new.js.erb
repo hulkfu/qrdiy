@@ -1,0 +1,5 @@
+if($("#login-modal").length < 1) {
+  $("body").append("<%=j render('login_modal') %>")
+}
+
+$("#login-modal").modal('show')
