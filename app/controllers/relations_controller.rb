@@ -37,6 +37,8 @@ class RelationsController < ApplicationController
   # 更新一组 relation
   #
   def refresh_list
+    # OPTIMIZE: 根据 relationable_type 对 relationable 进行分组，然后 select，而不是每个
+    # 都来查一次
     @relationable_with_action_list = {}
     params[:relations].each do |index, relation|
       relationable_type = relation[0]
