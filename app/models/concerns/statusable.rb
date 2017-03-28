@@ -14,9 +14,11 @@ module Statusable
   end
 
   def create_status
-    # FIXME 不显示 trix create attachment
-    # message 也没有 project
+    # TODO message 也没有 project
     if user_id
+      # 不是创建 projet 也没有 project 的 不生成 status
+      # 即不显示 trix create attachment
+      return if project.nil? && status_action_type != "project"
       status = statuses.new(user_id: user_id,
         action_type: status_action_type)  # 判断是否定义了 action_type 方法
       status.project = try(:project)
