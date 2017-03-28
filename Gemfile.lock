@@ -157,10 +157,6 @@ GEM
     dotenv-rails (2.2.0)
       dotenv (= 2.2.0)
       railties (>= 3.2, < 5.1)
-    dragonfly (1.0.12)
-      addressable (~> 2.3)
-      multi_json (~> 1.0)
-      rack (>= 1.3.0)
     errbase (0.0.3)
     erubis (2.7.0)
     exception_notification (4.2.1)
@@ -416,7 +412,6 @@ DEPENDENCIES
   devise-i18n
   devise_lastseenable!
   dotenv-rails
-  dragonfly (~> 1.0.12)
   exception_notification
   file_validators
   font-awesome-rails

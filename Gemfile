@@ -64,7 +64,6 @@ gem 'dalli'
 gem 'rqrcode'
 
 # 存储
-gem 'dragonfly', '~> 1.0.12'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave'
 gem 'file_validators'
 gem 'mini_magick'
