@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 #
-gem 'sprockets', '3.7.0'
+gem 'sprockets'
 
 # basic
 gem 'devise'
