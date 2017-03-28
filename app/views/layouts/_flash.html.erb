@@ -1,10 +1,10 @@
 <div id="flash-message">
-<% flash.each do |name, msg| %>
-  <% if msg.is_a?(String) %>
-    <div class="alert alert-dismissable fade in alert-<%= name == "notice" ? "success" : "danger" %>">
-      <a class="close" data-dismiss="alert">&times;</a>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    </div>
+  <% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+      <div class="alert alert-dismissable fade show alert-<%= name == "notice" ? "success" : "danger" %>">
+        <a class="close" data-dismiss="alert">&times;</a>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>
