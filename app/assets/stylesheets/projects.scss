@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+ @import "colors";
+
+.project-description {
+  margin-bottom: 70px;
+}
+
 .project-reply {
   margin-bottom: 30px;
 
