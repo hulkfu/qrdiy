@@ -51,6 +51,7 @@ class Status < ApplicationRecord
     ## 发布东西
     when Publication
       publishable = statusable.publishable
+      return if publishable.project.nil?
       # 在我的项目里发布内容
       notify_type ="publication"
       receiver = publishable.project.user
