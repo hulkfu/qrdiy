@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects, path: :diy
-
   get "@:id" => "users#show", as: :user
+
+  resources :projects, path: :diy
 
   resources :publications, only: [:create, :destroy] do
     new do
