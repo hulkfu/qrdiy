@@ -1,6 +1,9 @@
 <%= render "shared/error_messages", target: @project %>
 
 <div class="project-description">
+  <h1 class=""><%= @project.name %></h1>
+  <h6 class="text-muted"><%= @project.desc %></h6>
+  <hr />
   <div class="trix-content">
     <%= sanitize @project.description %>
   </div>
@@ -15,10 +18,6 @@
 <% content_for "secondary-content" do %>
   <div class="section">
     <div class="border-none card text-center ">
-      <div class="card-block">
-        <h1 class="card-title"><%= @project.name %></h1>
-        <h6 class="card-subtitle text-muted"><%= @project.desc %></h6>
-      </div>
       <div class="card-image-top">
         <%= avatar_tag @project, :big, link: false %>
       </div>
