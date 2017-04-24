@@ -131,6 +131,9 @@ brew install memcached --with-sasl
 # Deploy
 使用Capistrano 3 部署，app server 用的 puma，反向代码服务器是 Nginx。
 
+## SSL
+使用 acme.sh 脚本，生成的证书在 /etc/nginx/ssl 文件夹里。
+
 # 设置
 
 ## shared文件夹：
