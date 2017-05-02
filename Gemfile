@@ -98,7 +98,6 @@ gem 'rails_admin', '~> 1.0'
 gem 'rails_admin-i18n'
 gem 'rails-settings-cached'
 gem 'exception_notification'
-gem 'newrelic_rpm'
 gem 'pghero'
 gem 'ahoy_matey'
 

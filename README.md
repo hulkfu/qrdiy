@@ -188,8 +188,6 @@ Setting.foo -> Check Cache -> Exist - Write Cache -> Return
 ```
 
 # 监控
-Rails 的运行状态，用的 [newrelic](https://newrelic.com/)，配置文件在 config/newrelic.yml.
-
 
 # 管理
 Rails Admin。
