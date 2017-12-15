@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 
 set :application, 'qrdiy.com'
-set :repo_url, 'git@bitbucket.org:phun/qrdiy.com.git'
+set :repo_url, 'git@github.com:hulkfoo/qrdiy.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
