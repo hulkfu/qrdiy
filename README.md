@@ -291,3 +291,13 @@ gem install nokogiri
 ```bash
 ALTER ROLE user WITH Superuser;
 ```
+
+## extension/pg_stat_statements.control": No such file or directory
+
+首次部署时，执行 "rake db:setup" 报错。
+
+需要安装：
+
+```bash
+ sudo apt install postgresql-contrib-9.x
+```
