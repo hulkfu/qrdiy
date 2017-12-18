@@ -215,6 +215,16 @@ bin/rails test  # 或 bin/rake
 bin/rails test -d test/models/publication_test.rb
 ```
 
+## 前端测试
+这里用的是 [Jesmine](https://jasmine.github.io)。
+
+已经封装好了脚本：
+
+```bash
+./test.sh js
+```
+
+
 # 发布
 
 ```sh
