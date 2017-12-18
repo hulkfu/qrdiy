@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   root to: "home#index", as: :user_root
 
   resources :relations, only: [:create, :destroy] do

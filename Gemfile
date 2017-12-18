@@ -107,6 +107,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # 开发测试的环境变量，在根目录里的 .env 文件里配置
   gem 'dotenv-rails'
+  gem 'jasmine-rails'
 end
 
 group :development do
