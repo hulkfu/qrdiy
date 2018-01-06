@@ -20,15 +20,5 @@ module QrdiyCom
 
     # middlewares
     config.middleware.use Rack::Attack
-
-    # ross-Origin Resource Sharing (CORS)
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '/assets', :headers => :any, :methods => [:get, :post]
-      end
-    end
   end
-
-
 end
