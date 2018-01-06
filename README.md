@@ -322,3 +322,8 @@ ALTER ROLE user WITH Superuser;
 
  =# alert user name superuser;
 ```
+
+## CROS 问题
+assets 的话需要修改 nginx 配置，参考[这里](https://enable-cors.org/server_nginx.html)。
+
+服务的话使用 [rack-cors](https://github.com/cyu/rack-cors) 配置。
