@@ -262,6 +262,12 @@ rake notes:todo
 sudo apt-get install build-essential
 ```
 
+## 安装不上 pg gem
+
+```bash
+sudo apt install libpq-dev
+```
+
 ## PG::ConnectionBad: FATAL:  Peer authentication failed for user "qrdiy"
 
 去/etc/postgresql/9.5/main/pg_hba.conf：
@@ -310,4 +316,9 @@ ALTER ROLE user WITH Superuser;
 
 ```bash
  sudo apt install postgresql-contrib-9.x
+
+ sudo su postgres
+ psql
+
+ =# alert user name superuser;
 ```
