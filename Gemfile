@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 #
 gem 'sprockets', git: 'https://github.com/rails/sprockets/'
 
+# for font-asesome 'Access-Control-Allow-Origin' header
+gem 'rack-cors', :require => 'rack/cors'
+
 # basic
 gem 'devise'
 gem 'devise-i18n'
