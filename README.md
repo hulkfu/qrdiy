@@ -327,3 +327,15 @@ ALTER ROLE user WITH Superuser;
 assets 的话需要修改 nginx 配置，参考[这里](https://enable-cors.org/server_nginx.html)。
 
 服务的话使用 [rack-cors](https://github.com/cyu/rack-cors) 配置。
+
+## 重新服务器后 Puma 不能自动启动
+
+运行开启即可：
+
+```bash
+cap production puma:start
+```
+
+或参考：
+
+- https://github.com/puma/puma/blob/master/tools/jungle/
